@@ -3,17 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2013/11/06 14:21:46 by zaz              ###   ########.fr       */
+/*   Updated: 2020/01/25 17:11:25 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** Toutes les tailles sont en octets.
-** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
-*/
 
 #define IND_SIZE				2
 #define REG_SIZE				4
@@ -74,3 +69,25 @@ typedef struct		header_s
   unsigned int		prog_size;
   char				comment[COMMENT_LENGTH + 1];
 }					header_t;
+
+typedef struct    s_command
+{
+  unsigned char   cmnd_num;
+  unsigned char   arg_size;
+  long long       arg;
+}                 t_command;
+
+typedef struct    s_label
+{
+  char            name[T_LAB];
+  t_command       *dst;
+  t_label         *next;
+}                 t_label;
+
+typedef struct    s_cmnd_label_link
+{
+  t_label           *label;
+  t_command         *command;
+  t_cmnd_label_link *next;
+}                 t_cmnd_label_link;
+
