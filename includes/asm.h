@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/01/26 17:37:41 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/02/01 14:30:01 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <fcntl.h>
 # include "op.h"
 # include "libft.h"
+
+# define BUF_COR_SIZE 500
 
 # define SOURCE_EXTENSION_ERROR 100
 # define OPEN_FILE_ERROR		22
@@ -43,7 +45,7 @@ typedef struct		s_cmnd_label_link
 
 
 int					chaeck_flags(char **argv, int argc, char *flag);
-int					read_cor_file(char *file_name, int flag);
+int					cor_open_file(char *file_name, int flag);
 void				print_error(int er_code);
 
 #endif
