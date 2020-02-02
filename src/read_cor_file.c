@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cor_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/01 14:46:14 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/02/02 17:27:19 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		cor_wordlen(char *str)
 	int rez;
 
 	rez = 0;
-	while (*str && *str != ' ' && *str != '\t' && *str != '\n' && *str != COMMENT_CHAR
+	while (*str && *str != ' ' && *str != '\t' && *str != COMMENT_CHAR
 		&& *str != LABEL_CHAR && *str != DIRECT_CHAR && *str != SEPARATOR_CHAR)
 	{
 		rez++;
@@ -26,50 +26,98 @@ static int		cor_wordlen(char *str)
 	return (rez);
 }
 
-static int		cor_scan(int row, int *col, char **str)
+static int 		cor_scan_label(t_asmcont *cont, char *str, int len)
 {
-	int wlen;
-
-	if (**str == ' ' || **str == '\t')
-		return (0);
-	else
-		wlen = cor_wordlen(*str);
-	//проверяем что за слово и заносим либо в список меток, либо в список команд
-	//либо выводим еррор
-	// если нашли слово или метку двигаем указатель и счетчик
+	
 }
 
-static int		cor_read(int fd)
+static int 		cor_scan_cmd(t_asmcont *cont, char *str, int len)
 {
-	int 	row;
-	int		col;
-	int 	rez;
-	char	buf[BUF_COR_SIZE + 1];
-	char	*pnt;
+	
+}
 
-	row = 0;
-	col = 0;
-	ft_bzero(buf, BUF_COR_SIZE + 1);
-	while ((rez = read(fd, buf, BUF_COR_SIZE)) > 0)
+static int		cor_scan(t_asmcont *cont, char **str)
+{
+	int wlen;
+	int rez;
+
+	rez = 0;
+	if (**str == ' ' || **str == '\t')
+		return (rez);
+	else
+		wlen = cor_wordlen(*str);
+	if (*str && *(str + wlen) == LABEL_CHAR)
+	{
+		rez = cor_scan_label(cont, *str, wlen);
+		*str += wlen + 1;
+	}
+	else if (*str)
+	{
+		rez = cor_scan_cmd(cont, *str, wlen);
+		while (*str)
+			str++;
+	}
+	return (rez);
+}
+
+static int		cor_read(int fd, t_asmcont *cont)
+{
+	int 	rez;
+	char	*buf;
+	char	*pnt;
+	char	need_nl;
+
+	cont->row = 0;
+	cont->col = 0;
+	need_nl = 0;
+	while ((rez = get_next_line(fd, &buf)) > 0)
 	{
 		pnt = buf;
-		while (--rez)
+		cont->row++;
+		while (*pnt)
 		{
-			if (*pnt == '\n' && !(col = 0))
-				row++;
-			else
-				col++;
-			cor_scan(row, &col, &pnt);
+			cont->col++;
+			need_nl = cor_scan(cont, &pnt);
 			pnt++;
 		}
-		ft_bzero(buf, BUF_COR_SIZE + 1);
+		ft_strdel(buf);
 	}
 }
 
+// static int		cor_read(int fd, t_asmcont *cont)
+// {
+// 	int 	rez;
+// 	char	buf[BUF_COR_SIZE + 1];
+// 	char	*pnt;
+// 	char	need_nl;
+
+// 	cont->row = 0;
+// 	cont->col = 0;
+	
+// 	ft_bzero(buf, BUF_COR_SIZE + 1);
+// 	need_nl = 0;
+// 	while ((rez = read(fd, buf, BUF_COR_SIZE)) > 0)
+// 	{
+// 		pnt = buf;
+// 		while (--rez)
+// 		{
+// 			if (*pnt == '\n' && !(cont->col = 0)
+// 				&& !(need_nl = 0))
+// 				cont->row++;
+// 			else
+// 				cont->col++;
+// 			need_nl = cor_scan(cont, &pnt);
+// 			pnt++;
+// 		}
+// 		ft_bzero(buf, BUF_COR_SIZE + 1);
+// 	}
+// }
+
 int		cor_open_file(char *file_name, int flag)
 {
-	int fd;
-	int code;
+	int 		fd;
+	int 		code;
+	t_asmcont 	cont;
 
 	code = 0;
 	if (ft_strendwith(file_name, SOURCE_EXTENSION)) // подумать над lowercase
@@ -77,7 +125,8 @@ int		cor_open_file(char *file_name, int flag)
 		fd = open(file_name, O_RDONLY);
 		if (fd != -1)
 		{
-			cor_read(fd);
+			init_container(&cont);
+			cor_read(fd, &cont);
 			close(fd);
 		}
 		else
