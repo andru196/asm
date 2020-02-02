@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/02 16:39:25 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/02 21:33:23 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # define SOURCE_EXTENSION_ERROR 100
 # define OPEN_FILE_ERROR		22
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
+
+typedef struct		s_row 
+{
+	char			has_label;
+	t_command		*cmd;
+	char			arg_num;
+	
+}					t_row;
+
 
 typedef struct		s_command
 {

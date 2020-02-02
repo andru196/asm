@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/02 17:27:19 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/02 21:43:12 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,30 @@ static int 		cor_scan_cmd(t_asmcont *cont, char *str, int len)
 	
 }
 
+
+
 static int		cor_scan(t_asmcont *cont, char **str)
 {
-	int wlen;
-	int rez;
+	int		wlen;
+	int		rez;
+	t_row	row_data;
 
 	rez = 0;
-	if (**str == ' ' || **str == '\t')
-		return (rez);
-	else
-		wlen = cor_wordlen(*str);
+	while (**str == ' ' || **str == '\t')
+	{	
+		(*str)++;
+		cont->col++;
+	}
+	if (!**str)
+		return (0);
+	ft_bzero(&row_data, sizeof(t_row));
+/*
+	Тут нужно определить что за слово перед нами
+	смотрим не метка ли это, дальше не команда ли это, иначе кидаем ошибку
+	Предполагается делать всё это в одном цикле, т.к. нужно исключить возникновение 2ух коман или меток
+*/
+
+	wlen = cor_wordlen(*str);
 	if (*str && *(str + wlen) == LABEL_CHAR)
 	{
 		rez = cor_scan_label(cont, *str, wlen);
@@ -64,24 +78,18 @@ static int		cor_read(int fd, t_asmcont *cont)
 {
 	int 	rez;
 	char	*buf;
-	char	*pnt;
-	char	need_nl;
 
 	cont->row = 0;
-	cont->col = 0;
-	need_nl = 0;
 	while ((rez = get_next_line(fd, &buf)) > 0)
 	{
-		pnt = buf;
 		cont->row++;
-		while (*pnt)
-		{
-			cont->col++;
-			need_nl = cor_scan(cont, &pnt);
-			pnt++;
-		}
-		ft_strdel(buf);
+		cont->col = 0;
+		rez = cor_scan(cont, &buf);
+		ft_strdel(&buf);
+		if (rez == -1)
+			break ;
 	}
+	return (rez);
 }
 
 // static int		cor_read(int fd, t_asmcont *cont)
