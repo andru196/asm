@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/02/02 14:12:14 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/10 21:54:49 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,12 @@ typedef struct		header_s
   char				comment[COMMENT_LENGTH + 1];
 }					header_t;
 
+typedef struct			s_op
+{
+	char				*name;
+	__uint8_t			code;
+	__uint8_t			args_num;
+	char				args_types_code;
+	__uint8_t			args_types[3];
+	__uint8_t			t_dir_size;
+}						t_op;
