@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/02/02 16:37:09 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:01:22 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,14 @@ t_cmnd_label_link *new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 	t_label				*tmp_pr;
 	t_cmnd_label_link	*rez;
 
-	rez = malloc(sizeof(t_cmnd_label_link));
-	if (rez)
+	if (rez = malloc(sizeof(t_cmnd_label_link)))
 	{
 		tmp_pr = cont->label_list;
 		tmp = tmp_pr ? tmp_pr->next : NULL;
-		while (tmp && ft_strcmp(tmp_pr->name, lbl_name))
+		while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
 			tmp = tmp->next;
 		if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
-			rez->label = tmp ? tmp : tmp_pr;
+			rez->label = tmp ? tmp_pr : tmp;
 		else
 		{
 			rez->label = new_label_min(lbl_name);

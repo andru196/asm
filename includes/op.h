@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/02/10 21:54:49 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/10 22:01:50 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
+# define OP_TAB_SIZE 17
+
 /*
 **
 */
@@ -69,18 +71,18 @@ typedef char	t_arg_type;
 
 typedef struct		header_s
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
-}					header_t;
+  unsigned int        magic;
+  char        				prog_name[PROG_NAME_LENGTH + 1];
+  unsigned int		    prog_size;
+  char        				comment[COMMENT_LENGTH + 1];
+}					            header_t;
 
-typedef struct			s_op
+typedef struct			  s_op
 {
-	char				*name;
-	__uint8_t			code;
-	__uint8_t			args_num;
-	char				args_types_code;
-	__uint8_t			args_types[3];
-	__uint8_t			t_dir_size;
-}						t_op;
+	char				        *name;
+	__uint8_t			      code;
+	__uint8_t			      args_num;
+	char				        args_types_code;
+	__uint8_t			      args_types[3];
+	__uint8_t			      t_dir_size;
+}						          t_op;

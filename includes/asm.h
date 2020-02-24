@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/10 21:54:35 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:05:18 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define OPEN_FILE_ERROR		22
 # define LABEL_SIZE_ERROR		-(T_LAB)
 # define LABEL_FORBIDDEN_CHAR	-80
+# define COMMAND_NOT_FOUND		-404
+# define ARGS_ERROR				-101
+# define PROGRAM_SIZE_LIMIT		-800
+# define CONNECTION_ERROR		-777
 
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
@@ -45,14 +49,16 @@ typedef struct		s_row
 typedef struct		s_command
 {
 	unsigned char		cmnd_num;
-	unsigned char		arg_size[3];
-	long long			arg[3];
+	unsigned char		arg_size[MAX_ARGS_NUMBER];
+	unsigned char		is_lbl[MAX_ARGS_NUMBER];
+	long long			arg[MAX_ARGS_NUMBER];
 	int					row;
+	unsigned char		size;
 }					t_command;
 
 typedef struct		s_label
 {
-	char				name[T_LAB];
+	char				name[T_LAB + 1];
 	t_command			*dst;
 	int					row;
 	t_label			*next;
@@ -70,6 +76,8 @@ typedef struct 			s_asmcont
 {
 	int					row;
 	int					col;
+	char				*champ_name;
+	char				*comment;
 	size_t				cmd_count;
 	t_command			*command_list;
 	t_label				*label_list;
@@ -85,6 +93,7 @@ t_label				*new_label(t_asmcont *cont, char *str);
 int					new_command(t_asmcont *cont, int command);
 int					cpy_word(char *dst, char *src);
 int					label_check(t_asmcont *c, char *word, int len);
-int					command_check(t_asmcont *cont, char *word, char *str, int len);
+int					command_check(t_asmcont *cont, char *word, char **tr, int len);
+void				skip_space(t_asmcont *c, char **str);
 
 #endif

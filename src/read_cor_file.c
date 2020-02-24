@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/10 21:47:32 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:37:34 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,11 @@ int		cor_open_file(char *file_name, int flag)
 			init_container(&cont);
 			code = cor_read(fd, &cont);
 			close(fd);
+			code = asm_translate(&cont, file_name);
+			free_asm_data(&cont);
 		}
 		else
-			code = OPEN_FILE_ERROR;
+			code = OPEN_FILE_ERROR; 
 	}
 	else
 		code = SOURCE_EXTENSION_ERROR;

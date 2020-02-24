@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:17:18 by andru196          #+#    #+#             */
-/*   Updated: 2020/02/10 21:44:41 by andru196         ###   ########.fr       */
+/*   Updated: 2020/02/10 22:11:46 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int		label_check(t_asmcont *c, char *word, int len)
 		return (LABEL_FORBIDDEN_CHAR);
 	if (!new_label(c, word))
 		return (MALLOC_ERROR);
-	return (0);
+	return (1);
 }
