@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/24 11:05:18 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 15:35:09 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,22 @@
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
 
+typedef struct s_row t_row;
+typedef struct s_command t_command;
+typedef struct s_label t_label;
+typedef struct s_cmnd_label_link t_cmnd_label_link; 
+typedef struct s_asmcont t_asmcont;
 
-typedef struct		s_row 
+ struct		s_row 
 {
 	char			has_label;
 	t_command		*cmd;
 	char			arg_num;
 	
-}					t_row;
+};
 
 
-typedef struct		s_command
+struct		s_command
 {
 	unsigned char		cmnd_num;
 	unsigned char		arg_size[MAX_ARGS_NUMBER];
@@ -54,25 +59,25 @@ typedef struct		s_command
 	long long			arg[MAX_ARGS_NUMBER];
 	int					row;
 	unsigned char		size;
-}					t_command;
+};
 
-typedef struct		s_label
+struct		s_label
 {
 	char				name[T_LAB + 1];
 	t_command			*dst;
 	int					row;
 	t_label			*next;
-}					t_label;
+};
 
-typedef struct		s_cmnd_label_link
+struct		s_cmnd_label_link
 {
 	t_label				*label;
 	t_command			*command;
 	size_t				arg_num;
 	t_cmnd_label_link	*next;
-}					t_cmnd_label_link;
+};
 
-typedef struct 			s_asmcont
+struct 			s_asmcont
 {
 	int					row;
 	int					col;
@@ -82,9 +87,9 @@ typedef struct 			s_asmcont
 	t_command			*command_list;
 	t_label				*label_list;
 	t_cmnd_label_link	*conn_list;
-}         				 t_asmcont;
+};
 
-int					chaeck_flags(char **argv, int argc, char *flag);
+int					check_flags(char **argv, int argc, char *flag);
 int					cor_open_file(char *file_name, int flag);
 void				print_error(int er_code);
 int					init_container(t_asmcont *cont);
@@ -95,5 +100,6 @@ int					cpy_word(char *dst, char *src);
 int					label_check(t_asmcont *c, char *word, int len);
 int					command_check(t_asmcont *cont, char *word, char **tr, int len);
 void				skip_space(t_asmcont *c, char **str);
+int					asm_translate(t_asmcont *cont, char *file_name, int flag);
 
 #endif

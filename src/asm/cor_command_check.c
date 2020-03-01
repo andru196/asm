@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/02/21 16:15:23 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 15:09:41 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	arg_label_check(char *wrd)
 	i = 0;
 	while (*wrd && *wrd != SEPARATOR_CHAR)
 	{
-		if (ft_charinstr(*wrd++, LABEL_CHARS))
+		if (ft_charinstr(LABEL_CHARS, *wrd++))
 			return (0);
 		i++;
 	}

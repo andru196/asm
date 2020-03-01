@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/02/21 15:01:22 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 15:22:44 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	new_command(t_asmcont *cont, int command)
 	return (cont->cmd_count - 1);
 }
 
-t_label	*new_lable_min(char *str)
+t_label	*new_label_min(char *str)
 {
 	t_label *rez;
 
@@ -37,7 +37,7 @@ t_label	*new_label(t_asmcont *cont, char *str)
 	t_label *rez;
 	t_label	*tmp;
 
-	rez = new_lable_min(str);
+	rez = new_label_min(str);
 	if (rez)
 	{
 		rez->dst = &cont->command_list[cont->cmd_count];
@@ -60,7 +60,7 @@ t_cmnd_label_link *new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 	t_label				*tmp_pr;
 	t_cmnd_label_link	*rez;
 
-	if (rez = malloc(sizeof(t_cmnd_label_link)))
+	if ((rez = malloc(sizeof(t_cmnd_label_link))))
 	{
 		tmp_pr = cont->label_list;
 		tmp = tmp_pr ? tmp_pr->next : NULL;

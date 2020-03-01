@@ -6,25 +6,25 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/02/21 15:37:34 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 15:52:36 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int		cor_wordlen(char *str)
-{
-	int rez;
+// static int		cor_wordlen(char *str)
+// {
+// 	int rez;
 
-	rez = 0;
-	while (*str && *str != ' ' && *str != '\t' && *str != COMMENT_CHAR
-		&& *str != LABEL_CHAR && *str != DIRECT_CHAR && *str != SEPARATOR_CHAR)
-	{
-		rez++;
-		str++;
-	}
-	return (rez);
-}
+// 	rez = 0;
+// 	while (*str && *str != ' ' && *str != '\t' && *str != COMMENT_CHAR
+// 		&& *str != LABEL_CHAR && *str != DIRECT_CHAR && *str != SEPARATOR_CHAR)
+// 	{
+// 		rez++;
+// 		str++;
+// 	}
+// 	return (rez);
+// }
 
 static int 		cor_scan_word(t_asmcont *cont, char **str)
 {
@@ -35,7 +35,7 @@ static int 		cor_scan_word(t_asmcont *cont, char **str)
 	len = cpy_word(word, *str);
 	*str += len;
 	rez = 0;
-	if (*(str - 1) == LABEL_CHAR)
+	if (*(*str - 1) == LABEL_CHAR)
 		rez = label_check(cont, word, len);
 	if (!rez)
 		rez = command_check(cont, word, str, len);
@@ -46,9 +46,7 @@ static int 		cor_scan_word(t_asmcont *cont, char **str)
 
 static int		cor_scan(t_asmcont *cont, char *str)
 {
-	int		wlen;
 	int		rez;
-	t_row	row_data;
 
 	rez = 0;
 	str--;
@@ -81,6 +79,27 @@ static int		cor_read(int fd, t_asmcont *cont)
 	return (rez);
 }
 
+void	free_asm_data(t_asmcont *c)
+{
+	void *tmp;
+	void *pre;
+
+	free(c->champ_name);
+	c->champ_name = NULL;
+	free(c->comment = NULL);
+	c->comment = NULL;
+	free(c->command_list);
+	tmp = c->label_list;
+	pre = tmp;
+	while (tmp)
+	{
+		tmp = ((t_label *)tmp)->next;
+		free(pre);
+		pre = tmp;
+	}
+	c->label_list = NULL;
+}
+
 int		cor_open_file(char *file_name, int flag)
 {
 	int 		fd;
@@ -96,7 +115,7 @@ int		cor_open_file(char *file_name, int flag)
 			init_container(&cont);
 			code = cor_read(fd, &cont);
 			close(fd);
-			code = asm_translate(&cont, file_name);
+			code = asm_translate(&cont, file_name, flag);
 			free_asm_data(&cont);
 		}
 		else

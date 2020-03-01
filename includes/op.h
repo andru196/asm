@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/02/10 22:01:50 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 16:21:30 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ typedef struct		header_s
 
 typedef struct			  s_op
 {
-	char				        *name;
-	__uint8_t			      code;
-	__uint8_t			      args_num;
-	char				        args_types_code;
-	__uint8_t			      args_types[3];
-	__uint8_t			      t_dir_size;
-}						          t_op;
+	char					*name;
+	unsigned char			args_num;
+	unsigned char			args_types[3];
+	unsigned char			code;
+	short					cycle_die;
+	char					*long_name;
+	char				    args_types_code;
+	unsigned char			t_dir_size;
+}							t_op;

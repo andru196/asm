@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:20 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 15:52:06 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ size_t	data_size(t_asmcont *c)
 
 int		fuck_connections(t_asmcont *c)
 {
-	t_cmnd_label_link *tmp;
-	t_cmnd_label_link *pre;
+	t_cmnd_label_link	*tmp;
+	t_cmnd_label_link	*pre;
+	int					i;
 
 	pre = c->conn_list;
 	while (pre)
@@ -54,7 +55,11 @@ int		fuck_connections(t_asmcont *c)
 		tmp = pre;
 		if (!tmp->label->dst)
 			return (-1);
-		tmp->command->arg[tmp->arg_num] = tmp->label->dst - tmp->command;
+		i = 0;
+		while (tmp->label->dst + i > tmp->command) //Оттестить участок
+			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;
+		while (tmp->label->dst - i < tmp->command)
+			tmp->command->arg[tmp->arg_num] += (tmp->command + i--)->size;
 		free(tmp);
 		pre = pre->next;
 	}
@@ -92,7 +97,7 @@ int		type_code(t_command *cmd)
 void write_n_num(char **dst, long long n, unsigned char bytes)
 {
 	if (n >= 1 << bytes * 8)
-		n %= 1 << bytes * 8 - 1;
+		n %= 1 << (bytes * 8 - 1);
 	while (bytes)
 	{
 		**dst = *(char *)(&n + (sizeof(long long) - bytes--));
@@ -125,8 +130,8 @@ void	write_cmnd(char *dst, t_command *cmd)
 
 int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 {
-	int			i;
-	int			j;
+	size_t			i;
+	size_t			j;
 
 	*(int *)rez = COREWAR_EXEC_MAGIC;
 	i = 0 + sizeof(int);
@@ -146,9 +151,29 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 		write_cmnd(rez + i, &cont->command_list[j++]);
 		i += cont->command_list[j].size;
 	}
+	return (0);
 }
 
-int		asm_translate(t_asmcont *cont, char *file_name)
+int		zapisat(char *rez, char *file_name, int flag, size_t size)
+{
+	char	*file_name_cor;
+	int		name_len;
+	int		fd;
+
+	name_len = ft_strlen(file_name);
+	file_name_cor = malloc(name_len + 2);
+	ft_strcpy(file_name, file_name);
+	file_name_cor[name_len- 1] = '\0';
+	ft_strcat(file_name_cor, "cor");
+	fd = open(file_name_cor, O_CREAT);
+	if (flag == 1)
+		write(fd, rez, size);
+	else
+		write(1, rez, size);
+	return (0);
+}
+
+int		asm_translate(t_asmcont *cont, char *file_name, int flag)
 {
 	char	*rez;
 	size_t	size;
@@ -157,8 +182,11 @@ int		asm_translate(t_asmcont *cont, char *file_name)
 		return (PROGRAM_SIZE_LIMIT);
 	if (fuck_connections(cont) < 0)
 		return (CONNECTION_ERROR);
-	if (rez = ft_strnew(size + PROG_NAME_LENGTH + COMMENT_LENGTH + 4 * 4))
+	if ((rez = ft_strnew(size + PROG_NAME_LENGTH + COMMENT_LENGTH + 4 * 4)))
 		return (MALLOC_ERROR);
-	if (0 > transofrm__data(cont, rez, size))
+	if (0 > transofrm_data(cont, rez, size))
 		return (-1);
+	zapisat(rez, file_name, flag, size);
+	free(rez);
+	return (0);
 }
