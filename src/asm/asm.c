@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/01 16:32:52 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 16:44:18 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	int	flag_mode;
 	int error_code;
 
-	if (argc < 2)
+	if (argc >= 2)
 	{
 		flag_mode = 1;//check_flags(argv + 1, argc - 1, "-s");
 		while (argc > 1)

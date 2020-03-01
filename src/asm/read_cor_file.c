@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/01 15:52:36 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 17:37:12 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,32 @@
 // 	return (rez);
 // }
 
+int				special_arg(t_asmcont *c, int dst, char **str)
+{
+	int		i;
+	char	*cpy;
+	char	*rez;
+	size_t	size;
+	
+	i = 0;
+	while ((*str)[i] == ' ' || (*str)[i] == '\t')
+		i++;
+	*str += i;
+	c->col += i;
+	if (**str != '"' || !(cpy = ft_strchr(*str + 1, '"')))
+		return (-1);
+	size = cpy - *str - 1;
+	if (!(rez = ft_strnew(size)))
+		return (-1);
+	ft_memcpy(rez, *str + 1, size);
+	*str += size + 2;
+	if (dst)
+		c->comment = rez;
+	else
+		c->champ_name = rez;
+	return (2);
+}
+
 static int 		cor_scan_word(t_asmcont *cont, char **str)
 {
 	char	word[MAX_WORD_LEN + 1];
@@ -35,7 +61,11 @@ static int 		cor_scan_word(t_asmcont *cont, char **str)
 	len = cpy_word(word, *str);
 	*str += len;
 	rez = 0;
-	if (*(*str - 1) == LABEL_CHAR)
+	if (!cont->champ_name && !ft_strcmp(word, NAME_CMD_STRING))
+		rez = special_arg(cont, 0, str); //то что в кавычках
+	else if (!cont->comment && !ft_strcmp(word, COMMENT_CMD_STRING))
+		rez = special_arg(cont, 1, str);
+	else  if (*(*str - 1) == LABEL_CHAR)
 		rez = label_check(cont, word, len);
 	if (!rez)
 		rez = command_check(cont, word, str, len);

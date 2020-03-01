@@ -6,13 +6,13 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/01 15:09:41 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/01 18:15:43 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op *op_tab;
+extern t_op op_tab[OP_TAB_SIZE];
 
 int	digits_count(char *str)
 {
@@ -20,7 +20,7 @@ int	digits_count(char *str)
 
 	i = 0;
 	while (ft_isdigit(*str++))
-		;
+		i++;
 	return (i);	
 }
 
@@ -31,7 +31,7 @@ int	arg_label_check(char *wrd)
 	i = 0;
 	while (*wrd && *wrd != SEPARATOR_CHAR)
 	{
-		if (ft_charinstr(LABEL_CHARS, *wrd++))
+		if (!ft_charinstr(LABEL_CHARS, *wrd++))
 			return (0);
 		i++;
 	}
@@ -67,7 +67,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		return (-1);
 	if (*word == 'r')
 	{
-		if ((rez = ft_atoi(word++ + 1)) > REG_NUMBER || rez < 1
+		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 1
 			|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0'))
 			return (-1);
 		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
@@ -126,8 +126,9 @@ int	command_check(t_asmcont *cont, char *word, char **str, int len)
 	int		new_c;
 	int		j;
 
-	i = -1;
-	while (ft_strcmp(op_tab[++i].name, word) && i < OP_TAB_SIZE);
+	i = 0;
+	while (ft_strcmp(op_tab[i].name, word) && i < OP_TAB_SIZE)
+		i++;
 	if (i == OP_TAB_SIZE)
 		return (COMMAND_NOT_FOUND);
 	cont->col += len;
@@ -137,7 +138,7 @@ int	command_check(t_asmcont *cont, char *word, char **str, int len)
 	while (j < op_tab[i].args_num)
 	{
 		skip_space(cont, str);
-		*str += cpy_word(word, *str);
+		*str += cpy_word(word, *str) + ft_strendwith(word, ",");
 		if (args_check(cont, new_c, j++, word) == -1)
 			return (ARGS_ERROR);
 	}
