@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/01 17:37:12 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:12:01 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ static int		cor_scan(t_asmcont *cont, char *str)
 		else if (*str == COMMENT_CHAR || *str == ALT_COMMENT_CHAR)
 			break ;
 		rez = cor_scan_word(cont, &str);
+		if (!*str)
+			str--;
 	}
 	return (rez);
 }

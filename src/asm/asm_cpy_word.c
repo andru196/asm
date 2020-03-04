@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/01 18:08:36 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/03 23:22:54 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		cpy_word(char *dst, char *src)
 	len = 0;
 	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t' 
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
-		&& *src != SEPARATOR_CHAR)
+		&& *src != SEPARATOR_CHAR && *src)
 	{	
 		len++;
 		*dst++ = *src++;

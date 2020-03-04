@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/01 15:22:44 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:54:38 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_cmnd_label_link *new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 		while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
 			tmp = tmp->next;
 		if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
-			rez->label = tmp ? tmp_pr : tmp;
+			rez->label = tmp ? tmp : tmp_pr;
 		else
 		{
 			rez->label = new_label_min(lbl_name);

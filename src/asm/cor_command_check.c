@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/01 18:15:43 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:37:33 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	arg_label_check(char *wrd)
 	char				wrd_cpy[T_LAB + 1];
 	t_cmnd_label_link	*rez;
 
-	ft_bzero(wrd, T_LAB + 1);
+	ft_bzero(wrd_cpy, T_LAB + 1);
 	i = 0;
 	while (*wrd && *wrd != SEPARATOR_CHAR)
 		wrd_cpy[i++] = *wrd++;
@@ -60,11 +60,14 @@ int	arg_label_check(char *wrd)
 int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
-
+	const char	sep[2] = {SEPARATOR_CHAR, '\0'};
+	
 	rez = 0;
 	if (arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
 		&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR)
 		return (-1);
+	if (ft_strendwith(word, (char *)sep))
+		word[ft_strlen(word) - 1] = '\0';
 	if (*word == 'r')
 	{
 		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 1
@@ -111,7 +114,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		else
 		{
 			rez = ft_atoi(word + 1);
-			if (!str_num_eq(rez, word + 1))
+			if (!str_num_eq(rez, word))
 				return (-1);
 		}
 		cont->command_list[com_pos].arg[arg_num] = rez;
