@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/01 15:35:09 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/06 00:52:53 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft.h"
 
 # define BUF_COR_SIZE 500
-
+# define SIZE_REG 1
 /*
 ** ERRORS
 ** CODES

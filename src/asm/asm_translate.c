@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/04 23:28:05 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:14:30 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	data_size(t_asmcont *c)
 		while (++j < op_tab[c->command_list[i].cmnd_num].args_num)
 		{
 			if (c->command_list[i].arg_size[j] == T_REG)
-				cmd_size += REG_SIZE;
+				cmd_size += SIZE_REG;
 			else if (c->command_list[i].arg_size[j] == T_IND)
 				cmd_size += IND_SIZE;
 			else
@@ -95,48 +95,80 @@ char		type_code(t_command *cmd)
 
 void write_n_num(char **dst, long long n, unsigned char bytes)
 {
+	int i;
+
 	if (n >= ((long long)1 << bytes * 8))
 		n %= 1 << ((long long)bytes * 8 - 1);
-	while (bytes)
+	if (bytes == 1)
+		bytes = 2;
+	if (!n)
+		bytes = 1;
+	i = 0;
+	while (bytes > i)
 	{
-		**dst = *((char *)&n + (sizeof(long long) - --bytes));
-		**dst = ((**dst & 0xf0) >> 4) | ((**dst & 0x0f) << 4); 
+		//**dst = *(((char *)&n) + --bytes);
+		**dst = *(((char *)&n) + i++);
+		//**dst = ((**dst & 0xf0) >> 4) | ((**dst & 0x0f) << 4); 
 		(*dst)++;
 	}
 }
 
-void	write_cmnd(char *dst, t_command *cmd)
+int	write_cmnd(char *dst, t_command *cmd)
 {
-	int	i;
+	int		i;
+	char	*cpy;
 
-	*dst++ = cmd->cmnd_num;
+	cpy = dst;
+	*dst++ = cmd->cmnd_num + 1;
 	if (op_tab[cmd->cmnd_num].args_types_code)
 		*dst++ = type_code(cmd);
 	i = -1;
 	while (++i < op_tab[cmd->cmnd_num].args_num)
 	{
 		if (cmd->arg_size[i] == T_REG)
-			write_n_num(&dst, cmd->arg[i], REG_SIZE);
+			write_n_num(&dst, cmd->arg[i], SIZE_REG);
 		else if (cmd->arg_size[i] == T_IND)
 			write_n_num(&dst, cmd->arg[i], IND_SIZE);
 		else if (cmd->arg_size[i] == T_DIR)
 			write_n_num(&dst, cmd->arg[i], DIR_SIZE / (1 + op_tab[cmd->cmnd_num].t_dir_size));
 	}
-	
+	return (dst - cpy);
+}
+
+long long rev_bytes_ll(long long n)
+{
+	return (((n & 0xff00000000000000) >> (7 * 8))
+			| ((n & 0x00ff000000000000) >> (5 * 8))
+			| ((n & 0x0000ff0000000000) >> (3 * 8))
+			| ((n & 0x000000ff00000000) >> (1 * 8))
+			| ((n & 0x00000000ff000000) << (1 * 8))
+			| ((n & 0x0000000000ff0000) << (3 * 8))
+			| ((n & 0x000000000000ff00) << (5 * 8))
+			| ((n & 0x00000000000000ff) << (7 * 8)));
+}
+
+int rev_bytes(int n)
+{
+	return (((n & 0xff000000) >> (3 * 8))
+			| ((n & 0x00ff0000) >> (1 * 8))
+			| ((n & 0x0000ff00) << (1 * 8))
+			| ((n & 0x000000ff) << (3 * 8)));
 }
 
 int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 {
 	size_t			i;
 	size_t			j;
-
-	*(int *)rez = COREWAR_EXEC_MAGIC;
+	write_n_num(&rez,  rev_bytes(COREWAR_EXEC_MAGIC), sizeof(int));
+	rez -= sizeof(int);
 	i = 0 + sizeof(int);
 	ft_strncpy(rez + i, cont->champ_name, PROG_NAME_LENGTH);
 	i += PROG_NAME_LENGTH;
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
-	*(int *)(rez + i) = size;
+	rez += i;
+	write_n_num(&rez,  rev_bytes(size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16), sizeof(int));
+	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
 	ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
 	i += COMMENT_LENGTH;
@@ -144,10 +176,7 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	i += sizeof(int);
 	j = 0;
 	while (j < cont->cmd_count)
-	{
-		write_cmnd(rez + i, &cont->command_list[j++]);
-		i += cont->command_list[j].size;
-	}
+		i += write_cmnd(rez + i, &cont->command_list[j++]);
 	return (0);
 }
 
@@ -162,7 +191,7 @@ int		zapisat(char *rez, char *file_name, int flag, size_t size)
 	ft_strcpy(file_name_cor, file_name);
 	file_name_cor[name_len- 1] = '\0';
 	ft_strcat(file_name_cor, "cor");
-	fd = open(file_name_cor, O_WRONLY);
+	fd = open(file_name_cor, O_WRONLY | O_CREAT);
 	if (flag == 1)
 		write(fd, rez, size);
 	else
