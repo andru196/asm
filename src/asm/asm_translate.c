@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/06 01:14:30 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/07 20:27:05 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ size_t	data_size(t_asmcont *c)
 	return (rez);
 }
 
+long long rev_bytes_ll(long long n)
+{
+	return (((n & 0xff00000000000000) >> (7 * 8))
+			| ((n & 0x00ff000000000000) >> (5 * 8))
+			| ((n & 0x0000ff0000000000) >> (3 * 8))
+			| ((n & 0x000000ff00000000) >> (1 * 8))
+			| ((n & 0x00000000ff000000) << (1 * 8))
+			| ((n & 0x0000000000ff0000) << (3 * 8))
+			| ((n & 0x000000000000ff00) << (5 * 8))
+			| ((n & 0x00000000000000ff) << (7 * 8)));
+}
+
+int rev_bytes(int n)
+{
+	return (((n & 0xff000000) >> (3 * 8))
+			| ((n & 0x00ff0000) >> (1 * 8))
+			| ((n & 0x0000ff00) << (1 * 8))
+			| ((n & 0x000000ff) << (3 * 8)));
+}
+
 int		fuck_connections(t_asmcont *c)
 {
 	t_cmnd_label_link	*tmp;
@@ -58,7 +78,7 @@ int		fuck_connections(t_asmcont *c)
 		while (tmp->label->dst - i  > tmp->command) //Оттестить участок
 			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;
 		while (tmp->label->dst - i < tmp->command)
-			tmp->command->arg[tmp->arg_num] -= (tmp->command + i--)->size;
+			tmp->command->arg[tmp->arg_num] -= (tmp->command + --i)->size;
 		free(tmp);
 		pre = pre->next;
 	}
@@ -99,11 +119,13 @@ void write_n_num(char **dst, long long n, unsigned char bytes)
 
 	if (n >= ((long long)1 << bytes * 8))
 		n %= 1 << ((long long)bytes * 8 - 1);
-	if (bytes == 1)
-		bytes = 2;
-	if (!n)
-		bytes = 1;
 	i = 0;
+	//if (n < 0)
+	//{
+		n = rev_bytes_ll(n);
+		i = sizeof(long long) - bytes;
+		bytes = sizeof(long long);
+	//}
 	while (bytes > i)
 	{
 		//**dst = *(((char *)&n) + --bytes);
@@ -135,31 +157,11 @@ int	write_cmnd(char *dst, t_command *cmd)
 	return (dst - cpy);
 }
 
-long long rev_bytes_ll(long long n)
-{
-	return (((n & 0xff00000000000000) >> (7 * 8))
-			| ((n & 0x00ff000000000000) >> (5 * 8))
-			| ((n & 0x0000ff0000000000) >> (3 * 8))
-			| ((n & 0x000000ff00000000) >> (1 * 8))
-			| ((n & 0x00000000ff000000) << (1 * 8))
-			| ((n & 0x0000000000ff0000) << (3 * 8))
-			| ((n & 0x000000000000ff00) << (5 * 8))
-			| ((n & 0x00000000000000ff) << (7 * 8)));
-}
-
-int rev_bytes(int n)
-{
-	return (((n & 0xff000000) >> (3 * 8))
-			| ((n & 0x00ff0000) >> (1 * 8))
-			| ((n & 0x0000ff00) << (1 * 8))
-			| ((n & 0x000000ff) << (3 * 8)));
-}
-
 int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 {
 	size_t			i;
 	size_t			j;
-	write_n_num(&rez,  rev_bytes(COREWAR_EXEC_MAGIC), sizeof(int));
+	write_n_num(&rez,  COREWAR_EXEC_MAGIC, sizeof(int));
 	rez -= sizeof(int);
 	i = 0 + sizeof(int);
 	ft_strncpy(rez + i, cont->champ_name, PROG_NAME_LENGTH);
@@ -167,7 +169,7 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
 	rez += i;
-	write_n_num(&rez,  rev_bytes(size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16), sizeof(int));
+	write_n_num(&rez,  size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
 	ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
