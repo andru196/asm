@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/04 21:37:33 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/09 22:47:32 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,22 +128,25 @@ int	command_check(t_asmcont *cont, char *word, char **str, int len)
 	int		i;
 	int		new_c;
 	int		j;
+	int		shift;
 
 	i = 0;
-	while (ft_strcmp(op_tab[i].name, word) && i < OP_TAB_SIZE)
+	while (i < OP_TAB_SIZE && op_tab[i].name && ft_strcmp(op_tab[i].name, word))
 		i++;
-	if (i == OP_TAB_SIZE)
+	if (i == OP_TAB_SIZE || !op_tab[i].name)
 		return (COMMAND_NOT_FOUND);
-	cont->col += len;
+	g_column += len;
 	new_c = new_command(cont, i);
 	j = 0;
 	ft_bzero(word, ft_strlen(word));
 	while (j < op_tab[i].args_num)
 	{
-		skip_space(cont, str);
-		*str += cpy_word(word, *str) + ft_strendwith(word, ",");
+		skip_space(str);
+		shift = cpy_word(word, *str) + ft_strendwith(word, ",");
+		*str += shift;
 		if (args_check(cont, new_c, j++, word) == -1)
 			return (ARGS_ERROR);
+		g_column += shift;
 	}
 	return (1);
 }

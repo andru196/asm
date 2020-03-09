@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:17:18 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/03 22:09:02 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/09 21:38:41 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	find_label(t_asmcont *c, char *word)
 	if (!tmp)
 		return (0);
 	tmp->dst = &c->command_list[c->cmd_count];
-	tmp->row = c->row;
+	tmp->row = g_row;
 	return (1);
 }
 

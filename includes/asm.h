@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/06 00:52:53 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/09 22:00:10 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,10 @@
 # include <fcntl.h>
 # include "op.h"
 # include "libft.h"
+# include "corewar_error.h"
 
 # define BUF_COR_SIZE 500
 # define SIZE_REG 1
-/*
-** ERRORS
-** CODES
-*/
-
-# define MALLOC_ERROR			-1
-# define SOURCE_EXTENSION_ERROR 100
-# define OPEN_FILE_ERROR		22
-# define LABEL_SIZE_ERROR		-(T_LAB)
-# define LABEL_FORBIDDEN_CHAR	-80
-# define COMMAND_NOT_FOUND		-404
-# define ARGS_ERROR				-101
-# define PROGRAM_SIZE_LIMIT		-800
-# define CONNECTION_ERROR		-777
 
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
@@ -79,8 +66,6 @@ struct		s_cmnd_label_link
 
 struct 			s_asmcont
 {
-	int					row;
-	int					col;
 	char				*champ_name;
 	char				*comment;
 	size_t				cmd_count;
@@ -89,9 +74,13 @@ struct 			s_asmcont
 	t_cmnd_label_link	*conn_list;
 };
 
+int					g_error_code;
+int					g_column;
+int					g_row;
+
 int					check_flags(char **argv, int argc, char *flag);
 int					cor_open_file(char *file_name, int flag);
-void				print_error(int er_code);
+void				asm_print_error();
 int					init_container(t_asmcont *cont);
 t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name);
 t_label				*new_label(t_asmcont *cont, char *str);
@@ -99,7 +88,7 @@ int					new_command(t_asmcont *cont, int command);
 int					cpy_word(char *dst, char *src);
 int					label_check(t_asmcont *c, char *word, int len);
 int					command_check(t_asmcont *cont, char *word, char **tr, int len);
-void				skip_space(t_asmcont *c, char **str);
+void				skip_space(char **str);
 int					asm_translate(t_asmcont *cont, char *file_name, int flag);
 
 #endif

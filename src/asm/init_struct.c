@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/04 21:54:38 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/09 21:20:41 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	new_command(t_asmcont *cont, int command)
 {
 	cont->command_list[cont->cmd_count].cmnd_num = command;
+	cont->command_list[cont->cmd_count].row = g_row;
 	cont->cmd_count++;
 	return (cont->cmd_count - 1);
 }
@@ -41,7 +42,7 @@ t_label	*new_label(t_asmcont *cont, char *str)
 	if (rez)
 	{
 		rez->dst = &cont->command_list[cont->cmd_count];
-		rez->row = cont->row;
+		rez->row = g_row;
 		tmp = cont->label_list;
 		while (tmp && tmp->next)
 			tmp = tmp->next;

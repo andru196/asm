@@ -6,13 +6,13 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/03 23:22:54 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/09 21:37:54 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	skip_space(t_asmcont *c, char **str)
+void	skip_space(char **str)
 {
 	int i;
 
@@ -22,7 +22,7 @@ void	skip_space(t_asmcont *c, char **str)
 		(*str)++;
 		i++;
 	}
-	c->col += i;
+	g_column += i;
 }
 
 int		cpy_word(char *dst, char *src)
