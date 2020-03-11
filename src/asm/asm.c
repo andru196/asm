@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/09 22:50:11 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/11 23:31:02 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	print_error ()
 	char	*err_part1;
 	char	*err_part2;
 	
-	err_part1 = g_error_code ? "COMPILATION ERROR\n%s\nLine: %d, %d\n"
-	: "COMPILATION ERROR\n";
+	err_part1 = g_error_code ? "COMPILATION ERROR %d\n%s\nLine: %d, %d\n"
+	: "COMPILATION ERROR %d\n";
 	if (g_error_code == MALLOC_ERROR)
 		err_part2 = MALLOC_ERROR_STR;
 	if (g_error_code == SOURCE_EXTENSION_ERROR)
@@ -39,7 +39,7 @@ void	print_error ()
 		err_part2 = CONNECTION_ERROR_STR;
 	if (g_error_code == NONE_QUOTE_ERROR)
 		err_part2 = NONE_QUOTE_ERROR_STR;
-	ft_printf(err_part1, err_part2, g_row, g_column + 1);
+	ft_printf(err_part1, g_error_code, err_part2, g_row, g_column + 1);
 }
 
 

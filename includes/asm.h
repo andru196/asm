@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/09 22:00:10 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/11 23:27:11 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name);
 t_label				*new_label(t_asmcont *cont, char *str);
 int					new_command(t_asmcont *cont, int command);
 int					cpy_word(char *dst, char *src);
+int					cpy_arg_word(char *dst, char *src);
 int					label_check(t_asmcont *c, char *word, int len);
 int					command_check(t_asmcont *cont, char *word, char **tr, int len);
 void				skip_space(char **str);

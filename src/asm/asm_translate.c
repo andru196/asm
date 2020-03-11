@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/07 20:29:58 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/11 23:38:15 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ int		fuck_connections(t_asmcont *c)
 	while (pre)
 	{
 		tmp = pre;
+		g_row = tmp->command->row;
 		if (!tmp->label->dst)
 			return (-1);
 		i = 0;
-		while (tmp->label->dst - i  > tmp->command) //Оттестить участок
+		while (tmp->label->dst - i  > tmp->command)
 			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;
 		while (tmp->label->dst - i < tmp->command)
 			tmp->command->arg[tmp->arg_num] -= (tmp->command + --i)->size;
@@ -96,14 +97,12 @@ char		type_code(t_command *cmd)
 		rez |= IND_CODE << 6;
 	else if (cmd->arg_size[0] == T_DIR)
 		rez |= DIR_CODE << 6;
-
 	if (cmd->arg_size[1] == T_REG)
 		rez |= REG_CODE << 4;
 	else if (cmd->arg_size[1] == T_IND)
 		rez |= IND_CODE << 4;
 	else if (cmd->arg_size[1] == T_DIR)
 		rez |= DIR_CODE << 4;
-	
 	if (cmd->arg_size[2] == T_REG)
 		rez |= REG_CODE << 2;
 	else if (cmd->arg_size[2] == T_IND)

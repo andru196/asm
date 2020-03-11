@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/09 22:47:32 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/11 23:29:28 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,9 @@ int	command_check(t_asmcont *cont, char *word, char **str, int len)
 	while (j < op_tab[i].args_num)
 	{
 		skip_space(str);
-		shift = cpy_word(word, *str) + ft_strendwith(word, ",");
+		shift = cpy_arg_word(word, *str) + ft_strendwith(word, ",");
 		*str += shift;
-		if (args_check(cont, new_c, j++, word) == -1)
+		if (!shift || args_check(cont, new_c, j++, word) == -1)
 			return (ARGS_ERROR);
 		g_column += shift;
 	}
