@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/11 23:26:49 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/12 23:09:08 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,61 @@ int		cpy_arg_word(char *dst, char *src)
 		*dst++ = *src++;		
 	*dst = '\0';
 	return (len);
+}
+
+static char skip_num(char **wrd, long long num)
+{
+	long long	pow;
+	long long	tmp;
+
+	while (ft_charinstr(" \t+-\v", **wrd))
+		(*wrd)++;
+	pow = 10;
+	if (**wrd == '0' && *(*wrd + 1))
+		pow = *(*wrd + 1) == 'x' || *(*wrd + 1) == 'X' ? 16 : 8;
+	if (**wrd == '0' && pow == 10 && !num)
+		return (*(++(*wrd)));
+	*wrd += (pow % 8 == 0) + (pow == 16);
+	while (num)
+	{
+		tmp = 1;
+		while (num / tmp != (**wrd - '0') && tmp < num)
+			tmp *= pow;
+		if (num / tmp == (**wrd - '0'))
+		{	
+			num -= tmp * (**wrd - '0');
+			(*wrd)++;
+		}
+		else
+			return (-1);
+	}
+	return (num == 0 && (ft_charinstr(" \t+-\v", **wrd) || !**wrd) ? 0 : -1);
+}
+
+void	prepare_arg(char *word, long long *arg)
+{
+	long long rez;
+	long long tmp;
+	char *cpy;
+
+	while (*word && *word != '+' && *word != '-')
+		word++;
+	if (!*word)
+		return ;
+	cpy = word;
+	while (ft_isspace(*(cpy - 1)))
+		cpy--;
+	rez = 0;
+	while (*word)
+	{
+		if (*word == '+')
+			tmp = ft_atoix(word + 1);
+		if (*word == '-')
+			tmp = ft_atoix(word + 1);
+		if (skip_num(&word, tmp) == -1)
+			return ;
+		rez += tmp;
+	}
+	*arg = rez;
+	*cpy = '\0';
 }

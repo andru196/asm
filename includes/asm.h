@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/11 23:27:11 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/12 22:31:22 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int					label_check(t_asmcont *c, char *word, int len);
 int					command_check(t_asmcont *cont, char *word, char **tr, int len);
 void				skip_space(char **str);
 int					asm_translate(t_asmcont *cont, char *file_name, int flag);
+void				prepare_arg(char *word, long long *arg);
 
 #endif

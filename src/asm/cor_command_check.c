@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/11 23:29:28 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/12 23:12:42 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
 	const char	sep[2] = {SEPARATOR_CHAR, '\0'};
-	
+
 	rez = 0;
 	if (arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
 		&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR)
 		return (-1);
 	if (ft_strendwith(word, (char *)sep))
 		word[ft_strlen(word) - 1] = '\0';
+	prepare_arg(word, &(cont->command_list[com_pos].arg[arg_num]));
 	if (*word == 'r')
 	{
 		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 1
@@ -76,7 +77,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
 			return (-1); //соответствие типа
 		cont->command_list[com_pos].arg_size[arg_num] = T_REG;
-		cont->command_list[com_pos].arg[arg_num] = rez;
+		cont->command_list[com_pos].arg[arg_num] += rez;
 	}
 	else if (*word == DIRECT_CHAR)
 	{
@@ -92,11 +93,11 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		}
 		else
 		{
-			rez = ft_atoi(word + 1);
+			rez = ft_atoix(word + 1);
 			if (!str_num_eq(rez, word + 1))
 				return (-1);
 		}
-		cont->command_list[com_pos].arg[arg_num] = rez;
+		cont->command_list[com_pos].arg[arg_num] += rez;
 		cont->command_list[com_pos].arg_size[arg_num] = T_DIR;
 		
 	}
@@ -113,11 +114,11 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		}
 		else
 		{
-			rez = ft_atoi(word + 1);
+			rez = ft_atoix(word + 1);
 			if (!str_num_eq(rez, word))
 				return (-1);
 		}
-		cont->command_list[com_pos].arg[arg_num] = rez;
+		cont->command_list[com_pos].arg[arg_num] += rez;
 		cont->command_list[com_pos].arg_size[arg_num] = T_IND;
 	}
 	return (0);
@@ -148,5 +149,5 @@ int	command_check(t_asmcont *cont, char *word, char **str, int len)
 			return (ARGS_ERROR);
 		g_column += shift;
 	}
-	return (1);
+	return (cpy_arg_word(word, *str) + ft_strendwith(word, ",") == 0 ? 1 : -1);
 }
