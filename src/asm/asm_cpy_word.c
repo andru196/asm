@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/12 23:09:08 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/15 17:18:12 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,37 @@ static char skip_num(char **wrd, long long num)
 	return (num == 0 && (ft_charinstr(" \t+-\v", **wrd) || !**wrd) ? 0 : -1);
 }
 
+void	ast_strrtrim(char *word)
+{
+	char *cpy;
+
+	if (!*word)
+		return ;
+	cpy = word;
+	while (*word)
+		word++;
+	word--;
+	while (cpy != word && ft_isspace(*word))
+		*word-- = '\0';
+}
+
+void skip_first_part(char **word)
+{
+	if (**word == DIRECT_CHAR)
+		(*word)++;
+	if (**word == '-' || **word == '+')
+		(*word)++;
+	while (ft_isdigit(**word) && **word)
+		(*word)++;
+}
+
 void	prepare_arg(char *word, long long *arg)
 {
 	long long rez;
 	long long tmp;
 	char *cpy;
 
+	skip_first_part(&word);
 	while (*word && *word != '+' && *word != '-')
 		word++;
 	if (!*word)

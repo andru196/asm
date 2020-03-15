@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/12 23:12:42 by andru196         ###   ########.fr       */
+/*   Updated: 2020/03/15 15:41:03 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	if (ft_strendwith(word, (char *)sep))
 		word[ft_strlen(word) - 1] = '\0';
 	prepare_arg(word, &(cont->command_list[com_pos].arg[arg_num]));
+	ast_strrtrim(word);
 	if (*word == 'r')
 	{
 		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 1
