@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/15 15:40:21 by andru196         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:22:05 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 # define ASM_H
 # include <fcntl.h>
 # include "op.h"
-# include "libft.h"
+//# include "deblib.h"
+//# include  "ft_printfdefines.h"
+//# include  "ft_printf.h"
+# include  "sfalif_libft.h"
+# include  "libft.h"
+
 # include "corewar_error.h"
 
 # define BUF_COR_SIZE 500

@@ -6,7 +6,7 @@
 #    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2020/03/03 21:41:20 by andru196         ###   ########.fr        #
+#    Updated: 2020/06/28 14:43:44 by andru196         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS_ASM		=	asm_cor_init.c \
 SRCS			=	$(addprefix $(DIR_ASM), $(SRCS_ASM)) \
 					src/op.c
 OBJ				=	$(patsubst %.c, %.o, $(SRCS))
-CC				=	gcc
+CC				=	clang
 FLAGS			=	-Wall -Wextra -Werror -g
 LIBRARY			=	src/libft/
 LIBFT			=	$(LIBRARY)libft.a
@@ -33,7 +33,7 @@ INCLUDES		=	-I includes/ -I $(LIBRARY)includes
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJ) -L $(LIBRARY) -lftprintf
+	$(CC) $(FLAGS) -o $(NAME) $(OBJ) -L $(LIBRARY) -lft
 
 $(LIBFT):
 	make -C $(LIBRARY)
