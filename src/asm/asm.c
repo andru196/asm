@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/11 23:31:02 by andru196         ###   ########.fr       */
+/*   Updated: 2020/06/28 19:18:37 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,31 @@
 
 void	print_error ()
 {
-	char	*err_part1;
-	char	*err_part2;
+	char	*err[2];
 	
-	err_part1 = g_error_code ? "COMPILATION ERROR %d\n%s\nLine: %d, %d\n"
+	err[0] = g_error_code ? "COMPILATION ERROR %d\n%s\nLine: %d, %d\n"
 	: "COMPILATION ERROR %d\n";
 	if (g_error_code == MALLOC_ERROR)
-		err_part2 = MALLOC_ERROR_STR;
+		err[1] = MALLOC_ERROR_STR;
 	if (g_error_code == SOURCE_EXTENSION_ERROR)
-		err_part2 = SOURCE_EXTENSION_ERROR_STR;
+		err[1] = SOURCE_EXTENSION_ERROR_STR;
 	if (g_error_code == OPEN_FILE_ERROR)
-		err_part2 = OPEN_FILE_ERROR_STR;
+		err[1] = OPEN_FILE_ERROR_STR;
 	if (g_error_code == LABEL_SIZE_ERROR)
-		err_part2 = LABEL_SIZE_ERROR_STR;
+		err[1] = LABEL_SIZE_ERROR_STR;
 	if (g_error_code == LABEL_FORBIDDEN_CHAR)
-		err_part2 = LABEL_FORBIDDEN_CHAR_STR;
+		err[1] = LABEL_FORBIDDEN_CHAR_STR;
 	if (g_error_code == COMMAND_NOT_FOUND)
-		err_part2 = COMMAND_NOT_FOUND_STR;
+		err[1] = COMMAND_NOT_FOUND_STR;
 	if (g_error_code == ARGS_ERROR)
-		err_part2 = ARGS_ERROR_STR;
+		err[1] = ARGS_ERROR_STR;
 	if (g_error_code == PROGRAM_SIZE_LIMIT)
-		err_part2 = PROGRAM_SIZE_LIMIT_STR;
+		err[1] = PROGRAM_SIZE_LIMIT_STR;
 	if (g_error_code == CONNECTION_ERROR)
-		err_part2 = CONNECTION_ERROR_STR;
+		err[1] = CONNECTION_ERROR_STR;
 	if (g_error_code == NONE_QUOTE_ERROR)
-		err_part2 = NONE_QUOTE_ERROR_STR;
-	ft_printf(err_part1, g_error_code, err_part2, g_row, g_column + 1);
+		err[1] = NONE_QUOTE_ERROR_STR;
+	ft_printf(err[0], g_error_code, err[0], g_row, g_column + 1);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/15 15:41:03 by andru196         ###   ########.fr       */
+/*   Updated: 2020/06/28 20:56:12 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,33 @@ int	arg_label_check(char *wrd)
 	return (rez->next = new_connect(c, arg_n, wrd_cpy));
  }
 
+ int args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
+ {
+	long long	rez;
+	char		flag; 
+
+	flag = *word == DIRECT_CHAR ? T_DIR : T_IND;
+	if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & flag))
+		return (-1); //соответствие типа
+	rez = 0;
+	if (*(word + 1) == LABEL_CHAR)
+	{
+		if (!arg_label_check(word + 1 + (flag == DIRECT_CHAR)))
+			return (-1);
+		add_label_arg(cont, word + 2, arg_num);
+		cont->command_list[com_pos].is_lbl[arg_num] = 1;
+	}
+	else
+	{
+		rez = ft_atoix(word + 1);
+		if (!str_num_eq(rez, word + (flag == DIRECT_CHAR)))
+			return (-1);
+	}
+	cont->command_list[com_pos].arg[arg_num] += rez;
+	cont->command_list[com_pos].arg_size[arg_num] = flag;
+	return (0);
+ }
+
 int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
@@ -80,48 +107,9 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 		cont->command_list[com_pos].arg_size[arg_num] = T_REG;
 		cont->command_list[com_pos].arg[arg_num] += rez;
 	}
-	else if (*word == DIRECT_CHAR)
-	{
-		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_DIR))
+	else
+		if (args_ind_dir(cont, com_pos, arg_num, word) < 0)
 			return (-1); //соответствие типа
-		if (*(word + 1) == LABEL_CHAR)
-		{
-			if (!arg_label_check(word + 2))
-				return (-1);
-			add_label_arg(cont, word + 2, arg_num);
-			//Тут ещё вариант если добавят что-то тип :huy + 228
-			cont->command_list[com_pos].is_lbl[arg_num] = 1;
-		}
-		else
-		{
-			rez = ft_atoix(word + 1);
-			if (!str_num_eq(rez, word + 1))
-				return (-1);
-		}
-		cont->command_list[com_pos].arg[arg_num] += rez;
-		cont->command_list[com_pos].arg_size[arg_num] = T_DIR;
-		
-	}
-	else //T_IND
-	{
-		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_IND))
-			return (-1); //соответствие типа
-		if (*(word + 1) == LABEL_CHAR)
-		{
-			if (!arg_label_check(word + 1))
-				return (-1);
-			add_label_arg(cont, word + 2, arg_num);
-			cont->command_list[com_pos].is_lbl[arg_num] = 1;
-		}
-		else
-		{
-			rez = ft_atoix(word + 1);
-			if (!str_num_eq(rez, word))
-				return (-1);
-		}
-		cont->command_list[com_pos].arg[arg_num] += rez;
-		cont->command_list[com_pos].arg_size[arg_num] = T_IND;
-	}
 	return (0);
 }
 

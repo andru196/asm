@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/15 22:48:40 by andru196         ###   ########.fr       */
+/*   Updated: 2020/06/28 19:16:43 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,7 @@ void write_n_num(char **dst, long long n, unsigned char bytes)
 	//}
 	while (bytes > i)
 	{
-		//**dst = *(((char *)&n) + --bytes);
 		**dst = *(((char *)&n) + i++);
-		//**dst = ((**dst & 0xf0) >> 4) | ((**dst & 0x0f) << 4); 
 		(*dst)++;
 	}
 }
