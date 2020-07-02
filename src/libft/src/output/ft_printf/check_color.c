@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kokeefe <kokeefe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:41:45 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/28 22:57:30 by kokeefe          ###   ########.fr       */
+/*   Updated: 2020/07/02 22:27:15 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void				ft_place_color(t_format *formstat, const char *color, \
 		ft_err_varoverflow(__ERR(overflow), __func__);
 		return ;
 	}
-	filling_mainbuf(color, (size_t)size, 0);
+	filling_mainbuf(color, (size_t)size, 0, formstat->fd);
 }
 
 uint8_t					ft_check_colour(t_format *formstat)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
+#    By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/06/28 19:15:11 by andru196         ###   ########.fr        #
+#    Updated: 2020/07/02 22:15:00 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SOURCE	+=	antoi.c \
 			flag_wildcard.c \
 			flag_zero.c \
 			ft_printf.c \
+			ft_printf_fd.c \
 			hex_default.c \
 			hex_long.c \
 			hex_long_long.c \

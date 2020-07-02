@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printfdefines.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 18:12:13 by mschimme          #+#    #+#             */
-/*   Updated: 2019/12/29 00:55:32 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:44:18 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef char			*t_extract_hex_rout(t_fword *container, char **buff);
 typedef char			*t_extract_float_rout(t_fword *container, char parent);
 typedef void			*t_extract_vptr_rout(t_fword *container);
 typedef void			t_printer_rout(const char *data, size_t length, \
-																	int flag);
+															int flag, int fd);
 
 /*
 **	marker		-	Pointer to current position in format string for print-out;
@@ -58,6 +58,7 @@ struct					s_format
 	uint8_t				access_key;
 	uint8_t				errflag;
 	int					result;
+	int					fd;
 	va_list				ref_ap;
 	va_list				cur_ap;
 	t_parse_anchor_rout	*parse_sight;

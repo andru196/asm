@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printfuncs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kokeefe <kokeefe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:35:43 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/30 21:27:01 by kokeefe          ###   ########.fr       */
+/*   Updated: 2020/07/02 22:53:31 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 # include "ft_printf.h"
 
 int					ft_printf(const char *format, ...);
+int					ft_printf_fd(int fd, const char *format, ...);
 void				filling_mainbuf(const char *data, size_t length, \
-																	int flag);
+									int flag, int fd);
+void				ft_init_formstat(t_format *ptr, const char *src, int fd);
 uint8_t				ft_seach_anchors(t_format *formstat);
 uint8_t				ft_check_colour(t_format *formstat);
 uint8_t				ft_check_form_word(t_format *formstat);
@@ -51,7 +53,7 @@ char				*ft_form_double(t_fword *container, long double number,
 															t_float_calc *f);
 char				*get_zero_line(int zero_length);
 void				init_fraction_part(t_fword *container, t_float_calc *f);
-void				ft_printmem(const char *addr, size_t size, int fl);
+void				ft_printmem(const char *addr, size_t size, int fl, int fd);
 void				check_filler_zero_spase(t_fword *container,
 					t_float_calc *f);
 int					length_prec_whole_check(t_fword *container,

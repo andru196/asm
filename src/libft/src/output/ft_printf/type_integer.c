@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kokeefe <kokeefe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:32:22 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/29 19:53:46 by kokeefe          ###   ########.fr       */
+/*   Updated: 2020/07/02 22:38:51 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ inline static void				ft_printout(t_format *formstat, \
 		dims[1] = dims[0];
 		if (format->filler == '0')
 		{
-			filling_mainbuf(res, 1, 0);
+			filling_mainbuf(res, 1, 0, formstat->fd);
 			dims[1] -= 1;
 			format->ftp_width(formstat, format, &dims[0], bogey);
 		}
