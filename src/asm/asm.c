@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/06/28 19:18:37 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/18 18:15:46 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_error ()
 		err[1] = CONNECTION_ERROR_STR;
 	if (g_error_code == NONE_QUOTE_ERROR)
 		err[1] = NONE_QUOTE_ERROR_STR;
-	ft_printf(err[0], g_error_code, err[0], g_row, g_column + 1);
+	ft_printf(err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
 

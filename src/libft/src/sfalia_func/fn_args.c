@@ -129,3 +129,12 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 		}
 	}
 }
+
+int main (int argc, char **argv)
+{
+	t_args_rez *exampl = new_arguments_cont();
+	add_arg(exampl, 1, "-t type туйп", "type desc");
+	args_anal(argv, argc, exampl);
+
+	printf("%hhd\n", exampl->flags->hasvalue);
+}
