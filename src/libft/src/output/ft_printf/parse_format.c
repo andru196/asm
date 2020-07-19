@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kokeefe <kokeefe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:43:21 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/28 23:08:11 by kokeefe          ###   ########.fr       */
+/*   Updated: 2020/07/02 22:36:03 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static uint8_t			ft_approach_anchor(t_format *ptr)
 	if (ptr->errflag)
 		return (1);
 	ptr->result = overflow;
-	filling_mainbuf(ptr->marker, (size_t)piece_len, 0);
+	filling_mainbuf(ptr->marker, (size_t)piece_len, 0, ptr->fd);
 	ptr->marker += piece_len;
 	return (0);
 }

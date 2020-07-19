@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_left.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 22:05:35 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/30 22:15:30 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:48:11 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #define CSIZE sizes[1]
 #define WIDTH format->width
 
-static inline void		ft_place_filler(int width, char *fillers)
+static inline void		ft_place_filler(int width, char *fillers, int fd)
 {
 	while ((width))
 	{
 		while (width > 8)
 		{
-			filling_mainbuf(fillers, 8, 0);
+			filling_mainbuf(fillers, 8, 0, fd);
 			width -= 8;
 		}
-		filling_mainbuf(fillers, width, 0);
+		filling_mainbuf(fillers, width, 0, fd);
 		width = 0;
 	}
 }
@@ -63,6 +63,7 @@ void					ft_width_left(t_format *formstat, t_fword *format, \
 	ft_memset(&arr[0], format->filler, 8);
 	if (formstat->errflag)
 		return ;
-	ft_place_filler((WIDTH > (int)CSIZE) * (WIDTH - (int)CSIZE), &arr[0]);
-	filling_mainbuf(formatted_variative, dims[1], 0);
+	ft_place_filler((WIDTH > (int)CSIZE) * (WIDTH - (int)CSIZE), &arr[0],
+															formstat->fd);
+	filling_mainbuf(formatted_variative, dims[1], 0, formstat->fd);
 }

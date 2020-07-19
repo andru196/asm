@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:42:33 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/12/29 01:27:49 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:30:10 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 ** Ki state of the function.
 */
 
-void					filling_mainbuf(const char *data, size_t length, \
-																	int flag)
+void					filling_mainbuf(const char *data, size_t length, 
+										int flag, int fd)
 {
 	static char			buff[4096];
 	static char			*offset;
@@ -34,12 +34,12 @@ void					filling_mainbuf(const char *data, size_t length, \
 	{
 		if (length > 4096)
 		{
-			filling_mainbuf(NULL, 0, 1);
-			write(1, data, length);
+			filling_mainbuf(NULL, 0, 1, fd);
+			write(fd, data, length);
 			return ;
 		}
 		if (offset + length > buff + 4095)
-			filling_mainbuf(NULL, 0, 1);
+			filling_mainbuf(NULL, 0, 1, fd);
 		ft_memcpy(offset, data, length);
 		offset += length;
 	}
@@ -47,7 +47,7 @@ void					filling_mainbuf(const char *data, size_t length, \
 	{
 		if (!offset)
 			offset = buff;
-		write(1, buff, offset - buff);
+		write(fd, buff, offset - buff);
 		offset = buff;
 	}
 }
@@ -61,12 +61,13 @@ void					filling_mainbuf(const char *data, size_t length, \
 **		sight - pointer to the next formatting word.
 */
 
-inline static void		ft_init_formstat(t_format *ptr, const char *src)
+void		ft_init_formstat(t_format *ptr, const char *src, int fd)
 {
 	ft_bzero((void *)ptr, sizeof(t_format));
 	ptr->marker = src;
 	ptr->end = src + ft_strlen(src);
 	ptr->sight = src;
+	ptr->fd = fd;
 }
 
 /*
@@ -89,8 +90,8 @@ int						ft_printf(const char *format, ...)
 {
 	t_format			formstat;
 
-	ft_init_formstat(&formstat, format);
-	filling_mainbuf(NULL, 0, 1);
+	ft_init_formstat(&formstat, format, 1);
+	filling_mainbuf(NULL, 0, 1, formstat.fd);
 	va_start(formstat.ref_ap, format);
 	va_copy(formstat.cur_ap, formstat.ref_ap);
 	if (ft_scan_string(&formstat) || (ft_parse_format(&formstat)))
@@ -102,6 +103,6 @@ int						ft_printf(const char *format, ...)
 	}
 	ft_wipe_structs(&formstat, NULL, NULL);
 	va_end(formstat.ref_ap);
-	filling_mainbuf(NULL, 0, 1);
+	filling_mainbuf(NULL, 0, 1, formstat.fd);
 	return (formstat.result);
 }

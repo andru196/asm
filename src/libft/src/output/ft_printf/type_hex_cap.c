@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_hex_cap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:32:22 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/29 13:13:48 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:38:36 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ inline static void				ft_printout(t_format *formstat, \
 		dims[1] = dims[0];
 		if (format->filler == '0')
 		{
-			filling_mainbuf(res, 2, 0);
+			filling_mainbuf(res, 2, 0, formstat->fd);
 			dims[1] -= 2;
 			format->ftp_width(formstat, format, &dims[0], bogey);
 		}

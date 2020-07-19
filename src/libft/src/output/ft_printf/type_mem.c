@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:22:22 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/30 18:04:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:44:23 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ uint8_t				ft_place_mem(t_format *formstat, t_fword *format)
 	}
 	if (ft_check_add_ovf(&(formstat->result), formstat->result, res))
 		return (FERR = ft_err_varoverflow(__ERR(formstat->result), __func__));
-	printer((const char *)ptr, (size_t)format->width, 0);
+	printer((const char *)ptr, (size_t)format->width, 0, (int)formstat->fd);
 	return (0);
 }

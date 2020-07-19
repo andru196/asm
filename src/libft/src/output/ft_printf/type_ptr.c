@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_ptr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:22:22 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/30 22:24:42 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/07/02 22:45:37 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ inline static void				ft_printout(t_format *formstat, \
 	if (format->filler == '0')
 	{
 		dims[0] = ft_strlen(res);
-		filling_mainbuf(res, 2, 0);
+		filling_mainbuf(res, 2, 0, formstat->fd);
 		dims[1] = dims[0] - 2;
 		format->ftp_width(formstat, format, &dims[0], bogey);
 	}
