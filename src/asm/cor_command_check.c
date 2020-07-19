@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/06/28 20:56:12 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/19 16:16:33 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	arg_label_check(char *wrd)
 	rez = 0;
 	if (*(word + 1) == LABEL_CHAR)
 	{
-		if (!arg_label_check(word + 1 + (flag == DIRECT_CHAR)))
+		//int r = flag == T_DIR;
+		if (!arg_label_check(word + 1 + (flag == T_DIR)))//DIRECT_CHAR)))
 			return (-1);
 		add_label_arg(cont, word + 2, arg_num);
 		cont->command_list[com_pos].is_lbl[arg_num] = 1;
@@ -76,7 +77,7 @@ int	arg_label_check(char *wrd)
 	else
 	{
 		rez = ft_atoix(word + 1);
-		if (!str_num_eq(rez, word + (flag == DIRECT_CHAR)))
+		if (!str_num_eq(rez, word + (flag == T_DIR)))
 			return (-1);
 	}
 	cont->command_list[com_pos].arg[arg_num] += rez;
