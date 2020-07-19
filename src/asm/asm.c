@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/02 23:10:32 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/07/19 17:28:11 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_error ()
 		err[1] = CONNECTION_ERROR_STR;
 	if (g_error_code == NONE_QUOTE_ERROR)
 		err[1] = NONE_QUOTE_ERROR_STR;
-	ft_printf(err[0], g_error_code, err[0], g_row, g_column + 1);
+	ft_printf(err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
 
