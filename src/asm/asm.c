@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/19 17:28:11 by tanya            ###   ########.fr       */
+/*   Updated: 2020/07/19 20:23:47 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_error ()
 int main(int argc, char **argv)
 {
 	int	flag_mode;
+	char *cpy;
 
 	g_error_code = 0;
 	g_column = 0;
@@ -55,8 +56,13 @@ int main(int argc, char **argv)
 		while (argc > 1)
 			if ((g_error_code = cor_open_file(argv[--argc], flag_mode)))
 				print_error();
+			else
+			{
+				
+				ft_printf("Writing output program to %s.cor successful\n", argv[argc]);
+			}
 	}
 	else if (argc == 1)
-		ft_printf("Usage: %s [-a] <sourcefile.s>\n", argv[0]);
+		ft_printf("Usage: %2s [-a] <sourcefile.s>\n", argv[0]);
 	return (0);
 }
