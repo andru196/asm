@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+         #
+#    By: tanya <tanya@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/07/02 22:15:00 by ycorrupt         ###   ########.fr        #
+#    Updated: 2020/07/20 21:35:42 by tanya            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -216,7 +216,9 @@ SOURCE	+=	ft_isspace.c \
 			ft_isspace.c\
 			str_num_eq.c\
 			ft_isdigit.c\
-			ft_mod.c
+			ft_mod.c\
+			ft_args.c
+
 
 #**********************				BODY:			***************************#
 
