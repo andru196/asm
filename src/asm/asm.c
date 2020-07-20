@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/19 20:23:47 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/20 22:59:29 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int main(int argc, char **argv)
 				print_error();
 			else
 			{
-				
-				ft_printf("Writing output program to %s.cor successful\n", argv[argc]);
+				cpy = ft_strreplacelast(argv[argc], SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+				ft_printf("Writing output program to %s successful\n", cpy ? cpy : "!malloc error!");
+				free(cpy);
 			}
 	}
 	else if (argc == 1)
