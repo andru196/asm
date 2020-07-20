@@ -6,7 +6,7 @@
 /*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:09:54 by ycorrupt          #+#    #+#             */
-/*   Updated: 2020/06/28 14:45:31 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/20 22:46:41 by andru196         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ int				ft_charinstr(const char *str, char c);
 int				ft_strendwith(char *str, char *end);
 int				str_num_eq(long num, char *str);
 int				ft_mod(long int num);
+char		    *ft_strreplace(char const *str, char *orig, char *sub);
+char		    *ft_strreplacefirst(char const *str, char *orig, char *sub);
+char		    *ft_strreplacelast(char const *str, char *orig, char *sub);
 
 #endif
