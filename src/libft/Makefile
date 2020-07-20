@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
 #    Updated: 2020/07/20 22:47:23 by andru196         ###   ########.fr        #
+=======
+#    By: tanya <tanya@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
+#    Updated: 2020/07/20 21:35:42 by tanya            ###   ########.fr        #
+>>>>>>> dc5d727c8a2f88117ee6bfff14bbd89ccf9b53b0
 #                                                                              #
 # **************************************************************************** #
 
@@ -217,7 +224,8 @@ SOURCE	+=	ft_isspace.c \
 			str_num_eq.c\
 			ft_isdigit.c\
 			ft_mod.c\
-			ft_strreplace.c
+			ft_strreplace.c\
+			ft_args.c
 
 #**********************				BODY:			***************************#
 

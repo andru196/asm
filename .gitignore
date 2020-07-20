@@ -1,4 +1,7 @@
 *.DS_Store
 *.o
 *.out
+<<<<<<< HEAD
 *.a
+=======
+>>>>>>> dc5d727c8a2f88117ee6bfff14bbd89ccf9b53b0

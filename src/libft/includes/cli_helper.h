@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cli_helper.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:52:24 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/12 22:03:38 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/19 19:17:16 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ typedef struct		s_args_rez
 void				args_anal(char **args, int argc, t_args_rez *ret);
 int					add_arg(t_args_rez *args, char isflag, char *names, char *desc);
 t_args_rez 			*new_arguments_cont();
+void				free_args_rez(t_args_rez **args);
+
 
 #endif

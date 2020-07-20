@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fn_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/12 22:15:33 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:33:49 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ t_arg	*new_arg(char isflag)
 {
 	t_arg *rez;
 
-	rez = malloc(sizeof(t_arg));
+	rez = (t_arg *)malloc(sizeof(t_arg));
 	if (!rez)
 		return (NULL);
 	rez->description = NULL;
 	rez->names = NULL;
 	rez->hasvalue = 0;
 	rez->isflag = isflag;
-	rez->hasvalue = 0;
+	rez->value = NULL;
 	return (rez);
 }
 
@@ -36,7 +36,7 @@ t_args_rez *new_arguments_cont()
 {
 	t_args_rez *rez;
 
-	rez = malloc(sizeof(t_args_rez));
+	rez = (t_args_rez *)malloc(sizeof(t_args_rez));
 	if (!rez)
 		return (NULL);
 	rez->has_args = 0;
@@ -124,17 +124,77 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 			arg->hasvalue = 1;
 		else if (++i < argc)
 		{
+			if (arg->value)
+				free(arg->value);
 			arg->value = ft_strdup(args[i]);
 			arg->hasvalue = 1;
 		}
 	}
 }
 
+static void del_lst(void *content, size_t content_size)
+{
+	ft_memdel(&content);
+}
+
+void free_args_rez(t_args_rez **args)
+{
+    t_arg *tmp;
+
+	if (!args || !(*args))
+		return ;
+    while ((*args)->flags)
+    {
+        tmp = (*args)->flags->next;
+        free((*args)->flags);
+        (*args)->flags = tmp;
+    }
+	while ((*args)->args)
+    {
+        tmp = (*args)->args->next;
+		if ((*args)->args->value)
+			free((*args)->args->value);
+        free((*args)->args);
+        (*args)->args = tmp;
+    }
+	if ((*args)->not_expected)
+		ft_lstdel(&(*args)->not_expected, *del_lst);
+	free(*args);
+	*args = NULL;
+}
+
+/*
 int main (int argc, char **argv)
 {
 	t_args_rez *exampl = new_arguments_cont();
-	add_arg(exampl, 1, "-t type туйп", "type desc");
+	add_arg(exampl, 0, "-t -type -туйп", "type desc");
+	add_arg(exampl, 1, "-typoe_govno", "lox");
+	add_arg(exampl, 1, "-govno -ggg", "blya");
+	add_arg(exampl, 1, "-bbb", "");
 	args_anal(argv, argc, exampl);
-
-	printf("%hhd\n", exampl->flags->hasvalue);
+	t_arg *tmp;
+	tmp = exampl->args;
+	printf("args\n");
+	while(tmp)
+	{
+		printf("arg:%s, value:%s\n", tmp->names, tmp->value);
+		tmp = tmp->next;
+	}
+	tmp = exampl->flags;
+	printf("flags\n");
+	while(tmp)
+	{
+		printf("flag:%s, hasvalues:%d\n", tmp->names, tmp->hasvalue);
+		tmp = tmp->next;
+	}
+	t_list *temp = exampl->not_expected;
+	printf("not_expected\n");
+	while(temp)
+	{
+		printf("conteent:%s\n", temp->content);
+		temp = temp->next;
+	}
+	//printf("%s, %s, %d \n", exampl->not_expected->content, exampl->args->value, exampl->flags->value);
+	free_args_rez(&exampl);
 }
+*/
