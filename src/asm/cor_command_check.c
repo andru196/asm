@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/26 23:52:40 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/07/27 00:28:22 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	arg_label_check(char *wrd)
 	if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & flag))
 		return (-1); //соответствие типа
 	rez = 0;
-	if (*(word + 1) == LABEL_CHAR)
+	if (*(word + (flag == T_DIR)) == LABEL_CHAR)
 	{
 		//int r = flag == T_DIR;
 		if (!arg_label_check(word + 1 + (flag == T_DIR)))//DIRECT_CHAR)))
 			return (-1);
-		add_label_arg(cont, word + 2, arg_num);
+		add_label_arg(cont, word + 1 + (flag == T_DIR), arg_num);
 		cont->command_list[com_pos].is_lbl[arg_num] = 1;
 	}
 	else
