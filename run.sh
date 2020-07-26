@@ -1,15 +1,16 @@
 rm -rf corFiles/*/*.cor
 date="$(date)"
-for i in $(find champs -name *.s); 
+for i in $(find champs -maxdepth 1 -name  *.s); 
  do 
 	
 	./asm $i >> corFiles/our/run$date.log
 	f="$(basename -s .s $i)"
 	echo "$f"
-
+	
 	chmod 777 champs/$f.cor 
-	#./school-asm $i >> corFiles/school/run$date.log
-	#mv champs/*.cor corFiles/school
 	mv champs/*.cor corFiles/our
-	#diff corFiles/our/$f corFiles/school/$f >> result
+	./asm-school $i >> corFiles/school/run$date.log
+	chmod 777 champs/$f.cor 
+	mv champs/*.cor corFiles/school
+	diff corFiles/our/$f corFiles/school/$f >> result
  done
