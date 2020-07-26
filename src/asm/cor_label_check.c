@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cor_label_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:17:18 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/09 21:38:41 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/26 22:53:13 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static char	find_label(t_asmcont *c, char *word)
 
 int		label_check(t_asmcont *c, char *word, int len)
 {
-	if (len > T_LAB)
-		return (LABEL_SIZE_ERROR);
+	// if (len > T_LAB)
+	// 	return (LABEL_SIZE_ERROR);
 	*(word + --len) = '\0';
 	if (!check_chars(word))
 		return (LABEL_FORBIDDEN_CHAR);

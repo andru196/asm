@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/06/28 14:22:05 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/26 22:57:56 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ struct		s_command
 
 struct		s_label
 {
-	char				name[T_LAB + 1];
+	char				name[MAX_WORD_LEN + 1];
 	t_command			*dst;
 	int					row;
 	t_label			*next;
