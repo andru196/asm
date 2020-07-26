@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cor_command_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/19 16:16:33 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/26 22:56:29 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	digits_count(char *str)
 	return (i);	
 }
 
+/*
+** Проверяет, что лейб состоит из нужных символов и не вылазит за границы массива
+*/
+
 int	arg_label_check(char *wrd)
 {
 	int i;
@@ -35,16 +39,16 @@ int	arg_label_check(char *wrd)
 			return (0);
 		i++;
 	}
-	return (i && i <= T_LAB);
+	return (i && i <= MAX_WORD_LEN);
 }
 
  t_cmnd_label_link	*add_label_arg(t_asmcont *c, char *wrd, int arg_n)
  {
 	int					i;
-	char				wrd_cpy[T_LAB + 1];
+	char				wrd_cpy[MAX_WORD_LEN + 1];
 	t_cmnd_label_link	*rez;
 
-	ft_bzero(wrd_cpy, T_LAB + 1);
+	ft_bzero(wrd_cpy, MAX_WORD_LEN + 1);
 	i = 0;
 	while (*wrd && *wrd != SEPARATOR_CHAR)
 		wrd_cpy[i++] = *wrd++;
