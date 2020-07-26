@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/06/28 19:16:43 by andru196         ###   ########.fr       */
+/*   Updated: 2020/07/26 23:37:22 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,15 +182,11 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 int		zapisat(char *rez, char *file_name, int flag, size_t size)
 {
 	char	*file_name_cor;
-	int		name_len;
 	int		fd;
 
-	name_len = ft_strlen(file_name);
-	file_name_cor = malloc(name_len + 2);
-	ft_strcpy(file_name_cor, file_name);
-	file_name_cor[name_len- 1] = '\0';
-	ft_strcat(file_name_cor, "cor");
-	fd = open(file_name_cor, O_WRONLY | O_CREAT);
+	file_name_cor = ft_strreplacelast(file_name, SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+	fd = open(file_name_cor, O_WRONLY | O_CREAT, 666);
+	free(file_name_cor);
 	if (flag == 1)
 		write(fd, rez, size);
 	else

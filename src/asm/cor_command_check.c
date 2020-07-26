@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/26 22:56:29 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/07/26 23:52:40 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	arg_label_check(char *wrd)
 	}
 	else
 	{
-		rez = ft_atoix(word + 1);
+		rez = ft_atoix(word + (flag == T_DIR));
 		if (!str_num_eq(rez, word + (flag == T_DIR)))
 			return (-1);
 	}
@@ -104,7 +104,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	ast_strrtrim(word);
 	if (*word == 'r')
 	{
-		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 1
+		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 0
 			|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0'))
 			return (-1);
 		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
