@@ -1,0 +1,548 @@
+Norme: ./ src/libft/Makefile 
+Warning: Not a valid file
+Norme: ./ src/libft/author 
+Warning: Not a valid file
+Norme: src/libft/includes/cli_helper.h
+Warning: src/libft/includes/cli_helper.h may not compile or is invalid for some reasons.
+Norme: src/libft/includes/ft_printf.h
+Norme: src/libft/src/errors/ft_printf/broken_chain_err.c
+Norme: src/libft/src/errors/ft_printf/mixed_input.c
+Norme: src/libft/src/lists/lists_d/ft_dlstdel.c
+Norme: src/libft/includes/deblib.h
+Error: file must end with a single empty line
+Error (line 14): preprocessor block must be followed by one empty line
+Error (line 15): C++ comment
+Error (line 15): line has 118 characters
+Error (line 16): C++ comment
+Error (line 22): wrong number of spaces in preprocessor indentation
+Error (line 22): wrong number of spaces in preprocessor line
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 23): line has 83 characters
+Error (line 23): define not upcase
+Error (line 24): define not upcase
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): define not upcase
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 26): wrong number of spaces in preprocessor indentation
+Error (line 26): define not upcase
+Error (line 27): define not upcase
+Error (line 27): wrong number of spaces in preprocessor indentation
+Error (line 28): define not upcase
+Error (line 28): wrong number of spaces in preprocessor indentation
+Error (line 29): define not upcase
+Error (line 29): wrong number of spaces in preprocessor indentation
+Error (line 30): define not upcase
+Error (line 30): wrong number of spaces in preprocessor indentation
+Error (line 31): define not upcase
+Error (line 31): wrong number of spaces in preprocessor indentation
+Error (line 32): wrong number of spaces in preprocessor indentation
+Error (line 32): define not upcase
+Error (line 33): wrong number of spaces in preprocessor indentation
+Error (line 33): define not upcase
+Error (line 34): wrong number of spaces in preprocessor indentation
+Error (line 34): line has 148 characters
+Error (line 34): define not upcase
+Error (line 35): wrong number of spaces in preprocessor indentation
+Error (line 36): define not upcase
+Error (line 36): line has 108 characters
+Error (line 36): wrong number of spaces in preprocessor indentation
+Error (line 37): wrong number of spaces in preprocessor indentation
+Error (line 37): define not upcase
+Error (line 37): line has 110 characters
+Error (line 38): line has 107 characters
+Error (line 38): define not upcase
+Error (line 38): wrong number of spaces in preprocessor indentation
+Error (line 39): line has 140 characters
+Error (line 39): define not upcase
+Error (line 39): wrong number of spaces in preprocessor indentation
+Error (line 40): define not upcase
+Error (line 40): line has 124 characters
+Error (line 40): wrong number of spaces in preprocessor indentation
+Error (line 41): wrong number of spaces in preprocessor indentation
+Error (line 41): define not upcase
+Error (line 41): line has 126 characters
+Error (line 42): define not upcase
+Error (line 42): wrong number of spaces in preprocessor indentation
+Error (line 42): line has 128 characters
+Error (line 43): line has 116 characters
+Error (line 43): wrong number of spaces in preprocessor indentation
+Error (line 43): define not upcase
+Error (line 44): define not upcase
+Error (line 44): line has 107 characters
+Error (line 44): wrong number of spaces in preprocessor indentation
+Error (line 45): wrong number of spaces in preprocessor indentation
+Error (line 45): define not upcase
+Error (line 45): line has 105 characters
+Error (line 47): wrong number of spaces in preprocessor indentation
+Error (line 48): wrong number of spaces in preprocessor indentation
+Error (line 49): wrong number of spaces in preprocessor indentation
+Error (line 50): wrong number of spaces in preprocessor indentation
+Error (line 51): wrong number of spaces in preprocessor indentation
+Error (line 52): define not upcase
+Error (line 52): wrong number of spaces in preprocessor indentation
+Error (line 52): preprocessor block must be followed by one empty line
+Error (line 58): wrong number of spaces in preprocessor indentation
+Error (line 58): preprocessor block must be followed by one empty line
+Error (line 59, col 12): global named telemfd is not well prefixed
+Error (line 60, col 14): global named mypid is not well prefixed
+Error (line 62): wrong number of spaces in preprocessor indentation
+Error (line 62): line has 94 characters
+Error (line 62): define not upcase
+Error (line 63): define not upcase
+Error (line 63): wrong number of spaces in preprocessor indentation
+Error (line 64): wrong number of spaces in preprocessor indentation
+Error (line 64): define not upcase
+Error (line 65): define not upcase
+Error (line 65): wrong number of spaces in preprocessor indentation
+Error (line 66): define not upcase
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 67): define not upcase
+Error (line 68): define not upcase
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 69): wrong number of spaces in preprocessor indentation
+Error (line 69): define not upcase
+Error (line 69): line has 83 characters
+Error (line 70): define not upcase
+Error (line 70): line has 83 characters
+Error (line 70): wrong number of spaces in preprocessor indentation
+Error (line 71): define not upcase
+Error (line 71): wrong number of spaces in preprocessor indentation
+Error (line 72): define not upcase
+Error (line 72): wrong number of spaces in preprocessor indentation
+Error (line 72): line has 159 characters
+Error (line 73): wrong number of spaces in preprocessor indentation
+Error (line 73): line has 89 characters
+Error (line 74): wrong number of spaces in preprocessor indentation
+Error (line 74): define not upcase
+Error (line 74): line has 119 characters
+Error (line 75): define not upcase
+Error (line 75): wrong number of spaces in preprocessor indentation
+Error (line 75): line has 121 characters
+Error (line 76): define not upcase
+Error (line 76): wrong number of spaces in preprocessor indentation
+Error (line 76): line has 118 characters
+Error (line 77): define not upcase
+Error (line 77): line has 151 characters
+Error (line 77): wrong number of spaces in preprocessor indentation
+Error (line 78): line has 135 characters
+Error (line 78): define not upcase
+Error (line 78): wrong number of spaces in preprocessor indentation
+Error (line 79): line has 137 characters
+Error (line 79): define not upcase
+Error (line 79): wrong number of spaces in preprocessor indentation
+Error (line 80): define not upcase
+Error (line 80): wrong number of spaces in preprocessor indentation
+Error (line 80): line has 139 characters
+Error (line 81): line has 127 characters
+Error (line 81): define not upcase
+Error (line 81): wrong number of spaces in preprocessor indentation
+Error (line 82): line has 128 characters
+Error (line 82): wrong number of spaces in preprocessor indentation
+Error (line 82): define not upcase
+Error (line 83): wrong number of spaces in preprocessor indentation
+Error (line 87): define not upcase
+Error (line 88): define not upcase
+Error (line 89): define not upcase
+Error (line 90): define not upcase
+Error (line 91): define not upcase
+Error (line 92): define not upcase
+Error (line 93): define not upcase
+Error (line 94): define not upcase
+Error (line 95): define not upcase
+Error (line 96): define not upcase
+Error (line 97): define not upcase
+Error (line 98): define not upcase
+Error (line 100): define not upcase
+Error (line 101): define not upcase
+Error (line 102): define not upcase
+Error (line 103): define not upcase
+Error (line 104): define not upcase
+Error (line 105): define not upcase
+Error (line 106): define not upcase
+Error (line 107): define not upcase
+Error (line 108): define not upcase
+Error (line 109): define not upcase
+Error (line 111): multiple empty lines
+Norme: src/libft/src/errors/var_overflow.c
+Norme: src/libft/includes/sfalif_libft.h
+Error: file must end with a single empty line
+Error: has double inclusion protection but not with the good define name
+Error (line 36, col 4): bad spacing
+Error (line 37, col 4): bad spacing
+Error (line 38, col 4): bad spacing
+Norme: src/libft/src/errors/malloc_err.c
+Norme: src/libft/src/lists/lists_d/ft_dlstdelone.c
+Norme: src/libft/src/lists/lists_u/ft_lstdelone.c
+Norme: src/libft/includes/ft_printfdefines.h
+Norme: src/libft/src/lists/lists_u/ft_lstiter.c
+Norme: src/libft/src/lists/lists_d/ft_dlstnew.c
+Norme: src/libft/src/lists/lists_d/ft_dlstnew_r.c
+Norme: src/libft/src/lists/lists_d/ft_dlstadd.c
+Norme: src/libft/src/memory/ft_memccpy.c
+Norme: src/libft/src/lists/lists_u/ft_lstdel.c
+Norme: src/libft/src/lists/lists_u/ft_lstnew.c
+Norme: src/libft/src/memory/ft_memalloc.c
+Norme: src/libft/src/lists/lists_u/ft_lstmap.c
+Norme: src/libft/src/numeric/check_overflow.c
+Norme: src/libft/src/memory/ft_memcpy.c
+Norme: src/libft/src/output/ft_printf/flag_minus.c
+Norme: src/libft/src/output/ft_printf/flag_zero.c
+Norme: src/libft/src/memory/ft_memchr.c
+Norme: src/libft/src/memory/ft_memcmp.c
+Norme: src/libft/src/numeric/ft_atoi.c
+Error: global scope bad aligned
+Error (line 15): multiple empty lines
+Error (line 16): bad spacing before ft_atol_r
+Norme: src/libft/src/output/ft_printf/antoi.c
+Norme: src/libft/src/output/ft_printf/flag_plus.c
+Norme: src/libft/src/output/ft_printf/check_format_word.c
+Norme: src/libft/src/output/ft_printf/ft_printf.c
+Error: global scope bad aligned
+Error (line 27): spaces at the end of line
+Norme: src/libft/src/output/ft_printf/int_default.c
+Norme: src/libft/src/output/ft_printf/flag_precision.c
+Norme: src/libft/src/output/ft_printf/check_color.c
+Norme: src/libft/src/output/ft_printf/oct_default.c
+Norme: src/libft/includes/libft.h
+Error: global scope bad aligned
+Error (line 16): wrong number of spaces in preprocessor indentation
+Norme: src/libft/src/lists/ft_del.c
+Norme: src/libft/src/output/ft_printf/flag_space.c
+Norme: src/libft/src/lists/lists_u/ft_lstadd.c
+Norme: src/libft/src/memory/ft_calloc.c
+Norme: src/libft/src/output/ft_printf/scan_form_word.c
+Norme: src/libft/src/output/ft_printf/floats/float_default.c
+Norme: src/libft/src/output/ft_printf/ft_printf_fd.c
+Norme: src/libft/src/output/ft_printf/int_long.c
+Norme: src/libft/src/output/ft_printf/flag_substring.c
+Norme: src/libft/src/output/ft_printf/oct_long.c
+Norme: src/libft/src/memory/ft_memset.c
+Norme: src/libft/src/output/ft_printf/oct_short_short.c
+Norme: src/libft/src/output/ft_printf/ptr_default.c
+Norme: src/libft/includes/ft_printfuncs.h
+Norme: src/libft/src/gnl/gls_supp.c
+Norme: src/libft/src/output/ft_printf/floats/float_default_support_1.c
+Norme: src/libft/src/output/ft_printf/flag_length.c
+Norme: src/libft/src/lists/lists_d/ft_dlstwipe_ring.c
+Norme: src/libft/src/output/ft_printf/hex_default.c
+Norme: src/libft/src/output/ft_printf/type_hex.c
+Norme: src/libft/src/output/ft_printf/int_long_long.c
+Norme: src/libft/src/output/ft_printf/oct_long_long.c
+Norme: src/libft/src/output/ft_printf/flag_wildcard.c
+Norme: src/libft/src/memory/ft_bzero.c
+Norme: src/libft/src/output/ft_printf/floats/float_default_support_3.c
+Norme: src/libft/src/output/ft_printf/floats/float_default_support_2.c
+Norme: src/libft/src/output/ft_printf/floats/intoa_float.c
+Norme: src/libft/src/output/ft_printf/hex_long.c
+Norme: src/libft/src/output/ft_printf/int_long_long_cap.c
+Norme: src/libft/src/output/ft_printf/hex_long_long.c
+Norme: src/libft/src/output/ft_printf/oct_long_long_cap.c
+Norme: src/libft/src/output/ft_printf/hex_short_short.c
+Norme: src/libft/src/output/ft_printf/int_short.c
+Norme: src/libft/src/output/ft_printf/scan_string.c
+Norme: src/libft/src/output/ft_printf/type_dummy.c
+Norme: src/libft/src/output/ft_printf/oct_short.c
+Norme: src/libft/src/output/ft_printf/type_integer.c
+Norme: src/libft/src/memory/ft_memmove.c
+Norme: src/libft/src/output/ft_printf/parse_format.c
+Norme: src/libft/src/output/ft_printf/flag_hash.c
+Norme: src/libft/src/output/ft_printf/prepare_va_list.c
+Norme: src/libft/src/output/ft_printf/skip_va_arg.c
+Norme: src/libft/src/output/ft_printf/type_ptr.c
+Norme: src/libft/src/output/ft_printf/uns_long_long_cap.c
+Norme: src/libft/src/output/ft_putendl.c
+Norme: src/libft/src/output/ft_putstr.c
+Norme: src/libft/src/string/ft_strcmp.c
+Norme: src/libft/src/string/ft_strdel.c
+Norme: src/libft/src/string/ft_strdup.c
+Norme: src/libft/src/output/ft_printf/type_float.c
+Norme: src/libft/src/string/ft_striter.c
+Norme: src/libft/src/output/ft_printf/type_oct.c
+Norme: src/libft/src/string/ft_strlcat.c
+Norme: src/libft/src/output/ft_printf/flag_width.c
+Norme: src/libft/src/output/ft_printf/floats/float_l_cap.c
+Norme: src/libft/src/output/ft_printf/type_mem.c
+Norme: src/libft/src/string/ft_strlcpy.c
+Norme: src/libft/src/output/ft_printf/hex_short.c
+Norme: src/libft/src/output/ft_printf/type_default.c
+Norme: src/libft/src/string/ft_strnew.c
+Norme: src/libft/src/output/ft_printf/mem_printer.c
+Error (line 64): spaces at the end of line
+Norme: src/libft/src/output/ft_printf/string_default.c
+Norme: src/libft/src/string/ft_strnlen.c
+Norme: src/libft/src/output/ft_printf/mem_default.c
+Norme: src/libft/src/output/ft_printf/uns_long_long.c
+Norme: src/libft/src/output/ft_putnbr.c
+Norme: src/libft/src/output/ft_printf/uns_short_short.c
+Norme: src/libft/src/output/ft_putnbr_fd.c
+Norme: src/libft/src/output/ft_printf/type_string.c
+Norme: src/libft/src/output/ft_putchar_fd.c
+Norme: src/libft/src/output/ft_putstr_fd.c
+Norme: src/libft/src/sfalia_func/free_args.c
+Error: file must end with a single empty line
+Norme: src/libft/src/string/ft_isalpha.c
+Norme: src/libft/src/output/ft_printf/uns_default.c
+Norme: src/libft/src/string/ft_strnstr.c
+Norme: src/libft/src/string/ft_isprint.c
+Norme: src/libft/src/sfalia_func/ft_strendwith.c
+Norme: src/libft/src/string/ft_isascii.c
+Norme: src/libft/src/output/ft_printf/uns_long.c
+Norme: src/libft/src/output/ft_printf/type_unsigned.c
+Norme: src/libft/src/string/ft_strchr.c
+Norme: src/libft/src/string/ft_strcpy.c
+Norme: src/libft/src/output/ft_printf/wipe_structs.c
+Norme: src/libft/src/string/ft_strcasecmp.c
+Norme: src/libft/src/string/ft_striteri.c
+Norme: src/libft/src/output/ft_putchar.c
+Norme: src/libft/src/output/ft_putendl_fd.c
+Norme: src/libft/src/string/ft_ctrldetect.c
+Error: file must end with a single empty line
+Error: global scope bad aligned
+Error (line 17): spaces at the end of line
+Error (line 20): spaces at the end of line
+Error (line 30): multiple empty lines
+Error (line 31): multiple empty lines
+Error (line 32): bad spacing before ft_memsync_s
+Error (line 58): declarations in ft_ctrl_detect must be at the top of the function
+Error (line 58): declarations must be followed by one empty line in ft_ctrl_detect
+Error (line 76, col 0): no newline after block
+Norme: src/libft/src/string/ft_strcat.c
+Norme: src/libft/src/string/ft_isalnum.c
+Norme: src/libft/src/string/ft_isdigit.c
+Norme: src/libft/src/string/ft_strncat.c
+Norme: src/libft/src/string/ft_strchrcount.c
+Norme: src/libft/src/string/ft_strncpy.c
+Norme: src/libft/src/string/ft_strmapi.c
+Norme: src/libft/src/string/ft_strrchr.c
+Norme: src/libft/src/output/ft_printf/width_right.c
+Norme: src/libft/src/output/ft_printf/type_hex_cap.c
+Norme: src/libft/src/sfalia_func/ft_isspace.c
+Error: 42 header not at top of the file
+Error (line 12): comment not well formatted
+Error (line 16): Space before function name
+Error (line 18): must begin only by tabulations
+Error (line 18): bad indentation
+Norme: src/libft/src/string/ft_strncmp.c
+Norme: src/libft/src/output/ft_printf/uns_short.c
+Norme: src/libft/src/string/uintoa.c
+Norme: src/libft/src/string/ft_strclr.c
+Norme: src/libft/src/string/ft_toupper.c
+Norme: src/libft/src/string/ft_strequ.c
+Norme: src/libft/src/string/ft_strjoin.c
+Norme: src/libft/src/string/ft_wstrlen.c
+Norme: src/libft/src/gnl/get_next_line.c
+Norme: src/libft/src/string/ft_strlen.c
+Norme: src/libft/src/string/uintoa_base.c
+Norme: src/libft/src/string/ft_strnequ.c
+Norme: src/libft/src/output/ft_printf/width_left.c
+Norme: src/libft/src/lists/lists_d/ft_dlstwipe.c
+Norme: src/libft/src/string/ft_strtolower.c
+Norme: src/libft/src/lists/lists_u/ft_lstnew_r.c
+Norme: src/libft/src/memory/ft_memdel.c
+Norme: src/libft/src/string/ft_wdetect.c
+Norme: src/libft/src/sfalia_func/ft_atoix.c
+Norme: src/libft/src/sfalia_func/ft_charinstr.c
+Norme: src/libft/src/sfalia_func/ft_isdigit.c
+Norme: src/libft/src/sfalia_func/ft_args.c
+Error: global scope bad aligned
+Error: 7 functions in the file
+Error: file must end with a single empty line
+Error (line 35): Space before function name
+Error (line 35): missing void in function new_arguments_cont
+Error (line 84, col 4): bad spacing
+Error (line 120): line has 83 characters
+Error (line 135): Space before function name
+Error (line 140): Space before function name
+Error (line 142): must begin only by tabulations
+Error (line 142): bad indentation
+Error (line 146): must begin only by tabulations
+Error (line 146): bad indentation
+Error (line 147): must begin only by tabulations
+Error (line 147): bad indentation
+Error (line 148): must begin only by tabulations
+Error (line 148): bad indentation
+Error (line 149): must begin only by tabulations
+Error (line 149): bad indentation
+Error (line 150): bad indentation
+Error (line 150): must begin only by tabulations
+Error (line 151): bad indentation
+Error (line 151): must begin only by tabulations
+Error (line 153): bad indentation
+Error (line 153): must begin only by tabulations
+Error (line 154): must begin only by tabulations
+Error (line 154): bad indentation
+Error (line 157): bad indentation
+Error (line 157): must begin only by tabulations
+Error (line 158): bad indentation
+Error (line 158): must begin only by tabulations
+Error (line 159): bad indentation
+Error (line 159): must begin only by tabulations
+Error (line 166): comment not well formatted
+Error (line 197): line has 105 characters
+Norme: src/libft/src/sfalia_func/ft_mod.c
+Norme: src/libft/src/string/ft_itoa.c
+Norme: src/libft/src/string/ft_strmap.c
+Norme: src/libft/src/string/ft_strsplit.c
+Norme: src/libft/src/output/ft_printf/check_vari_cont_chain.c
+Norme: src/libft/src/string/ft_strtrim.c
+Norme: src/libft/src/string/ft_strstr.c
+Norme: src/libft/src/string/ft_strsub.c
+Norme: src/libft/src/string/ft_strtoupper.c
+Norme: src/libft/src/string/ft_tolower.c
+Norme: src/libft/src/string/intoa.c
+Norme: src/libft/src/output/ft_printf/flag_type.c
+Norme: src/libft/src/sfalia_func/ft_strreplace.c
+Error: 42 header not at top of the file
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15, col 4): bad spacing
+Error (line 17): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 17, col 8): bad spacing
+Error (line 18): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 18, col 7): bad spacing
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 22): bad indentation
+Error (line 22): must begin only by tabulations
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 24): must begin only by tabulations
+Error (line 24): bad indentation
+Error (line 25): must begin only by tabulations
+Error (line 25): bad indentation
+Error (line 26): must begin only by tabulations
+Error (line 26): bad indentation
+Error (line 27): bad indentation
+Error (line 27): must begin only by tabulations
+Error (line 28): must begin only by tabulations
+Error (line 28): bad indentation
+Error (line 29): bad indentation
+Error (line 29): must begin only by tabulations
+Error (line 30): must begin only by tabulations
+Error (line 30): bad indentation
+Error (line 31): bad indentation
+Error (line 31): must begin only by tabulations
+Error (line 32): must begin only by tabulations
+Error (line 32): bad indentation
+Error (line 33): bad indentation
+Error (line 33): must begin only by tabulations
+Error (line 34): bad indentation
+Error (line 34): must begin only by tabulations
+Error (line 35): must begin only by tabulations
+Error (line 35): bad indentation
+Error (line 36): must begin only by tabulations
+Error (line 36): bad indentation
+Error (line 37): bad indentation
+Error (line 37): must begin only by tabulations
+Error (line 38): must begin only by tabulations
+Error (line 38): bad indentation
+Error (line 39): bad indentation
+Error (line 39): must begin only by tabulations
+Error (line 40): bad indentation
+Error (line 40): must begin only by tabulations
+Error (line 41): must begin only by tabulations
+Error (line 41): bad indentation
+Error (line 44): Space before function name
+Error (line 44): Space before function name
+Error (line 44): Space before function name
+Error (line 44): Space before function name
+Error (line 44, col 4): bad spacing
+Error (line 46): bad indentation
+Error (line 46): must begin only by tabulations
+Error (line 46, col 8): bad spacing
+Error (line 47): must begin only by tabulations
+Error (line 47): bad indentation
+Error (line 47, col 7): bad spacing
+Error (line 49): must begin only by tabulations
+Error (line 49): bad indentation
+Error (line 50): must begin only by tabulations
+Error (line 50): bad indentation
+Error (line 51): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 52): must begin only by tabulations
+Error (line 52): bad indentation
+Error (line 53): must begin only by tabulations
+Error (line 53): bad indentation
+Error (line 54): must begin only by tabulations
+Error (line 54): bad indentation
+Error (line 55): must begin only by tabulations
+Error (line 55): bad indentation
+Error (line 56): must begin only by tabulations
+Error (line 56): bad indentation
+Error (line 57): must begin only by tabulations
+Error (line 57): bad indentation
+Error (line 58): bad indentation
+Error (line 58): must begin only by tabulations
+Error (line 59): bad indentation
+Error (line 59): must begin only by tabulations
+Error (line 60): bad indentation
+Error (line 60): must begin only by tabulations
+Error (line 61): must begin only by tabulations
+Error (line 61): bad indentation
+Error (line 62): must begin only by tabulations
+Error (line 62): bad indentation
+Error (line 65): Space before function name
+Error (line 65): Space before function name
+Error (line 65): Space before function name
+Error (line 65): Space before function name
+Error (line 65, col 4): bad spacing
+Error (line 67): must begin only by tabulations
+Error (line 67): bad indentation
+Error (line 67, col 8): bad spacing
+Error (line 68): bad indentation
+Error (line 68): must begin only by tabulations
+Error (line 68, col 7): bad spacing
+Error (line 70): bad indentation
+Error (line 70): must begin only by tabulations
+Error (line 71): bad indentation
+Error (line 71): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 72): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 76): bad indentation
+Error (line 76): must begin only by tabulations
+Error (line 77): must begin only by tabulations
+Error (line 77): bad indentation
+Error (line 78): bad indentation
+Error (line 78): must begin only by tabulations
+Error (line 79): must begin only by tabulations
+Error (line 79): bad indentation
+Error (line 80): must begin only by tabulations
+Error (line 80): bad indentation
+Error (line 81): bad indentation
+Error (line 81): must begin only by tabulations
+Error (line 82): must begin only by tabulations
+Error (line 82): bad indentation
+Error (line 83): must begin only by tabulations
+Error (line 83): bad indentation
+Error (line 84): must begin only by tabulations
+Error (line 84): bad indentation
+Error (line 85): bad indentation
+Error (line 85): must begin only by tabulations
+Error (line 86): must begin only by tabulations
+Error (line 86): bad indentation
+Error (line 87): must begin only by tabulations
+Error (line 87): bad indentation
+Error (line 90): comment not well formatted
+Norme: src/libft/src/sfalia_func/str_num_eq.c
+Error (line 15): Space before function name
+Error (line 25, col 46): bad spacing
+Error (line 31): line has 92 characters
+Error (line 35, col 1): must have one a space after if
+Error (line 35, col 3): bad spacing
+Norme: src/libft/src/output/ft_printf/floats/float_default_support_4.c
+Norme: src/libft/src/output/ft_printf/hex_long_long_cap.c
+Norme: src/libft/src/output/ft_printf/int_short_short.c
+Norme: src/libft/src/output/ft_printf/type_char.c

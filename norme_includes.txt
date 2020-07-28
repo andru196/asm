@@ -1,0 +1,14 @@
+Norme: includes/corewar_error.h
+Norme: includes/op.h
+Error: not protected against double inclusion
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 76, col 8): header_t have not a good prefix.
+Norme: includes/asm.h
+Error: 42 header not at top of the file
+Error: global scope bad aligned
+Error (line 18): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 95): line has 84 characters
