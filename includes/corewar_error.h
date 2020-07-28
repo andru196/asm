@@ -23,7 +23,7 @@
 # define PROGRAM_SIZE_LIMIT			-800
 # define CONNECTION_ERROR			-777
 # define NONE_QUOTE_ERROR			-409
-	
+
 # define MALLOC_ERROR_STR			"Memory allocation failed"
 # define SOURCE_EXTENSION_ERROR_STR "Source file extension wrong"
 # define OPEN_FILE_ERROR_STR		"Can't open file"

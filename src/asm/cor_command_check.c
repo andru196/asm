@@ -14,21 +14,21 @@
 
 extern t_op op_tab[OP_TAB_SIZE];
 
-int	digits_count(char *str)
+int					digits_count(char *str)
 {
 	int i;
 
 	i = 0;
 	while (ft_isdigit(*str++))
 		i++;
-	return (i);	
+	return (i);
 }
 
 /*
 ** Проверяет, что лейб состоит из нужных символов и не вылазит за границы массива
 */
 
-int	arg_label_check(char *wrd)
+int					arg_label_check(char *wrd)
 {
 	int i;
 
@@ -42,8 +42,8 @@ int	arg_label_check(char *wrd)
 	return (i && i <= MAX_WORD_LEN);
 }
 
- t_cmnd_label_link	*add_label_arg(t_asmcont *c, char *wrd, int arg_n)
- {
+t_cmnd_label_link	*add_label_arg(t_asmcont *c, char *wrd, int arg_n)
+{
 	int					i;
 	char				wrd_cpy[MAX_WORD_LEN + 1];
 	t_cmnd_label_link	*rez;
@@ -59,12 +59,12 @@ int	arg_label_check(char *wrd)
 		while (rez->next)
 			rez = rez->next;
 	return (rez->next = new_connect(c, arg_n, wrd_cpy));
- }
+}
 
- int args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
- {
+int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
+{
 	long long	rez;
-	char		flag; 
+	char		flag;
 
 	flag = *word == DIRECT_CHAR ? T_DIR : T_IND;
 	if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & flag))
@@ -87,9 +87,9 @@ int	arg_label_check(char *wrd)
 	cont->command_list[com_pos].arg[arg_num] += rez;
 	cont->command_list[com_pos].arg_size[arg_num] = flag;
 	return (0);
- }
+}
 
-int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
+int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
 	const char	sep[2] = {SEPARATOR_CHAR, '\0'};
@@ -118,7 +118,7 @@ int	args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	return (0);
 }
 
-int	command_check(t_asmcont *cont, char *word, char **str, int len)
+int					command_check(t_asmcont *cont, char *word, char **str, int len)
 {
 	int		i;
 	int		new_c;

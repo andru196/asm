@@ -14,7 +14,7 @@
 
 extern t_op op_tab[OP_TAB_SIZE];
 
-size_t	data_size(t_asmcont *c)
+size_t		data_size(t_asmcont *c)
 {
 	size_t		rez;
 	size_t		cmd_size;
@@ -42,7 +42,7 @@ size_t	data_size(t_asmcont *c)
 	return (rez);
 }
 
-long long rev_bytes_ll(long long n)
+long long	rev_bytes_ll(long long n)
 {
 	return (((n & 0xff00000000000000) >> (7 * 8))
 			| ((n & 0x00ff000000000000) >> (5 * 8))
@@ -54,7 +54,7 @@ long long rev_bytes_ll(long long n)
 			| ((n & 0x00000000000000ff) << (7 * 8)));
 }
 
-int rev_bytes(int n)
+int			rev_bytes(int n)
 {
 	return (((n & 0xff000000) >> (3 * 8))
 			| ((n & 0x00ff0000) >> (1 * 8))
@@ -62,7 +62,7 @@ int rev_bytes(int n)
 			| ((n & 0x000000ff) << (3 * 8)));
 }
 
-int		fuck_connections(t_asmcont *c)
+int			fuck_connections(t_asmcont *c)
 {
 	t_cmnd_label_link	*tmp;
 	t_cmnd_label_link	*pre;
@@ -76,7 +76,7 @@ int		fuck_connections(t_asmcont *c)
 		if (!tmp->label->dst)
 			return (-1);
 		i = 0;
-		while (tmp->label->dst - i  > tmp->command)
+		while (tmp->label->dst - i > tmp->command)
 			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;
 		while (tmp->label->dst - i < tmp->command)
 			tmp->command->arg[tmp->arg_num] -= (tmp->command + --i)->size;
@@ -112,7 +112,7 @@ char		type_code(t_command *cmd)
 	return (rez);
 }
 
-void write_n_num(char **dst, long long n, unsigned char bytes)
+void		write_n_num(char **dst, long long n, unsigned char bytes)
 {
 	int i;
 
@@ -121,9 +121,9 @@ void write_n_num(char **dst, long long n, unsigned char bytes)
 	i = 0;
 	//if (n < 0)
 	//{
-		n = rev_bytes_ll(n);
-		i = sizeof(long long) - bytes;
-		bytes = sizeof(long long);
+	n = rev_bytes_ll(n);
+	i = sizeof(long long) - bytes;
+	bytes = sizeof(long long);
 	//}
 	while (bytes > i)
 	{
@@ -132,7 +132,7 @@ void write_n_num(char **dst, long long n, unsigned char bytes)
 	}
 }
 
-int	write_cmnd(char *dst, t_command *cmd)
+int			write_cmnd(char *dst, t_command *cmd)
 {
 	int		i;
 	char	*cpy;
@@ -154,11 +154,12 @@ int	write_cmnd(char *dst, t_command *cmd)
 	return (dst - cpy);
 }
 
-int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
+int			transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 {
 	size_t			i;
 	size_t			j;
-	write_n_num(&rez,  COREWAR_EXEC_MAGIC, sizeof(int));
+
+	write_n_num(&rez, COREWAR_EXEC_MAGIC, sizeof(int));
 	rez -= sizeof(int);
 	i = 0 + sizeof(int);
 	ft_strncpy(rez + i, cont->champ_name, PROG_NAME_LENGTH);
@@ -166,7 +167,7 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
 	rez += i;
-	write_n_num(&rez,  size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
+	write_n_num(&rez, size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
 	ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
@@ -179,7 +180,7 @@ int		transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	return (0);
 }
 
-int		zapisat(char *rez, char *file_name, int flag, size_t size)
+int			zapisat(char *rez, char *file_name, int flag, size_t size)
 {
 	char	*file_name_cor;
 	int		fd;
@@ -195,7 +196,7 @@ int		zapisat(char *rez, char *file_name, int flag, size_t size)
 	return (0);
 }
 
-int		asm_translate(t_asmcont *cont, char *file_name, int flag)
+int			asm_translate(t_asmcont *cont, char *file_name, int flag)
 {
 	char	*rez;
 	size_t	size;

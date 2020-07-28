@@ -12,10 +12,10 @@
 
 #include "asm.h"
 
-void	print_error ()
+void	print_error()
 {
 	char	*err[2];
-	
+
 	err[0] = g_error_code ? "COMPILATION ERROR %d\n%s\nLine: %d, %d\n"
 	: "COMPILATION ERROR %d\n";
 	if (g_error_code == MALLOC_ERROR)
@@ -41,11 +41,10 @@ void	print_error ()
 	ft_printf(err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
-
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	int	flag_mode;
-	char *cpy;
+	int		flag_mode;
+	char	*cpy;
 
 	g_error_code = 0;
 	g_column = 0;

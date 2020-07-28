@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-void	skip_space(char **str)
+void		skip_space(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (**str == ' ' || **str == '\t')
@@ -25,42 +25,42 @@ void	skip_space(char **str)
 	g_column += i;
 }
 
-int		cpy_word(char *dst, char *src)
+int			cpy_word(char *dst, char *src)
 {
 	int len;
 
 	len = 0;
-	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t' 
+	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t'
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
 		&& *src != SEPARATOR_CHAR && *src)
-	{	
-		len++;
-		*dst++ = *src++;
-	}
-	if (*src == SEPARATOR_CHAR)
-		*dst++ = *src++;		
-	*dst = '\0';
-	return (len);
-}
-
-int		cpy_arg_word(char *dst, char *src)
-{
-	int len;
-
-	len = 0;
-	while (len < MAX_WORD_LEN && *src != COMMENT_CHAR 
-	&& *src != ALT_COMMENT_CHAR	&& *src != SEPARATOR_CHAR && *src)
 	{
 		len++;
 		*dst++ = *src++;
 	}
 	if (*src == SEPARATOR_CHAR)
-		*dst++ = *src++;		
+		*dst++ = *src++;
 	*dst = '\0';
 	return (len);
 }
 
-static char skip_num(char **wrd, long long num)
+int			cpy_arg_word(char *dst, char *src)
+{
+	int len;
+
+	len = 0;
+	while (len < MAX_WORD_LEN && *src != COMMENT_CHAR
+	&& *src != ALT_COMMENT_CHAR && *src != SEPARATOR_CHAR && *src)
+	{
+		len++;
+		*dst++ = *src++;
+	}
+	if (*src == SEPARATOR_CHAR)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (len);
+}
+
+static char	skip_num(char **wrd, long long num)
 {
 	long long	pow;
 	long long	tmp;
@@ -79,7 +79,7 @@ static char skip_num(char **wrd, long long num)
 		while (num / tmp != (**wrd - '0') && tmp < num)
 			tmp *= pow;
 		if (num / tmp == (**wrd - '0'))
-		{	
+		{
 			num -= tmp * (**wrd - '0');
 			(*wrd)++;
 		}
@@ -89,7 +89,7 @@ static char skip_num(char **wrd, long long num)
 	return (num == 0 && (ft_charinstr(" \t+-\v", **wrd) || !**wrd) ? 0 : -1);
 }
 
-void	ast_strrtrim(char *word)
+void		ast_strrtrim(char *word)
 {
 	char *cpy;
 
@@ -103,7 +103,7 @@ void	ast_strrtrim(char *word)
 		*word-- = '\0';
 }
 
-void skip_first_part(char **word)
+void		skip_first_part(char **word)
 {
 	if (**word == DIRECT_CHAR)
 		(*word)++;
@@ -113,7 +113,7 @@ void skip_first_part(char **word)
 		(*word)++;
 }
 
-void	prepare_arg(char *word, long long *arg)
+void		prepare_arg(char *word, long long *arg)
 {
 	long long rez;
 	long long tmp;

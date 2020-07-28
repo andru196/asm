@@ -14,11 +14,12 @@
 # define ASM_H
 # include <fcntl.h>
 # include "op.h"
+
 //# include "deblib.h"
 //# include  "ft_printfdefines.h"
 //# include  "ft_printf.h"
-# include  "sfalif_libft.h"
-# include  "libft.h"
+# include "sfalif_libft.h"
+# include "libft.h"
 
 # include "corewar_error.h"
 
@@ -28,22 +29,20 @@
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
 
-typedef struct s_row t_row;
-typedef struct s_command t_command;
-typedef struct s_label t_label;
-typedef struct s_cmnd_label_link t_cmnd_label_link; 
-typedef struct s_asmcont t_asmcont;
+typedef struct s_row				t_row;
+typedef struct s_command			t_command;
+typedef struct s_label				t_label;
+typedef struct s_cmnd_label_link	t_cmnd_label_link;
+typedef struct s_asmcont			t_asmcont;
 
- struct		s_row 
+struct					s_row
 {
 	char			has_label;
 	t_command		*cmd;
 	char			arg_num;
-	
 };
 
-
-struct		s_command
+struct					s_command
 {
 	unsigned char		cmnd_num;
 	unsigned char		arg_size[MAX_ARGS_NUMBER];
@@ -53,15 +52,15 @@ struct		s_command
 	unsigned char		size;
 };
 
-struct		s_label
+struct					s_label
 {
 	char				name[MAX_WORD_LEN + 1];
 	t_command			*dst;
 	int					row;
-	t_label			*next;
+	t_label				*next;
 };
 
-struct		s_cmnd_label_link
+struct					s_cmnd_label_link
 {
 	t_label				*label;
 	t_command			*command;
@@ -69,7 +68,7 @@ struct		s_cmnd_label_link
 	t_cmnd_label_link	*next;
 };
 
-struct 			s_asmcont
+struct					s_asmcont
 {
 	char				*champ_name;
 	char				*comment;

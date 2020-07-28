@@ -14,11 +14,9 @@
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
 
-
-# define REG_CODE				1
-# define DIR_CODE				2
-# define IND_CODE				3
-
+#define REG_CODE				1
+#define DIR_CODE				2
+#define IND_CODE				3
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
@@ -31,7 +29,7 @@
 #define DIRECT_CHAR				'%'
 #define SEPARATOR_CHAR			','
 
-# define ALT_COMMENT_CHAR    ';'
+#define ALT_COMMENT_CHAR    ';'
 
 #define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 
@@ -48,7 +46,7 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
-# define OP_TAB_SIZE 17
+#define OP_TAB_SIZE 17
 
 /*
 **
@@ -65,19 +63,19 @@ typedef char	t_arg_type;
 **
 */
 
-# define PROG_NAME_LENGTH		(128)
-# define COMMENT_LENGTH			(2048)
-# define COREWAR_EXEC_MAGIC		0xea83f3
+#define PROG_NAME_LENGTH		(128)
+#define COMMENT_LENGTH			(2048)
+#define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct		header_s
+typedef struct				header_s
 {
-  unsigned int        magic;
-  char        				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		    prog_size;
-  char        				comment[COMMENT_LENGTH + 1];
-}					            header_t;
+	unsigned int			magic;
+	char					prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int			prog_size;
+	char					comment[COMMENT_LENGTH + 1];
+}							header_t;
 
-typedef struct			  s_op
+typedef struct				s_op
 {
 	char					*name;
 	unsigned char			args_num;
@@ -85,6 +83,6 @@ typedef struct			  s_op
 	unsigned char			code;
 	short					cycle_die;
 	char					*long_name;
-	char				    args_types_code;
+	char					args_types_code;
 	unsigned char			t_dir_size;
 }							t_op;

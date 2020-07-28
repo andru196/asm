@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-static int check_chars(char *word)
+static int	check_chars(char *word)
 {
 	while (*word)
 		if (!ft_charinstr(LABEL_CHARS, *word++))
@@ -22,13 +22,13 @@ static int check_chars(char *word)
 
 static char	find_label(t_asmcont *c, char *word)
 {
-	t_label *tmp;
+	t_label	*tmp;
 
 	tmp = c->label_list;
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->name, word))
-			break;
+			break ;
 		tmp = tmp->next;
 	}
 	if (!tmp)
@@ -38,7 +38,7 @@ static char	find_label(t_asmcont *c, char *word)
 	return (1);
 }
 
-int		label_check(t_asmcont *c, char *word, int len)
+int			label_check(t_asmcont *c, char *word, int len)
 {
 	if (len > MAX_WORD_LEN)
 		return (LABEL_SIZE_ERROR);

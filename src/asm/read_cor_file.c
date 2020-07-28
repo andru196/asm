@@ -18,7 +18,7 @@ int				special_arg(t_asmcont *c, int dst, char **str)
 	char	*cpy;
 	char	*rez;
 	size_t	size;
-	
+
 	i = 0;
 	while ((*str)[i] == ' ' || (*str)[i] == '\t')
 		i++;
@@ -39,7 +39,7 @@ int				special_arg(t_asmcont *c, int dst, char **str)
 	return (2);
 }
 
-static int 		cor_scan_word(t_asmcont *cont, char **str)
+static int		cor_scan_word(t_asmcont *cont, char **str)
 {
 	char	word[MAX_WORD_LEN + 1];
 	int		len;
@@ -49,13 +49,13 @@ static int 		cor_scan_word(t_asmcont *cont, char **str)
 	len = cpy_word(word, *str);
 	*str += len;
 	rez = 0;
-	if ((!cont->champ_name && !ft_strcmp(word, NAME_CMD_STRING)) 
+	if ((!cont->champ_name && !ft_strcmp(word, NAME_CMD_STRING))
 	|| (!cont->comment && !ft_strcmp(word, COMMENT_CMD_STRING)))
 	{
 		g_column += len;
 		rez = special_arg(cont, ft_strcmp(word, NAME_CMD_STRING), str); //то что в кавычках
 	}
-	else  if (*(*str - 1) == LABEL_CHAR)
+	else if (*(*str - 1) == LABEL_CHAR)
 	{
 		if ((rez = label_check(cont, word, len)) > 0)
 			g_column += len;
@@ -90,7 +90,7 @@ static int		cor_scan(t_asmcont *cont, char *str)
 
 static int		cor_read(int fd, t_asmcont *cont)
 {
-	int 	rez;
+	int		rez;
 	char	*buf;
 
 	g_row = 0;
@@ -106,7 +106,7 @@ static int		cor_read(int fd, t_asmcont *cont)
 	return (rez);
 }
 
-void	free_asm_data(t_asmcont *c)
+void			free_asm_data(t_asmcont *c)
 {
 	void *tmp;
 	void *pre;
@@ -127,11 +127,11 @@ void	free_asm_data(t_asmcont *c)
 	c->label_list = NULL;
 }
 
-int		cor_open_file(char *file_name, int flag)
+int				cor_open_file(char *file_name, int flag)
 {
-	int 		fd;
-	int 		code;
-	t_asmcont 	cont;
+	int			fd;
+	int			code;
+	t_asmcont	cont;
 
 	code = 0;
 	g_column = 0;
@@ -149,7 +149,7 @@ int		cor_open_file(char *file_name, int flag)
 			free_asm_data(&cont);
 		}
 		else
-			code = OPEN_FILE_ERROR; 
+			code = OPEN_FILE_ERROR;
 	}
 	else
 		code = SOURCE_EXTENSION_ERROR;

@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int	new_command(t_asmcont *cont, int command)
+int					new_command(t_asmcont *cont, int command)
 {
 	cont->command_list[cont->cmd_count].cmnd_num = command;
 	cont->command_list[cont->cmd_count].row = g_row;
@@ -20,7 +20,7 @@ int	new_command(t_asmcont *cont, int command)
 	return (cont->cmd_count - 1);
 }
 
-t_label	*new_label_min(char *str)
+t_label				*new_label_min(char *str)
 {
 	t_label *rez;
 
@@ -33,7 +33,7 @@ t_label	*new_label_min(char *str)
 	return (rez);
 }
 
-t_label	*new_label(t_asmcont *cont, char *str)
+t_label				*new_label(t_asmcont *cont, char *str)
 {
 	t_label *rez;
 	t_label	*tmp;
@@ -54,10 +54,9 @@ t_label	*new_label(t_asmcont *cont, char *str)
 	return (rez);
 }
 
-
-t_cmnd_label_link *new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
+t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 {
-	t_label 			*tmp;
+	t_label				*tmp;
 	t_label				*tmp_pr;
 	t_cmnd_label_link	*rez;
 
