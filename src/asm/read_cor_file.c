@@ -80,7 +80,7 @@ static int		cor_scan(t_asmcont *cont, char *str)
 		if (!*str || *str == COMMENT_CHAR || *str == ALT_COMMENT_CHAR)
 			break ;
 		rez = cor_scan_word(cont, &str);
-		if (!*str)
+		if (!*str || rez < 0)
 			break ;
 		if (move == str)
 			str++;
@@ -103,6 +103,9 @@ static int		cor_read(int fd, t_asmcont *cont)
 		if (rez < 0)
 			break ;
 	}
+	while (rez < 0 && get_next_line(fd, &buf))
+		ft_strdel(&buf);
+	
 	return (rez);
 }
 
@@ -111,9 +114,11 @@ void			free_asm_data(t_asmcont *c)
 	void *tmp;
 	void *pre;
 
-	free(c->champ_name);
+	if (c->champ_name)
+		free(c->champ_name);
 	c->champ_name = NULL;
-	free(c->comment = NULL);
+	if (c->comment)
+	free(c->comment);
 	c->comment = NULL;
 	free(c->command_list);
 	tmp = c->label_list;

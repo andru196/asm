@@ -118,6 +118,21 @@ int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	return (0);
 }
 
+static int			is_finished(char *word)
+{
+	char allowed[] = {' ', '\t'};
+
+	while (*word)
+	{
+		if (*word == COMMENT_CHAR || *word == ALT_COMMENT_CHAR)
+			return (1);
+		if (!ft_charinstr(allowed, *word))
+			return (0);
+		word++;
+	}
+	return (1);
+}
+
 int					command_check(t_asmcont *cont, char *word, char **str, int len)
 {
 	int		i;
@@ -143,5 +158,5 @@ int					command_check(t_asmcont *cont, char *word, char **str, int len)
 			return (ARGS_ERROR);
 		g_column += shift;
 	}
-	return (cpy_arg_word(word, *str) + ft_strendwith(word, ",") == 0 ? 1 : -1);
+	return (!cpy_arg_word(word, *str) || is_finished(word) ? 1 : ARGS_ERROR);
 }

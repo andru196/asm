@@ -29,6 +29,8 @@
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
 
+#define QUOTE_CHAR				'"'
+
 typedef struct s_row				t_row;
 typedef struct s_command			t_command;
 typedef struct s_label				t_label;

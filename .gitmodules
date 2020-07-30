@@ -1,3 +1,6 @@
 [submodule "src/libft"]
 	path = src/libft
 	url = https://github.com/andru196/libft
+[submodule "42_corewar_checker"]
+	path = 42_corewar_checker
+	url = https://github.com/apft/42_corewar_checker

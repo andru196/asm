@@ -32,7 +32,7 @@ int			cpy_word(char *dst, char *src)
 	len = 0;
 	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t'
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
-		&& *src != SEPARATOR_CHAR && *src)
+		&& *src != SEPARATOR_CHAR && *src && *src != QUOTE_CHAR)
 	{
 		len++;
 		*dst++ = *src++;
