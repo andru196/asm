@@ -51,7 +51,7 @@ int		main(int argc, char **argv)
 	g_row = 0;
 	if (argc >= 2)
 	{
-		flag_mode = 1;//check_flags(argv + 1, argc - 1, "-s");
+		flag_mode = 1;//check_flags(argv, argc);
 		while (argc > 1)
 			if ((g_error_code = cor_open_file(argv[--argc], flag_mode)))
 				print_error();
@@ -64,5 +64,5 @@ int		main(int argc, char **argv)
 	}
 	else if (argc == 1)
 		ft_printf("Usage: %2s [-a] <sourcefile.s>\n", argv[0]);
-	return (0);
+	return (g_error_code ? 1 : 0);
 }
