@@ -218,7 +218,8 @@ SOURCE	+=	ft_isspace.c \
 			ft_isdigit.c\
 			ft_mod.c\
 			ft_strreplace.c\
-			ft_args.c
+			ft_args.c\
+			free_args.c
 
 #**********************				BODY:			***************************#
 
