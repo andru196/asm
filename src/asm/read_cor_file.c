@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cor_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/09 23:06:08 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/10 00:22:40 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,10 @@ int				cor_open_file(char *file_name, int flag)
 	code = 0;
 	g_column = 0;
 	g_row = 0;
-	if (ft_strendwith(file_name, SOURCE_EXTENSION)) // подумать над lowercase
+	if (ft_strendwith(file_name, SOURCE_EXTENSION)
+		|| ft_strendwith(file_name, SOURCE_UPEXTENSION))
 	{
-		fd = open(file_name, O_RDONLY);
-		if (fd != -1)
+		if ((fd = open(file_name, O_RDONLY)) != -1)
 		{
 			init_container(&cont);
 			code = cor_read(fd, &cont);
