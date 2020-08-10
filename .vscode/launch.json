@@ -4,13 +4,12 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-	
 		{
-			"name": "(gdb) Launch",
+			"name": "asm Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/asm",
-			"args": ["champs/leeloo.s"],
+			"args": ["42_corewar_checker/champs/asm/le_pet_de_nonne.s"],//["./42_corewar_checker/champs/unit_tests/invalid/null_char_in_name.s"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

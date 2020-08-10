@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
+#    By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/07/20 22:47:23 by andru196         ###   ########.fr        #
+#    Updated: 2020/08/10 23:44:04 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libft.a
-CFLAGS		:=	-g
+CFLAGS		:=	-Wall -Wextra -Werror -g
 REMOVE		:=	/bin/rm -rf
 CC			:=	clang
 

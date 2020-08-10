@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/27 00:28:22 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/10 23:29:16 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,35 @@ int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	return (0);
 }
 
+static int			check_regnumber(int regs[REG_NUMBER][2], int number)
+{
+	int			i;
+	static char	flag = 0;
+
+	i = 0;
+	if (flag || flag++)
+		while (i < REG_NUMBER)
+			regs[i++][1] = 0;
+	i = 0;
+	while (i < REG_NUMBER)
+	{
+		if (!regs[i][1])
+		{
+			regs[i][0] = number;
+			regs[i][1] = 1;
+		}
+		if (number == regs[i][0] && regs[i][1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
 	const char	sep[2] = {SEPARATOR_CHAR, '\0'};
+	static int	registers[REG_NUMBER][2];
 
 	rez = 0;
 	if (arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
@@ -104,7 +129,7 @@ int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	ast_strrtrim(word);
 	if (*word == 'r')
 	{
-		if ((rez = ft_atoi(++word)) > REG_NUMBER || rez < 0
+		if (!check_regnumber(registers, rez = ft_atoi(++word)) || rez < 0
 			|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0'))
 			return (-1);
 		if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))

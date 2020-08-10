@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 18:22:44 by tanya             #+#    #+#             */
-/*   Updated: 2020/07/20 21:34:02 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/10 23:46:57 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void del_lst(void *content, size_t content_size)
 {
 	ft_memdel(&content);
+    content_size = 0;
 }
 
 void free_args_rez(t_args_rez **args)

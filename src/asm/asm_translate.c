@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/10 00:30:48 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/10 01:59:52 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,8 @@ int			transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	write_n_num(&rez, size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
-	ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
+	if (cont->comment)
+		ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
 	i += COMMENT_LENGTH;
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);

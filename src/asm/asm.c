@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/10 00:31:41 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/10 23:55:58 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char		*what_flag(int *flag, int argc, char **argv)
 {
 	t_args_rez	*cont;
 	char		*rez;
+	char		*cpy;
 
 	if (!(cont = new_arguments_cont()))
 		return (NULL);
@@ -60,6 +61,9 @@ char		*what_flag(int *flag, int argc, char **argv)
 	if (cont->flags && cont->flags->next)
 		*flag |= cont->flags->next->hasvalue ? fl_strict : 0;
 	free_args_rez(&cont);
+	cpy = rez;
+	rez = ft_strtrim(rez);
+	free(cpy);
 	return (rez);
 }
 
@@ -79,7 +83,7 @@ int		main(int argc, char **argv)
 			print_error();
 		else if (!(*flag_mode & fl_stdout))
 		{
-			cpy = ft_strreplacelast(argv[argc], SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+			cpy = ft_strreplacelast(path, SOURCE_EXTENSION, ASM_OUT_EXTENSION);
 			ft_printf("Writing output program to %s successful\n", cpy 
 				? cpy : "!malloc error!");
 			if (cpy)

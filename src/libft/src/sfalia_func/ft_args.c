@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fn_args.c                                          :+:      :+:    :+:   */
+/*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/20 21:33:49 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/10 23:46:03 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_arg	*find_word(t_args_rez *args, char *word)
 void	args_anal(char **args, int argc, t_args_rez *ret)
 {
 	int		i;
-	char	**words;
 	t_arg	*arg;
 
 	i = 0;
@@ -117,7 +116,7 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	{
 		if (!(arg = find_word(ret, args[i])))
 		{
-			ft_lstadd(&ret->not_expected, ft_lstnew(args[i], ft_strlen(args[i])));
+			ft_lstadd(&ret->not_expected, ft_lstnew(args[i], ft_strlen(args[i]) + 1));
 			continue;
 		}
 		if (arg->isflag)
