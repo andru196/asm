@@ -6,7 +6,7 @@
 #    By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/10 23:44:04 by sfalia-f         ###   ########.fr        #
+#    Updated: 2020/08/11 22:58:15 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -219,7 +219,8 @@ SOURCE	+=	ft_isspace.c \
 			ft_mod.c\
 			ft_strreplace.c\
 			ft_args.c\
-			free_args.c
+			free_args.c\
+			ft_strstrlst.c
 
 #**********************				BODY:			***************************#
 

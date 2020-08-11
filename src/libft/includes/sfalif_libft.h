@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:09:54 by ycorrupt          #+#    #+#             */
-/*   Updated: 2020/08/09 23:30:21 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/11 22:57:49 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char		    *ft_strreplace(char const *str, char *orig, char *sub);
 char		    *ft_strreplacefirst(char const *str, char *orig, char *sub);
 char		    *ft_strreplacelast(char const *str, char *orig, char *sub);
 void			ft_strtolower_pr(char *str);
+char			*ft_strstrlst(const char *haystack, const char *needle);
 
 #endif

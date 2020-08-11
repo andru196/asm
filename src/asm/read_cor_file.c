@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/11 00:09:34 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/11 23:53:14 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				multy_line_arg(int fd, char **rez, size_t *size)
 	int		frst;
 
 	frst = 0;
-	while ((gnl = get_next_line(fd, &buf)) > 0
+	while ((gnl = get_next_line(fd, &buf)) > 0 && ++g_row
 		&& !(cpy = ft_strchr(buf, QUOTE_CHAR)))
 	{	
 		rezcpy = *rez;
@@ -77,8 +77,8 @@ int				special_arg(t_asmcont *c, int dst, char **str, int fd)
 	if (!(rez = ft_strnew(size)))
 		return (MALLOC_ERROR);
 	ft_memcpy(rez, *str + 1, size);
-	*str += size + 2;
-	g_column += size + 2;
+	g_column = size + (ft_strstr(*str, "\n") ? -(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
+	*str += size + 1 + !ft_strstr(*str, "\n");
 	if (dst)
 		c->comment = rez;
 	else

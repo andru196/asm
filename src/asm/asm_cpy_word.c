@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   asm_cpy_word.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/15 17:18:12 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/12 00:38:00 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+extern t_op op_tab[OP_TAB_SIZE];
 
 void		skip_space(char **str)
 {
@@ -25,6 +27,18 @@ void		skip_space(char **str)
 	g_column += i;
 }
 
+int			word_iscomand(char *word, int len)
+{
+	int i;
+
+	i = -1;
+	if (len)
+		while (++i < OP_TAB_SIZE - 1)
+			if (!ft_strncmp(op_tab[i].name, word, ft_strlen(op_tab[i].name)))
+				return (1);
+	return (0);
+}
+
 int			cpy_word(char *dst, char *src)
 {
 	int len;
@@ -32,7 +46,9 @@ int			cpy_word(char *dst, char *src)
 	len = 0;
 	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t'
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
-		&& *src != SEPARATOR_CHAR && *src && *src != QUOTE_CHAR)
+		&& *src != SEPARATOR_CHAR && *src && *src != QUOTE_CHAR
+		&& !((*src == DIRECT_CHAR || *src == '+' || *src == '-') 
+		&& word_iscomand(dst - len, len)))
 	{
 		len++;
 		*dst++ = *src++;
