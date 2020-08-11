@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/27 22:24:45 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/10 01:59:52 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,8 @@ int			transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	write_n_num(&rez, size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
-	ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
+	if (cont->comment)
+		ft_strncpy(rez + i, cont->comment, COMMENT_LENGTH);
 	i += COMMENT_LENGTH;
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
@@ -188,7 +189,7 @@ int			zapisat(char *rez, char *file_name, int flag, size_t size)
 	file_name_cor = ft_strreplacelast(file_name, SOURCE_EXTENSION, ASM_OUT_EXTENSION);
 	fd = open(file_name_cor, O_WRONLY | O_CREAT, 3 << 7);
 	free(file_name_cor);
-	if (flag == 1)
+	if (!(flag & fl_stdout))
 		write(fd, rez, size);
 	else
 		write(1, rez, size);

@@ -3,19 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/04 10:43:20 by mschimme         ###   ########.fr        #
+#    Updated: 2020/08/10 23:44:04 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libft.a
-#CFLAGS		:=	-g
-CFLAGS		:= 	-Wextra -Werror -Wall -g
+CFLAGS		:=	-Wall -Wextra -Werror -g
 REMOVE		:=	/bin/rm -rf
-CC			:=	gcc
-
+CC			:=	clang
 
 #**********************				PATHS:			***************************#
 VPATH		:=	./src/errors: \
@@ -231,7 +229,8 @@ SOURCE	+=	ft_isspace.c \
 			ft_isdigit.c\
 			ft_mod.c\
 			ft_strreplace.c\
-			ft_args.c
+			ft_args.c\
+			free_args.c
 
 #**********************				BODY:			***************************#
 

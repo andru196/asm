@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sfalif_libft.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:09:54 by ycorrupt          #+#    #+#             */
-/*   Updated: 2020/07/20 22:46:41 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/09 23:30:21 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int				ft_mod(long int num);
 char		    *ft_strreplace(char const *str, char *orig, char *sub);
 char		    *ft_strreplacefirst(char const *str, char *orig, char *sub);
 char		    *ft_strreplacelast(char const *str, char *orig, char *sub);
+void			ft_strtolower_pr(char *str);
 
 #endif

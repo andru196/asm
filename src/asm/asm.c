@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/20 22:59:29 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/10 23:55:58 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,57 @@ void	print_error()
 	ft_printf(err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
+char		*what_flag(int *flag, int argc, char **argv)
+{
+	t_args_rez	*cont;
+	char		*rez;
+	char		*cpy;
+
+	if (!(cont = new_arguments_cont()))
+		return (NULL);
+	rez = NULL;
+	//add_arg(cont, 1, "-s --stdout --to_console", "");
+	add_arg(cont, 1, "-t --strict", "");
+	*flag = 0;
+	args_anal(argv, argc, cont);
+	if (cont->not_expected)
+		rez = ft_strdup(cont->not_expected->content);
+	if (cont->flags)
+		*flag |= cont->flags->hasvalue ? fl_stdout : 0;
+	if (cont->flags && cont->flags->next)
+		*flag |= cont->flags->next->hasvalue ? fl_strict : 0;
+	free_args_rez(&cont);
+	cpy = rez;
+	rez = ft_strtrim(rez);
+	free(cpy);
+	return (rez);
+}
+
 int		main(int argc, char **argv)
 {
-	int		flag_mode;
+	int		*flag_mode;
 	char	*cpy;
+	char	*path;
 
 	g_error_code = 0;
 	g_column = 0;
 	g_row = 0;
-	if (argc >= 2)
+	path = what_flag((flag_mode = &g_flag), argc, argv);
+	if (path)
 	{
-		flag_mode = 1;//check_flags(argv + 1, argc - 1, "-s");
-		while (argc > 1)
-			if ((g_error_code = cor_open_file(argv[--argc], flag_mode)))
-				print_error();
-			else
-			{
-				cpy = ft_strreplacelast(argv[argc], SOURCE_EXTENSION, ASM_OUT_EXTENSION);
-				ft_printf("Writing output program to %s successful\n", cpy ? cpy : "!malloc error!");
+		if ((g_error_code = cor_open_file(path, *flag_mode)))
+			print_error();
+		else if (!(*flag_mode & fl_stdout))
+		{
+			cpy = ft_strreplacelast(path, SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+			ft_printf("Writing output program to %s successful\n", cpy 
+				? cpy : "!malloc error!");
+			if (cpy)
 				free(cpy);
-			}
+		}
+		ft_strdel(&path);
 	}
-	else if (argc == 1)
-		ft_printf("Usage: %2s [-a] <sourcefile.s>\n", argv[0]);
-	return (0);
+	else
+		ft_printf("Usage: %2s [-a] <sourcefile.s>\n(-t, -s)\n", argv[0]);
+	return (g_error_code ? 1 : 0);
 }
