@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:08:08 by mschimme          #+#    #+#             */
-/*   Updated: 2019/11/22 14:01:28 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/10 12:05:26 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#define CPY_FST ft_memcpy((void *)ar[2], (CV *)ar[0]->CNT, ar[0]->C_S)
+#define CPY_LST(x) ft_memcpy((x) + ar[0]->C_S, (CV *)ar[1]->CNT, ar[1]->C_S);
+
+int	g_gnl_read;
+
+/*
+**	Former 5th string of ft_hopper.
+**		ft_memcpy(ft_memcpy((void *)ar[2], (CV *)ar[0]->CNT, ar[0]->C_S) + \
+**				ar[0]->C_S, (CV *)ar[1]->CNT, ar[1]->C_S);
+*/
 
 /*
 ** ft_lstmk doest 3 things (according to it's flag _fl_).
@@ -114,6 +125,7 @@ static int			ft_rs(char **line, t_list *rem, t_list **fd_lst)
 		ft_memcpy((void *)(*line), (CV *)rem->CNT + SZFINT, SIZEOFSBSTR);
 		if (*(char *)(bgy[0] - 1) == '\0' && (bgy[0] - 1) != rem->CNT + SZFINT)
 			bgy[0] -= 1;
+		g_gnl_read = (int)(bgy[0] - rem->CNT - SZFINT -1);
 		rem->C_S -= (bgy[0] - rem->CNT - SZFINT);
 		if (!(bgy[1] = (ft_memalloc(rem->C_S))))
 			return (ft_lstmk(2, fd_lst, 0, fd_lst));
@@ -141,8 +153,8 @@ static int			ft_hopper(t_list **ar, t_list **fdl, char **lin, size_t fl)
 	{
 		if (!(ar[2] = (t_list *)ft_memalloc(ar[0]->C_S + ar[1]->C_S)))
 			return (ft_lstmk(2, fdl, 0, fdl));
-		ft_memcpy(ft_memcpy((void *)ar[2], (CV *)ar[0]->CNT, ar[0]->C_S) + \
-				ar[0]->C_S, (CV *)ar[1]->CNT, ar[1]->C_S);
+		CPY_LST(CPY_FST);
+
 		free(ar[0]->CNT);
 		ar[0]->CNT = (void *)ar[2];
 		ar[0]->C_S += ar[1]->C_S;
@@ -153,6 +165,7 @@ static int			ft_hopper(t_list **ar, t_list **fdl, char **lin, size_t fl)
 		return (ft_lstmk(2, fdl, 0, fdl));
 	ft_memcpy((void *)(*lin), (CV *)ar[0]->CNT + SZFINT, ar[0]->C_S - SZFINT);
 	ft_bzero(ar[0]->CNT + SZFINT, ar[0]->C_S - SZFINT);
+	g_gnl_read = (int)(ar[0]->C_S) - (int)SZFINT;
 	ar[0]->C_S = SZFINT;
 	ar[2] = *fdl;
 	fl += ar[2]->C_S - SZFINT;
