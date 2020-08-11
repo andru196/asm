@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fn_args.c                                          :+:      :+:    :+:   */
+/*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/20 21:33:49 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/04 10:46:57 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_arg	*find_word(t_args_rez *args, char *word)
 void	args_anal(char **args, int argc, t_args_rez *ret)
 {
 	int		i;
-	char	**words;
 	t_arg	*arg;
 
 	i = 0;
@@ -134,6 +133,7 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 
 static void del_lst(void *content, size_t content_size)
 {
+	(void)content_size;
 	ft_memdel(&content);
 }
 

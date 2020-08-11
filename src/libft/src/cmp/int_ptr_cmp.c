@@ -1,19 +1,31 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   int_ptr_cmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 15:35:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/11/04 15:37:38 by sfalia-f         ###   ########.fr       */
+/*   Created: 2020/07/03 20:25:50 by mschimme          #+#    #+#             */
+/*   Updated: 2020/07/03 20:47:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isspace(int c)
+/*
+**	Thus array will be sorted ascending.
+*/
+
+int				ft_intp_left_grt_right(void *a, void *b)
 {
-    return (c == ' ' || c == '\t' || c == '\v');
+	return (*(int *) a > *(int *)b);
+}
+
+/*
+**	Thus array will be sorted descending.
+*/
+
+int				ft_intp_left_lsr_right(void *a, void *b)
+{
+	return (*(int *) a < *(int *)b);
 }

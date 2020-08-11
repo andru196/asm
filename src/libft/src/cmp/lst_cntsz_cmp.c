@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   lst_cntsz_cmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 16:16:06 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/04 09:27:16 by mschimme         ###   ########.fr       */
+/*   Created: 2020/08/01 13:59:09 by mschimme          #+#    #+#             */
+/*   Updated: 2020/08/01 20:07:35 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memalloc(size_t size)
-{
-	void *pocket;
+/*
+**	lst for Lis.
+**	cntsz for content_size.
+*/
 
-	if (!(pocket = (void *)malloc(size)))
-		return (NULL);
-	ft_bzero(pocket, size);
-	return (pocket);
+int				ft_lst_cntsz_left_grt_right(void *a, void *b)
+{
+	return ((((t_list *)a)->content_size) > (((t_list *)b)->content_size));
 }
+
+int				ft_lst_cntsz_left_lsr_right(void *a, void *b)
+{
+	return (((((t_list *)a)->content_size)) < (((t_list *)b)->content_size));
+}
+

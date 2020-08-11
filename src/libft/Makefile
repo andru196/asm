@@ -3,17 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
+#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/07/20 22:47:23 by andru196         ###   ########.fr        #
+#    Updated: 2020/08/04 10:43:20 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	libft.a
-CFLAGS		:=	-g
+#CFLAGS		:=	-g
+CFLAGS		:= 	-Wextra -Werror -Wall -g
 REMOVE		:=	/bin/rm -rf
-CC			:=	clang
+CC			:=	gcc
+
 
 #**********************				PATHS:			***************************#
 VPATH		:=	./src/errors: \
@@ -28,7 +30,9 @@ VPATH		:=	./src/errors: \
 			./src/output/ft_printf: \
 			./src/output/ft_printf/floats: \
 			./src/sfalia_func: \
-			./src/string:
+			./src/string: \
+			./src/cmp: \
+			./src/sort:
 
 #**********************				ERRORS:			***************************#
 SOURCE	+=	malloc_err.c \
@@ -48,7 +52,9 @@ SOURCE	+=	ft_del.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
 			ft_lstnew.c \
-			ft_lstnew_r.c
+			ft_lstnew_r.c \
+			ft_lstrot_rec.c \
+			ft_lstrot_arr.c
 
 SOURCE	+=	ft_dlstadd.c \
 			ft_dlstdel.c \
@@ -205,7 +211,14 @@ SOURCE	+=	ft_isalnum.c \
 			intoa.c \
 			uintoa.c \
 			uintoa_base.c
-			
+
+#**********************				CMP:			***************************#
+SOURCE	+=	int_ptr_cmp.c \
+			lst_cntsz_cmp.c
+
+#**********************				SORT:			***************************#
+SOURCE	+=	bubble_int_arr.c \
+			bubble_list_arr.c
 
 #**********************				sfalia_func:		***************************#
 
