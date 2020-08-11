@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/04 10:46:57 by mschimme         ###   ########.fr       */
-=======
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/10 23:46:03 by sfalia-f         ###   ########.fr       */
->>>>>>> 86b4d720970663c978b931c81c9ecf15159a5fcb
+/*   Updated: 2020/08/12 00:50:01 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +130,6 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 		}
 	}
 }
-
-<<<<<<< HEAD
-static void del_lst(void *content, size_t content_size)
-{
-	(void)content_size;
-	ft_memdel(&content);
-}
-=======
->>>>>>> 86b4d720970663c978b931c81c9ecf15159a5fcb
 
 
 /*
