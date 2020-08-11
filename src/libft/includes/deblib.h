@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 00:03:45 by mschimme          #+#    #+#             */
-/*   Updated: 2020/05/05 19:47:37 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/04 09:11:03 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define DEBft(x) printf("\033[1;35m%s\033[0m == %f ", #x, (x));
 # define DEBtextt(x) printf("[\033[1;35m%s\033[0m] == [%s] ", #x, (x));
 # define DEBchart(x) printf("[\033[1;35m%s\033[0m] == [%c] ", #x, (x));
-# define DEBmesst(name) printf("\033[1;36m%s\033[0m\n", (name));
+# define DEBmesst(name) printf("\033[1;36m%s\033[0m\t", (name));
 # define DEBfunc() printf("\033[0;31m%d\033[0m \033[0;33mEntering\033[0m MY:\t\033[0;33m%s\033[0m of file \"%s\"\n", __LINE__, __func__, __FILE__);
 # define DEB() printf("\t\033[0;31m%d\033[0m in:\t%s\n", __LINE__, __func__);
 # define DEBex(name) printf("\033[0;32mExiting \033[0m MY:\t\033[0;32m%s\033[0m,%s\n\n", __func__, (name));

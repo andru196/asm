@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:02:42 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/26 22:26:58 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/10 11:24:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define SZFINT sizeof(int)
 # define SIZEOFSBSTR bgy[0] - rem->CNT - 1 - SZFINT
 
+extern int		g_gnl_read;
+
 typedef struct		s_list
 {
 	void			*content;
@@ -56,6 +58,8 @@ typedef struct		s_dlist
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
+
+typedef int				t_datacmp_rout(void *a, void *b);
 
 /*
 ** Function prototypes taken in Mojave MacOS version (variable names slightly
@@ -137,6 +141,30 @@ size_t				ft_wstrlen(const char *str);
 int					ft_wipegnl(t_list **fdl, t_list *first, \
 												t_list*second, t_list *third);
 int					ft_strcasecmp(const char *s1, const char *s2);
+
+t_list				*ft_lstrot_rec(t_list *current, t_list *prev);
+uint8_t				ft_lstrot_arr(t_list **alst);
+
+
+
+void				ft_dlstadd(t_dlist **alst, t_dlist *new, uint8_t flag);
+void				ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t));
+t_dlist				*ft_dlstnew_r(void const *content, size_t content_size);
+t_dlist				*ft_dlstnew(void const *content, size_t content_size);
+void				ft_dlstwipe_ring(t_dlist **alst, \
+												void (*del)(void *, size_t));
+void				ft_dlstwipe(t_dlist **alst, void (*del)(void *, size_t));
+void				ft_dlstdelone(t_dlist **alst, void (*del)(void*, size_t));
+
+void				ft_srt_bubble_intarr(int *array, size_t size, \
+														t_datacmp_rout *cmp);
+void				ft_srt_listarr_bubble(t_list **head, t_list **arr_ptr, \
+											size_t length, t_datacmp_rout *cmp);
+
+int					ft_intp_left_grt_right(void *a, void *b);
+int					ft_intp_left_lsr_right(void *a, void *b);
+int					ft_lst_cntsz_left_grt_right(void *a, void *b);
+int					ft_lst_cntsz_left_lsr_right(void *a, void *b);
 
 void		ft_dlstadd(t_dlist **alst, t_dlist *new, uint8_t flag);
 void		ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t));
