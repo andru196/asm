@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/asm",
-			"args": ["./42_corewar_checker/champs/asm/le_pet_de_nonne.s"],//["./42_corewar_checker/champs/unit_tests/invalid/null_char_in_name.s"],
+			"args": ["./42_corewar_checker/champs/unit_tests/test_op/01_live-dir_value_is_int_min.s"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

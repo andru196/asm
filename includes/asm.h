@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/10 00:17:30 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/13 23:45:15 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void				skip_space(char **str);
 int					asm_translate(t_asmcont *cont, char *file_name, int flag);
 void				prepare_arg(char *word, long long *arg);
 void				ast_strrtrim(char *word);
+long long			ft_maxint(unsigned char bytes, int unsig);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2020/08/11 19:05:14 by sfalia-f         ###   ########.fr        #
+#    Updated: 2020/08/13 23:43:53 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS_ASM		=	asm_cor_init.c \
 					cor_command_check.c \
 					cor_label_check.c \
 					init_struct.c \
-					read_cor_file.c
+					read_cor_file.c \
+					ft_maxint.c
 SRCS			=	$(addprefix $(DIR_ASM), $(SRCS_ASM)) \
 					src/op.c
 OBJ				=	$(patsubst %.c, %.o, $(SRCS))

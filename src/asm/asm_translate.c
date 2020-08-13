@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/10 01:59:52 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/14 02:12:36 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,31 @@ void		write_n_num(char **dst, long long n, unsigned char bytes)
 	}
 }
 
+static ULL	set_number(long long n, unsigned char size, unsigned char t_dir_size)
+{
+	long long	tmp;
+
+	if (size == T_REG)
+		size = SIZE_REG;
+	else if (size == T_IND)
+		size = IND_SIZE;
+	else
+		size = DIR_SIZE / (1 + t_dir_size);
+	tmp = ft_maxint(size, n > 0);
+	if ((n >= 0 && n < tmp) || (n < 0 && (-tmp - 1) < n))
+		tmp = n;
+	else if ((n < 0 && (-tmp - 1) >= n)
+		|| (n > 0 && tmp <= n))
+		tmp = n & (tmp + ((tmp + 1) == -n));
+	return (tmp);
+	
+}
+
 int			write_cmnd(char *dst, t_command *cmd)
 {
-	int		i;
-	char	*cpy;
+	int					i;
+	char				*cpy;
+	unsigned long long	num;
 
 	cpy = dst;
 	*dst++ = cmd->cmnd_num + 1;
@@ -144,12 +165,13 @@ int			write_cmnd(char *dst, t_command *cmd)
 	i = -1;
 	while (++i < op_tab[cmd->cmnd_num].args_num)
 	{
+		num = set_number(cmd->arg[i], cmd->arg_size[i], op_tab[cmd->cmnd_num].t_dir_size);
 		if (cmd->arg_size[i] == T_REG)
-			write_n_num(&dst, cmd->arg[i], SIZE_REG);
+			write_n_num(&dst, num, SIZE_REG);
 		else if (cmd->arg_size[i] == T_IND)
-			write_n_num(&dst, cmd->arg[i], IND_SIZE);
+			write_n_num(&dst, num, IND_SIZE);
 		else if (cmd->arg_size[i] == T_DIR)
-			write_n_num(&dst, cmd->arg[i], DIR_SIZE / (1 + op_tab[cmd->cmnd_num].t_dir_size));
+			write_n_num(&dst, num, DIR_SIZE / (1 + op_tab[cmd->cmnd_num].t_dir_size));
 	}
 	return (dst - cpy);
 }
