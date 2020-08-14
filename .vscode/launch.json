@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/asm",
-			"args": ["./42_corewar_checker/champs/unit_tests/test_op/02_ld-dir_value_is_pos_reg_is_valid_too_many_commas.s"], //./42_corewar_checker/champs/asm/leeloo.s
+			"args": ["./42_corewar_checker/champs/unit_tests/invalid/null_char_before_name.s"], //./42_corewar_checker/champs/asm/leeloo.s
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
