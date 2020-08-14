@@ -1,25 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    cwr_mker                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+         #
+#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/02 14:55:20 by mschimme         ###   ########.fr        #
+#    Updated: 2020/08/14 22:48:22 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	corewar
 CC		=	gcc
 FLAGS	=	-Wall -Wextra -g
-DIR_LIB	=	./libft
+DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
-VPATH	:=	./src: \
-			./src/errors: \
-			./src/prep_rout: \
-			./src/serv: \
+VPATH	:=	./src/corewar/src: \
+			./src/corewar/src/errors: \
+			./src/corewar/src/prep_rout: \
+			./src/corewar/src/serv: \
 #**********************				src:			***************************#
 SOURCE	+=	corewar.c
 #**********************			src/errors:			***************************#
@@ -49,10 +49,10 @@ SOURCE	+=	_del_carry.c \
 			manage_world.c \
 			proxies.c
 
-OBJ_DIR		:=	./obj
+OBJ_DIR		:=	./obj_cwr
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))
 
-INC_DIR	:=	./includes $(DIR_LIB)/includes
+INC_DIR	:=	./src/corewar/includes $(DIR_LIB)/includes
 IFLAGS	+=	$(foreach d, $(INC_DIR), -I$d)
 
 .PHONY: all clean fclean re MAKEDIR LIB
