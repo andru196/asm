@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/10 23:29:16 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/15 02:45:38 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	else
 	{
 		rez = ft_atoix(word + (flag == T_DIR));
-		if (!str_num_eq(rez, word + (flag == T_DIR)))
+		if ((!str_num_eq(rez, word + (flag == T_DIR)) && (g_flag & fl_strict)) || (!(g_flag & fl_strict) && !ft_isnumber(word + (flag == T_DIR))))
 			return (-1);
 	}
 	cont->command_list[com_pos].arg[arg_num] += rez;
@@ -120,8 +120,9 @@ int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	static int	registers[REG_NUMBER][2];
 
 	rez = 0;
-	if (arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
-		&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR)
+	if ((arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
+		&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR) || (word[ft_strlen(word) - 1] == SEPARATOR_CHAR
+		&& arg_num + 1 == op_tab[cont->command_list[com_pos].cmnd_num].args_num))
 		return (-1);
 	if (ft_strendwith(word, (char *)sep))
 		word[ft_strlen(word) - 1] = '\0';

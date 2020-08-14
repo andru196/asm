@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/11 23:53:14 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/15 02:33:55 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int				multy_line_arg(int fd, char **rez, size_t *size)
 		*cpy = '\0';
 		*rez = ft_strjoinnl(*rez, buf);
 		*size = ft_strlen(*rez) - 1;
-		free(rezcpy);
+		if (frst)
+			free(rezcpy);
 		free(buf);
 		return (0);
 	}
@@ -69,8 +70,8 @@ int				special_arg(t_asmcont *c, int dst, char **str, int fd)
 		i++;
 	*str += i;
 	g_column += i;
-	if ((**str != '"' || !(cpy = ft_strchr(*str + 1, QUOTE_CHAR))) 
-		&& multy_line_arg(fd, str, &size))
+	if ((**str != '"' || !(cpy = ft_strchr(*str + 1, QUOTE_CHAR)))
+		&& (**str == '"' && multy_line_arg(fd, str, &size)))
 		return (NONE_QUOTE_ERROR);
 	else if (**str == '"' && cpy)
 		size = cpy - *str - 1;
@@ -80,11 +81,8 @@ int				special_arg(t_asmcont *c, int dst, char **str, int fd)
 	g_column = size + (ft_strstr(*str, "\n") ? -(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
 	*str += size + 1 + !ft_strstr(*str, "\n");
 	if (dst)
-		c->comment = rez;
-	else
-		c->champ_name = rez;
-	return ((dst && size > COMMENT_LENGTH) 
-		|| (!dst && size > CHAMP_MAX_SIZE) ? -1 : 2);
+		return (ft_strlen(c->comment = rez) > COMMENT_LENGTH ? TOO_LONG_COMMENT_ERROR : 2);
+	return (ft_strlen(c->champ_name = rez) > PROG_NAME_LENGTH ? TOO_LONG_NAME_ERROR : 2);
 }
 
 static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
@@ -101,8 +99,10 @@ static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 	|| (!cont->comment && !ft_strcmp(word, COMMENT_CMD_STRING)))
 	{
 		g_column += len;
-		rez = special_arg(cont, ft_strcmp(word, NAME_CMD_STRING), str, fd); //то что в кавычках
+		rez = special_arg(cont, ft_strcmp(word, NAME_CMD_STRING), str, fd);
 	}
+	else if (!cont->champ_name || !cont->comment)
+		return (cont->champ_name ? NONE_COMMENT_ERROR : NONE_PROG_NAME_ERROR);
 	else if (*(*str - 1) == LABEL_CHAR)
 	{
 		if ((rez = label_check(cont, word, len)) > 0)
