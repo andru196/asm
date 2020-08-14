@@ -9,3 +9,5 @@ asm
 *.log
 ./test
 .vscode/launch.json
+corewar
+./t_*
