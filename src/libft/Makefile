@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+         #
+#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/15 01:36:46 by sfalia-f         ###   ########.fr        #
+#    Updated: 2020/08/14 23:32:27 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -170,6 +170,8 @@ SOURCE	+=	ft_isalnum.c \
 			ft_isdigit.c \
 			ft_isprint.c \
 			ft_itoa.c \
+			ft_itoal.c \
+			ft_strcasecmp.c \
 			ft_strcasecmp.c \
 			ft_strcat.c \
 			ft_strchr.c \
