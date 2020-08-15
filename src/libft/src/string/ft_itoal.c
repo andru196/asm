@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 12:43:28 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/15 08:44:05 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/15 09:18:16 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ char					*ft_itoal(long long int num)
 		return (NULL);
 	if (num == INT64_MIN)
 	{
-		*(pocket + 1) = '9';
-		*pocket = '-';
+		// *(pocket + 1) = '9';
+		// *pocket = '-';
+		*(short int *)pocket = (short int)('-' + ('9' << 8));
 		num = 223372036854775808LL;
 	}
 	if (num < 0)
