@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:02:42 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/10 11:24:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/14 23:30:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void				ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);
 long long			ft_atol_r(const char *str, uint8_t *status);
 char				*ft_itoa(int n);
+char				*ft_itoal(long long int num);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
