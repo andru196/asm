@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_error.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 21:58:36 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/09 22:14:23 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/14 22:29:43 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@
 # define PROGRAM_SIZE_LIMIT			-800
 # define CONNECTION_ERROR			-777
 # define NONE_QUOTE_ERROR			-409
+# define NONE_PROG_NAME_ERROR		-410
+# define NONE_COMMENT_ERROR			-411
+# define TOO_LONG_NAME_ERROR		-501
+# define TOO_LONG_COMMENT_ERROR		-502
+
 
 # define MALLOC_ERROR_STR			"Memory allocation failed"
-# define SOURCE_EXTENSION_ERROR_STR "Source file extension wrong"
+# define SOURCE_EXTENSION_ERROR_STR	"Source file extension wrong"
 # define OPEN_FILE_ERROR_STR		"Can't open file"
 # define LABEL_SIZE_ERROR_STR		"Length of label is too big"
 # define LABEL_FORBIDDEN_CHAR_STR	"Label contains forbidden character"
@@ -34,5 +39,9 @@
 # define PROGRAM_SIZE_LIMIT_STR		"Too big program"
 # define CONNECTION_ERROR_STR		"Label not found"
 # define NONE_QUOTE_ERROR_STR		"Argument not found"
+# define NONE_PROG_NAME_STR			"Name of program not found"
+# define NONE_COMMENT_STR			"Comment not found"
+# define TOO_LONG_NAME_STR			"Name of program too long"
+# define TOO_LONG_COMMENT_STR		"Comment of program too long"
 
 #endif

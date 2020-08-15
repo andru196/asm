@@ -3,15 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:33:08 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/03/11 23:43:58 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/15 02:30:46 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int		is_dec(char *str)
+{
+	if (*str == '+' || *str == '-')
+		str++;
+	if (*str != '0')
+		return (1);
+	while (*str && *str == '0' && *(str + 1) == '0')
+		str++;
+	if (ft_toupper(*(str + 1)) == 'X')
+		return (0);
+	while (*str)
+		if (!(*str == '8' || *str == '9'))
+			return (1);
+	return (0);
+
+}
 long long int	ft_atoix(char *str)
 {
 	long long	rez;
@@ -20,9 +36,10 @@ long long int	ft_atoix(char *str)
 
 	while (ft_isspace(*str))
 		str++;
+	if (is_dec(str))
+		return (ft_atoil(str));
 	sign = *str == '-' ? -1 : 1;
-	if (*str == '+' || *str == '-')
-		str++;
+	str += (*str == '+' || *str == '-');
 	method = *str == '0' ? 8 : 10;
 	method = method == 8 && ft_toupper(*(str + 1)) == 'X' ? 16 : method;
 	while (*str == '0')
