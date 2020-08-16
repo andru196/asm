@@ -76,7 +76,7 @@ SOURCE	+=	ft_bzero.c \
 
 #**********************				NUMERIC:		***************************#
 SOURCE	+=	check_overflow.c \
-			ft_atoi.c
+			ft_strtonum.c
 
 #**********************				OUTPUT:			***************************#
 SOURCE	+=	ft_putchar.c \
