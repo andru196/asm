@@ -5,6 +5,18 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "t_atoll",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/src/corewar/t_atoil",
+			"args": [],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
 			"name": "asm Launch",
 			"type": "cppdbg",
 			"request": "launch",
