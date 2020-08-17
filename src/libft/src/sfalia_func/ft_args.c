@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/12 00:50:01 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 22:19:38 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ t_args_rez *new_arguments_cont()
 ** Добавить аргумент к ранее сформированному контейнеру
 */
 
-int		add_arg(t_args_rez *args, char isflag, char *names, char *desc)
+t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 {
 	t_arg	*rez;
 	t_arg	*tmp;
 
 	rez = new_arg(isflag);
 	if (!rez)
-		return (-1);
+		return (rez);
 	rez->description = desc;
 	rez->names = names;
 	if (isflag)
@@ -73,7 +73,7 @@ int		add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 			tmp = tmp->next;
 		tmp->next = rez;
 	}
-	return (0);
+	return (rez);
 }
 
 t_arg	*find_word(t_args_rez *args, char *word)

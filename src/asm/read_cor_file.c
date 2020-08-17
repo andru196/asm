@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/15 02:33:55 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 21:39:46 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,13 @@ static int		cor_read(int fd, t_asmcont *cont)
 	{
 		g_row++;
 		g_column = 0;
+		if ((size_t)g_gnl_read > ft_strlen(buf))
+		{
+			while (*(buf + g_column) && ft_isascii(*(buf + g_column)))
+				g_column++;
+			rez = BAD_SYMBOL_ERROR;
+			break ;
+		}
 		rez = cor_scan(cont, buf, fd);
 		ft_strdel(&buf);
 		if (rez < 0)
@@ -153,7 +160,6 @@ static int		cor_read(int fd, t_asmcont *cont)
 	}
 	while (rez < 0 && get_next_line(fd, &buf))
 		ft_strdel(&buf);
-	
 	return (rez);
 }
 
