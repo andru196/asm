@@ -12,3 +12,4 @@ asm
 .vscode
 corewar
 ./t_*
+.leaks
