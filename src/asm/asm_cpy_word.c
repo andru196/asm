@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/12 00:38:00 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 22:32:54 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void		prepare_arg(char *word, long long *arg)
 	rez = 0;
 	while (*word)
 	{
-		if (*word == '+')
+		if (*word == '+' && (g_flag & fl_sum))
 			tmp = ft_atoix(word + 1);
 		if (*word == '-')
 			tmp = ft_atoix(word + 1);

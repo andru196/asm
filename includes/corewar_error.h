@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 21:58:36 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/14 22:29:43 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 21:37:31 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define NONE_COMMENT_ERROR			-411
 # define TOO_LONG_NAME_ERROR		-501
 # define TOO_LONG_COMMENT_ERROR		-502
+# define BAD_SYMBOL_ERROR			-666
 
 
 # define MALLOC_ERROR_STR			"Memory allocation failed"
@@ -43,5 +44,6 @@
 # define NONE_COMMENT_STR			"Comment not found"
 # define TOO_LONG_NAME_STR			"Name of program too long"
 # define TOO_LONG_COMMENT_STR		"Comment of program too long"
+# define BAD_SYMBOL_STR				"Non ASCII symbol"
 
 #endif

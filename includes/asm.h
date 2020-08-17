@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/14 23:13:37 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 22:12:58 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ enum                    e_args
     fl_nono = 0,
     fl_stdout = 1,
     fl_strict = 2,
+	fl_sum = 4
 };
 
 int						g_flag;
