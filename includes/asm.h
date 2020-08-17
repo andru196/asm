@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/17 22:39:12 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 01:31:26 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ struct					s_cmnd_label_link
 	t_label				*label;
 	t_command			*command;
 	size_t				arg_num;
+	size_t				col;
 	t_cmnd_label_link	*next;
 };
 

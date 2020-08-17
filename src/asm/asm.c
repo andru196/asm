@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/17 22:25:42 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 00:45:42 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_error()
 	if (g_error_code == CONNECTION_ERROR)
 		err[1] = CONNECTION_ERROR_STR;
 	if (g_error_code == NONE_QUOTE_ERROR)
-		err[1] = NONE_QUOTE_ERROR_STR;
+		err[1] = NONE_QUOTE_STR;
 	if (NONE_PROG_NAME_ERROR == g_error_code)
 		err[1] = NONE_PROG_NAME_STR;
 	if (NONE_COMMENT_ERROR == g_error_code)
@@ -48,7 +48,7 @@ void	print_error()
 		err[1] = TOO_LONG_COMMENT_STR;
 	if (g_error_code == BAD_SYMBOL_ERROR)
 		err[1] = BAD_SYMBOL_STR;
-	ft_printf(err[0], g_error_code, err[1], g_row, g_column + 1);
+	ft_printf_fd(2, err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
 char		*what_flag(int *flag, int argc, char **argv)

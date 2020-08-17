@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/17 22:19:38 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 00:21:57 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 		return (rez);
 	rez->description = desc;
 	rez->names = names;
+	tmp = args->args;
 	if (isflag)
 		tmp = args->flags;
-	else
-		tmp = args->args;
 	if (!tmp && isflag)
 		args->flags = rez;
 	else if (!tmp)

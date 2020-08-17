@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/14 21:44:15 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 01:34:17 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int			fuck_connections(t_asmcont *c)
 		tmp = pre;
 		g_row = tmp->command->row;
 		if (!tmp->label->dst)
+		{
+			g_column = tmp->col;
 			return (-1);
+		}
 		i = 0;
 		while (tmp->label->dst - i > tmp->command)
 			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;

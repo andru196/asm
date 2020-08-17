@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/03/15 23:11:41 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/18 01:36:58 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 
 	if ((rez = ft_memalloc(sizeof(t_cmnd_label_link))))
 	{
+		rez->col = g_column;
 		tmp_pr = cont->label_list;
 		tmp = tmp_pr ? tmp_pr->next : NULL;
 		while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))

@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 21:58:36 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/17 21:37:31 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 00:48:09 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define ARGS_ERROR_STR				"Error in arguments list"
 # define PROGRAM_SIZE_LIMIT_STR		"Too big program"
 # define CONNECTION_ERROR_STR		"Label not found"
-# define NONE_QUOTE_ERROR_STR		"Argument not found"
+# define NONE_QUOTE_STR     		"Quote not found"
 # define NONE_PROG_NAME_STR			"Name of program not found"
 # define NONE_COMMENT_STR			"Comment not found"
 # define TOO_LONG_NAME_STR			"Name of program too long"

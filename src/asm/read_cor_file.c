@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/17 21:39:46 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 02:08:41 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,24 @@ int				multy_line_arg(int fd, char **rez, size_t *size)
 	int		frst;
 
 	frst = 0;
-	while ((gnl = get_next_line(fd, &buf)) > 0 && ++g_row
-		&& !(cpy = ft_strchr(buf, QUOTE_CHAR)))
-	{	
+	while ((gnl = get_next_line(fd, &buf)) > 0 && ++g_row)
+	{
 		rezcpy = *rez;
+		if ((cpy = ft_strchr(buf, QUOTE_CHAR)))
+			*cpy = '\0';
 		*rez = ft_strjoinnl(*rez, buf);
 		if (frst)
 			free(rezcpy);
 		else
 			frst++;
 		free(buf);
+		if (cpy)
+		{
+			*size = ft_strlen(*rez) - 1;
+			return (0);
+		}
 	}
-	if (gnl <= 0 && !cpy)
-		return (1);
-	else
-	{
-		rezcpy = *rez;
-		*cpy = '\0';
-		*rez = ft_strjoinnl(*rez, buf);
-		*size = ft_strlen(*rez) - 1;
-		if (frst)
-			free(rezcpy);
-		free(buf);
-		return (0);
-	}
+	return (1);
 }
 
 int				special_arg(t_asmcont *c, int dst, char **str, int fd)
@@ -70,16 +64,20 @@ int				special_arg(t_asmcont *c, int dst, char **str, int fd)
 		i++;
 	*str += i;
 	g_column += i;
-	if ((**str != '"' || !(cpy = ft_strchr(*str + 1, QUOTE_CHAR)))
-		&& (**str == '"' && multy_line_arg(fd, str, &size)))
+	if (**str != '"' || (!(cpy = ft_strchr(*str + 1, QUOTE_CHAR))
+		 && multy_line_arg(fd, str, &size)))
 		return (NONE_QUOTE_ERROR);
 	else if (**str == '"' && cpy)
 		size = cpy - *str - 1;
 	if (!(rez = ft_strnew(size)))
 		return (MALLOC_ERROR);
 	ft_memcpy(rez, *str + 1, size);
+	
 	g_column = size + (ft_strstr(*str, "\n") ? -(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
-	*str += size + 1 + !ft_strstr(*str, "\n");
+	if (ft_strchr(*str, '\n'))
+		ft_strdel(str);
+	else
+		*str += size + 1 + !ft_strstr(*str, "\n");
 	if (dst)
 		return (ft_strlen(c->comment = rez) > COMMENT_LENGTH ? TOO_LONG_COMMENT_ERROR : 2);
 	return (ft_strlen(c->champ_name = rez) > PROG_NAME_LENGTH ? TOO_LONG_NAME_ERROR : 2);
@@ -128,7 +126,7 @@ static int		cor_scan(t_asmcont *cont, char *str, int fd)
 		if (!*str || *str == COMMENT_CHAR || *str == ALT_COMMENT_CHAR)
 			break ;
 		rez = cor_scan_word(cont, &str, fd);
-		if (!*str || rez < 0)
+		if (!str || !*str || rez < 0)
 			break ;
 		if (move == str)
 			str++;
