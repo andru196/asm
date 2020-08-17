@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:41:54 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 19:59:48 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/16 14:57:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void ft_no_world(void)
 */
 void	ft_wipe_champs(t_champ *ptr)
 {
-	DEBfunc()
+	// DEBfunc()
 	// DEBmesst("Функция по сути плейсхолдер. Проеряй, что аллочится под элементы чемпиона.")
 
 	int				i;
@@ -39,7 +39,7 @@ void	ft_wipe_champs(t_champ *ptr)
 	i = 0;
 	while (i < MAX_PLAYERS)
 	{
-		DEBit(&ptr[i])
+		// DEBit(&ptr[i])
 		if (ptr[i].body)
 			free(ptr[i].body);
 		// if (ptr[i].desc)
