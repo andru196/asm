@@ -6,7 +6,7 @@
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/15 09:47:32 by mschimme         ###   ########.fr        #
+#    Updated: 2020/08/16 15:01:22 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -249,10 +249,10 @@ IFLAGS		+=	$(foreach d, $(INC_DIR), -I$d)
 all: $(NAME)
 
 $(NAME): MAKEDIR $(OBJECTS)
-	ar rc $@ $(OBJECTS)
+	@ar rc $@ $(OBJECTS)
 
 MAKEDIR:
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
 	$(CC) $(CFLAGS) -o $@ $< -c $(IFLAGS)
