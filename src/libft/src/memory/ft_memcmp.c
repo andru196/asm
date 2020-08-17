@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 22:16:11 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/04 09:25:56 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/17 22:53:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int					ft_memcmp(CV *s1, CV *s2, size_t n)
 	const size_t	*sub_s1;
 	const size_t	*sub_s2;
 
-	if (0 == n || ((const char *)s1 == '\0' && (const char *)s2 == '\0'))
+	if (0 == n || ((const char *)s1 == NULL && (const char *)s2 == NULL))
 		return (0);
 	if (n < sizeof(size_t))
 		return (ft_btbcmp(s1, s2, n));
