@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/26 22:57:56 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/17 22:39:12 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 //# include  "ft_printf.h"
 # include "sfalif_libft.h"
 # include "libft.h"
+# include "cli_helper.h"
 
 # include "corewar_error.h"
 
@@ -28,12 +29,16 @@
 
 # define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
 # define MAX_WORD_LEN	64
+# define SOURCE_UPEXTENSION ".S"
+
+#define QUOTE_CHAR				'"'
 
 typedef struct s_row				t_row;
 typedef struct s_command			t_command;
 typedef struct s_label				t_label;
 typedef struct s_cmnd_label_link	t_cmnd_label_link;
 typedef struct s_asmcont			t_asmcont;
+typedef enum e_args    				t_args;
 
 struct					s_row
 {
@@ -41,6 +46,17 @@ struct					s_row
 	t_command		*cmd;
 	char			arg_num;
 };
+
+
+enum                    e_args
+{
+    fl_nono = 0,
+    fl_stdout = 1,
+    fl_strict = 2,
+	fl_sum = 4
+};
+
+int						g_flag;
 
 struct					s_command
 {
@@ -97,5 +113,6 @@ void				skip_space(char **str);
 int					asm_translate(t_asmcont *cont, char *file_name, int flag);
 void				prepare_arg(char *word, long long *arg);
 void				ast_strrtrim(char *word);
+//long long			ft_maxint(unsigned char bytes, int unsig);
 
 #endif

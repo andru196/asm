@@ -4,18 +4,29 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-	
 		{
-			"name": "(gdb) Launch",
+			"name": "t_atoll",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/src/corewar/t_atoil",
+			"args": [],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "asm Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/asm",
-			"args": ["champs/maxidef.s"],
+			"args": ["./42_corewar_checker/champs/asm/leeloo.s"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "gdb",
+			"MIMode": "lldb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",

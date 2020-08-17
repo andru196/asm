@@ -1,0 +1,84 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    cwr_mker                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
+#    Updated: 2020/08/14 22:54:20 by mschimme         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME	=	corewar
+CC		=	gcc
+FLAGS	=	-Wall -Wextra -g
+DIR_LIB	=	./src/libft
+
+#**********************				PATHS:			***************************#
+VPATH	:=	./src/corewar/src: \
+			./src/corewar/src/errors: \
+			./src/corewar/src/prep_rout: \
+			./src/corewar/src/serv:
+
+#**********************				src:			***************************#
+SOURCE	+=	corewar.c
+#**********************			src/errors:			***************************#
+SOURCE	+=	err_champ.c \
+			err_champ_content.c \
+			err_champ_content_2.c \
+			err_champ_mgr.c \
+			err_f_n.c \
+			err_fdump.c \
+			err_gen.c
+#**********************			src/prep_rout:		***************************#
+SOURCE	+=	check_id.c \
+			check_input.c \
+			manage_champ.c \
+			parse_champ.c \
+			parse_fdump.c \
+			parse_n_flag.c \
+			prep_battle.c \
+			read_champ_file.c \
+			read_params.c
+#**********************			src/serv:			***************************#
+SOURCE	+=	_del_carry.c \
+			_del_error.c \
+			add_cyclist.c \
+			cyc_cycsol_cmp.c \
+			is_digits.c \
+			manage_world.c \
+			proxies.c
+
+OBJ_DIR		:=	./obj_cwr
+OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))
+
+INC_DIR	:=	./src/corewar/includes $(DIR_LIB)/includes
+IFLAGS	+=	$(foreach d, $(INC_DIR), -I$d)
+
+.PHONY: all clean fclean re MAKEDIR LIB
+
+all: $(NAME)
+
+$(NAME): LIB MAKEDIR $(OBJECTS)
+	@$(CC) $(FLAGS) -L$(DIR_LIB) -lft $(OBJECTS) -o $(NAME)
+
+LIB:
+	@$(MAKE) -C $(DIR_LIB)
+
+MAKEDIR:
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o:%.c
+	@$(CC) $(FLAGS) $(IFLAGS) -o $@ -c $<
+
+clean:
+	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(DIR_LIB) clean
+	
+
+fclean: clean
+	@rm -rf $(NAME)
+	@$(MAKE) -C $(DIR_LIB) fclean
+
+re: fclean all

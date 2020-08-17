@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+         #
+#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2020/06/28 14:43:44 by andru196         ###   ########.fr        #
+#    Updated: 2020/08/16 14:48:22 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS_ASM		=	asm_cor_init.c \
 					cor_label_check.c \
 					init_struct.c \
 					read_cor_file.c
+
 SRCS			=	$(addprefix $(DIR_ASM), $(SRCS_ASM)) \
 					src/op.c
 OBJ				=	$(patsubst %.c, %.o, $(SRCS))

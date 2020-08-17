@@ -7,3 +7,8 @@
 result
 asm
 *.log
+./test
+.vscode/launch.json
+.vscode
+corewar
+./t_*

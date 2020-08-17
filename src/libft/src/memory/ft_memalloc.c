@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 16:16:06 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/06 20:43:02 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/04 09:27:16 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		*ft_memalloc(size_t size)
 {
 	void *pocket;
 
-	if (!(pocket = malloc(size)))
+	if (!(pocket = (void *)malloc(size)))
 		return (NULL);
 	ft_bzero(pocket, size);
 	return (pocket);

@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 22:52:48 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/07/20 22:54:26 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/10 23:53:52 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,3 @@ char    *ft_strreplacelast(char const *str, char *orig, char *sub)
     ft_strcat(rez[0] + len[1], rez[2] + len[0]);
     return (rez[1]);
 }
-
-/*
-int main()
-{
-    ft_printf("%s\n", ft_strreplace("one one one!", "one", "four"));
-    ft_printf("%s\n", ft_strreplace("two, two two!", "one", "four"));
-    ft_printf("%s\n", ft_strreplace("one two three!", "one", "four"));
-    ft_putendl("");
-    ft_printf("%s\n", ft_strreplacefirst("one one one!", "one", "four"));
-    ft_printf("%s\n", ft_strreplacefirst("two, two two!", "one", "four"));
-    ft_printf("%s\n", ft_strreplacefirst("one two three!", "one", "four"));
-    ft_putendl("");
-    ft_printf("%s\n", ft_strreplacelast("one one one!", "one", "four"));
-    ft_printf("%s\n", ft_strreplacelast("two, two two!", "one", "four"));
-    ft_printf("%s\n", ft_strreplacelast("one two three!", "one", "four"));
-}
-*/

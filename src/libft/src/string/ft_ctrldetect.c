@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ctrldetect.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru196 <andru196@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 11:51:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/06/28 14:16:54 by andru196         ###   ########.fr       */
+/*   Updated: 2020/08/04 10:33:28 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	detect if at least 1 byte of (x) is a member of set 0..128 (excluding 
 **	borders) is also a member of set m..n, where m is in 0..127, and
 **	n is in 0..128. Why limitations? Cuz 7th bit of the lesser byte of
-**	filtration resualt is a detector bit: if x really belongs to m..n set, 
+**	filtration result is a detector bit: if x really belongs to m..n set, 
 **	given operations will return 128, otherwise - 0.
 **	If given set steps by its borders beyond value of 128, each byte of machine
 **	word will overflow during the operations thus 7th bit will turn to 0.

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fn_args.c                                          :+:      :+:    :+:   */
+/*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/20 21:33:49 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/17 22:19:38 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ t_args_rez *new_arguments_cont()
 ** Добавить аргумент к ранее сформированному контейнеру
 */
 
-int		add_arg(t_args_rez *args, char isflag, char *names, char *desc)
+t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 {
 	t_arg	*rez;
 	t_arg	*tmp;
 
 	rez = new_arg(isflag);
 	if (!rez)
-		return (-1);
+		return (rez);
 	rez->description = desc;
 	rez->names = names;
 	if (isflag)
@@ -73,7 +73,7 @@ int		add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 			tmp = tmp->next;
 		tmp->next = rez;
 	}
-	return (0);
+	return (rez);
 }
 
 t_arg	*find_word(t_args_rez *args, char *word)
@@ -109,7 +109,6 @@ t_arg	*find_word(t_args_rez *args, char *word)
 void	args_anal(char **args, int argc, t_args_rez *ret)
 {
 	int		i;
-	char	**words;
 	t_arg	*arg;
 
 	i = 0;
@@ -117,7 +116,7 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	{
 		if (!(arg = find_word(ret, args[i])))
 		{
-			ft_lstadd(&ret->not_expected, ft_lstnew(args[i], ft_strlen(args[i])));
+			ft_lstadd(&ret->not_expected, ft_lstnew(args[i], ft_strlen(args[i]) + 1));
 			continue;
 		}
 		if (arg->isflag)
@@ -132,36 +131,6 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	}
 }
 
-static void del_lst(void *content, size_t content_size)
-{
-	ft_memdel(&content);
-}
-
-void free_args_rez(t_args_rez **args)
-{
-    t_arg *tmp;
-
-	if (!args || !(*args))
-		return ;
-    while ((*args)->flags)
-    {
-        tmp = (*args)->flags->next;
-        free((*args)->flags);
-        (*args)->flags = tmp;
-    }
-	while ((*args)->args)
-    {
-        tmp = (*args)->args->next;
-		if ((*args)->args->value)
-			free((*args)->args->value);
-        free((*args)->args);
-        (*args)->args = tmp;
-    }
-	if ((*args)->not_expected)
-		ft_lstdel(&(*args)->not_expected, *del_lst);
-	free(*args);
-	*args = NULL;
-}
 
 /*
 int main (int argc, char **argv)
