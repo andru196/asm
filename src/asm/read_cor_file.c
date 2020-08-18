@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 02:08:41 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 22:56:21 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int				multy_line_arg(int fd, char **rez, size_t *size)
 		if ((cpy = ft_strchr(buf, QUOTE_CHAR)))
 			*cpy = '\0';
 		*rez = ft_strjoinnl(*rez, buf);
-		if (frst)
+		if (frst || frst++)
 			free(rezcpy);
-		else
-			frst++;
 		free(buf);
 		if (cpy)
 		{
@@ -49,6 +47,7 @@ int				multy_line_arg(int fd, char **rez, size_t *size)
 			return (0);
 		}
 	}
+	ft_strdel(rez);
 	return (1);
 }
 
