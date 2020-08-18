@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:17:18 by andru196          #+#    #+#             */
-/*   Updated: 2020/07/26 23:15:49 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 23:50:29 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,41 @@ int			label_check(t_asmcont *c, char *word, int len)
 		if (!new_label(c, word))
 			return (MALLOC_ERROR);
 	return (1);
+}
+
+/*
+** Проверяет, что лейб состоит из нужных символов и не вылазит за границы массива
+*/
+
+int					arg_label_check(char *wrd)
+{
+	int i;
+
+	i = 0;
+	while (*wrd && *wrd != SEPARATOR_CHAR)
+	{
+		if (!ft_charinstr(LABEL_CHARS, *wrd++))
+			return (0);
+		i++;
+	}
+	return (i && i <= MAX_WORD_LEN);
+}
+
+t_cmnd_label_link	*add_label_arg(t_asmcont *c, char *wrd, int arg_n)
+{
+	int					i;
+	char				wrd_cpy[MAX_WORD_LEN + 1];
+	t_cmnd_label_link	*rez;
+
+	ft_bzero(wrd_cpy, MAX_WORD_LEN + 1);
+	i = 0;
+	while (*wrd && *wrd != SEPARATOR_CHAR)
+		wrd_cpy[i++] = *wrd++;
+	rez = c->conn_list;
+	if (!rez)
+		return (c->conn_list = new_connect(c, arg_n, wrd_cpy));
+	else
+		while (rez->next)
+			rez = rez->next;
+	return (rez->next = new_connect(c, arg_n, wrd_cpy));
 }

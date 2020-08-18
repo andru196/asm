@@ -6,81 +6,11 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 23:05:22 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 23:29:29 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-char			*ft_strjoinnl(char *s1, char *s2)
-{
-	char	*rez;
-	char	*cpy;
-
-	cpy = ft_strjoin(s1, "\n");
-	rez = ft_strjoin(cpy, s2);
-	free(cpy);
-	return (rez);
-}
-
-int				multy_line_arg(int fd, char **rez, size_t *size)
-{
-	char	*buf;
-	char	*cpy;
-	char	*rezcpy;
-	int		gnl;
-	int		frst;
-
-	frst = 0;
-	while ((gnl = get_next_line(fd, &buf)) > 0 && ++g_row)
-	{
-		rezcpy = *rez;
-		if ((cpy = ft_strchr(buf, QUOTE_CHAR)))
-			*cpy = '\0';
-		*rez = ft_strjoinnl(*rez, buf);
-		if (frst || frst++)
-			free(rezcpy);
-		free(buf);
-		if (cpy)
-		{
-			*size = ft_strlen(*rez) - 1;
-			return (0);
-		}
-	}
-	ft_strdel(rez);
-	return (1);
-}
-
-int				special_arg(t_asmcont *c, int dst, char **str, int fd)
-{
-	int		i;
-	char	*cpy;
-	char	*rez;
-	size_t	size;
-
-	i = 0;
-	while ((*str)[i] == ' ' || (*str)[i] == '\t')
-		i++;
-	*str += i;
-	g_column += i;
-	if (**str != '"' || (!(cpy = ft_strchr(*str + 1, QUOTE_CHAR))
-		 && multy_line_arg(fd, str, &size)))
-		return (NONE_QUOTE_ERROR);
-	else if (**str == '"' && cpy)
-		size = cpy - *str - 1;
-	if (!(rez = ft_strnew(size)))
-		return (MALLOC_ERROR);
-	ft_memcpy(rez, *str + 1, size);
-	
-	g_column = size + (ft_strstr(*str, "\n") ? -(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
-	if (ft_strchr(*str, '\n'))
-		ft_strdel(str);
-	else
-		*str += size + 1 + !ft_strstr(*str, "\n");
-	if (dst)
-		return (ft_strlen(c->comment = rez) > COMMENT_LENGTH ? TOO_LONG_COMMENT_ERROR : 2);
-	return (ft_strlen(c->champ_name = rez) > PROG_NAME_LENGTH ? TOO_LONG_NAME_ERROR : 2);
-}
 
 static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 {
@@ -101,10 +31,8 @@ static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 	else if (!cont->champ_name || !cont->comment)
 		return (cont->champ_name ? NONE_COMMENT_ERROR : NONE_PROG_NAME_ERROR);
 	else if (*(*str - 1) == LABEL_CHAR)
-	{
 		if ((rez = label_check(cont, word, len)) > 0)
 			g_column += len;
-	}
 	if (!rez)
 		rez = command_check(cont, word, str, len);
 	if (!rez)
