@@ -21,12 +21,12 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/asm",
-			"args": ["42_corewar_checker/champs/asm/ultima.s"],
+			"args": ["./42_corewar_checker/champs/asm/Survivor.s"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cor_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 02:08:41 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 22:18:28 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,13 +166,18 @@ void			free_asm_data(t_asmcont *c)
 	void *tmp;
 	void *pre;
 
-	if (c->champ_name)
-		free(c->champ_name);
-	c->champ_name = NULL;
-	if (c->comment)
-	free(c->comment);
-	c->comment = NULL;
-	free(c->command_list);
+	ft_memdel((void **)&c->champ_name);
+	ft_memdel((void **)&c->comment);
+	ft_memdel((void **)&c->command_list);
+	tmp = c->conn_list;
+	pre = tmp;
+	while (tmp)
+	{
+		tmp = ((t_cmnd_label_link *)tmp)->next;
+		free(pre);
+		pre = tmp;
+	}
+	c->conn_list = NULL;
 	tmp = c->label_list;
 	pre = tmp;
 	while (tmp)

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2020/08/18 01:34:17 by sfalia-f         ###   ########.fr       */
+=======
+/*   Updated: 2020/08/18 01:07:14 by tanya            ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +87,6 @@ int			fuck_connections(t_asmcont *c)
 			tmp->command->arg[tmp->arg_num] += (tmp->command + i++)->size;
 		while (tmp->label->dst - i < tmp->command)
 			tmp->command->arg[tmp->arg_num] -= (tmp->command + --i)->size;
-		free(tmp);
 		pre = pre->next;
 	}
 	return (0);
