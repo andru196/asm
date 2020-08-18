@@ -5,11 +5,9 @@
 *.cor
 *.s
 result
-asm
 *.log
 ./test
-.vscode/launch.json
-.vscode
 corewar
 ./t_*
 .leaks
+.vscode
