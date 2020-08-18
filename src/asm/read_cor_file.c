@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 22:58:19 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/18 23:05:22 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ static int		cor_read(int fd, t_asmcont *cont)
 		{
 			while (*(buf + g_column) && ft_isascii(*(buf + g_column)))
 				g_column++;
+			ft_strdel(&buf);
 			rez = BAD_SYMBOL_ERROR;
 			break ;
 		}
