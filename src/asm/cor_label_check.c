@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cor_label_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:17:18 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/18 23:50:29 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:46:10 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	check_chars(char *word)
+static int			check_chars(char *word)
 {
 	while (*word)
 		if (!ft_charinstr(LABEL_CHARS, *word++))
@@ -20,7 +20,7 @@ static int	check_chars(char *word)
 	return (1);
 }
 
-static char	find_label(t_asmcont *c, char *word)
+static char			find_label(t_asmcont *c, char *word)
 {
 	t_label	*tmp;
 
@@ -38,7 +38,7 @@ static char	find_label(t_asmcont *c, char *word)
 	return (1);
 }
 
-int			label_check(t_asmcont *c, char *word, int len)
+int					label_check(t_asmcont *c, char *word, int len)
 {
 	if (len > MAX_WORD_LEN)
 		return (LABEL_SIZE_ERROR);

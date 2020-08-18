@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skips.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:57:03 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:02:26 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:34:00 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		skip_first_part(char **word)
 		(*word)++;
 }
 
-char	skip_num(char **wrd, long long num)
+char		skip_num(char **wrd, long long num)
 {
 	long long	pow;
 	long long	tmp;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 00:45:42 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:57:21 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_error()
+void	print_error(void)
 {
 	char	*err[2];
 
@@ -68,12 +68,9 @@ char		*what_flag(int *flag, int argc, char **argv)
 	args_anal(argv, argc, cont);
 	if (cont->not_expected)
 		rez = ft_strdup(cont->not_expected->content);
-	if (flgs[0])
-		*flag |= flgs[0]->hasvalue ? fl_stdout : 0;
-	if (flgs[1])
-		*flag |= flgs[1]->hasvalue ? fl_strict : 0;
-	if (flgs[2])
-		*flag |= flgs[2]->hasvalue ? fl_sum : 0;
+	*flag |= flgs[0] && flgs[0]->hasvalue ? fl_stdout : 0;
+	*flag |= flgs[1] && flgs[1]->hasvalue ? fl_strict : 0;
+	*flag |= flgs[2] && flgs[2]->hasvalue ? fl_sum : 0;
 	free_args_rez(&cont);
 	cpy = rez;
 	rez = ft_strtrim(rez);
@@ -98,7 +95,7 @@ int		main(int argc, char **argv)
 		else if (!(*flag_mode & fl_stdout))
 		{
 			cpy = ft_strreplacelast(path, SOURCE_EXTENSION, ASM_OUT_EXTENSION);
-			ft_printf("Writing output program to %s successful\n", cpy 
+			ft_printf("Writing output program to %s successful\n", cpy
 				? cpy : "!malloc error!");
 			if (cpy)
 				free(cpy);

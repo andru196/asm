@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:33:47 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/18 23:43:16 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:29:37 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
 
-extern t_op op_tab[OP_TAB_SIZE];
+extern t_op	op_tab[OP_TAB_SIZE];
 
-int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
+int			args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
 	char		flag;
 
 	flag = *word == DIRECT_CHAR ? T_DIR : T_IND;
 	if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num]
-        & flag))
-		return (-1); //соответствие типа
+		& flag))
+		return (-1);
 	rez = 0;
 	if (*(word + (flag == T_DIR)) == LABEL_CHAR)
 	{
-		if (!arg_label_check(word + 1 + (flag == T_DIR)))//DIRECT_CHAR)))
+		if (!arg_label_check(word + 1 + (flag == T_DIR)))
 			return (-1);
 		add_label_arg(cont, word + 1 + (flag == T_DIR), arg_num);
 		cont->command_list[com_pos].is_lbl[arg_num] = 1;
@@ -36,7 +35,7 @@ int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	{
 		rez = ft_atoix(word + (flag == T_DIR));
 		if ((!str_num_eq(rez, word + (flag == T_DIR)) && (g_flag & fl_strict))
-        || (!(g_flag & fl_strict) && !ft_isnumber(word + (flag == T_DIR))))
+		|| (!(g_flag & fl_strict) && !ft_isnumber(word + (flag == T_DIR))))
 			return (-1);
 	}
 	cont->command_list[com_pos].arg[arg_num] += rez;
@@ -44,7 +43,7 @@ int					args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	return (0);
 }
 
-static int			check_regnumber(int regs[REG_NUMBER][2], int number)
+static int	check_regnumber(int regs[REG_NUMBER][2], int number)
 {
 	int			i;
 	static char	flag = 0;
@@ -67,8 +66,10 @@ static int			check_regnumber(int regs[REG_NUMBER][2], int number)
 	}
 	return (0);
 }
-
-int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
+//Error (line 78): line has 100 characters
+//Error (line 88): line has 88 characters
+//Error (line 89): line has 84 characters
+int			args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
 	const char	sep[2] = {SEPARATOR_CHAR, '\0'};
@@ -76,8 +77,8 @@ int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 
 	rez = 0;
 	if ((arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
-		&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR) || (word[ft_strlen(word) - 1] == SEPARATOR_CHAR
-		&& arg_num + 1 == op_tab[cont->command_list[com_pos].cmnd_num].args_num))
+	&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR) || (word[ft_strlen(word) - 1] == SEPARATOR_CHAR
+	&& arg_num + 1 == op_tab[cont->command_list[com_pos].cmnd_num].args_num))
 		return (-1);
 	if (ft_strendwith(word, (char *)sep))
 		word[ft_strlen(word) - 1] = '\0';
@@ -86,14 +87,13 @@ int					args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	if (*word == 'r')
 	{
 		if (!check_regnumber(registers, rez = ft_atoi(++word)) || rez < 0
-			|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0')
-            || !(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
-			return (-1); //соответствие типа
+	|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0')
+	|| !(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
+			return (-1);
 		cont->command_list[com_pos].arg_size[arg_num] = T_REG;
 		cont->command_list[com_pos].arg[arg_num] += rez;
 	}
-	else
-		if (args_ind_dir(cont, com_pos, arg_num, word) < 0)
-			return (-1); //соответствие типа
+	else if (args_ind_dir(cont, com_pos, arg_num, word) < 0)
+		return (-1);
 	return (0);
 }

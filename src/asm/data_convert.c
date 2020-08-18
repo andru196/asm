@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:10:25 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:15:13 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:41:02 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void		write_n_num(char **dst, long long n, unsigned char bytes)
 	}
 }
 
-static ULL	set_number(long long n, unsigned char size, unsigned char t_dir_size)
+static ULL	set_number(long long n, unsigned char size,
+									unsigned char t_dir_size)
 {
 	long long	tmp;
 
@@ -74,7 +75,6 @@ static ULL	set_number(long long n, unsigned char size, unsigned char t_dir_size)
 		|| (n > 0 && tmp <= n))
 		tmp = n & (tmp + ((tmp + 1) == -n));
 	return (tmp);
-	
 }
 
 int			write_cmnd(char *dst, t_command *cmd)
@@ -90,13 +90,15 @@ int			write_cmnd(char *dst, t_command *cmd)
 	i = -1;
 	while (++i < op_tab[cmd->cmnd_num].args_num)
 	{
-		num = set_number(cmd->arg[i], cmd->arg_size[i], op_tab[cmd->cmnd_num].t_dir_size);
+		num = set_number(cmd->arg[i], cmd->arg_size[i],
+							op_tab[cmd->cmnd_num].t_dir_size);
 		if (cmd->arg_size[i] == T_REG)
 			write_n_num(&dst, num, SIZE_REG);
 		else if (cmd->arg_size[i] == T_IND)
 			write_n_num(&dst, num, IND_SIZE);
 		else if (cmd->arg_size[i] == T_DIR)
-			write_n_num(&dst, num, DIR_SIZE / (1 + op_tab[cmd->cmnd_num].t_dir_size));
+			write_n_num(&dst, num, DIR_SIZE /
+							(1 + op_tab[cmd->cmnd_num].t_dir_size));
 	}
 	return (dst - cpy);
 }
@@ -114,7 +116,8 @@ int			transofrm_data(t_asmcont *cont, char *rez, unsigned size)
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
 	rez += i;
-	write_n_num(&rez, size - PROG_NAME_LENGTH - COMMENT_LENGTH - 16, sizeof(int));
+	write_n_num(&rez, size - PROG_NAME_LENGTH -
+							COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
 	if (cont->comment)

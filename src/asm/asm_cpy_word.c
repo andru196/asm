@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   asm_cpy_word.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/18 23:58:19 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:50:24 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 extern t_op op_tab[OP_TAB_SIZE];
-
 
 int			word_iscomand(char *word, int len)
 {
@@ -35,7 +34,7 @@ int			cpy_word(char *dst, char *src)
 	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t'
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
 		&& *src != SEPARATOR_CHAR && *src && *src != QUOTE_CHAR
-		&& !((*src == DIRECT_CHAR || *src == '+' || *src == '-') 
+		&& !((*src == DIRECT_CHAR || *src == '+' || *src == '-')
 		&& word_iscomand(dst - len, len)))
 	{
 		len++;
@@ -66,9 +65,9 @@ int			cpy_arg_word(char *dst, char *src)
 
 void		prepare_arg(char *word, long long *arg)
 {
-	long long rez;
-	long long tmp;
-	char *cpy;
+	long long	rez;
+	long long	tmp;
+	char		*cpy;
 
 	skip_first_part(&word);
 	while (*word && *word != '+' && *word != '-')

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cor_command_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/18 23:50:54 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:47:54 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op op_tab[OP_TAB_SIZE];
+extern t_op		op_tab[OP_TAB_SIZE];
 
-static int			is_finished(char *word)
+static int		is_finished(char *word)
 {
-	char allowed[] = {' ', '\t'};
+	const char allowed[] = {' ', '\t'};
 
 	while (*word)
 	{
@@ -29,7 +29,7 @@ static int			is_finished(char *word)
 	return (1);
 }
 
-int					command_check(t_asmcont *cont, char *word, char **str, int len)
+int				command_check(t_asmcont *cont, char *word, char **str, int len)
 {
 	int		i;
 	int		new_c;
@@ -57,7 +57,7 @@ int					command_check(t_asmcont *cont, char *word, char **str, int len)
 	return (!cpy_arg_word(word, *str) || is_finished(word) ? 1 : ARGS_ERROR);
 }
 
-int					digits_count(char *str)
+int				digits_count(char *str)
 {
 	int i;
 

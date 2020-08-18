@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_size.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:04:18 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:04:49 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/19 00:37:48 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ size_t		data_size(t_asmcont *c)
 	while (++i < c->cmd_count)
 	{
 		j = -1;
-		cmd_size = 1 + (size_t)op_tab[c->command_list[i].cmnd_num].args_types_code;
+		cmd_size = 1 +
+		(size_t)op_tab[c->command_list[i].cmnd_num].args_types_code;
 		while (++j < op_tab[c->command_list[i].cmnd_num].args_num)
-		{
 			if (c->command_list[i].arg_size[j] == T_REG)
 				cmd_size += SIZE_REG;
 			else if (c->command_list[i].arg_size[j] == T_IND)
 				cmd_size += IND_SIZE;
 			else
-				cmd_size += DIR_SIZE / (op_tab[c->command_list[i].cmnd_num].t_dir_size + 1);
-		}
+				cmd_size += DIR_SIZE /
+				(op_tab[c->command_list[i].cmnd_num].t_dir_size + 1);
 		c->command_list[i].size = cmd_size;
 		rez += cmd_size;
 	}
