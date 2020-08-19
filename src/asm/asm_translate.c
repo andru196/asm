@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/19 00:50:52 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/20 00:57:27 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int			zapisat(char *rez, char *file_name, int flag, size_t size)
+static void	print_stdout(char *rez, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if ((i % 16) == 0)
+			ft_printf("\n%.7x ", i);
+		if ((i % 2) == 1 && ((i + 1) % 16))
+			ft_printf("%.2hhx ", rez[i]);
+		else
+			ft_printf("%.2hhx", rez[i]);
+		i++;
+	}
+	ft_putendl("");
+}
+
+static int	zapisat(char *rez, char *file_name, int flag, size_t size)
 {
 	char	*file_name_cor;
 	int		fd;
@@ -24,7 +42,7 @@ int			zapisat(char *rez, char *file_name, int flag, size_t size)
 	if (!(flag & fl_stdout))
 		write(fd, rez, size);
 	else
-		write(1, rez, size);
+		print_stdout(rez, size);
 	close(fd);
 	return (0);
 }
