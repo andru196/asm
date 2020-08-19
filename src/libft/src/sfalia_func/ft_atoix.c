@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:33:08 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/15 02:30:46 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:44:57 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int		is_dec(char *str)
 		if (!(*str == '8' || *str == '9'))
 			return (1);
 	return (0);
-
 }
+
 long long int	ft_atoix(char *str)
 {
 	long long	rez;

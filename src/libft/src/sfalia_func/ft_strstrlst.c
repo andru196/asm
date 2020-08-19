@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstrlst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 22:47:16 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/11 23:10:14 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:41:30 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 char	*ft_strstrlst(const char *haystack, const char *needle)
 {
-	char    	*cpy;
-    int         len_h;
-    int         len_n;
+	char		*cpy;
+	int			len_h;
+	int			len_n;
 
 	if (*needle == '\0')
 		return ((char*)haystack);
-    if (!haystack || !needle || !*haystack)
-        return (NULL);
-    len_h = ft_strlen(haystack);
-    len_n = ft_strlen(needle);
-    if (len_h < len_n)
-        return (NULL);
-    cpy = (char *)haystack + len_h - len_n;
+	if (!haystack || !needle || !*haystack)
+		return (NULL);
+	len_h = ft_strlen(haystack);
+	len_n = ft_strlen(needle);
+	if (len_h < len_n)
+		return (NULL);
+	cpy = (char *)haystack + len_h - len_n;
 	while (cpy != haystack)
 		if (!ft_strncmp(needle, (const char *)cpy--, len_n))
-            return (++cpy);
+			return (++cpy);
 	return (NULL);
 }

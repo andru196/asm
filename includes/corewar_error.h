@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_error.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 21:58:36 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/19 23:58:28 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:22:39 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@
 # define LNERR						LONG_NAME_ERROR
 # define LCERR						LONG_COMMENT_ERROR
 # define BSERR						BAD_SYMBOL_ERROR
-
-
-
-
-
 
 # define MALLOC_ERROR_STR			"Memory allocation failed"
 # define SOURCE_EXTENSION_ERROR_STR	"Source file extension wrong"

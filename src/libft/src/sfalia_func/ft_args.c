@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/18 00:21:57 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:50:22 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cli_helper.h"
 
-t_arg	*new_arg(char isflag)
+t_arg		*new_arg(char isflag)
 {
 	t_arg *rez;
 
@@ -32,7 +32,7 @@ t_arg	*new_arg(char isflag)
 ** Сформировать контейнер для работы с аргументами
 */
 
-t_args_rez *new_arguments_cont()
+t_args_rez	*new_arguments_cont(void)
 {
 	t_args_rez *rez;
 
@@ -75,12 +75,12 @@ t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 	return (rez);
 }
 
-t_arg	*find_word(t_args_rez *args, char *word)
+t_arg		*find_word(t_args_rez *args, char *word)
 {
 	t_arg	*tmp;
 	char	*point;
 	int		len;
-	int 	flag;
+	int		flag;
 
 	len = ft_strlen(word);
 	tmp = args->args ? args->args : args->flags;
@@ -105,7 +105,7 @@ t_arg	*find_word(t_args_rez *args, char *word)
 ** Провести анализ поданных в программу аргументов
 */
 
-void	args_anal(char **args, int argc, t_args_rez *ret)
+void		args_anal(char **args, int argc, t_args_rez *ret)
 {
 	int		i;
 	t_arg	*arg;
@@ -115,7 +115,8 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	{
 		if (!(arg = find_word(ret, args[i])))
 		{
-			ft_lstadd(&ret->not_expected, ft_lstnew(args[i], ft_strlen(args[i]) + 1));
+			ft_lstadd(&ret->not_expected, ft_lstnew(args[i],
+											ft_strlen(args[i]) + 1));
 			continue;
 		}
 		if (arg->isflag)
@@ -129,40 +130,3 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 		}
 	}
 }
-
-
-/*
-int main (int argc, char **argv)
-{
-	t_args_rez *exampl = new_arguments_cont();
-	add_arg(exampl, 0, "-t -type -туйп", "type desc");
-	add_arg(exampl, 1, "-typoe_govno", "lox");
-	add_arg(exampl, 1, "-govno -ggg", "blya");
-	add_arg(exampl, 1, "-bbb", "");
-	args_anal(argv, argc, exampl);
-	t_arg *tmp;
-	tmp = exampl->args;
-	printf("args\n");
-	while(tmp)
-	{
-		printf("arg:%s, value:%s\n", tmp->names, tmp->value);
-		tmp = tmp->next;
-	}
-	tmp = exampl->flags;
-	printf("flags\n");
-	while(tmp)
-	{
-		printf("flag:%s, hasvalues:%d\n", tmp->names, tmp->hasvalue);
-		tmp = tmp->next;
-	}
-	t_list *temp = exampl->not_expected;
-	printf("not_expected\n");
-	while(temp)
-	{
-		printf("conteent:%s\n", temp->content);
-		temp = temp->next;
-	}
-	//printf("%s, %s, %d \n", exampl->not_expected->content, exampl->args->value, exampl->flags->value);
-	free_args_rez(&exampl);
-}
-*/

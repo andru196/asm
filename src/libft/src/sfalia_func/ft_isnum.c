@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 21:59:37 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/17 22:05:04 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:44:16 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isnumber(char *str)
+int			ft_isnumber(char *str)
 {
 	char	*cpy;
 	int		f;
@@ -40,7 +40,7 @@ int	ft_isnumber(char *str)
 
 long long	ft_maxint(unsigned char bytes, int unsig)
 {
-	long long   rez;
+	long long	rez;
 
 	unsig = !unsig;
 	rez = 0;
