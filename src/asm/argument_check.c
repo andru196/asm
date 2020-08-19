@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:33:47 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:29:37 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/19 23:43:41 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op	op_tab[OP_TAB_SIZE];
+extern t_op	g_otab[OP_TAB_SIZE];
 
 int			args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
@@ -20,7 +20,7 @@ int			args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	char		flag;
 
 	flag = *word == DIRECT_CHAR ? T_DIR : T_IND;
-	if (!(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num]
+	if (!(g_otab[cont->command_list[com_pos].cmnd_num].args_types[arg_num]
 		& flag))
 		return (-1);
 	rez = 0;
@@ -66,9 +66,24 @@ static int	check_regnumber(int regs[REG_NUMBER][2], int number)
 	}
 	return (0);
 }
-//Error (line 78): line has 100 characters
-//Error (line 88): line has 88 characters
-//Error (line 89): line has 84 characters
+
+static int	is_norm_pos(t_asmcont *cont, int com_pos, int arg_num, char *word)
+{
+	return (arg_num + 1 < g_otab[cont->command_list[com_pos].cmnd_num].args_num
+	&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR)
+	|| (word[ft_strlen(word) - 1] == SEPARATOR_CHAR
+	&& arg_num + 1 == g_otab[cont->command_list[com_pos].cmnd_num].args_num);
+}
+
+static int	is_finished_and_type(t_asmcont *cont, int com_pos,
+											int arg_num, char *word)
+{
+	return ((word[digits_count(word)] != SEPARATOR_CHAR
+	&& word[digits_count(word)] != '\0')
+	|| !(g_otab[cont->command_list[com_pos].cmnd_num].args_types[arg_num]
+	& T_REG));
+}
+
 int			args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 {
 	long long	rez;
@@ -76,9 +91,7 @@ int			args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	static int	registers[REG_NUMBER][2];
 
 	rez = 0;
-	if ((arg_num + 1 < op_tab[cont->command_list[com_pos].cmnd_num].args_num
-	&& word[ft_strlen(word) - 1] != SEPARATOR_CHAR) || (word[ft_strlen(word) - 1] == SEPARATOR_CHAR
-	&& arg_num + 1 == op_tab[cont->command_list[com_pos].cmnd_num].args_num))
+	if (is_norm_pos(cont, com_pos, arg_num, word))
 		return (-1);
 	if (ft_strendwith(word, (char *)sep))
 		word[ft_strlen(word) - 1] = '\0';
@@ -87,8 +100,7 @@ int			args_check(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	if (*word == 'r')
 	{
 		if (!check_regnumber(registers, rez = ft_atoi(++word)) || rez < 0
-	|| (word[digits_count(word)] != SEPARATOR_CHAR && word[digits_count(word)] != '\0')
-	|| !(op_tab[cont->command_list[com_pos].cmnd_num].args_types[arg_num] & T_REG))
+	|| is_finished_and_type(cont, com_pos, arg_num, word))
 			return (-1);
 		cont->command_list[com_pos].arg_size[arg_num] = T_REG;
 		cont->command_list[com_pos].arg[arg_num] += rez;

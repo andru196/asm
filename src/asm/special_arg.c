@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   special_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:22:34 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:33:20 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/20 00:06:26 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int			multy_line_arg(int fd, char **rez, size_t *size)
 		rezcpy = *rez;
 		if ((cpy = ft_strchr(buf, QUOTE_CHAR)))
 			*cpy = '\0';
-		*rez = ft_strjoinnl(*rez, buf);
+		if (!(*rez = ft_strjoinnl(*rez, buf)))
+			return (1);
 		if (frst || frst++)
 			free(rezcpy);
 		free(buf);
@@ -51,37 +52,31 @@ static int			multy_line_arg(int fd, char **rez, size_t *size)
 	return (1);
 }
 
-// Error (line 54): function special_arg has 27 lines
-// Error (line 81): line has 92 characters
-// Error (line 82): line has 90 characters
-
 int					special_arg(t_asmcont *c, int dst, char **str, int fd)
 {
-	int		i;
-	char	*cpy;
-	char	*rez;
-	size_t	size;
+	char	*cpy[2];
+	size_t	size[2];
 
-	i = 0;
-	while ((*str)[i] == ' ' || (*str)[i] == '\t')
-		i++;
-	*str += i;
-	g_column += i;
-	if (**str != '"' || (!(cpy = ft_strchr(*str + 1, QUOTE_CHAR))
-		&& multy_line_arg(fd, str, &size)))
+	size[0] = 0;
+	while ((*str)[size[0]] == ' ' || (*str)[size[0]] == '\t')
+		size[0]++;
+	*str += size[0];
+	g_column += size[0];
+	if (**str != '"' || (!(cpy[0] = ft_strchr(*str + 1, QUOTE_CHAR))
+		&& multy_line_arg(fd, str, &(size[1]))))
 		return (NONE_QUOTE_ERROR);
-	else if (**str == '"' && cpy)
-		size = cpy - *str - 1;
-	if (!(rez = ft_strnew(size)))
+	else if (**str == '"' && cpy[0])
+		size[1] = cpy[0] - *str - 1;
+	if (!(cpy[1] = ft_strnew(size[1])))
 		return (MALLOC_ERROR);
-	ft_memcpy(rez, *str + 1, size);
-	g_column = size + (ft_strstr(*str, "\n") ?
+	ft_memcpy(cpy[1], *str + 1, size[1]);
+	g_column = size[1] + (ft_strstr(*str, "\n") ?
 		-(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
 	if (ft_strchr(*str, '\n'))
 		ft_strdel(str);
 	else
-		*str += size + 1 + !ft_strstr(*str, "\n");
+		*str += size[1] + 1 + !ft_strstr(*str, "\n");
 	if (dst)
-		return (ft_strlen(c->comment = rez) > COMMENT_LENGTH ? TOO_LONG_COMMENT_ERROR : 2);
-	return (ft_strlen(c->champ_name = rez) > PROG_NAME_LENGTH ? TOO_LONG_NAME_ERROR : 2);
+		return (ft_strlen(c->comment = cpy[1]) > COMMENT_LENGTH ? LCERR : 2);
+	return (ft_strlen(c->champ_name = cpy[1]) > PROG_NAME_LENGTH ? LNERR : 2);
 }

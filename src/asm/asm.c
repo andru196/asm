@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:57:21 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/19 23:52:41 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,29 @@ void	print_error(void)
 
 	err[0] = g_error_code ? "COMPILATION ERROR %d\n%s\nLine: %d, %d\n"
 	: "COMPILATION ERROR %d\n";
-	if (g_error_code == MALLOC_ERROR)
-		err[1] = MALLOC_ERROR_STR;
-	if (g_error_code == SOURCE_EXTENSION_ERROR)
-		err[1] = SOURCE_EXTENSION_ERROR_STR;
-	if (g_error_code == OPEN_FILE_ERROR)
-		err[1] = OPEN_FILE_ERROR_STR;
-	if (g_error_code == LABEL_SIZE_ERROR)
-		err[1] = LABEL_SIZE_ERROR_STR;
-	if (g_error_code == LABEL_FORBIDDEN_CHAR)
-		err[1] = LABEL_FORBIDDEN_CHAR_STR;
-	if (g_error_code == COMMAND_NOT_FOUND)
-		err[1] = COMMAND_NOT_FOUND_STR;
-	if (g_error_code == ARGS_ERROR)
-		err[1] = ARGS_ERROR_STR;
-	if (g_error_code == PROGRAM_SIZE_LIMIT)
-		err[1] = PROGRAM_SIZE_LIMIT_STR;
-	if (g_error_code == CONNECTION_ERROR)
-		err[1] = CONNECTION_ERROR_STR;
-	if (g_error_code == NONE_QUOTE_ERROR)
-		err[1] = NONE_QUOTE_STR;
-	if (NONE_PROG_NAME_ERROR == g_error_code)
-		err[1] = NONE_PROG_NAME_STR;
-	if (NONE_COMMENT_ERROR == g_error_code)
-		err[1] = NONE_COMMENT_STR;
-	if (TOO_LONG_NAME_ERROR == g_error_code)
-		err[1] = TOO_LONG_NAME_STR;
-	if (TOO_LONG_COMMENT_ERROR == g_error_code)
-		err[1] = TOO_LONG_COMMENT_STR;
-	if (g_error_code == BAD_SYMBOL_ERROR)
-		err[1] = BAD_SYMBOL_STR;
+	err[1] = g_error_code == MALLOC_ERROR ? MALLOC_ERROR_STR : NULL;
+	err[1] = g_error_code == SOURCE_EXTENSION_ERROR ?
+		SOURCE_EXTENSION_ERROR_STR : NULL;
+	err[1] = g_error_code == OPEN_FILE_ERROR ? OPEN_FILE_ERROR_STR : NULL;
+	err[1] = g_error_code == LABEL_SIZE_ERROR ? LABEL_SIZE_ERROR_STR : NULL;
+	err[1] = g_error_code == LABEL_FORBIDDEN_CHAR ? LABEL_FORBIDDEN_CHAR_STR
+		: NULL;
+	err[1] = g_error_code == COMMAND_NOT_FOUND ? COMMAND_NOT_FOUND_STR : NULL;
+	err[1] = g_error_code == ARGS_ERROR ? ARGS_ERROR_STR : NULL;
+	err[1] = g_error_code == PROGRAM_SIZE_LIMIT ? PROGRAM_SIZE_LIMIT_STR
+		: NULL;
+	err[1] = g_error_code == CONNECTION_ERROR ? CONNECTION_ERROR_STR : NULL;
+	err[1] = g_error_code == NONE_QUOTE_ERROR ? NONE_QUOTE_STR : NULL;
+	err[1] = NONE_PROG_NAME_ERROR == g_error_code ? NONE_PROG_NAME_STR : NULL;
+	err[1] = NONE_COMMENT_ERROR == g_error_code ? NONE_COMMENT_STR : NULL;
+	err[1] = LONG_NAME_ERROR == g_error_code ? TOO_LONG_NAME_STR : NULL;
+	err[1] = LONG_COMMENT_ERROR == g_error_code ? TOO_LONG_COMMENT_STR
+		: NULL;
+	err[1] = g_error_code == BAD_SYMBOL_ERROR ? BAD_SYMBOL_STR : NULL;
 	ft_printf_fd(2, err[0], g_error_code, err[1], g_row, g_column + 1);
 }
 
-char		*what_flag(int *flag, int argc, char **argv)
+char	*what_flag(int *flag, int argc, char **argv)
 {
 	t_args_rez	*cont;
 	char		*rez;
@@ -87,8 +76,8 @@ int		main(int argc, char **argv)
 	g_error_code = 0;
 	g_column = 0;
 	g_row = 0;
-	path = what_flag((flag_mode = &g_flag), argc, argv);
-	if (path)
+	if ((path = what_flag(
+		(flag_mode = &g_flag), argc, argv)))
 	{
 		if ((g_error_code = cor_open_file(path, *flag_mode)))
 			print_error();

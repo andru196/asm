@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cor_command_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/19 00:47:54 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/19 23:29:40 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op		op_tab[OP_TAB_SIZE];
+extern t_op		g_otab[OP_TAB_SIZE];
 
 static int		is_finished(char *word)
 {
@@ -37,15 +37,15 @@ int				command_check(t_asmcont *cont, char *word, char **str, int len)
 	int		shift;
 
 	i = 0;
-	while (i < OP_TAB_SIZE && op_tab[i].name && ft_strcmp(op_tab[i].name, word))
+	while (i < OP_TAB_SIZE && g_otab[i].name && ft_strcmp(g_otab[i].name, word))
 		i++;
-	if (i == OP_TAB_SIZE || !op_tab[i].name)
+	if (i == OP_TAB_SIZE || !g_otab[i].name)
 		return (COMMAND_NOT_FOUND);
 	g_column += len;
 	new_c = new_command(cont, i);
 	j = 0;
 	ft_bzero(word, ft_strlen(word));
-	while (j < op_tab[i].args_num)
+	while (j < g_otab[i].args_num)
 	{
 		skip_space(str);
 		shift = cpy_arg_word(word, *str) + ft_strendwith(word, ",");

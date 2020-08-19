@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   data_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:10:25 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:41:02 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/19 23:44:37 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op op_tab[OP_TAB_SIZE];
+extern t_op g_otab[OP_TAB_SIZE];
 
 char		type_code(t_command *cmd)
 {
@@ -85,20 +85,20 @@ int			write_cmnd(char *dst, t_command *cmd)
 
 	cpy = dst;
 	*dst++ = cmd->cmnd_num + 1;
-	if (op_tab[cmd->cmnd_num].args_types_code)
+	if (g_otab[cmd->cmnd_num].args_types_code)
 		*dst++ = type_code(cmd);
 	i = -1;
-	while (++i < op_tab[cmd->cmnd_num].args_num)
+	while (++i < g_otab[cmd->cmnd_num].args_num)
 	{
 		num = set_number(cmd->arg[i], cmd->arg_size[i],
-							op_tab[cmd->cmnd_num].t_dir_size);
+							g_otab[cmd->cmnd_num].t_dir_size);
 		if (cmd->arg_size[i] == T_REG)
 			write_n_num(&dst, num, SIZE_REG);
 		else if (cmd->arg_size[i] == T_IND)
 			write_n_num(&dst, num, IND_SIZE);
 		else if (cmd->arg_size[i] == T_DIR)
 			write_n_num(&dst, num, DIR_SIZE /
-							(1 + op_tab[cmd->cmnd_num].t_dir_size));
+							(1 + g_otab[cmd->cmnd_num].t_dir_size));
 	}
 	return (dst - cpy);
 }

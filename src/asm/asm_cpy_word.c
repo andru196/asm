@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   asm_cpy_word.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/19 00:50:24 by tanya            ###   ########.fr       */
+/*   Updated: 2020/08/20 00:08:11 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op op_tab[OP_TAB_SIZE];
+extern t_op g_otab[OP_TAB_SIZE];
 
 int			word_iscomand(char *word, int len)
 {
@@ -21,7 +21,7 @@ int			word_iscomand(char *word, int len)
 	i = -1;
 	if (len)
 		while (++i < OP_TAB_SIZE - 1)
-			if (!ft_strncmp(op_tab[i].name, word, ft_strlen(op_tab[i].name)))
+			if (!ft_strncmp(g_otab[i].name, word, ft_strlen(g_otab[i].name)))
 				return (1);
 	return (0);
 }
