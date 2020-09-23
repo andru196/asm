@@ -6,12 +6,11 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 12:43:28 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/15 09:18:16 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 08:18:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 inline static char		*ft_itoafill(char *endofpocket, long long int n)
 {
@@ -25,20 +24,22 @@ inline static char		*ft_itoafill(char *endofpocket, long long int n)
 	return (endofpocket);
 }
 
-// inline static int		ft_numvol(long long int n)
-// {
-// 	size_t				v;
-
-// 	v = 0;
-// 	if (0 == n)
-// 		v++;
-// 	while (0 != n)
-// 	{
-// 		v++;
-// 		n /= 10;
-// 	}
-// 	return (v);
-// }
+/*
+**		Some old function version.
+**	inline static int		ft_numvol(long long int n)
+**	{
+**		size_t				v;
+**		v = 0;
+**		if (0 == n)
+**			v++;
+**		while (0 != n)
+**		{
+**			v++;
+**			n /= 10;
+**		}
+**		return (v);
+**	}
+*/
 
 inline static int		ft_numvol(long long int n)
 {
@@ -50,20 +51,16 @@ inline static int		ft_numvol(long long int n)
 	return (v);
 }
 
-
 char					*ft_itoal(long long int num)
 {
 	size_t				volume;
 	char				*pocket;
 
 	volume = ft_numvol(num);
-	
 	if (!(pocket = ft_strnew(volume)))
 		return (NULL);
 	if (num == INT64_MIN)
 	{
-		// *(pocket + 1) = '9';
-		// *pocket = '-';
 		*(short int *)pocket = (short int)('-' + ('9' << 8));
 		num = 223372036854775808LL;
 	}

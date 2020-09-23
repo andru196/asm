@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 18:44:31 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/06 20:46:03 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:13:36 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 ** Thus we can get extra small_strings call.
 */
 
-static void		small_strings(UC *csub_dst, UCC *csub_src, size_t *n)
+static void		small_strings(unsigned char *csub_dst, \
+									unsigned const char *csub_src, size_t *n)
 {
 	while (*n != 0)
 	{
@@ -44,7 +45,7 @@ void			*ft_memcpy(void *dst, const void *src, size_t n)
 		return (dst);
 	if (n < sizeof(long))
 	{
-		small_strings((UC *)dst, (UCC *)src, &n);
+		small_strings((unsigned char *)dst, (unsigned const char *)src, &n);
 		return (dst);
 	}
 	else
@@ -57,7 +58,8 @@ void			*ft_memcpy(void *dst, const void *src, size_t n)
 			*lsub_dst++ = *lsub_src++;
 		}
 		bogey = n % sizeof(long);
-		small_strings((UC *)lsub_dst, (UCC *)lsub_src, &bogey);
+		small_strings((unsigned char *)lsub_dst, \
+									(unsigned const char *)lsub_src, &bogey);
 		return (dst);
 	}
 }

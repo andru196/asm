@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 23:14:20 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:01:36 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #define _WRONG_SEPARATOR(x, y) (*(_SEP_TYPE *)(x + y) != 0)
 #define CH_NAME curr->name
 
+/*
+*	ПРОВЕРИЛ.
+*/
 inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 {
 	ssize_t			res;
@@ -26,7 +29,7 @@ inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 		ft_err_invalid_filesize(error, "Magic number field");
 		return ;
 	}
-	if (magic != (_SW_ENDIAN(COREWAR_EXEC_MAGIC)))
+	if (magic != (int)(_SW_ENDIAN(COREWAR_EXEC_MAGIC)))
 		ft_err_invalid_cwr_magic(error, NULL);
 	if ((res = read(fd, curr->name, (PROG_NAME_LENGTH + REG_SIZE))) != \
 												PROG_NAME_LENGTH + REG_SIZE)
@@ -41,7 +44,7 @@ inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 }
 
 /*
-*Проверил.
+*	ПРОВЕРИЛ.
 */
 inline static void	ft_get_champ_size(int fd, \
 										t_vasa **champ_error, t_champ *champ)
@@ -60,7 +63,7 @@ inline static void	ft_get_champ_size(int fd, \
 }
 
 /*
-*Проверил.
+*	ПРОВЕРИЛ.
 */
 inline static void	ft_get_champ_comment(int fd, \
 										t_vasa **champ_error, t_champ *champ)
@@ -80,7 +83,7 @@ inline static void	ft_get_champ_comment(int fd, \
 }
 
 /*
-**	//? В процессе проверки.
+*	ПРОВЕРИЛ.
 */
 inline static void	 ft_get_champ_body(int fd, \
 										t_vasa **champ_error, t_champ *champ)
@@ -91,7 +94,7 @@ inline static void	 ft_get_champ_body(int fd, \
 	buff = 0;
 	if (!(champ->body = (uint8_t *)ft_memalloc((size_t)(champ->size))))
 	{
-		ft_err_malloc(__ERR(champ->body), __func__);
+		ft_err_malloc("champ->body", __func__);
 		ft_lstdel((t_list **)champ_error, &ft_del);
 		ft_manage_world(NULL);
 		return ;
@@ -107,13 +110,11 @@ inline static void	 ft_get_champ_body(int fd, \
 
 
 /*
+*	ПРОВЕРИЛ.
 **	int *offset из корня функций можно использовать для подсчета успешно загру-
 **	женных чемпионов. Тогда эта функция должна возвращать int 1, если мы 
 **	успешно прочитали чемпиона и int 0, если облажалилсь. *offset += 
 **	ft_read_champ_file как итератор на выходе из этой функции.
-*/
-/*
-**	//? В процессе проверки.
 */
 int					ft_read_champ_file(char *file, int id, t_champ *champ, \
 															t_vasa **last_error)
@@ -137,5 +138,6 @@ int					ft_read_champ_file(char *file, int id, t_champ *champ, \
 	if (ch_errors)
 		return(ft_ch_err_manager(file, &ch_errors, last_error, &champ[pos]));
 	pos++;
+	close(fd);
 	return (1);
 }

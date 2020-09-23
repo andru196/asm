@@ -6,13 +6,14 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 22:29:47 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/09 00:03:49 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 08:13:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static UCC		*ft_memrcrawl(UCC *str, UCC logos, size_t n)
+static unsigned const char	*ft_memrcrawl(unsigned const char *str, \
+											unsigned const char logos, size_t n)
 {
 	while (n != 0)
 	{
@@ -26,9 +27,10 @@ static UCC		*ft_memrcrawl(UCC *str, UCC logos, size_t n)
 	return (NULL);
 }
 
-static UCC		*ft_wordwalker(UCC *str, UCC logos)
+static unsigned const char	*ft_wordwalker(unsigned const char *str, \
+												unsigned const char logos)
 {
-	size_t		counter;
+	size_t					counter;
 
 	counter = 8;
 	while (counter != 0)
@@ -41,17 +43,17 @@ static UCC		*ft_wordwalker(UCC *str, UCC logos)
 	return (NULL);
 }
 
-static void		*ft_memrchr(CV *s, int c, size_t n)
+static void					*ft_memrchr(const void *s, int c, size_t n)
 {
-	size_t		*monad;
-	UC			logos;
-	size_t		mask;
+	size_t					*monad;
+	unsigned char			logos;
+	size_t					mask;
 
 	logos = c;
-	if (*(UCC *)s == logos)
+	if (*(unsigned const char *)s == logos)
 		return ((void *)s);
 	if (n < (sizeof(size_t)))
-		return ((void *)ft_memrcrawl(s, (UCC)logos, n));
+		return ((void *)ft_memrcrawl(s, (unsigned const char)logos, n));
 	else
 	{
 		monad = (size_t *)(s - sizeof(size_t) + 1);
@@ -59,21 +61,21 @@ static void		*ft_memrchr(CV *s, int c, size_t n)
 		{
 			mask = *monad ^ (~0UL / 255 * logos);
 			if ((mask - MHZERO) & ~mask & DHZERO)
-				return ((void *)ft_wordwalker(s, (UCC)logos));
+				return ((void *)ft_wordwalker(s, (unsigned const char)logos));
 			monad--;
 			n -= 8;
 			s -= 8;
 		}
-		return ((void *)ft_memrcrawl(s, (UCC)logos, n));
+		return ((void *)ft_memrcrawl(s, (unsigned const char)logos, n));
 	}
 }
 
-char			*ft_strrchr(const char *s, int c)
+char						*ft_strrchr(const char *s, int c)
 {
-	size_t		length;
-	CV			*bogey;
+	size_t					length;
+	const void				*bogey;
 
 	length = ft_strlen(s);
-	bogey = (CV *)s + length;
+	bogey = (const void *)s + length;
 	return (ft_memrchr(bogey, c, length));
 }

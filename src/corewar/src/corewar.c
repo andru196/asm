@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/02 12:41:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:56:48 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,21 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 		i++;
 	}
 	if (i != MAX_PLAYERS)
-		ft_prox_err_malloc(__ERR(CH_NAME), __func__);
+		ft_prox_err_malloc("CH_NAME", __func__);
+	nexus->cyc.cyc_to_die = CYCLE_TO_DIE;
 	return (0);
 }
 
 /*
 **	We don't use ft_init_champs_r return status as we either exit with malloc
 **	error, or continue the run.
+!	cyc_to_die выставлен в CYCLE_TO_DIE, т.к. нулевой цикл - тоже цикл.
 */
-inline static void		ft_init_world(t_world *nexus, int *champs)
+inline static void		ft_init_world(t_world *nexus)
 {
 	ft_bzero(nexus, sizeof(t_world));
 	ft_manage_world(nexus);
-	*champs = 0;
+	nexus->cyc.cyc_to_die = (size_t)CYCLE_TO_DIE - 1ULL;
 	ft_init_champs_r(nexus);
 }
 
@@ -56,16 +58,15 @@ inline static void		ft_init_world(t_world *nexus, int *champs)
 int						main(int argc, char **argv)
 {
 	t_world				nexus;
-	int					champs;
 	
-	ft_init_world(&nexus, &champs);
+	ft_init_world(&nexus);
 	nexus.progname = *argv;
 	argv++;
 	if (argc > 1)
 	{
-	//* Добавил...
-		ft_read_params(&argv, &nexus, &champs);
-		ft_prep_battle(&nexus, champs);
+		ft_read_params(&argv, &nexus);
+		ft_prep_battle(&nexus);
+		ft_exec_battle(&nexus);
 	}
 	else
 		ft_show_man();

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 20:41:50 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/06 20:46:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:35:37 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 ** in_small_string performes the task if len of main function is < 8.
 */
 
-static void		in_small_string(void *s, UC c, size_t *n)
+static void		in_small_string(void *s, unsigned char c, size_t *n)
 {
 	while (*n != 0)
 	{
-		*(UC *)s = c;
+		*(unsigned char *)s = c;
 		*n -= 1;
 		s++;
 	}
 }
 
-static void		*ft_memsync(void *s, UC c, size_t *n)
+static void		*ft_memsync(void *s, unsigned char c, size_t *n)
 {
 	while (((size_t)s & (sizeof(size_t) - 1)) != 0)
 	{
-		*(UC *)s = c;
+		*(unsigned char *)s = c;
 		*n -= 1;
 		s++;
 	}
@@ -43,9 +43,9 @@ void			*ft_memset(void *b, int c, size_t len)
 	size_t			*bogey;
 	size_t			num;
 	size_t			ver;
-	UC				symb;
+	unsigned char	symb;
 
-	symb = (UC)c;
+	symb = (unsigned char)c;
 	ver = sizeof(size_t);
 	num = c;
 	bogey = (size_t *)b;

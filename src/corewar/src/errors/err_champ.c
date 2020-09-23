@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 20:29:33 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/15 18:52:37 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:00:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_err_not_champ(t_vasa **head, void *object)
 
 	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(error), __func__);
+		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
 	}
 	current = *head;
@@ -49,7 +49,7 @@ void		ft_err_invalid_filename(t_vasa **head, void *object)
 
 	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(error), __func__);
+		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
 	}
 	current = *head;
@@ -75,7 +75,7 @@ void		ft_err_champ_limit(t_vasa **head, void *object)
 
 	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(error), __func__);
+		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
 	}
 	current = *head;

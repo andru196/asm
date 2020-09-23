@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 11:13:39 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/10 12:14:25 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 23:49:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int			main(int argc, char** argv)
 		return (0);
 	while ((gnl_res = get_next_line(fd, &ptr)))
 	{
-		// DEBintt(gnl_res)
-		// DEBintt(g_gnl_read) DEBend()
+		DEBintt(gnl_res)
+		DEBintt(g_gnl_read) DEBend()
 		print_res = ft_strlen(ptr);
-		// DEBend()
-		// DEBintt(print_res) DEBend()
+		DEBend()
+		DEBintt(print_res) DEBend()
 		free(ptr);
 		ptr = NULL;
 		if (g_gnl_read != print_res)

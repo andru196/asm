@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 16:35:39 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/15 18:04:36 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:22:17 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	The function recursively rotates t_list chain.
 **	Not recommended to be used on a long chain as it can overflow stack or
 **	slow down the programm.
-**	WARNING! UNSAFE FUNCTION! Function does not check if there is any t_list 
+**	WARNING! UNSAFE FUNCTION! Function does not check if there is any t_list
 **	chain (cuz it lower it's moderate prudctivity even more).
 **	HOW TO USE:
 **	*alst = ft_lstrot_rec(*alst, NULL);

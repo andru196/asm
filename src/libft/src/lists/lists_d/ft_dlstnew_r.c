@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:05:13 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/04 09:20:37 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:03:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ t_dlist		*ft_dlstnew_r(void const *content, size_t content_size)
 	t_dlist	*result;
 
 	if (!(result = (t_dlist *)ft_memalloc(sizeof(t_dlist))))
-		return ((void *)(size_t)ft_err_varoverflow(__ERR(total), __func__) - 1);
+		return ((void *)(size_t)ft_err_malloc("total", __func__) - 1);
 	result->content = (void *)content;
 	if (content)
 		result->content_size = content_size;
-	result->next = NULL;
-	result->prev = NULL;
 	return (result);
 }

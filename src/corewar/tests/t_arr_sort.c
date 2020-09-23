@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 13:16:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/02 10:31:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/23 22:35:13 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ft_populate_cycles(t_vasa **head, size_t amount)
 
 void		ft_check_output(t_world *nexus)
 {
-	t_vasa	*ptr = nexus->cyc.cyc_to_dunp;
+	t_vasa	*ptr = nexus->cyc.cyc_to_dump;
 	uint8_t	flag = 0;
 	
 	DEBmesst("Sorted elements:") DEBend()
@@ -56,7 +56,7 @@ void		ft_test_cyc_sol(void)
 	size_t	amount = 10;
 
 	ft_bzero(&nexus, sizeof(nexus));
-	ft_populate_cycles(&nexus.cyc.cyc_to_dunp, amount);
+	ft_populate_cycles(&nexus.cyc.cyc_to_dump, amount);
 	ft_prep_battle(&nexus, 5);
 	ft_check_output(&nexus);
 }

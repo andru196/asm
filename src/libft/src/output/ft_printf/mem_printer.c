@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem_printer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:45:34 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/02 22:55:40 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:41:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ inline static void		ft_print_hexes(size_t *ctr, size_t size, \
 	}
 }
 
-void					ft_printmem(const char *addr, size_t size, int fl, 
-																	int fd)
+void					ft_printmem(const char *addr, size_t size, int fl, \
+									int fd)
 {
 	size_t				ctr;
 	size_t				offset;

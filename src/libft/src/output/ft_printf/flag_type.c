@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   flag_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 22:14:47 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/30 00:26:10 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:40:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FPREC formword->precision
 
 uint8_t					ft_flag_type_dummy(t_format *formstat, \
 													t_fword *formword)

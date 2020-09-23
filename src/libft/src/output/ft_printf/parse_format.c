@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:43:21 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/07/02 22:36:03 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:37:21 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ uint8_t					ft_seach_anchors(t_format *formstat)
 
 	ptr = formstat->sight;
 	endptr = formstat->end;
-	braceptr = ft_memchr((CV *)ptr, '{', endptr - ptr);
-	pcsignptr = ft_memchr((CV *)ptr, '%', endptr - ptr);
+	braceptr = ft_memchr((const void *)ptr, '{', endptr - ptr);
+	pcsignptr = ft_memchr((const void *)ptr, '%', endptr - ptr);
 	if (braceptr && pcsignptr)
 	{
 		if (braceptr < pcsignptr)

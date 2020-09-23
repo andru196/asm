@@ -6,41 +6,39 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:44:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 23:22:27 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:19:40 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-** //? В процессе проверки.
+*	ПРОВЕРИЛ.
+!	Не трожь (*argv)++. Здесь все правильно (у нас char ***argv).
+// TODO:	Проверить ft_parse_champ.
+**	Flag '-g' is for future visualization.
 */
-uint8_t		ft_scan_lines(char ***argv, t_world *nexus, int *champ_count)
+uint8_t		ft_scan_lines(char ***argv, t_world *nexus)
 {
 	if (**argv)
 	{
 		if (!ft_strcmp(**argv, "-dump"))
-			return (ft_parse_fdump(argv, nexus, champ_count));
+			return (ft_parse_fdump(argv, nexus));
 		else if (!ft_strcmp(**argv, "-n"))
-				return (ft_parse_champ(argv, champ_count, ft_get_n_flag(argv, nexus), nexus));
-		else if (!ft_strcmp(**argv, "-g"))										// Убрать, визуализацию не делаем.
-			{
+				return (ft_parse_champ(argv, ft_get_n_flag(argv, nexus), nexus));
+		else if (!ft_strcmp(**argv, "-g"))
 				(*argv)++;
-				// ft_prep_visual(nexus);
-			}
 		else
-		{
-			return(ft_parse_champ(argv, champ_count, 0, nexus));
-		}
+			return(ft_parse_champ(argv, 0, nexus));
 	}
 	return (0);
 }
 
-void		ft_read_params(char ***argv, t_world *nexus, int *champ_count)
+void		ft_read_params(char ***argv, t_world *nexus)
 {
 	uint8_t	parse_stat;
 
-	parse_stat = ft_scan_lines(argv, nexus, champ_count);
-	if (ft_supervise_input(nexus, *champ_count))
+	parse_stat = ft_scan_lines(argv, nexus);
+	if (ft_supervise_input(nexus, nexus->champs))
 		ft_manage_world(NULL);
 }

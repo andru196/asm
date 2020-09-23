@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   type_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:34:56 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/30 22:26:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 01:15:07 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FPRECISION format->precision
+
+/*
+**	Forbidden defines:
+**	#define FPRECISION format->precision
+*/
 
 static t_extract_arg_rout		*ft_get_tip(uint8_t num)
 {
@@ -46,8 +50,8 @@ uint8_t							ft_place_string(t_format *formstat, \
 		return ((formstat->errflag = 1));
 	dims[0] = ft_strlen(extraction);
 	if (format->flags)
-		dims[0] = ((size_t)FPRECISION > dims[0]) * dims[0] + \
-						((size_t)FPRECISION <= dims[0]) * (size_t)FPRECISION;
+		dims[0] = ((size_t)format->precision > dims[0]) * dims[0] + \
+			((size_t)format->precision <= dims[0]) * (size_t)format->precision;
 	ft_shift_unicode(extraction, &dims[0]);
 	dims[1] = dims[0];
 	format->ftp_width(formstat, format, &dims[0], extraction);

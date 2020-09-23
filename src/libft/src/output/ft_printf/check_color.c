@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:41:45 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/07/02 22:27:15 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:05:40 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void				ft_place_color(t_format *formstat, const char *color, \
 	if (overflow < INT32_MIN || overflow > INT32_MAX)
 	{
 		formstat->errflag = 1;
-		ft_err_varoverflow(__ERR(overflow), __func__);
+		ft_err_varoverflow("overflow", __func__);
 		return ;
 	}
 	filling_mainbuf(color, (size_t)size, 0, formstat->fd);

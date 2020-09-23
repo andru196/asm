@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_vari_cont_chain.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:16:00 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/28 23:23:03 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:05:48 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static inline uint8_t	ft_check_first_exists(t_format *formstat, \
 		*flag = 1;
 		if (!(ptr = (t_varitype *)ft_memalloc(sizeof(t_varitype))))
 		{
-			ft_err_malloc(__ERR(ptr), __func__);
+			ft_err_malloc("ptr", __func__);
 			return ((formstat->errflag = 1));
 		}
 		ft_fill_in_dummy_cont(ptr, formstat->first, 1);

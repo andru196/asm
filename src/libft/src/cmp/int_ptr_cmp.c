@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:25:50 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/03 20:47:56 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:24:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int				ft_intp_left_grt_right(void *a, void *b)
 {
-	return (*(int *) a > *(int *)b);
+	return (*(int *)a > *(int *)b);
 }
 
 /*
@@ -27,5 +27,5 @@ int				ft_intp_left_grt_right(void *a, void *b)
 
 int				ft_intp_left_lsr_right(void *a, void *b)
 {
-	return (*(int *) a < *(int *)b);
+	return (*(int *)a < *(int *)b);
 }

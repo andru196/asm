@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:28:03 by mschimme          #+#    #+#             */
-/*   Updated: 2019/02/28 22:55:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:38:49 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char		*ft_strsub(char const *s, unsigned int start, size_t len)
 	if (!s || !(sub_s = ft_strnew(len)))
 		return (NULL);
 	s = s + start;
-	ft_memcpy((void *)sub_s, (CV *)s, len);
+	ft_memcpy((void *)sub_s, (const void *)s, len);
 	return (sub_s);
 }

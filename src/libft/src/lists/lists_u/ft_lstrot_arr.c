@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:40:20 by mschimme          #+#    #+#             */
-/*   Updated: 2020/06/30 17:49:03 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:23:02 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Sister function to ft_lstrot_rec. It allocates mamory though and uses
-**	arrays in order to rotate t_list chain. Def-ly uses less mamory than 
+**	arrays in order to rotate t_list chain. Def-ly uses less mamory than
 **	sister as the memory consumed only 1 stack-frame for both funtions
 **	+ 8 * amount of t_list chain elements bytes.
 **	SAFE FUNCTION.
@@ -62,9 +62,8 @@ uint8_t					ft_lstrot_arr(t_list **alst)
 		if (!(array = (t_list **)ft_memalloc((counter + 1) * sizeof(ptr))))
 			return (2);
 		*alst = ft_lstrot_swap(array, *alst, counter);
-		free (array);
+		free(array);
 		return (0);
 	}
 	return (1);
 }
-

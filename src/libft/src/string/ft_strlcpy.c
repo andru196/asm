@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 17:29:55 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/06 20:47:40 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:37:54 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t size)
 		return (srclen);
 	if (srclen <= size && srclen <= dstlen)
 	{
-		ft_memcpy((void *)dst, (CV *)src, srclen + 1);
+		ft_memcpy((void *)dst, (const void *)src, srclen + 1);
 		return (srclen);
 	}
-	ft_memcpy((void *)dst, (CV *)src, size - 1);
+	ft_memcpy((void *)dst, (const void *)src, size - 1);
 	*(dst + size - 1) = '\0';
 	return (srclen);
 }

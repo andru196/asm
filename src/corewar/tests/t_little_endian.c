@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   little_endian.c                                    :+:      :+:    :+:   */
+/*   t_little_endian.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 11:35:54 by mschimme          #+#    #+#             */
-/*   Updated: 2020/06/27 23:16:02 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/20 19:05:55 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,11 @@
 //   }
 //   puts("");
 // }
-int64_t	bytecode_to_int64(const uint8_t *bytecode, size_t size);
+RTP	bytecode_to_int64(const uint8_t *bytecode, size_t size);
 
-typedef enum
+RTP	bytecode_to_int32(const uint8_t *bytecode, size_t size)
 {
-	_false,
-	_true
-}	t_bool;
-
-int32_t	bytecode_to_int32(const uint8_t *bytecode, size_t size)
-{
-	int32_t	result;
+	RTP	result;
 	t_bool	sign;
 	int		i;
 
@@ -92,9 +86,9 @@ int32_t	bytecode_to_int32(const uint8_t *bytecode, size_t size)
 	return (result);
 }
 
-int64_t	bytecode_to_int64(const uint8_t *bytecode, size_t size)
+RTP	bytecode_to_int64(const uint8_t *bytecode, size_t size)
 {
-	int64_t	result;
+	RTP	result;
 	t_bool	sign;
 	int		j;
 	
@@ -130,18 +124,24 @@ int	main(void)
 	/*
 	** Этот кусок тестирует макрос с уже проверенной функцией флипа с дополнением
 	*/
-	ssize_t k,l; k = l = 0;
-	for (ssize_t i = 0xFFFFFFFFFFFFFFLL; i != 0; i--)
-	{
-		k = _SW_ENDIAN(i);
-		l = bytecode_to_int64((const uint8_t *)&i, REG_SIZE);
+	RTP k,l; k = l = 0;
+	uint8_t	test[4] = {0x81, 0, 0, 0};
+	k = ft_swap_endian((uint8_t)test[0], 2);
+	l = bytecode_to_int32(&test[0], 2);
+	DEBintt(k) DEBend()
+	DEBintt(l) DEBend()
+	
+	// for (int i = 0xFFFFFFFFLL; i != 0; i--)
+	// {
+	// 	k = ft_swap_endian(i,(uintptr_t)REG_SIZE);
+	// 	l = bytecode_to_int32((const uint8_t *)&i, REG_SIZE);
 		
-		if (k != l)
-		{
-			DEBlt(i) DEBlt(k) DEBlt(l) DEBend()
-			sleep(1);
-		}
-	}
+	// 	if (k != l)
+	// 	{
+	// 		DEBlt(i) DEBlt(k) DEBlt(l) DEBend()
+	// 		sleep(1);
+	// 	}
+	// }
 
 	
 // int x = 13;      // sign extend this b-bit number to r

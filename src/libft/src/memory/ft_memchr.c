@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 19:33:59 by mschimme          #+#    #+#             */
-/*   Updated: 2019/12/06 18:27:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:16:51 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 ** Based on ft_strlen method.
 */
 
-inline static CV	*ft_memsync_s(UCC *str, UCC logos, size_t *n)
+typedef unsigned const char	t_ucc;
+
+inline static const void	*ft_memsync_s(t_ucc *str, t_ucc logos, size_t *n)
 {
-	size_t			k;
-	size_t			dim;
+	size_t					k;
+	size_t					dim;
 
 	k = *n;
 	dim = sizeof(size_t) - 1;
@@ -34,7 +36,7 @@ inline static CV	*ft_memsync_s(UCC *str, UCC logos, size_t *n)
 	return (NULL);
 }
 
-static void			*ft_memcrawl_s(UCC *str, UCC logos, size_t n)
+static void					*ft_memcrawl_s(t_ucc *str, t_ucc logos, size_t n)
 {
 	while (n != 0)
 	{
@@ -46,16 +48,16 @@ static void			*ft_memcrawl_s(UCC *str, UCC logos, size_t n)
 	return (NULL);
 }
 
-void				*ft_memchr(const void *s, int c, size_t n)
+void						*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			mask;
-	size_t			k;
-	const size_t	*bogey;
+	size_t					mask;
+	size_t					k;
+	const size_t			*bogey;
 
 	if (!n)
 		return (NULL);
 	c &= 0xFF;
-	if (*(char *)(s = (ft_memsync_s((UCC *)s, (UCC)c, &n))) == (char)c && n)
+	if (*(char *)(s = (ft_memsync_s((t_ucc *)s, (t_ucc)c, &n))) == (char)c && n)
 		return ((void *)s);
 	bogey = (size_t *)s;
 	k = n / sizeof(size_t);
@@ -63,8 +65,8 @@ void				*ft_memchr(const void *s, int c, size_t n)
 	{
 		mask = *bogey ^ (~0UL / 255UL * (unsigned long)c);
 		if ((mask - MHZERO) & ~mask & DHZERO)
-			return (ft_memcrawl_s((UCC *)bogey, (UCC)c, n));
+			return (ft_memcrawl_s((t_ucc *)bogey, (t_ucc)c, n));
 		bogey++;
 	}
-	return (ft_memcrawl_s((UCC *)bogey, (UCC)c, n % sizeof(size_t)));
+	return (ft_memcrawl_s((t_ucc *)bogey, (t_ucc)c, n % sizeof(size_t)));
 }

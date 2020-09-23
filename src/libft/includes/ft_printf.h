@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 17:50:08 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/29 14:06:32 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:18:49 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdarg.h>
 # include "ft_printfdefines.h"
 # include "ft_printfuncs.h"
-# define __ERR(x) #x
+
+/*
+**	Forbidden macro turning varname to string. FUCK.
+**	# define  #x
+*/
 
 #endif

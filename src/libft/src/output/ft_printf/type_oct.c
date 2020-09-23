@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   type_oct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 09:59:01 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/29 00:32:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:32:17 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FSPACE_PLUS format->space_plus
-#define FPRECISION format->precision
-#define OCTRES buffs[0]
-#define OCTSET buffs[1]
+
+/*
+**	Forbidden defines:
+**	#define FSPACE_PLUS format->space_plus
+**	#define FPRECISION format->precision
+**	#define OCTRES buffs[0]
+**	#define OCTSET buffs[1]
+*/
 
 /*
 **	In any "place" function (dir type_funcs) there is the same sort of array,
@@ -77,16 +81,17 @@ uint8_t							ft_place_octal(t_format *formstat, \
 		format->filler = ' ';
 	else
 		format->precision = 1;
-	if (!(OCTRES = (char *)ft_memalloc(24UL + FPRECISION + (FSPACE_PLUS > 0))))
+	if (!(buffs[0] = (char *)ft_memalloc(24UL + format->precision + \
+											(format->space_plus > 0))))
 		return (1);
-	OCTSET = "01234567";
+	buffs[1] = "01234567";
 	bogey = ft_get_tip(format->length_t)(format, &buffs[0]);
-	ft_memset((void *)(OCTRES + 1), '0', bogey + 1 - (OCTRES + 1));
+	ft_memset((void *)(buffs[0] + 1), '0', bogey + 1 - (buffs[0] + 1));
 	if (format->hash && !(*bogey))
-		OCTRES[0] = '0';
-	bogey = OCTRES + 1;
-	ft_printout(formstat, format, OCTRES, bogey);
-	free(OCTRES);
+		buffs[0][0] = '0';
+	bogey = buffs[0] + 1;
+	ft_printout(formstat, format, buffs[0], bogey);
+	free(buffs[0]);
 	if (formstat->errflag)
 		return (1);
 	return (0);

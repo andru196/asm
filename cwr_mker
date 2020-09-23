@@ -6,7 +6,7 @@
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/14 22:54:20 by mschimme         ###   ########.fr        #
+#    Updated: 2020/09/23 12:53:47 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,57 @@ DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
 VPATH	:=	./src/corewar/src: \
+			./src/corewar/src/ch_carry: \
 			./src/corewar/src/errors: \
+			./src/corewar/src/exec: \
+			./src/corewar/src/little_endian: \
+			./src/corewar/src/op: \
 			./src/corewar/src/prep_rout: \
-			./src/corewar/src/serv:
+			./src/corewar/src/print_dump: \
+			./src/corewar/src/serv: \
+			./src/corewar/src/trees:
 
 #**********************				src:			***************************#
 SOURCE	+=	corewar.c
+#**********************			src/ch_carry:		***************************#
+SOURCE	+=	create_carry.c \
+			init_carries.c \
+			insert_carry.c
 #**********************			src/errors:			***************************#
 SOURCE	+=	err_champ.c \
 			err_champ_content.c \
 			err_champ_content_2.c \
 			err_champ_mgr.c \
+			err_comp_params.c \
 			err_f_n.c \
 			err_fdump.c \
 			err_gen.c
+#**********************			src/exec:			***************************#
+SOURCE	+=	exec_lobby.c \
+			the_cycle.c
+#**********************		src/little_endian:		***************************#
+SOURCE	+=	end_01_conv_1_4.c \
+			end_02_conv_2_8.c
+#**********************				src/op:			***************************#
+SOURCE	+=	00_op_new_op.c \
+			01_op_live.c \
+			02_op_ld.c \
+			03_op_st.c \
+			04_op_add.c \
+			05_op_sub.c \
+			06_op_and.c \
+			07_op_or.c \
+			08_op_xor.c \
+			09_op_zjmp.c \
+			10_op_ldi.c \
+			11_op_sti.c \
+			12_op_fork.c \
+			13_op_lld.c \
+			14_op_lldi.c \
+			15_op_lfork.c \
+			16_op_aff.c \
+			arena_get.c \
+			op_cont.c
 #**********************			src/prep_rout:		***************************#
 SOURCE	+=	check_id.c \
 			check_input.c \
@@ -48,7 +85,14 @@ SOURCE	+=	_del_carry.c \
 			cyc_cycsol_cmp.c \
 			is_digits.c \
 			manage_world.c \
-			proxies.c
+			proxies.c \
+			sort_champs.c
+#**********************			src/trees:			***************************#
+SOURCE	+=	dvasa_add.c \
+			dvasa_create.c \
+			dvasa_delete.c \
+			dvasa_pick.c \
+			manage_tree.c
 
 OBJ_DIR		:=	./obj_cwr
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))

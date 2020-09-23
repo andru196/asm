@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_int_arr.c                                   :+:      :+:    :+:   */
+/*   bubble_gen_arr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 20:12:15 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 00:21:47 by mschimme         ###   ########.fr       */
+/*   Created: 2020/08/22 15:19:18 by mschimme          #+#    #+#             */
+/*   Updated: 2020/09/14 00:19:20 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline static void		ft_swap(int *a, int *b)
+inline static void		ft_swap(void **a, void **b)
 {
-	int					pocket;
+	void					*pocket;
 
 	pocket = *a;
 	*a = *b;
 	*b = pocket;
 }
 
-inline static uint8_t	ft_bubblesorted(int *array, size_t size, \
+inline static uint8_t	ft_bubblesorted(void **array, size_t size, \
 															t_datacmp_rout *cmp)
 {
 	uint8_t				res;
@@ -31,7 +31,7 @@ inline static uint8_t	ft_bubblesorted(int *array, size_t size, \
 	bogey = 0;
 	while (bogey < size - 1)
 	{
-		if (cmp(&array[bogey], &array[bogey + 1]))
+		if (cmp(array[bogey], array[bogey + 1]))
 		{
 			res = 0;
 			ft_swap(&array[bogey], &array[bogey + 1]);
@@ -41,7 +41,7 @@ inline static uint8_t	ft_bubblesorted(int *array, size_t size, \
 	return (res);
 }
 
-void					ft_srt_bubble_intarr(int *array, size_t size, \
+void					ft_srt_bubble_genarr(void **array, size_t size, \
 															t_datacmp_rout *cmp)
 {
 	size_t				bogey;

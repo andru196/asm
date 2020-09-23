@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 21:04:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/01 16:15:36 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:21:00 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 **	as a NULL-terminator.
 */
 
-inline static void		ft_lineup(t_list **head, t_list **arr_ptr, size_t length)
+inline static void		ft_lineup(t_list **head, t_list **arr_ptr, \
+									size_t length)
 {
 	size_t				bogey;
 
 	bogey = 0;
-
 	*head = arr_ptr[bogey];
 	while (bogey < length)
 	{
@@ -37,6 +37,7 @@ inline static void		ft_lineup(t_list **head, t_list **arr_ptr, size_t length)
 inline static void		ft_swap(t_list **a, t_list **b)
 {
 	t_list				*pocket;
+
 	pocket = *a;
 	*a = *b;
 	*b = pocket;
@@ -78,4 +79,3 @@ void					ft_srt_listarr_bubble(t_list **head, t_list **arr_ptr, \
 		bogey++;
 	}
 }
-

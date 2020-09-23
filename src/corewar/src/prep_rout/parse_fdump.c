@@ -6,13 +6,16 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:37:07 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/02 10:29:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 11:55:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-#define _ENDS_WITH_COMA(x) *(x + ft_strlen(x) - 1) == ','
 
+/*
+**	Obsolete and forbidden defines:
+**	#define _ENDS_WITH_COMA(x) *(x + ft_strlen(x) - 1) == ','
+*/
 
 /*
 **	Я использую ft_lstadd для создания очередного сосуда (t_vasa), поскольку
@@ -20,7 +23,7 @@
 */
 
 /*
-* Проверил.
+*	ПРОВЕРИЛ.
 */
 inline static void	ft_add_step_container(t_vasa **chain_head)
 {
@@ -34,6 +37,7 @@ inline static void	ft_add_step_container(t_vasa **chain_head)
 		ft_manage_world(NULL);
 	}
 }
+
 /*
 ** //? Проверил. Не все ОК со вложенными функциями.
 */
@@ -45,7 +49,7 @@ inline static uint8_t	ft_register_fdump_param(char *argv, long long *value, t_va
 	if (ft_are_digits(argv))
 	{
 		*value = ft_atol_r(argv, &flag);
-		if (_INT_OVF(*value) || flag)
+		if (((int)(*value) != *value) || flag)
 		{
 			ft_err_fdump_inter(error_head, argv);
 			flag = 2;
@@ -70,7 +74,7 @@ inline static uint8_t	ft_register_fdump_param(char *argv, long long *value, t_va
 /*
 * Проверил.
 */
-uint8_t				ft_parse_fdump(char ***argv, t_world *nexus, int *champ_count)
+uint8_t				ft_parse_fdump(char ***argv, t_world *nexus)
 {
 	long long		cycle;
 	static size_t	counter;
@@ -82,20 +86,20 @@ uint8_t				ft_parse_fdump(char ***argv, t_world *nexus, int *champ_count)
 		++*argv;
 	if (!flag)
 	{
-		ft_add_step_container(&nexus->cyc.cyc_to_dunp);
-		nexus->cyc.cyc_to_dunp->gen.cyc_sol = (size_t)cycle;
-		nexus->cyc.cyc_to_dunp->content_size = ++counter;
+		ft_add_step_container(&nexus->cyc.cyc_to_dump);
+		nexus->cyc.cyc_to_dump->gen.cyc_sol = (size_t)cycle;
+		nexus->cyc.cyc_to_dump->content_size = ++counter;
 		nexus->flags |= 1;
-		return (ft_scan_lines(argv, nexus, champ_count));
+		return (ft_scan_lines(argv, nexus));
 	}
-	ft_scan_lines(argv, nexus, champ_count);
+	ft_scan_lines(argv, nexus);
 	return (flag);
 }
 
-/* 
+/*
 **	Старая версия. Предположительно хотел сделать гибкий парсер по примеру 
 **	ft_printf.
- */
+*/
 
 /*
 **	void			ft_parse_fdump(char ***argv, t_world *nexus)
@@ -108,12 +112,13 @@ uint8_t				ft_parse_fdump(char ***argv, t_world *nexus, int *champ_count)
 **		return (ft_parse_fdump(argv, nexus));
 **	else
 **		return (0);
-**}
+**	}
 */
 
 /*
 **	Старая недоделанная версия, которая не дает гибкий -dump.
 */
+
 /*
 **	void				ft_parse_fdump(char ***argv, t_world *nexus)
 **	{
@@ -122,15 +127,15 @@ uint8_t				ft_parse_fdump(char ***argv, t_world *nexus, int *champ_count)
 **
 **	while (ft_are_digits(*++*argv))
 **	{
-**		curr = nexus->cyc.cyc_to_dunp;
-**		ft_lstadd((t_list **)&nexus->cyc.cyc_to_dunp, ft_lstnew_r(NULL, 0));
-**		if (nexus->cyc.cyc_to_dunp == curr)
+**		curr = nexus->cyc.cyc_to_dump;
+**		ft_lstadd((t_list **)&nexus->cyc.cyc_to_dump, ft_lstnew_r(NULL, 0));
+**		if (nexus->cyc.cyc_to_dump == curr)
 **		{
 **			ft_err_malloc("new_head for cyc_to_dump", "ft_lstnew_r");
 **			ft_manage_world(NULL);
 **		}
-**		nexus->cyc.cyc_to_dunp->gen.cyc_sol = (size_t)ft_atoi(**argv);
-**		nexus->cyc.cyc_to_dunp->content_size = ++counter;
+**		nexus->cyc.cyc_to_dump->gen.cyc_sol = (size_t)ft_atoi(**argv);
+**		nexus->cyc.cyc_to_dump->content_size = ++counter;
 **		++*argv;
 **	}
 **	else
@@ -140,40 +145,43 @@ uint8_t				ft_parse_fdump(char ***argv, t_world *nexus, int *champ_count)
 
 
 /*
-*In content_size at this time current length of chain is written.
-*After all -dump vslus are harvested
-*Я вообще не помню, нахуя эта функция. А вспомнил, я хотел прикрутить
-*возможность вывода нескольких ходов за раз, интервал ходов и прочее...
-* собственно got_interval - функция обработки инетервала выгружаемых
-*ходов.
+**	In content_size at this time current length of chain is written.
+**	After all -dump vslus are harvested
+**	Я вообще не помню, зачем эта функция. А вспомнил, я хотел прикрутить
+**	возможность вывода нескольких ходов за раз, интервал ходов и прочее...
+**	собственно got_interval - функция обработки инетервала выгружаемых
+**	ходов.
 */
 
-/* uint8_t			ft_got_interval(char ***argv, t_world *nexus)
-{
-	char		*sep;
-	long long	left;
-	long long	right;
-	size_t		length;
-
-	if ((sep = ft_strchr(**argv, '-')) && (ft_strchrcount(**argv, '-') == 1) \
-		&& ft_are_ndigits(**argv, sep) && ft_are_digits(sep + 1))
-	{
-		left = 0;
-		right = 0;
-		length = ft_strlen(**argv);
-		if (ft_antoi(**argv, sep, &left) || _INT_OVF(left) \
-			|| ft_antoi((CC *)sep, **argv + length, &right) || _INT_OVF(right) \
-			|| right < left)
-		{
-			ft_err_fdump_inter(&nexus->errors, **argv);
-			++*argv;
-			return (1);
-		}
-		while (left <= right)
-			ft_add_cyclist(&nexus->cyc.cyc_to_dunp, right--);
-		++*argv;
-		return (_ENDS_WITH_COMA(**argv));
-	}
-	return (0);
-}
- */
+/*
+**	uint8_t			ft_got_interval(char ***argv, t_world *nexus)
+**	{
+**		char		*sep;
+**		long long	left;
+**		long long	right;
+**		size_t		length;
+**	
+**		if ((sep = ft_strchr(**argv, '-')) && \
+			(ft_strchrcount(**argv, '-') == 1) \
+**			&& ft_are_ndigits(**argv, sep) && ft_are_digits(sep + 1))
+**		{
+**			left = 0;
+**			right = 0;
+**			length = ft_strlen(**argv);
+**			if (ft_antoi(**argv, sep, &left) || _INT_OVF(left) \
+**				|| ft_antoi((const char *)sep, **argv + length, &right) || \
+**				_INT_OVF(right) \
+**				|| right < left)
+**			{
+**				ft_err_fdump_inter(&nexus->errors, **argv);
+**				++*argv;
+**				return (1);
+**			}
+**			while (left <= right)
+**				ft_add_cyclist(&nexus->cyc.cyc_to_dump, right--);
+**			++*argv;
+**			return (_ENDS_WITH_COMA(**argv));
+**		}
+**		return (0);
+**	}
+*/

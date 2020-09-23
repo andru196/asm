@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   width_left.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 22:05:35 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/02 22:48:11 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:45:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define ADDMAX formstat->result + *max
-#define BSIZE sizes[0]
-#define CSIZE sizes[1]
-#define WIDTH format->width
+
+/*
+**	Forbidden defines:
+**	#define ADDMAX formstat->result + *max
+**	#define BSIZE sizes[0]
+**	#define CSIZE sizes[1]
+**	#define WIDTH format->width
+*/
 
 static inline void		ft_place_filler(int width, char *fillers, int fd)
 {
@@ -38,11 +42,11 @@ static inline uint8_t	ft_check_limits(t_format *formstat, \
 
 	newres = 0;
 	if (sizes[0] > INT32_MAX)
-		return (ft_err_varoverflow(__ERR(vari_strlen), __func__));
-	max = (CSIZE < (size_t)width) * ((size_t)width + BSIZE - CSIZE) + \
-											(CSIZE >= (size_t)width) * BSIZE;
+		return (ft_err_varoverflow("vari_strlen", __func__));
+	max = (sizes[1] < (size_t)width) * ((size_t)width + sizes[0] - sizes[1]) + \
+										(sizes[1] >= (size_t)width) * sizes[0];
 	if (ft_check_add_ovf(&newres, formstat->result, max))
-		return (ft_err_varoverflow(__ERR(ADDMAX), __func__));
+		return (ft_err_varoverflow("ADDMAX", __func__));
 	formstat->result = newres;
 	return (0);
 }
@@ -63,7 +67,7 @@ void					ft_width_left(t_format *formstat, t_fword *format, \
 	ft_memset(&arr[0], format->filler, 8);
 	if (formstat->errflag)
 		return ;
-	ft_place_filler((WIDTH > (int)CSIZE) * (WIDTH - (int)CSIZE), &arr[0],
-															formstat->fd);
+	ft_place_filler((format->width > (int)sizes[1]) * \
+					(format->width - (int)sizes[1]), &arr[0], formstat->fd);
 	filling_mainbuf(formatted_variative, dims[1], 0, formstat->fd);
 }

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 22:16:11 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/17 22:53:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:12:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 ** We use size_t, thus we need libft.h in order to include stdlib.h
 */
 
-static int			ft_btbcmp(CV *s1, CV *s2, size_t n)
-{
-	UCC		*sub_s1;
-	UCC		*sub_s2;
+typedef const void		t_cv;
 
-	sub_s1 = (UCC *)s1;
-	sub_s2 = (UCC *)s2;
+static int				ft_btbcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned const char	*sub_s1;
+	unsigned const char	*sub_s2;
+
+	sub_s1 = (unsigned const char *)s1;
+	sub_s2 = (unsigned const char *)s2;
 	while (n != 0)
 	{
 		if (*sub_s1 != *sub_s2)
@@ -34,11 +36,11 @@ static int			ft_btbcmp(CV *s1, CV *s2, size_t n)
 	return (0);
 }
 
-int					ft_memcmp(CV *s1, CV *s2, size_t n)
+int						ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			bogey;
-	const size_t	*sub_s1;
-	const size_t	*sub_s2;
+	size_t				bogey;
+	const size_t		*sub_s1;
+	const size_t		*sub_s2;
 
 	if (0 == n || ((const char *)s1 == NULL && (const char *)s2 == NULL))
 		return (0);
@@ -50,10 +52,10 @@ int					ft_memcmp(CV *s1, CV *s2, size_t n)
 	while (bogey-- != 0)
 	{
 		if (*sub_s1 != *sub_s2)
-			return (ft_btbcmp((CV *)sub_s1, (CV *)sub_s2, sizeof(size_t)));
+			return (ft_btbcmp((t_cv *)sub_s1, (t_cv *)sub_s2, sizeof(size_t)));
 		sub_s1++;
 		sub_s2++;
 	}
 	bogey = n % sizeof(size_t);
-	return (ft_btbcmp((CV *)sub_s1, (CV *)sub_s2, bogey));
+	return (ft_btbcmp((const void *)sub_s1, (const void *)sub_s2, bogey));
 }

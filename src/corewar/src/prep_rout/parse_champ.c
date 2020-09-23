@@ -6,16 +6,16 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 18:06:44 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/15 20:53:05 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:28:59 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
+*	ПРОВЕРИЛ.
+//TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
 */
-
 inline static uint8_t	ft_check_filename(char *argv)
 {
 	if (argv)
@@ -24,7 +24,8 @@ inline static uint8_t	ft_check_filename(char *argv)
 }
 
 /*
-** Пояснения по поводу flag, id и их значений.
+*	ПРОВЕРИЛ.
+**	Пояснения по поводу flag, id и их значений.
 **	id - переменная, хранящая уникальный номер чемпиона, который задается
 **	пользователем, либо присваивается виртуальной машиной.
 **	Если id == 0, значит пользватель не задавал произвольный id.
@@ -32,12 +33,9 @@ inline static uint8_t	ft_check_filename(char *argv)
 **	Если id > 0, попытка присвоить id пользователем оказалась успешной.
 **	Соответственно, если до этого вызывался -n, то id != 0, а значит, в случае
 **	ошлибки, надо просмотреть этот флаг повторно (тобишь не итерировать *argv).
+//TODO:	Проверить отпрыска: ft_check_filename.
 */
-/*
-**	//? В процессе проверки.
-*/
-uint8_t					ft_parse_champ(char ***argv, int *champ_count, \
-														int id, t_world *nexus)	//TODO: А можем ли мы в общем порядком сюда проавлиться с argv == NULL?! Проверить...
+uint8_t					ft_parse_champ(char ***argv, int id, t_world *nexus)
 {
 
 	static t_err_rout*	array[2] = { &ft_err_invalid_parameter, \
@@ -47,16 +45,16 @@ uint8_t					ft_parse_champ(char ***argv, int *champ_count, \
 	flag = (id != 0);
 	if (ft_check_filename(**argv))
 	{
-		*champ_count += ft_read_champ_file(**argv, id, &nexus->champ[0], &(nexus->errors));
+		nexus->champs += ft_read_champ_file(**argv, id, &nexus->champ[0], \
+											&nexus->errors);
 		++*argv;
-		return (ft_scan_lines(argv, nexus, champ_count));
+		return (ft_scan_lines(argv, nexus));
 	}
 	else
 	{
 		array[flag](&nexus->errors, **argv);
 		*argv += (flag == 0);
-		ft_scan_lines(argv, nexus, champ_count);
+		ft_scan_lines(argv, nexus);
 		return (3);
 	}
-
 }

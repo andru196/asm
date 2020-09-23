@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_substring.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:10:25 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/28 22:13:57 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:08:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ uint8_t					ft_get_and_check_nbr(const char *start, \
 {
 	if (ft_antoi(start, end, result))
 		return ((formstat->errflag = \
-								ft_err_varoverflow(__ERR(arg_num), __func__)));
+								ft_err_varoverflow("arg_num", __func__)));
 	else
 	{
 		if (*result < INT32_MIN || *result > INT32_MAX)
 			return ((formstat->errflag = \
-								ft_err_varoverflow(__ERR(arg_num), __func__)));
+								ft_err_varoverflow("arg_num", __func__)));
 	}
 	return (0);
 }
@@ -61,7 +61,7 @@ uint8_t					ft_flag_subst_dummy(t_format *formstat, \
 	formstat->sight = end;
 	ft_get_and_check_nbr(start, end, &arg_num, formstat);
 	if (ft_create_varinote(format, arg_num))
-		formstat->errflag = ft_err_malloc(__ERR(format->vari_cont), __func__);
+		formstat->errflag = ft_err_malloc("format->vari_cont", __func__);
 	return (1);
 }
 

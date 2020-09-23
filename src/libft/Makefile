@@ -6,7 +6,7 @@
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/16 15:01:22 by mschimme         ###   ########.fr        #
+#    Updated: 2020/08/22 16:24:26 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -217,7 +217,8 @@ SOURCE	+=	int_ptr_cmp.c \
 
 #**********************				SORT:			***************************#
 SOURCE	+=	bubble_int_arr.c \
-			bubble_list_arr.c
+			bubble_list_arr.c \
+			bubble_gen_arr.c
 
 #**********************				sfalia_func:		***************************#
 

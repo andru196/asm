@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   type_ptr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:22:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/02 22:45:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:25:53 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FHASH format->hash
-#define FPRECISION format->precision
-#define HEXRES buffs[0]
-#define HEXSET buffs[1]
+
+/*
+**	Forbidden define, lol:
+**	#define HEXRES buffs[0]
+**	#define HEXSET buffs[1]
+**	F8CK this norm!
+*/
 
 static t_extract_hex_rout		*ft_get_tip(uint8_t num)
 {
@@ -56,11 +59,11 @@ uint8_t							ft_place_ptr(t_format *formstat, \
 		format->filler = ' ';
 	else
 		format->precision = 1;
-	if (!(buffer = (char *)ft_memalloc(24UL + FPRECISION + 2)))
+	if (!(buffer = (char *)ft_memalloc(24UL + format->precision + 2)))
 		return (1);
 	*(short int *)buffer = (short int)30768U;
-	HEXRES = buffer + 1;
-	HEXSET = "0123456789abcdef";
+	buffs[0] = buffer + 1;
+	buffs[1] = "0123456789abcdef";
 	bogey = ft_get_tip(0)(format, &buffs[0]);
 	ft_memset((void *)(buffer + 2), '0', bogey + 1 - (buffer + 2));
 	bogey = buffer + 2;

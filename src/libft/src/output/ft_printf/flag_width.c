@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_width.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:13:35 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/28 22:22:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:08:25 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ inline static uint8_t	ft_get_numsubline(const char *start, \
 	end = ptr;
 	formstat->sight = end - 1;
 	if (ft_antoi(start, end, &arg_num))
-		formstat->errflag = ft_err_varoverflow(__ERR(arg_num), __func__);
+		formstat->errflag = ft_err_varoverflow("arg_num", __func__);
 	else
 	{
 		if (arg_num < INT32_MIN || arg_num > INT32_MAX)
-			formstat->errflag = ft_err_varoverflow(__ERR(arg_num), __func__);
+			formstat->errflag = ft_err_varoverflow("arg_num", __func__);
 		if (arg_num < 0)
 		{
 			arg_num *= -1;

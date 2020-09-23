@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcasecmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 21:07:13 by mschimme          #+#    #+#             */
-/*   Updated: 2020/01/14 23:41:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 08:15:26 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void			ft_assholder(char **ptr)
+static void	ft_assholder(char **ptr)
 {
 	static char	array[256];
 	int			i;
@@ -35,14 +35,14 @@ static void			ft_assholder(char **ptr)
 	}
 }
 
-int					ft_strcasecmp(const char *s1, const char *s2)
+int			ft_strcasecmp(const char *s1, const char *s2)
 {
-	static char		*ptr;
-	UCC				*uns1;
-	UCC				*uns2;
+	static char			*ptr;
+	unsigned const char	*uns1;
+	unsigned const char	*uns2;
 
-	uns1 = (UCC *)s1;
-	uns2 = (UCC *)s2;
+	uns1 = (unsigned const char *)s1;
+	uns2 = (unsigned const char *)s2;
 	ft_assholder(&ptr);
 	while ((*(ptr + *uns1)) == (*(ptr + *uns2)))
 	{

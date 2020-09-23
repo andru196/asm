@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 12:59:30 by mschimme          #+#    #+#             */
-/*   Updated: 2019/12/01 17:47:54 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 01:38:30 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 ** We use size_t, thus we need libft.h in order to include stdlib.h
 ** Previously function had
 ** if (bogey == '\0')
-**		return (bogey - (UCC *)str);
+**		return (bogey - (unsigned const char *)str);
 ** Preventing segfaults.
 */
 
-static UCC		*ft_memsync(UCC *str)
+static unsigned const char	*ft_memsync(unsigned const char *str)
 {
 	while (((size_t)str & (sizeof(size_t) - 1)) != 0)
 	{
@@ -31,28 +31,31 @@ static UCC		*ft_memsync(UCC *str)
 	return (str);
 }
 
-static UCC		*ft_memcrawl(UCC *str)
+static unsigned const char	*ft_memcrawl(unsigned const char *str)
 {
 	while (*str != '\0')
 		str++;
 	return (str);
 }
 
-size_t			ft_strlen(const char *str)
+size_t						ft_strlen(const char *str)
 {
-	size_t		*monad;
-	UCC			*bogey;
+	size_t					*monad;
+	unsigned const char		*bogey;
 
-	bogey = ft_memsync((UCC *)str);
+	bogey = ft_memsync((unsigned const char *)str);
 	if ((*bogey == 0))
-		return (bogey - (UCC *)str);
+		return (bogey - (unsigned const char *)str);
 	monad = (size_t *)bogey;
 	while (1)
 	{
 		if (((*monad + 0X7EFEFEFEFEFEFEFF) ^ ~*monad) & 0x8101010101010100)
 			if (((((*monad & 0x7F7F7F7F7F7F7F7F) + 0x7F7F7F7F7F7F7F7F) | *monad)
 				| 0x7F7F7F7F7F7F7F7F))
-				return (ft_memcrawl(((UCC *)(monad))) - (UCC *)str);
+			{
+				return (ft_memcrawl(((unsigned const char *)(monad))) - \
+													(unsigned const char *)str);
+			}
 		monad++;
 	}
 }

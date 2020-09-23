@@ -6,14 +6,14 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:38:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/15 18:52:51 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:00:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-TODO: Проверить на валгринде.
+*	ПРОВЕРИЛ. Не проверял ошибку маллока.
 */
 void		ft_err_fdump_inter(t_vasa **head, void *object)
 {
@@ -22,7 +22,7 @@ void		ft_err_fdump_inter(t_vasa **head, void *object)
 
 	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(error), __func__);
+		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
 	}
 	current = *head;
@@ -39,7 +39,7 @@ void		ft_err_fdump_inter(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+*	ПРОВЕРИЛ. Не проверял ошибку маллока.
 */
 void		ft_err_fdump_notnbr(t_vasa **head, void *object)
 {
@@ -48,7 +48,7 @@ void		ft_err_fdump_notnbr(t_vasa **head, void *object)
 
 	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(error), __func__);
+		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
 	}
 	current = *head;

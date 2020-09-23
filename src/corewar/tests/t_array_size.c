@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:45:29 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/03 21:25:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/23 22:35:07 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			ft_prep_battle(t_world *nexus, int champs)
 {
 	ft_assign_champ_ids(&nexus->champ[0], champs);
 	
-	// ft_sort_dumps(&nexus->cyc.cyc_to_dunp);
+	// ft_sort_dumps(&nexus->cyc.cyc_to_dump);
 	// ft_place_champs(&nexus)
 }
 

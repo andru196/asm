@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printfdefines.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 18:12:13 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/02 22:44:18 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:19:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTFDEFINES_H
 # include "ft_printf.h"
 # define INT_MAX 2147483647
-# define INT_MIN -INT_MAX - 1
+# define INT_MIN -2147483648
 
 typedef struct s_varitype	t_varitype;
 typedef struct s_format		t_format;

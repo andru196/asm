@@ -6,11 +6,13 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 19:59:39 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/11 00:22:17 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 01:42:47 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+typedef const void	t_cv;
 
 static const void	*ft_memcpy_s(void *dst, const void *src, size_t n)
 {
@@ -51,10 +53,10 @@ static char			**ft_delall(char **pocket, size_t l)
 	return (NULL);
 }
 
-static size_t		ft_substrcount(CC *s, int c)
+static size_t		ft_substrcount(const char *s, int c)
 {
 	size_t			amount;
-	CC				*bogey;
+	const char		*bogey;
 
 	if (*s == '\0')
 		return (0);
@@ -76,10 +78,11 @@ static size_t		ft_substrcount(CC *s, int c)
 	return (amount);
 }
 
-static char			**ft_2dfiller(CC *s, char **pocket, char c, CC *end)
+static char			**ft_2dfiller(const char *s, char **pocket, char c, \
+									const char *end)
 {
 	size_t			counter;
-	CC				*bogey;
+	const char		*bogey;
 
 	bogey = s;
 	counter = 0;
@@ -88,17 +91,17 @@ static char			**ft_2dfiller(CC *s, char **pocket, char c, CC *end)
 		while (*bogey == c)
 			bogey++;
 		s = bogey;
-		if ((bogey = ft_memchr((CV *)s, (int)c, end - s)) != NULL)
+		if ((bogey = ft_memchr((const void *)s, (int)c, end - s)) != NULL)
 		{
 			if (!(pocket[counter] = ft_strnew(bogey - s)))
 				return (ft_delall(pocket, counter));
-			bogey = ft_memcpy_s((void *)pocket[counter], (CV *)s, bogey - s);
+			bogey = ft_memcpy_s((void *)pocket[counter], (t_cv *)s, bogey - s);
 		}
 		else
 		{
 			if (s != end && !(pocket[counter] = ft_strnew(end - s)))
 				return (ft_delall(pocket, counter));
-			bogey = ft_memcpy_s((void *)pocket[counter], (CV *)s, end - s);
+			bogey = ft_memcpy_s((void *)pocket[counter], (t_cv *)s, end - s);
 		}
 		counter++;
 	}
@@ -108,7 +111,7 @@ static char			**ft_2dfiller(CC *s, char **pocket, char c, CC *end)
 char				**ft_strsplit(char const *s, char c)
 {
 	char			**pocket;
-	CC				*end;
+	const char		*end;
 
 	if (!s)
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_precision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 22:09:55 by mschimme          #+#    #+#             */
-/*   Updated: 2019/10/30 22:16:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:06:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ uint8_t			ft_flag_precision(t_format *formstat, \
 	end = ptr;
 	formstat->sight = end - 1;
 	if (ft_antoi(start + 1, end, &arg_num))
-		formstat->errflag = ft_err_varoverflow(__ERR(arg_num), __func__);
+		formstat->errflag = ft_err_varoverflow("arg_num", __func__);
 	if (arg_num < INT32_MIN || arg_num > INT32_MAX)
-		formstat->errflag = ft_err_varoverflow(__ERR(arg_num), __func__);
+		formstat->errflag = ft_err_varoverflow("arg_num", __func__);
 	format->precision = (int)arg_num;
 	return (1);
 }

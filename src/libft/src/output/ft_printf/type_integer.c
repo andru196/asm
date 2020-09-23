@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   type_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:32:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/02 22:38:51 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 01:17:19 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FSPACE_PLUS format->space_plus
-#define FPRECISION format->precision
+
+#define MALL ft_memalloc
+
+/*
+**	Forbidden defines:
+**	#define FSPACE_PLUS format->space_plus
+**	#define FPRECISION format->precision
+*/
 
 /*
 **	In any "place" function (dir type_funcs) there is the same sort of array,
@@ -92,7 +98,8 @@ uint8_t							ft_place_integer(t_format *formstat, \
 		format->precision = 1;
 	if (!fillers[0])
 		*(int *)&fillers[0] = 2826240;
-	if (!(res = (char *)ft_memalloc(24UL + FPRECISION + (FSPACE_PLUS > 0))))
+	if (!(res = (char *)MALL(24UL + format->precision + \
+								(format->space_plus > 0))))
 		return (1);
 	bogey = ft_get_tip(format->length_t)(format, res);
 	ft_memset((void *)(res + 1), '0', bogey + 1 - (res + 1));

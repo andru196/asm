@@ -1,2 +1,0 @@
-Norme: src/op.c
-Error (line 15, col 5): global named op_tab is not well prefixed

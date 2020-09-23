@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   type_hex_cap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:32:22 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/07/02 22:38:36 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:48:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define FHASH format->hash
-#define FPRECISION format->precision
-#define FWIDTH format->width
-#define HEXRES buffs[0]
-#define HEXSET buffs[1]
+
+#define MALL ft_memalloc
+
+/*
+**	Forbidden defines:
+**	#define FHASH format->hash
+**	#define FPRECISION format->precision
+**	#define FWIDTH format->width
+**	#define HEXRES buffs[0]
+**	#define HEXSET buffs[1]
+*/
 
 /*
 **	In any "place" function (dir type_funcs) there is the same sort of array,
@@ -92,21 +98,21 @@ uint8_t							ft_place_hexal_cap(t_format *formstat, \
 	if ((format->flags))
 		format->filler = ' ';
 	else
-		FPRECISION = 1;
-	if (!(buffer = (char *)ft_memalloc(24UL + FPRECISION + (FHASH * 2))))
+		format->precision = 1;
+	if (!(buffer = (char *)MALL(24UL + format->precision + format->hash * 2)))
 		return (1);
-	HEXRES = buffer + 1;
-	HEXSET = "0123456789ABCDEF";
+	buffs[0] = buffer + 1;
+	buffs[1] = "0123456789ABCDEF";
 	bogey = ft_get_tip(format->length_t)(format, &buffs[0]);
 	if (!*(bogey + 1))
-		FHASH = 0;
-	HEXRES = buffer;
-	ft_memset((void *)(HEXRES + 2), '0', bogey + 1 - (HEXRES + 2));
-	bogey = HEXRES + 2;
-	if (FHASH && *bogey)
-		*(short int *)HEXRES = (short int)22576U;
-	ft_printout(formstat, format, HEXRES, bogey);
-	free(HEXRES);
+		format->hash = 0;
+	buffs[0] = buffer;
+	ft_memset((void *)(buffs[0] + 2), '0', bogey + 1 - (buffs[0] + 2));
+	bogey = buffs[0] + 2;
+	if (format->hash && *bogey)
+		*(short int *)buffs[0] = (short int)22576U;
+	ft_printout(formstat, format, buffs[0], bogey);
+	free(buffs[0]);
 	if (formstat->errflag)
 		return (1);
 	return (0);

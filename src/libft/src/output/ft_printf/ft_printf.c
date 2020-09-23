@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@42.fr>                  +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:42:33 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/07/02 22:30:10 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/09/14 00:41:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 ** Ki state of the function.
 */
 
-void					filling_mainbuf(const char *data, size_t length, 
+void					filling_mainbuf(const char *data, size_t length, \
 										int flag, int fd)
 {
 	static char			buff[4096];
@@ -61,7 +61,7 @@ void					filling_mainbuf(const char *data, size_t length,
 **		sight - pointer to the next formatting word.
 */
 
-void		ft_init_formstat(t_format *ptr, const char *src, int fd)
+void					ft_init_formstat(t_format *ptr, const char *src, int fd)
 {
 	ft_bzero((void *)ptr, sizeof(t_format));
 	ptr->marker = src;

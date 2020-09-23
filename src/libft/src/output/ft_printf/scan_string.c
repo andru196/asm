@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:44:46 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/29 00:10:33 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:37:28 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ inline static uint8_t	ft_search_formword(t_format *scanstat)
 
 	ptr = scanstat->sight;
 	endptr = scanstat->end;
-	pcsignptr = (char *)ft_memchr((CV *)ptr, '%', endptr - ptr);
+	pcsignptr = (char *)ft_memchr((const void *)ptr, '%', endptr - ptr);
 	if (pcsignptr)
 	{
 		scanstat->sight = pcsignptr;

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:41:54 by mschimme          #+#    #+#             */
-/*   Updated: 2020/08/16 14:57:32 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/08/25 13:26:07 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@
 
 /*
 **	Временная функция ловить косяк, в случаях, если у нас и nexus пустой, и
-**	guillotine задана жопой.
+**	guillotine задана жопой. 
 */
 static void ft_no_world(void)
 {
-	// DEBmesst("Проверяй, где облажался, ты пытаешься удалить арену (nexus), которую не задал!") DEBend()
+	DEBmesst("Проверяй, где облажался, ты пытаешься удалить арену (nexus), которую не задал!") DEBend()
 	exit(1);
 }
 
 
 /*
-**	//! В процессе написания.
 **	We don't clear .desc as it is a part of .name.
 */
 void	ft_wipe_champs(t_champ *ptr)
@@ -53,14 +52,15 @@ void	ft_wipe_champs(t_champ *ptr)
 }
 
 /*
-**	//! В процессе написания.
+!		В процессе написания.
+*		Чистит чемпионов по новой схеме;
+*		Чистит champ_ord.
+*		Удалил очистку кареток:
+			_FT_WIPE_CARRIES((t_list **)&(guillotine->carry), &ft_del);
+!		Если утечки - проверь, чистятся ли каретки.
 */
-void	ft_manage_world(t_world *nexus)											//? МБ переработать параметры, добавить: void **, а также набор указателей для ft_lstdel
+void	ft_manage_world(t_world *nexus)
 {
-	// DEBfunc()
-	// DEBmesst("Проверь, всё ли чистит. Написана ДО того, как определено содержимое структуры")
-	// DEBmesst("Также учти, что используются стандартные функции удаления данных")
-	// DEBend()
 	static t_world *guillotine;
 
 	if (nexus)
@@ -72,10 +72,11 @@ void	ft_manage_world(t_world *nexus)											//? МБ переработать
 	{
 		if (guillotine)
 		{
-			_FT_WIPE_CARRIES((t_list **)&(guillotine->carry), &ft_del);
 			ft_wipe_champs(&(guillotine->champ[0]));
 			_FT_CLEAR_ERRORS((t_list **)&(guillotine->errors), &ft_del);
 			guillotine->survivor = NULL;
+			if (guillotine->champ_ord)
+				free(guillotine->champ_ord);
 		}
 		else
 			ft_no_world();

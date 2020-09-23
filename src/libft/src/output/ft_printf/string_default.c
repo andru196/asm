@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_default.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:39:53 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/29 14:21:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/14 01:17:50 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ char					*ft_get_string_default(t_fword *container)
 	if (!(sub = (char *)va_arg(*container->variative, char *)))
 		sub = "(null)";
 	variative = sub;
-	endsub = sub + ft_strlen((CC *)sub);
-	while ((variative = ft_memchr((CV *)variative, '{', endsub - variative)))
+	endsub = sub + ft_strlen((const char *)sub);
+	while ((variative = ft_memchr((const void *)variative, '{', \
+									endsub - variative)))
 		extra_len += ft_value_colour(variative++);
 	if (!(variative = (char *)ft_memalloc(endsub - sub + extra_len + 1)))
 		return (NULL);

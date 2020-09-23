@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 22:00:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 22:58:40 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:01:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ inline static t_vasa	*ft_create_footer(t_vasa **subchain_head)
 	footer = NULL;
 	if (!(footer = (t_error *)ft_memalloc(sizeof(t_error) + 1)))
 	{
-		ft_err_malloc(__ERR(footer), __func__);
+		ft_err_malloc("footer", __func__);
 		ft_lstdel((t_list **)subchain_head, &ft_del);
 		ft_manage_world(NULL);
 	}
@@ -47,7 +47,7 @@ inline static t_vasa	*ft_create_header(t_vasa **subchain_head, char *filename)
 
 	if (!(header = (t_error *)ft_memalloc(sizeof(t_error))))
 	{
-		ft_err_malloc(__ERR(header), __func__);
+		ft_err_malloc("header", __func__);
 		ft_lstdel((t_list **)subchain_head, &ft_del);
 		ft_manage_world(NULL);
 	}
