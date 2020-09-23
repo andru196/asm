@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/20 00:57:27 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/09/15 23:19:58 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ static int	zapisat(char *rez, char *file_name, int flag, size_t size)
 	char	*file_name_cor;
 	int		fd;
 
+	if (!(flag & fl_stdout))
+	{
 	file_name_cor = ft_strreplacelast(file_name,
-							SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+						SOURCE_EXTENSION, ASM_OUT_EXTENSION);
 	fd = open(file_name_cor, O_WRONLY | O_CREAT, 3 << 7);
 	free(file_name_cor);
-	if (!(flag & fl_stdout))
-		write(fd, rez, size);
-	else
-		print_stdout(rez, size);
+	write(fd, rez, size);
+	
 	close(fd);
+	}else
+		print_stdout(rez, size);
 	return (0);
 }
 
