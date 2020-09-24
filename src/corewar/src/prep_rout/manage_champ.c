@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_champ.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 14:04:13 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 23:00:40 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:10:01 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 /*
 * Проверил.
 */
+
 void		ft_clear_champ(t_champ *this)
 {
-DEBfunc()
+	DEBfunc()
 	if (this->name)
 		free(this->name);
 	if (this->desc)

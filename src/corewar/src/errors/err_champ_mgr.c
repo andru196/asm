@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_mgr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 22:00:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:01:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:14:46 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ inline static t_vasa	*ft_create_footer(t_vasa **subchain_head)
 	return (*subchain_head);
 }
 
-
-
-inline static t_vasa	*ft_create_header(t_vasa **subchain_head, char *filename)
+inline static t_vasa	*ft_create_header(t_vasa **subchain_head,
+													char *filename)
 {
 	t_vasa				*current;
 	t_error				*header;
@@ -54,7 +53,8 @@ inline static t_vasa	*ft_create_header(t_vasa **subchain_head, char *filename)
 	current = *subchain_head;
 	header->argv_tar = filename;
 	header->errmessage = "\n\t\tErrors detected while parsing Champion!";
-	ft_lstadd((t_list **)subchain_head, ft_lstnew_r((void *)header, sizeof(t_error)));
+	ft_lstadd((t_list **)subchain_head,
+							ft_lstnew_r((void *)header, sizeof(t_error)));
 	if (*subchain_head == current)
 	{
 		ft_err_malloc("new subchain_head", "ft_lstnew_r");
@@ -89,8 +89,9 @@ inline static void		ft_flush_char(t_champ *this)
 /*
 **	//? В процессе проверки.
 */
-int					ft_ch_err_manager(char *filename, t_vasa **subchain_head, \
-											t_vasa **chain_head, t_champ *this)
+
+int						ft_ch_err_manager(char *filename,
+					t_vasa **subchain_head, t_vasa **chain_head, t_champ *this)
 {
 	t_vasa			*tail;
 

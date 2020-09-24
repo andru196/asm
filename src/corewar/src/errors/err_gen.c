@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   err_gen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:02:27 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:00:14 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:02:43 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 #include <cwr_man.h>
 
-void		ft_err_nochamps(t_vasa **head, void *object)
+void			ft_err_nochamps(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -31,7 +31,7 @@ void		ft_err_nochamps(t_vasa **head, void *object)
 	if (*head == current)
 	{
 		ft_err_malloc("new_head", "ft_lstnew_r");
-		free (error);
+		free(error);
 		error = NULL;
 		ft_manage_world(NULL);
 	}
@@ -43,7 +43,7 @@ void		ft_err_nochamps(t_vasa **head, void *object)
 **	Comment is useful!
 */
 
-void		ft_err_invalid_parameter(t_vasa **head, void *object)
+void			ft_err_invalid_parameter(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -60,13 +60,13 @@ void		ft_err_invalid_parameter(t_vasa **head, void *object)
 	if (*head == current)
 	{
 		ft_err_malloc("new_head", "ft_lstnew_r");
-		free (error);
+		free(error);
 		error = NULL;
 		ft_manage_world(NULL);
 	}
 }
 
-void	ft_err_id_doubled(t_vasa **head, void *object)
+void			ft_err_id_doubled(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -83,13 +83,13 @@ void	ft_err_id_doubled(t_vasa **head, void *object)
 	if (*head == current)
 	{
 		ft_err_malloc("new_head", "ft_lstnew_r");
-		free (error);
+		free(error);
 		error = NULL;
 		ft_manage_world(NULL);
 	}
 }
 
-void	ft_err_id_behind_fighters(t_vasa **head, void *object)
+void			ft_err_id_behind_fighters(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -106,20 +106,19 @@ void	ft_err_id_behind_fighters(t_vasa **head, void *object)
 	if (*head == current)
 	{
 		ft_err_malloc("new_head", "ft_lstnew_r");
-		free (error);
+		free(error);
 		error = NULL;
 		ft_manage_world(NULL);
 	}
 }
 
-
-void		ft_show_man(void)
+void			ft_show_man(void)
 {
 	ft_printf_fd(2, "\033[1mNAME{eoc}\n\tcorewar %s", \
 			"-- battle arena for corewar game.");
 	ft_printf_fd(2, "\n\033[1mSYNOPSIS{eoc}\n\t%s\n", \
 			MAN_SYN);
-	ft_printf_fd(2,"\033[1mDESCRIPTION{eoc}\n\t%s%s", \
+	ft_printf_fd(2, "\033[1mDESCRIPTION{eoc}\n\t%s%s", \
 			MAN_DESC_1, MAN_DESC_2);
 	ft_printf_fd(2, "%s%s%s%s", \
 			MAN_DESC_3, MAN_DESC_4, MAN_DESC_5, MAN_DESC_6);

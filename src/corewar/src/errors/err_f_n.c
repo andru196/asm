@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_f_n.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:01:34 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:00:13 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:08:37 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_fn_notnbr(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -41,6 +42,7 @@ void		ft_err_fn_notnbr(t_vasa **head, void *object)
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_fn_inter(t_vasa **head, void *object)
 {
 	t_vasa	*current;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_fdump.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:38:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:00:14 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:08:10 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 *	ПРОВЕРИЛ. Не проверял ошибку маллока.
 */
+
 void		ft_err_fdump_inter(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -27,7 +28,8 @@ void		ft_err_fdump_inter(t_vasa **head, void *object)
 	}
 	current = *head;
 	error->argv_tar = (char *)object;
-	error->errmessage = "Interval boundaries exceed INT32_MAX limit. I.e. var overflow for -dump.";
+	error->errmessage =
+	"Interval boundaries exceed INT32_MAX limit. I.e. var overflow for -dump.";
 	ft_lstadd((t_list **)head, ft_lstnew_r(error, sizeof(t_error)));
 	if (*head == current)
 	{

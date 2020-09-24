@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:01:16 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:18:23 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*
 TD:	Проверить в боевом режиме.
 */
+
 inline static t_list	**ft_build_buff_nt(t_list **head, size_t size)
 {
 	t_list				**arr_ptr;
@@ -36,6 +37,7 @@ inline static t_list	**ft_build_buff_nt(t_list **head, size_t size)
 /*
 *	ПРОВЕРИЛ.	t_arr_sort.c
 */
+
 inline static void		ft_sort_dumps(t_list **head, size_t amount)
 {
 	t_list				**arr_ptr;
@@ -49,6 +51,7 @@ inline static void		ft_sort_dumps(t_list **head, size_t amount)
 /*
 TD:	Проверить в боевом режиме.
 */
+
 inline static void		ft_place_champs(t_world *nexus)
 {
 	uintptr_t			entry_ptr;
@@ -72,21 +75,21 @@ inline static void		ft_place_champs(t_world *nexus)
 
 inline static void		ft_print_intro(t_champ **champ_arr)
 {
-
 	ft_printf(CWR_INTRO_MSG);
 	while (*champ_arr)
 	{
 		ft_printf(CWR_CHAMP_DEC, (*champ_arr)->id, (*champ_arr)->size, \
-									(*champ_arr)->name, (*champ_arr)->desc);
+								(*champ_arr)->name, (*champ_arr)->desc);
 		champ_arr++;
 	}
 }
+
 /*
 TD:	Проверить в боевом режиме.
 */
+
 void					ft_prep_battle(t_world *nexus)
 {
-	
 	if (nexus->cyc.cyc_to_dump)
 		ft_sort_dumps((t_list **)&nexus->cyc.cyc_to_dump, \
 										nexus->cyc.cyc_to_dump->content_size);

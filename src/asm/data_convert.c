@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   data_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:10:25 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/09/23 23:43:17 by tanya            ###   ########.fr       */
+/*   Updated: 2020/09/25 00:45:02 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op g_otab[OP_TAB_SIZE];
+extern t_op	g_otab[OP_TAB_SIZE];
 
-char		type_code(t_command *cmd)
+char						type_code(t_command *cmd)
 {
 	char rez;
 
@@ -40,7 +40,8 @@ char		type_code(t_command *cmd)
 	return (rez);
 }
 
-void		write_n_num(char **dst, long long n, unsigned char bytes)
+void						write_n_num(char **dst, long long n,
+											unsigned char bytes)
 {
 	int i;
 
@@ -57,7 +58,7 @@ void		write_n_num(char **dst, long long n, unsigned char bytes)
 	}
 }
 
-static unsigned long long set_number(long long n, unsigned char size,
+static unsigned long long	set_number(long long n, unsigned char size,
 									unsigned char t_dir_size)
 {
 	long long	tmp;
@@ -77,7 +78,7 @@ static unsigned long long set_number(long long n, unsigned char size,
 	return (tmp);
 }
 
-int			write_cmnd(char *dst, t_command *cmd)
+int							write_cmnd(char *dst, t_command *cmd)
 {
 	int					i;
 	char				*cpy;
@@ -103,7 +104,8 @@ int			write_cmnd(char *dst, t_command *cmd)
 	return (dst - cpy);
 }
 
-int			transofrm_data(t_asmcont *cont, char *rez, unsigned size)
+int							transofrm_data(t_asmcont *cont, char *rez,
+														unsigned size)
 {
 	size_t			i;
 	size_t			j;

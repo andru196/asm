@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 13:10:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:00:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:00:03 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_invalid_cwr_magic(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -48,6 +49,7 @@ void		ft_err_invalid_cwr_magic(t_vasa **head, void *object)
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_invalid_filesize(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -75,6 +77,7 @@ void		ft_err_invalid_filesize(t_vasa **head, void *object)
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_invalid_name(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -102,6 +105,7 @@ void		ft_err_invalid_name(t_vasa **head, void *object)
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_invalid_champsize(t_vasa **head, void *object)
 {
 	t_vasa	*current;
@@ -129,6 +133,7 @@ void		ft_err_invalid_champsize(t_vasa **head, void *object)
 /*
 TODO: Проверить на валгринде.
 */
+
 void		ft_err_invalid_separator(t_vasa **head, void *object)
 {
 	t_vasa	*current;

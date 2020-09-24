@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_champ.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 18:06:44 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:28:59 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:07:09 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 *	ПРОВЕРИЛ.
 //TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
 */
+
 inline static uint8_t	ft_check_filename(char *argv)
 {
 	if (argv)
@@ -35,6 +36,7 @@ inline static uint8_t	ft_check_filename(char *argv)
 **	ошлибки, надо просмотреть этот флаг повторно (тобишь не итерировать *argv).
 //TODO:	Проверить отпрыска: ft_check_filename.
 */
+
 uint8_t					ft_parse_champ(char ***argv, int id, t_world *nexus)
 {
 

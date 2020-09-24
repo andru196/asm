@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_champ_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:01:36 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 00:55:58 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 /*
 *	ПРОВЕРИЛ.
 */
-inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
+
+inline static void		ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 {
 	ssize_t			res;
 	RTP				magic;
-	
+
 	magic = 0;
 	if ((res = read(fd, (void *)&magic, REG_SIZE)) != REG_SIZE)
 	{
@@ -46,7 +47,8 @@ inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 /*
 *	ПРОВЕРИЛ.
 */
-inline static void	ft_get_champ_size(int fd, \
+
+inline static void		ft_get_champ_size(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -65,7 +67,8 @@ inline static void	ft_get_champ_size(int fd, \
 /*
 *	ПРОВЕРИЛ.
 */
-inline static void	ft_get_champ_comment(int fd, \
+
+inline static void		ft_get_champ_comment(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -85,7 +88,8 @@ inline static void	ft_get_champ_comment(int fd, \
 /*
 *	ПРОВЕРИЛ.
 */
-inline static void	 ft_get_champ_body(int fd, \
+
+inline static void		ft_get_champ_body(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -99,7 +103,8 @@ inline static void	 ft_get_champ_body(int fd, \
 		ft_manage_world(NULL);
 		return ;
 	}
-	if ((res = read(fd, (void *)(champ->body), (size_t)champ->size)) != (ssize_t)champ->size)
+	if ((res = read(fd, (void *)(champ->body),
+						(size_t)champ->size)) != (ssize_t)champ->size)
 	{
 		ft_err_invalid_filesize(champ_error, "Champion body field");
 		return ;
@@ -108,15 +113,15 @@ inline static void	 ft_get_champ_body(int fd, \
 		ft_err_invalid_bodysize(champ_error, NULL);
 }
 
-
 /*
 *	ПРОВЕРИЛ.
 **	int *offset из корня функций можно использовать для подсчета успешно загру-
-**	женных чемпионов. Тогда эта функция должна возвращать int 1, если мы 
-**	успешно прочитали чемпиона и int 0, если облажалилсь. *offset += 
+**	женных чемпионов. Тогда эта функция должна возвращать int 1, если мы
+**	успешно прочитали чемпиона и int 0, если облажалилсь. *offset +=
 **	ft_read_champ_file как итератор на выходе из этой функции.
 */
-int					ft_read_champ_file(char *file, int id, t_champ *champ, \
+
+int						ft_read_champ_file(char *file, int id, t_champ *champ, \
 															t_vasa **last_error)
 {
 	static int	pos;
@@ -124,11 +129,11 @@ int					ft_read_champ_file(char *file, int id, t_champ *champ, \
 	int			fd;
 
 	if (pos == MAX_PLAYERS)
-		return (ft_prox_err_ret(last_error, (void *)file, \
-													&ft_err_champ_limit));
+		return
+		(ft_prox_err_ret(last_error, (void *)file, &ft_err_champ_limit));
 	if ((fd = open(file, O_RDONLY)) == -1)
-		return (ft_prox_err_ret(last_error, (void *)file, \
-													&ft_err_invalid_filename));
+		return
+		(ft_prox_err_ret(last_error, (void *)file, &ft_err_invalid_filename));
 	ch_errors = NULL;
 	ft_get_magicname(fd, &ch_errors, &champ[pos]);
 	ft_get_champ_size(fd, &ch_errors, &champ[pos]);
@@ -136,7 +141,7 @@ int					ft_read_champ_file(char *file, int id, t_champ *champ, \
 	ft_get_champ_body(fd, &ch_errors, &champ[pos]);
 	champ[pos].id = id;
 	if (ch_errors)
-		return(ft_ch_err_manager(file, &ch_errors, last_error, &champ[pos]));
+		return (ft_ch_err_manager(file, &ch_errors, last_error, &champ[pos]));
 	pos++;
 	close(fd);
 	return (1);

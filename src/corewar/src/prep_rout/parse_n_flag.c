@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_n_flag.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:38:14 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 08:47:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:15:58 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 /*
 *	ПРОВЕРИЛ.
 */
+
 inline static uint8_t	ft_register_fn_param(char *argv, long long *value, \
 												t_vasa **error_head)
 {
@@ -48,6 +49,7 @@ inline static uint8_t	ft_register_fn_param(char *argv, long long *value, \
 *	ПРОВЕРИЛ.
 **	++*argv; - to iterate towards declared -n value.
 */
+
 int				ft_get_n_flag(char ***argv, t_world *nexus)
 {
 	long long	res;

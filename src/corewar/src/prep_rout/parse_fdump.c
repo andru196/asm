@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fdump.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:37:07 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 11:55:14 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:18:01 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 /*
 *	ПРОВЕРИЛ.
 */
+
 inline static void	ft_add_step_container(t_vasa **chain_head)
 {
 	t_vasa			*step;
@@ -41,6 +42,7 @@ inline static void	ft_add_step_container(t_vasa **chain_head)
 /*
 ** //? Проверил. Не все ОК со вложенными функциями.
 */
+
 inline static uint8_t	ft_register_fdump_param(char *argv, long long *value, t_vasa **error_head)
 {
 	uint8_t				flag;

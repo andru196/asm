@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 22:13:55 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/13 15:25:36 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:06:09 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	Не забывай соблюдать нотацию!
 */
+
 inline static void		ft_control_doubles(t_vasa **errors_head, \
 											t_champ *champs, const int current)
 {

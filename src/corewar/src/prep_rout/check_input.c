@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:23:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/20 23:26:35 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 00:58:19 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <cwr_man.h>
 
 /*
-**	More about tcflush @ 
+**	More about tcflush @
 */
 
 inline static int	ft_get_term_width(void)
@@ -30,7 +30,7 @@ inline static int	ft_get_term_width(void)
 	return (res);
 }
 
-static void	ft_print_intro(void)
+static void			ft_print_intro(void)
 {
 	int		width;
 
@@ -44,10 +44,10 @@ static void	ft_print_intro(void)
 			"%s\n%s%s", ERR_DESC_1, ERR_DESC_2, ERR_DESC_3);
 }
 
-static void	ft_print_errors(t_vasa *ptr)
+static void			ft_print_errors(t_vasa *ptr)
 {
 	t_error	*err;
-	
+
 	while (ptr)
 	{
 		err = ptr->gen.error;
@@ -61,7 +61,7 @@ static void	ft_print_errors(t_vasa *ptr)
 	}
 }
 
-static uint8_t	ft_get_action(void)
+static uint8_t		ft_get_action(void)
 {
 	char		buff[5];
 
@@ -71,12 +71,12 @@ static uint8_t	ft_get_action(void)
 		if (*(int *)&buff[0] == 0x0a1b || !ft_strcasecmp(&buff[0], "no\n"))
 		{
 			tcflush(STDIN_FILENO, TCIFLUSH);
-			return(1);
+			return (1);
 		}
 		else if (*(int *)&buff[0] == '\n' || !ft_strcasecmp(&buff[0], "yes\n"))
 		{
 			tcflush(STDIN_FILENO, TCIFLUSH);
-			return(0);
+			return (0);
 		}
 		else
 		{
@@ -88,7 +88,7 @@ static uint8_t	ft_get_action(void)
 	return (1);
 }
 
-uint8_t		ft_supervise_input(t_world *nexus, int ch_amount)
+uint8_t				ft_supervise_input(t_world *nexus, int ch_amount)
 {
 	uint8_t	flag;
 
@@ -104,7 +104,7 @@ uint8_t		ft_supervise_input(t_world *nexus, int ch_amount)
 		ft_print_intro();
 		ft_print_errors(nexus->errors);
 		if (!flag)
-			return(ft_get_action());
+			return (ft_get_action());
 	}
-	return(flag);
+	return (flag);
 }

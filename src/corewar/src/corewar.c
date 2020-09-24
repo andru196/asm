@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 21:56:48 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 00:48:34 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 #define STR_SGSTN "Correct the value in op.h and recompile."
+
 /*
 **	We allocate common memory space for name and description fields of the
 **	champion entry. Less mallocs - easy memory management.
@@ -45,6 +46,7 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 **	error, or continue the run.
 !	cyc_to_die выставлен в CYCLE_TO_DIE, т.к. нулевой цикл - тоже цикл.
 */
+
 inline static void		ft_init_world(t_world *nexus)
 {
 	ft_bzero(nexus, sizeof(t_world));
@@ -70,10 +72,10 @@ int						main(int argc, char **argv)
 	}
 	else
 		ft_show_man();
-
 	ft_manage_world(NULL);
 	return (0);
 }
+
 #endif
 
 #ifdef FAULT_LAUNCH
@@ -85,5 +87,3 @@ int						main(int argc, char **argv)
 	return (0);
 }
 #endif
-
-

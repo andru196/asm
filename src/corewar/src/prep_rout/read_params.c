@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_params.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:44:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:19:40 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:05:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // TODO:	Проверить ft_parse_champ.
 **	Flag '-g' is for future visualization.
 */
+
 uint8_t		ft_scan_lines(char ***argv, t_world *nexus)
 {
 	if (**argv)
@@ -25,11 +26,11 @@ uint8_t		ft_scan_lines(char ***argv, t_world *nexus)
 		if (!ft_strcmp(**argv, "-dump"))
 			return (ft_parse_fdump(argv, nexus));
 		else if (!ft_strcmp(**argv, "-n"))
-				return (ft_parse_champ(argv, ft_get_n_flag(argv, nexus), nexus));
+			return (ft_parse_champ(argv, ft_get_n_flag(argv, nexus), nexus));
 		else if (!ft_strcmp(**argv, "-g"))
-				(*argv)++;
+			(*argv)++;
 		else
-			return(ft_parse_champ(argv, 0, nexus));
+			return (ft_parse_champ(argv, 0, nexus));
 	}
 	return (0);
 }

@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   add_cyclist.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 23:09:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/07/14 12:57:34 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 01:04:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-*status_quo is used in order to detect if ft_lstnew_r failed to allocate
-*memory for new t_vasa (t_list) entry.
-*counter is used to calculate size of array, that gonna be created
-*after we finished registring -dump entries, as head will alway store
-*their total amount.
+** status_quo is used in order to detect if ft_lstnew_r failed to allocate
+** memory for new t_vasa (t_list) entry.
+** counter is used to calculate size of array, that gonna be created
+** after we finished registring -dump entries, as head will alway store
+** their total amount.
 */
+
 void			ft_add_cyclist(t_vasa **head, long long number)
 {
 	t_vasa			*status_quo;
