@@ -1,0 +1,15 @@
+Norme: ./src/asm/bytes_rev.c
+Norme: ./src/asm/special_arg.c
+Norme: ./src/asm/asm_cor_init.c
+Norme: ./src/asm/argument_check.c
+Norme: ./src/asm/cor_label_check.c
+Norme: ./src/asm/asm_translate.c
+Norme: ./src/asm/asm_cpy_word.c
+Norme: ./src/asm/cor_command_check.c
+Norme: ./src/asm/data_convert.c
+Norme: ./src/asm/resolve_connections.c
+Norme: ./src/asm/read_cor_file.c
+Norme: ./src/asm/skips.c
+Norme: ./src/asm/asm.c
+Norme: ./src/asm/data_size.c
+Norme: ./src/asm/init_struct.c
