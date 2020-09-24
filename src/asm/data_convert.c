@@ -6,7 +6,7 @@
 /*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:10:25 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/20 00:29:47 by tanya            ###   ########.fr       */
+/*   Updated: 2020/09/23 23:43:17 by tanya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		write_n_num(char **dst, long long n, unsigned char bytes)
 	}
 }
 
-static ULL	set_number(long long n, unsigned char size,
+static unsigned long long set_number(long long n, unsigned char size,
 									unsigned char t_dir_size)
 {
 	long long	tmp;
