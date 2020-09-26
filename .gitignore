@@ -7,7 +7,7 @@
 result
 *.log
 ./test
-corewar
+./corewar
 ./t_*
 .leaks/*
 .vscode/*

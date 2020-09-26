@@ -6,11 +6,10 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 11:35:54 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/20 19:05:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 20:59:05 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <stdint.h>
 #include <unistd.h>
 #include <time.h>
@@ -108,28 +107,34 @@ RTP	bytecode_to_int64(const uint8_t *bytecode, size_t size)
 	return (result);
 }
 
+#define AMO 7
 int	main(void)
 {
 
 /*
 ** Этот кусок тестирует макрос на приближенных к реальным данных
 */
-	// uint8_t		buff[4] = "\x74\xB7\x7e\x00";
-	// int			*ptr = (int *)&buff[0];
-	// uint8_t			*refptr =(int *)&buff[0];
+	uint8_t		buff[4] = "\x74\xB7\x7e\x00";
+	int			*ptr = (int *)&buff[0];
+	uint8_t			*refptr =(int *)&buff[0];
 
-	// int			l = bytecode_to_int32((const uint8_t *)refptr, 3);
-	// int			k = _SW_ENDIAN(*ptr);
+	int			l = bytecode_to_int32((const uint8_t *)refptr, 3);
+	int			k = ft_swap_endian(*ptr, 3);
 
 	/*
 	** Этот кусок тестирует макрос с уже проверенной функцией флипа с дополнением
 	*/
-	RTP k,l; k = l = 0;
-	uint8_t	test[4] = {0x81, 0, 0, 0};
-	k = ft_swap_endian((uint8_t)test[0], 2);
-	l = bytecode_to_int32(&test[0], 2);
-	DEBintt(k) DEBend()
-	DEBintt(l) DEBend()
+// 	RTP k,l; k = l = 0;
+// 	uint8_t	test[8] = {0xf0, 0xFF, 0xFF, 0xF0, 0, 0, 0, 0};
+// 	k = ft_swap_endian(*(RTP *)&test[0], AMO);
+// 	l = bytecode_to_int64(&test[0], AMO);
+// #if REG_SIZE <= 4
+// 	DEBintt(k) DEBend()
+// 	DEBintt(l) DEBend()
+// #else
+// 	DEBllt(k) DEBend()
+// 	DEBllt(l) DEBend()
+// #endif
 	
 	// for (int i = 0xFFFFFFFFLL; i != 0; i--)
 	// {
