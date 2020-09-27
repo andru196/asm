@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 00:03:45 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 21:22:50 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/25 18:02:54 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define DEBintt(x) printf("\033[1;35m%s\033[0m == %d ", #x, (x));
 # define DEBuintt(x) printf("\033[1;35m%s\033[0m == %u ", #x, (x));
 # define DEBlt(x) printf("\033[1;35m%s\033[0m == %ld ", #x, (x));
+# define DEBllt(x) printf("\033[1;35m%s\033[0m == %lld ", #x, (x));
 # define DEBzt(x) printf("\033[1;35m%s\033[0m == %zu ", #x, (x));
 # define DEBft(x) printf("\033[1;35m%s\033[0m == %f ", #x, (x));
 # define DEBtextt(x) printf("[\033[1;35m%s\033[0m] == [%s] ", #x, (x));
