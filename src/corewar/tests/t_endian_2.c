@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_endian_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 08:23:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/11 11:22:54 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/11 15:10:29 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,41 @@ intptr_t		ft_calc_addr(intptr_t offset);
 inline void		ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, 
 																uint8_t size)
 {
-	RTP			mask;
+	RTP			base_mask;
+	RTP			arena_mask;
 
-	if (size > 4)
-	{
-		if (size < 7)
-		{
-			if (size == 5)
-				mask = 0xFFFFFFFFFF;
-		mask = 0xFFFFFFFFFFFF;
-		}
-		if (size == 7)
-			mask = 0xFFFFFFFFFFFFFF;
-		mask = 0xFFFFFFFFFFFFFFFF;
-	}
-	else if (size < 4)
-	{
-		if (size == 2)
-			mask = 0xFFFF;
-		if (size == 3)
-			mask = 0xFFFFFF;
-		mask = 0xFF;
-	}
-	else
-		mask = 0xFFFFFFFF;
+	base_mask = (RTP)0xFFFFFFFFFFFFFFFF >> (sizeof(RTP) - size) * 8;
+	arena_mask = (RTP)0xFFFFFFFFFFFFFFFF << size * 8;
+	// if (size > 4)
+	// {
+	// 	if (size < 7)
+	// 	{
+	// 		if (size == 5)
+	// 			mask = (RTP)0xFFFFFFFFFF;
+	// 	mask = (RTP)0xFFFFFFFFFFFF;
+	// 	}
+	// 	if (size == 7)
+	// 		mask = (RTP)0xFFFFFFFFFFFFFF;
+	// 	mask = (RTP)0xFFFFFFFFFFFFFFFF;
+	// }
+	// else if (size < 4)
+	// {
+	// 	if (size == 2)
+	// 		mask = (RTP)0xFFFF;
+	// 	if (size == 3)
+	// 		mask = (RTP)0xFFFFFF;
+	// 	mask = (RTP)0xFF;
+	// }
+	// else
+	// 	mask = 0xFFFFFFFF;
 	value = ft_swap_endian(value, (uintptr_t)size);
-	*(RTP *)arena |= mask;
-	value =~ value;
-	value 
-		
+	*(RTP *)(arena + offset) |= mask;
+	value = ~value & mask;
+	*(RTP *)(arena + offset) ^= value & ((RTP)0xFFFFFFFFFFFFFFFF >> (8 * (sizeof(RTP) - ((((offset + sizeof(RTP)) % MEM_SIZE) * ((offset + sizeof(RTP)) / MEM_SIZE))))));
+	*(RTP *)(arena - sizeof(RTP) + (((offset + sizeof(RTP)) % MEM_SIZE) * ((offset + sizeof(RTP)) / MEM_SIZE))));
+	~0xECCCCC
 }
+
 int						main(void)
 {
 	RTP					source;
