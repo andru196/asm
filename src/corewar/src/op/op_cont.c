@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 15:04:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/10 18:09:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_clone_op_cont(uint8_t offset, t_op *ptr)
 /*
 !КОНТРАКТ:
 	*	uint8_t *arena	- всегда - адрес нулевого элемента массива арены
-		* (&nexus->arena[0]);
+		* (&nexus->arena[0 + sizeof(RTP)]);
 	*	intptr_t ptr	- значение carry->pos, которое всегда указывает на 
 		* оп-код инструкции, подлежащей исполнению.
 	*	t_op *ops_cont	- указатель на копию валидной t_op структуры, 
@@ -61,6 +61,7 @@ void		ft_clone_op_cont(uint8_t offset, t_op *ptr)
 	*	Вычисляет размеры конкретного экземпляра инструкции.
 	*	Проверяет валидность выбранного регистра.
 	*	При успешной эвалуации возвращает 0, выявив ошибку, возвращает 1.
+**	Tester:		t_eval_operands.c
 */
 uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 															t_op *ops_cont)
@@ -72,10 +73,10 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 
 	flag = 0;
 	code_byte = arena[ft_calc_addr(ptr + (intptr_t)OPC_SIZE)];
-	ops_cont->ops_types[0] &= stat_code_to_type[((code_byte & 0xC0) >> 6) - 1];
-	ops_cont->ops_types[1] &= stat_code_to_type[((code_byte & 0x30) >> 4) - 1];
-	ops_cont->ops_types[2] &= stat_code_to_type[((code_byte & 0x0C) >> 2) - 1];
-	ops_cont->ops_types[3] &= stat_code_to_type[((code_byte & 0x03) - 1)];
+	ops_cont->ops_types[0] &= stat_code_to_type[((code_byte & 0xC0) >> 6)];
+	ops_cont->ops_types[1] &= stat_code_to_type[((code_byte & 0x30) >> 4)];
+	ops_cont->ops_types[2] &= stat_code_to_type[((code_byte & 0x0C) >> 2)];
+	ops_cont->ops_types[3] &= stat_code_to_type[((code_byte & 0x03))];
 	i = UINT32_MAX;
 	while (++i < ops_cont->ops_amount)
 		flag |= !(ops_cont->ops_types[i]);
@@ -83,8 +84,10 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 	offset = OPC_SIZE + OPCB_SIZE;
 	while (++i < ops_cont->ops_amount)
 	{
-		flag |= (ops_cont->ops_types[i] == T_REG) & !(VALID_REG(ptr + offset));
-		offset += STEP_SZ(ops_cont->ops_types[i], ops_cont->t_dir_size);
+		flag |= (ops_cont->ops_types[i] == T_REG) & \
+								!(ft_check_reg_is_valid(arena, ptr + offset));
+		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], ops_cont->t_dir_size);
+		offset += ops_cont->ops_length[i];
 	}
 	ops_cont->length = offset;
 	return (flag);

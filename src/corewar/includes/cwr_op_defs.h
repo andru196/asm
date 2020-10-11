@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 15:44:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/09/27 17:32:01 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 ?	operands	--- arrayf of vars-sontainers for parsed(loaded) values.
 */
 
-const static uint8_t		stat_code_to_type[4] = {
-	T_REG, T_DIR, T_IND
+const static uint8_t		stat_code_to_type[5] = {
+	0, T_REG, T_DIR, T_IND
 };
 /*
 **	Size (.length) of each instruction with no coding byte is calculated in 

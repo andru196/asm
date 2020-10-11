@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_mgr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 22:00:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:14:46 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/10 17:30:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ inline static void		ft_flush_char(t_champ *this)
 {
 	this->id = 0;
 	this->size = 0;
-	ft_bzero((void *)this->name, (size_t)(DESC_BLOCK + (REG_SIZE + 1) * 2));
+	ft_bzero((void *)this->name, (size_t)(PROG_NAME_LENGTH + COMMENT_LENGTH + \
+											(REG_SIZE + 1) * 2));
 	if (this->body)
 		free(this->body);
 	this->body = NULL;

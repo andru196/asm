@@ -6,38 +6,36 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 14:52:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/10 20:33:57 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-
-#define CURR_CARRY carry_bogey->gen.carry
-#define PROP_OP_CODE op_code * (carry_bogey->gen.carry->op != 0)
 
 /*
 !	На этот лист - не более 4 функций. Место под 5 -в резерве, если в
 	!	ft_process_carry запрещено объявлять и инициализировать static.
 */
 
-#ifndef NDEBUG
-
-static void				tft_leafnode_not_empty(t_dvasa *tree)
-{
-	if (tree && tree->gen.vasa)
-		DEBfunc()
-}
-
-static void				tft_newnode_not_empty(t_dvasa *new_node)
-{
-	if (new_node)
-		if (new_node->content_size || new_node->gen.content || \
-			new_node->left.un_vasa || new_node->right.du_vasa)
-			DEBfunc()
-}
-
-#endif
-
+/*
+**	#ifndef NDEBUG
+**	
+**	static void				tft_leafnode_not_empty(t_dvasa *tree)
+**	{
+**		if (tree && tree->gen.vasa)
+**			DEBfunc()
+**	}
+**	
+**	static void				tft_newnode_not_empty(t_dvasa *new_node)
+**	{
+**		if (new_node)
+**			if (new_node->content_size || new_node->gen.content || \
+**				new_node->left.un_vasa || new_node->right.du_vasa)
+**				DEBfunc()
+**	}
+**	
+**	#endif
+*/
 
 /*
 **	Итерация ->next_check имеет защиту через == 0 для случаев, когда мы
@@ -73,10 +71,20 @@ inline static void		ft_cycle_control(t_world *nexus, \
 }
 
 /*
+**	Returns either 0, or a value
+*/
+
+inline static uint8_t	ft_eval_op_code_valid(uint8_t op_code)
+{
+	return ((op_code >= 0 && op_code < KNOWN_OPS) * op_code);
+}
+
+/*
 TD:	ПРОВЕРИТЬ.
+	TD: ОБНОВЛЕНА С УЧЕТОМ ИЗМЕНЕНИЙ ЛОГИКИ ВОКРУГ nexus.arena!
 !	СОДЕРЖИТ ТЕСТЫ
 !Контракт:
-	*.	t_dvasa **tree должна хранить адрес указателя на валидный корень-лифноду.
+	*	t_dvasa **tree должна хранить адрес указателя на валидный корень-лифноду.
 	*	Лифнода текущего цикла всегда должна блыть выработана (в результате 
 		* отработки цикла должна остаться пустой).
 *	Выбор исполнителя в op_tab. В самом начале либо сразу после исполнения оче-
@@ -99,23 +107,26 @@ TD:	ПРОВЕРИТЬ.
 inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 															t_dvasa **new_node)
 {
-	static t_op_rout	*op_tab[KNOWN_OPS] = { &op_new_op, &op_live, &op_ld, \
-												&op_st, &op_add, &op_sub, \
-												&op_and, &op_or, &op_xor, \
-												&op_zjmp, &op_ldi, &op_sti, \
-												&op_fork, &op_lld, &op_lldi, \
-												&op_lfork, &op_aff };
+	static t_op_rout	*op_tab[KNOWN_OPS] = { &op_new_op, &op_live, &op_ld,
+											&op_st, &op_add, &op_sub, &op_and,
+											&op_or, &op_xor, &op_zjmp, &op_ldi,
+											&op_sti, &op_fork, &op_lld,
+											&op_lldi, &op_lfork, &op_aff };
 	uint8_t				op_code;
 	t_vasa				*carry_bogey;
 
 	carry_bogey = (*tree)->gen.vasa;
-	if (nexus->cyc.cycle == CURR_CARRY->exec_cyc)
+	if (nexus->cyc.cycle == carry_bogey->gen.carry->exec_cyc)
 	{
 		while (carry_bogey)
 		{
+			carry_bogey->gen.carry->pos = \
+									ft_calc_addr(carry_bogey->gen.carry->pos);
 			(*tree)->gen.vasa = (*tree)->gen.vasa->next;
-			op_code = VALID_OP_CODE(nexus->arena[CURR_CARRY->pos], KNOWN_OPS);
-			op_tab[PROP_OP_CODE](nexus, CURR_CARRY, *tree, new_node);
+			op_code = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + \
+												carry_bogey->gen.carry->pos]);
+			op_tab[op_code * (carry_bogey->gen.carry->op != 0)](nexus, \
+									carry_bogey->gen.carry, *tree, new_node);
 			ft_leafnode_pick(carry_bogey, *tree, new_node, &ft_carry_ins_by_id);
 			carry_bogey = (*tree)->gen.vasa;
 		}

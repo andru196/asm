@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:49:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/10 17:31:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 
 	i = 0;
 	while ((i != MAX_PLAYERS) && \
-			(nexus->champ[i].name = (char *)ft_memalloc(DESC_BLOCK + \
-														(REG_SIZE + 1) * 2)))
+			(nexus->champ[i].name = (char *)ft_memalloc(PROG_NAME_LENGTH + \
+										COMMENT_LENGTH + (REG_SIZE + 1) * 2)))
 	{
 		nexus->champ[i].desc = nexus->champ[i].name + \
 			(uintptr_t)(PROG_NAME_LENGTH + REG_SIZE + 1);
