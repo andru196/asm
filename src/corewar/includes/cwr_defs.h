@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_defs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/10 18:57:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/11 19:03:51 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,9 @@ struct						s_op
 	size_t					cooldown;
 	uint8_t					ops_amount;
 	uint8_t					t_dir_size;
-	uint8_t					ops_types[4];
-	uint8_t					ops_length[4];
-	RTP						operands[4];
+	uint8_t					ops_types[MAX_ARGS_NUMBER];
+	uint8_t					ops_length[MAX_ARGS_NUMBER];
+	RTP						operands[MAX_ARGS_NUMBER];
 	intptr_t				length;
 };
 
@@ -224,7 +224,7 @@ struct						s_champ
 	char					*name;
 	char					*desc;
 	uint8_t					*body;
-	size_t					lives_now;
+	size_t					last_live_op;
 };
 
 /*

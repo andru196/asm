@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 17:50:21 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/11 18:40:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ uint8_t		ft_eval_operands_type(uint8_t *arena, intptr_t ptr, t_op *ops_cont);
 intptr_t	ft_calc_addr(intptr_t offset);
 intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size);
 uint8_t		ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr);
+extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset);
 
 /*
 ******************			swap endian funcs:			************************
