@@ -31,30 +31,21 @@
 void		op_add(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
-	t_op		op_cont;
-	RTP			num;
-	int 		i;
+	t_op	op_cont;
+	int		i;
 
 	ft_clone_op_cont(14, &op_cont);
 	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
-																	&op_cont)))
+									&op_cont)))
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], carry->pos, &op_cont);
-		while (i < 3)
-		{
-			num = ft_swap_endian(op_cont.operands[i], OPC_SIZE);
-			if (num > REG_NUMBER)
-				return ; //ERROR
-			op_cont.operands[i] = ft_swap_endian(carry->reg[num], REG_SIZE);
-		}
-		carry->reg[op_cont.operands[2]]  = ft_swap_endian(op_cont.operands[0] + op_cont.operands[1], REG_SIZE);
-
-		// MIND MOD and INSTRUCTION LOGICS!
-		ft_exec_shit();
+		carry->reg[op_cont.operands[2] - 1]  = ft_swap_endian(
+						op_cont.operands[0] + op_cont.operands[1], REG_SIZE);
+		carry->carry_flag = !carry->carry_flag;
 	}
 	else
 		ft_eval_operands_length(&nexus->arena[sizeof(RTP)], carry->pos, \
-																	&op_cont);
+									&op_cont);
 	carry->op = 0;
 	carry->pos += op_cont.length;
 }

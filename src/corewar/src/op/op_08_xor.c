@@ -38,9 +38,10 @@ void		op_xor(t_world *nexus, t_carry *carry, \
 									&op_cont)))
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], carry->pos, &op_cont);
-		carry->reg[op_cont.operands[2] - 1]  = ft_swap_endian(op_cont.operands[0] ^ op_cont.operands[1], REG_SIZE);
+		carry->reg[op_cont.operands[2] - 1]  = ft_swap_endian(
+						op_cont.operands[0] ^ op_cont.operands[1], REG_SIZE);
 		carry->carry_flag = !carry->carry_flag;
-|	}
+	}
 	else
 		ft_eval_operands_length(&nexus->arena[sizeof(RTP)], carry->pos, \
 									&op_cont);
