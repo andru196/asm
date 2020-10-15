@@ -30,8 +30,21 @@
 void		op_and(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
-	(void)nexus;
-	(void)carry;
-	(void)head;
-	(void)vacant;
+	t_op	op_cont;
+	int		i;
+
+	ft_clone_op_cont(14, &op_cont);
+	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
+									&op_cont)))
+	{
+		ft_get_operands(&nexus->arena[sizeof(RTP)], carry->pos, &op_cont);
+		carry->reg[op_cont.operands[2] - 1]  = ft_swap_endian(
+						op_cont.operands[0] & op_cont.operands[1], REG_SIZE);
+		carry->carry_flag = !carry->carry_flag;
+	}
+	else
+		ft_eval_operands_length(&nexus->arena[sizeof(RTP)], carry->pos, \
+									&op_cont);
+	carry->op = 0;
+	carry->pos += op_cont.length;
 }
