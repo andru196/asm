@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 09:19:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/16 16:05:19 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ TODO:
 **	Tester:		t_eval_operands.c
 */
 uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
-															t_op *ops_cont)
+										t_op *ops_cont, const t_op *const ref)
 {
 	uint8_t		code_byte;
 	uint8_t		flag;
@@ -79,15 +79,15 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 
 	flag = 0;
 	code_byte = arena[ft_calc_addr(ptr + (intptr_t)OPC_SIZE)];
-	ops_cont->ops_types[0] &= stat_code_to_type[((code_byte & 0xC0) >> 6)];
-	ops_cont->ops_types[1] &= stat_code_to_type[((code_byte & 0x30) >> 4)];
-	ops_cont->ops_types[2] &= stat_code_to_type[((code_byte & 0x0C) >> 2)];
-	ops_cont->ops_types[3] &= stat_code_to_type[((code_byte & 0x03))];
+	ops_cont->ops_types[0] = stat_code_to_type[((code_byte & 0xC0) >> 6)];
+	ops_cont->ops_types[1] = stat_code_to_type[((code_byte & 0x30) >> 4)];
+	ops_cont->ops_types[2] = stat_code_to_type[((code_byte & 0x0C) >> 2)];
+	ops_cont->ops_types[3] = stat_code_to_type[((code_byte & 0x03))];
 	i = UINT32_MAX;
 	offset = OPC_SIZE + OPCB_SIZE;
 	while (++i < ops_cont->ops_amount)
 	{
-		flag |= !(ops_cont->ops_types[i]);
+		flag |= !(ops_cont->ops_types[i] & ref->ops_types[i]);
 		flag |= (ops_cont->ops_types[i] == T_REG) & \
 								!(ft_check_reg_is_valid(arena, ptr + offset));
 		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], \
@@ -111,24 +111,24 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 		! lfork!
 */
 
-void	ft_eval_operands_length(uint8_t *arena, intptr_t pos, t_op *op_cont)
-{
-	uint8_t	i;
-	uint8_t	code_byte;
+// void	ft_eval_operands_length(uint8_t *arena, intptr_t pos, t_op *op_cont)
+// {
+// 	uint8_t	i;
+// 	uint8_t	code_byte;
 
-	i = INT8_MAX;
-	code_byte = arena[ft_calc_addr(pos + (intptr_t)OPC_SIZE)];
-	while (++i < op_cont->ops_amount)
-	{
-		if (!op_cont->ops_types[i])
-		{
-			op_cont->ops_types[i] = stat_code_to_type[(code_byte & \
-											(3 << (6 - i * 2)) >> (6 - i * 2))];
-			op_cont->ops_length[i] = ft_step_size(op_cont->ops_types[i], \
-														op_cont->t_dir_size);
-		}
-	}
-	op_cont->length = OPC_SIZE + OPCB_SIZE + op_cont->ops_length[0] + \
-						op_cont->ops_length[1] + op_cont->ops_length[2] +
-						op_cont->ops_length[3];
-}
+// 	i = INT8_MAX;
+// 	code_byte = arena[ft_calc_addr(pos + (intptr_t)OPC_SIZE)];
+// 	while (++i < op_cont->ops_amount)
+// 	{
+// 		if (!op_cont->ops_types[i])
+// 		{
+// 			op_cont->ops_types[i] = stat_code_to_type[(code_byte & \
+// 											(3 << (6 - i * 2)) >> (6 - i * 2))];
+// 			op_cont->ops_length[i] = ft_step_size(op_cont->ops_types[i], \
+// 														op_cont->t_dir_size);
+// 		}
+// 	}
+// 	op_cont->length = OPC_SIZE + OPCB_SIZE + op_cont->ops_length[0] + \
+// 						op_cont->ops_length[1] + op_cont->ops_length[2] +
+// 						op_cont->ops_length[3];
+// }

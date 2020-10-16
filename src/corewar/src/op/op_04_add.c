@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 09:33:41 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/16 15:46:35 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		op_add(t_world *nexus, t_carry *carry, \
 	(void)vacant;
 	ft_clone_op_cont(OP_CODE, &op_cont);
 	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
-									&op_cont)))
+									&op_cont, ft_get_op_cont(OP_CODE))));
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, \
 													op_cont.ops_amount - 1);
