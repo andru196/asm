@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_05_sub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/11 17:37:17 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/16 08:14:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+
+#define OP_CODE 5
 
 /*
 !Контракт:
@@ -44,7 +46,8 @@ void		op_sub(t_world *nexus, t_carry *carry, \
 	}
 	else
 		ft_eval_operands_length(&nexus->arena[sizeof(RTP)], carry->pos, \
-									&op_cont);
+																	&op_cont);
+
 	carry->op = 0;
 	carry->pos += op_cont.length;
 }

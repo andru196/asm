@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/11 18:40:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/16 09:18:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CWR_FUNCS_H
 # define CWR_FUNCS_H
 # include "cwr.h"
-
 
 /*
 ******************		prep_rout (parsing) funcs:		************************
@@ -48,7 +47,7 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
 int			ft_are_digits(const char *str);
 int			ft_are_ndigits(const char *start, const char *end);
 
-void		ft_manage_world(t_world *nexus);									//**Завершающая функция. Чистит некторое говно.
+void		ft_manage_world(t_world *nexus);
 void		ft_wipe_champs(t_champ *ptr);
 void		ft_del_carry(void *ptr, size_t size);								//? Пока не нужна, используется ft_del
 void		ft_del_error(void *ptr, size_t size);								//? Пока не нужна, используется ft_del
@@ -175,6 +174,11 @@ intptr_t	ft_calc_addr(intptr_t offset);
 intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size);
 uint8_t		ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr);
 extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset);
+void		ft_get_operands(uint8_t *arena, t_op *op_cont, t_carry *carry, \
+															intptr_t amount);
+void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
+																t_op *op_cont);
+
 
 /*
 ******************			swap endian funcs:			************************

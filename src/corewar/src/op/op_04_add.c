@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_04_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/13 23:26:02 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/16 09:24:54 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+
+#define OP_CODE 4
 
 /*
 !Контракт:
@@ -28,24 +30,31 @@
 **	As finale we prepare to place our carry in queue of the next cycle.
 */
 
+
+/*
+	Короче, я обосрался, и неправильно продумал логику ft_get_operands немного...
+	Его исправил. теперь в изменяемом операнде (в вашем случае - в третьем)
+	будет храниться либо номер регистра, либо относительный адрес. Но для этого
+	нужно "обрезать" операнды инструкции (op_cont.ops_amount - 1)
+*/
 void		op_add(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_op	op_cont;
-	int		i;
 
-	ft_clone_op_cont(14, &op_cont);
+	(void)head;
+	(void)vacant;
+	op_cont.length - 1;
+	ft_clone_op_cont(OP_CODE, &op_cont);
 	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
 									&op_cont)))
 	{
-		ft_get_operands(&nexus->arena[sizeof(RTP)], carry->pos, &op_cont);
-		carry->reg[op_cont.operands[2] - 1]  = ft_swap_endian(
-						op_cont.operands[0] + op_cont.operands[1], REG_SIZE);
+		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, \
+													op_cont.ops_amount - 1);
+		carry->reg[op_cont.operands[2]] = op_cont.operands[0] + \
+											op_cont.operands[1];
 		carry->carry_flag = !carry->carry_flag;
 	}
-	else
-		ft_eval_operands_length(&nexus->arena[sizeof(RTP)], carry->pos, \
-									&op_cont);
 	carry->op = 0;
 	carry->pos += op_cont.length;
 }

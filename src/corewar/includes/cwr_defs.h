@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_defs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/11 19:03:51 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/15 23:33:49 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef void				t_op_rout(t_world *nexus, t_carry *carry, \
 typedef void				t_carry_cont_rout(t_dvasa *leafnode, \
 												t_vasa *carry_cont);
 typedef RTP					t_swap_endian_rout(RTP value);
+typedef RTP					t_get_operand_val_rout(uint8_t *arena, \
+								t_op *op_cont, t_carry *carry, intptr_t pos);
 
 # ifndef VASA_H
 #  define VASA_H
@@ -120,6 +122,7 @@ typedef enum
 struct						s_op
 {
 	size_t					cooldown;
+	intptr_t				mod;
 	uint8_t					ops_amount;
 	uint8_t					t_dir_size;
 	uint8_t					ops_types[MAX_ARGS_NUMBER];
