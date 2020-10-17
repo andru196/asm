@@ -38,7 +38,7 @@ void		op_or(t_world *nexus, t_carry *carry, \
 	(void)vacant;
 	ft_clone_op_cont(OP_CODE, &op_cont);
 	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
-									&op_cont)))
+									&op_cont, ft_get_op_cont(OP_CODE))))
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, \
 													op_cont.ops_amount - 1);
