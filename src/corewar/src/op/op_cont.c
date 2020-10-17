@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 16:05:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/17 14:31:57 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 	while (++i < ops_cont->ops_amount)
 	{
 		flag |= !(ops_cont->ops_types[i] & ref->ops_types[i]);
-		flag |= (ops_cont->ops_types[i] == T_REG) & \
-								!(ft_check_reg_is_valid(arena, ptr + offset));
+		if (ops_cont->ops_types[i] == T_REG)
+			flag |= !(ft_check_reg_is_valid(arena, ptr + offset));
 		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], \
 														ops_cont->t_dir_size);
 		offset += ops_cont->ops_length[i];
