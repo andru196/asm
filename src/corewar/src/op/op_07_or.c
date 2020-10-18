@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_07_or.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 21:22:32 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/18 16:05:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		op_or(t_world *nexus, t_carry *carry, \
 													op_cont.ops_amount - 1);
 		carry->reg[op_cont.operands[2]] = op_cont.operands[0] | \
 											op_cont.operands[1];
-		carry->carry_flag = !carry->carry_flag;
+		carry->carry_flag = (t_bool)(!carry->reg[op_cont.operands[2]]);
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
