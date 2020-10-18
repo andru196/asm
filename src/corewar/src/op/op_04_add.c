@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 15:46:35 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/18 14:56:46 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,22 @@
 #define OP_CODE 4
 
 /*
-!Контракт:
-	*	Параметры, такие же как у всех остальных op-функций.
-	*	По результатам работы должна модифицировать carry->exec_cyc, в 
-		* соответствии с прочитанным и валидированным op-code.
-	*	Должна модифицировать сarry->op = 0;
-	*	Должна проитерировать указатель carry на арену:
-		* если прочитан кривой op-code.
-		* если инструкция исполнена корректно.
+**!Контракт:
+**	*	Параметры, такие же как у всех остальных op-функций.
+**	*	По результатам работы должна модифицировать carry->exec_cyc, в 
+**		* соответствии с прочитанным и валидированным op-code.
+**	*	Должна модифицировать сarry->op = 0;
+**	*	Должна проитерировать указатель carry на арену:
+**		* если прочитан кривой op-code.
+**		* если инструкция исполнена корректно.
 **	Function evaluates op-code read from arena (with VALID_OP_CODE macro) 
 **	resulting carry->op == either op-code written in arena or == 0.
 **	Op-code evaluated == 0 means nothing to do with current carry->pos(ition)
 **	We iterate position on this occasion (by 1).
 **	As finale we prepare to place our carry in queue of the next cycle.
+**	Tester:		t_add.c
 */
 
-
-/*
-	Короче, я обосрался, и неправильно продумал логику ft_get_operands немного...
-	Его исправил. теперь в изменяемом операнде (в вашем случае - в третьем)
-	будет храниться либо номер регистра, либо относительный адрес. Но для этого
-	нужно "обрезать" операнды инструкции (op_cont.ops_amount - 1)
-*/
 void		op_add(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {

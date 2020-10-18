@@ -6,14 +6,14 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 00:10:12 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 08:40:37 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/18 12:48:25 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-sh ./t_compiler.sh t_add "./src/op/op_04_add.c ./src/op/op_cont.c ./src/op/arena_get.c ./src/flip_endian/end_01_conv_1_4.c ./src/flip_endian/end_02_conv_5-8.c ./src/exec/eval_skip.c ./src/exec/get_operands.c"
+sh ./t_compiler.sh t_add "./src/op/op_04_add.c ./src/op/op_cont.c ./src/op/arena_get.c ./src/flip_endian/end_01_conv_1_4.c ./src/flip_endian/end_02_conv_5-8.c ./src/exec/get_operands.c"
 */
 
 #define AR_START 10
