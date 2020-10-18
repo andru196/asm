@@ -6,13 +6,16 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 16:56:37 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/17 16:45:53 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/18 12:35:21 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr_op_defs.h>
 #define OP_CODE 4
+
 /*
+*	На примере op_04_add проверил эквивалентность поведения референсной
+	* реализации.
 sh ./t_compiler.sh t_eval_operands "./src/op/op_cont.c ./src/op/arena_get.c ./src/flip_endian/end_01_conv_1_4.c ./src/flip_endian/end_02_conv_5-8.c"
 */
 
