@@ -6,7 +6,7 @@
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2020/09/25 19:56:10 by mschimme         ###   ########.fr        #
+#    Updated: 2020/10/25 13:17:00 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,26 +47,26 @@ SOURCE	+=	exec_lobby.c \
 			the_cycle.c
 #**********************		src/flip_endian:		***************************#
 SOURCE	+=	end_01_conv_1_4.c \
-			end_02_conv_2_8.c
+			end_02_conv_5-8.c
 #**********************				src/op:			***************************#
-SOURCE	+=	00_op_new_op.c \
-			01_op_live.c \
-			02_op_ld.c \
-			03_op_st.c \
-			04_op_add.c \
-			05_op_sub.c \
-			06_op_and.c \
-			07_op_or.c \
-			08_op_xor.c \
-			09_op_zjmp.c \
-			10_op_ldi.c \
-			11_op_sti.c \
-			12_op_fork.c \
-			13_op_lld.c \
-			14_op_lldi.c \
-			15_op_lfork.c \
-			16_op_aff.c \
-			arena_get.c \
+SOURCE	+=	arena_get.c \
+			op_00_new_op.c \
+			op_01_live.c \
+			op_02_ld.c \
+			op_03_st.c \
+			op_04_add.c \
+			op_05_sub.c \
+			op_06_and.c \
+			op_07_or.c \
+			op_08_xor.c \
+			op_09_zjmp.c \
+			op_10_ldi.c \
+			op_11_sti.c \
+			op_12_fork.c \
+			op_13_lld.c \
+			op_14_lldi.c \
+			op_15_lfork.c \
+			op_16_aff.c \
 			op_cont.c
 #**********************			src/prep_rout:		***************************#
 SOURCE	+=	check_id.c \

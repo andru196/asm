@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_champ_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:37:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:26:09 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ inline static void		ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 		ft_err_invalid_filesize(error, "Magic number field");
 		return ;
 	}
-	if (magic != (int)(_SW_ENDIAN(COREWAR_EXEC_MAGIC)))
+	if (magic != (int)(ft_swap_endian(COREWAR_EXEC_MAGIC, 4)))
 		ft_err_invalid_cwr_magic(error, NULL);
 	if ((res = read(fd, curr->name, (PROG_NAME_LENGTH + REG_SIZE))) != \
 												PROG_NAME_LENGTH + REG_SIZE)
@@ -51,7 +51,7 @@ inline static void		ft_get_champ_size(int fd, \
 		ft_err_invalid_filesize(champ_error, "File size field.");
 		return ;
 	}
-	champ->size = (RTP)(_SW_ENDIAN(size));
+	champ->size = (RTP)(ft_swap_endian(size, 4));
 	if (champ->size > CHAMP_MAX_SIZE)
 		ft_err_invalid_champsize(champ_error, NULL);
 }

@@ -1,16 +1,13 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    t_compiler.sh                                      :+:      :+:    :+:    #
+#    t_clear.sh                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/10/25 13:29:58 by mschimme          #+#    #+#              #
-#    Updated: 2020/10/25 13:29:58 by mschimme         ###   ########.fr        #
+#    Created: 2020/10/25 13:29:54 by mschimme          #+#    #+#              #
+#    Updated: 2020/10/25 13:51:35 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-object=${1}
-adds=${2}
-
-gcc -Wall -Wextra -g -I./includes -I../libft/includes ./tests/$object.c $adds -L../libft -lft -g -o ./$object
+ls | grep -e 't_' | grep -v -e 'sh' | xargs -t -I '{}' rm -rf {}

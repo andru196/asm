@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 15:44:48 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:14:23 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,14 @@ int			ft_are_ndigits(const char *start, const char *end);
 
 void		ft_manage_world(t_world *nexus);
 void		ft_wipe_champs(t_champ *ptr);
-void		ft_del_carry(void *ptr, size_t size);								//? Пока не нужна, используется ft_del
-void		ft_del_error(void *ptr, size_t size);								//? Пока не нужна, используется ft_del
+
+/*
+**	ft_del_carry	- Пока не нужна, используется ft_del.
+**	ft_del_error	- Пока не нужна, используется ft_del.
+*/
+
+void		ft_del_carry(void *ptr, size_t size);
+void		ft_del_error(void *ptr, size_t size);
 int			ft_prox_err_ret(t_vasa **error_head, void *object, \
 															t_err_rout errfunc);
 void		ft_prox_err_malloc(const char *var, const char *par_func);
@@ -180,7 +186,6 @@ void		ft_get_operands(uint8_t *arena, t_op *op_cont, t_carry *carry, \
 void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 																t_op *op_cont);
 
-
 /*
 ******************			swap endian funcs:			************************
 */
@@ -194,6 +199,12 @@ RTP			ft_swap_endian_pen(RTP value);
 RTP			ft_swap_endian_sex(RTP value);
 RTP			ft_swap_endian_sep(RTP value);
 RTP			ft_swap_endian_oct(RTP value);
+
+/*
+******************			output funcs:				************************
+*/
+
+uint8_t		ft_print_dump(t_vasa **cycle);
 
 /*
 ******************			Built-in test funcs:		************************

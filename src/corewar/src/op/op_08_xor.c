@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_08_xor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/16 21:22:52 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:02:35 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void		op_xor(t_world *nexus, t_carry *carry, \
 													op_cont.ops_amount - 1);
 		carry->reg[op_cont.operands[2]] = op_cont.operands[0] ^ \
 											op_cont.operands[1];
-		carry->carry_flag = !carry->carry_flag;
+		carry->carry_flag = (t_bool)(!carry->reg[op_cont.operands[2]]);
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	carry->exec_cyc++;
 }

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/18 15:15:50 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 12:49:20 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void		op_add(t_world *nexus, t_carry *carry, \
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	carry->exec_cyc++;
 }

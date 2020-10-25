@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/18 14:56:00 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 11:43:43 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,21 @@ static RTP		ft_get_ind_val(uint8_t *arena, t_op *op_cont, \
 	offset = (intptr_t)ft_swap_endian(ft_get_bytecode(arena, pos), IND_SIZE);
 	if (op_cont->mod)
 		offset %= op_cont->mod;
-	return (ft_swap_endian(ft_get_bytecode(arena, pos + offset), DIR_SIZE));
+	return (ft_swap_endian(ft_get_bytecode(arena, carry->pos + offset), \
+																	DIR_SIZE));
 }
 
 /*
-**TD: ДОБАВТЬ ИСПРАВЛЕНИЕ!
-**	TD:	Если amount < op_cont->ops_amount, для оставшихся опернад нужно особое
-**		TD: поведение: если тип операнда - не регистр: игнорить.
-**		TD: если тип операнда - регистр: записать в значение операнда его номер.
-**	Yet another reasone to declare 'fck norme'...
+**!КОНТРАКТ:
+**	*	uint8_t *arena		- указывает на логическое начало арены.
+**	*	t_op *op_cont		- указывает на валидный контейнер инструкции.
+**	*	t_carry *carry		- !NULL.
+**	*	inptr_t amount		- значение, не превышающее op_cont->ops_aomount.
+***	 Логика функции исходит из того, что всякая инструкция, которая меняет
+**	* значение регистра, определяет индекс регистра по своему последнему
+**	* операнду. В таком случае, для последнего операнда необходимо высчитывать
+**	* не значение регистра, а индекс регистра, что и обеспечивается конструкцией
+**	* функции.
 */
 
 void			ft_get_operands(uint8_t *arena, t_op *op_cont, t_carry *carry, \

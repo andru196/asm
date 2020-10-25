@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/10 18:13:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:23:50 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ inline static void		ft_place_champs(t_world *nexus)
 	int					ch_amount;
 	uint8_t				*arena;
 
-	arena = &nexus[sizeof(RTP)];
+	arena = &nexus->arena[sizeof(RTP)];
 	ch_amount = nexus->champs;
 	step = nexus->champs;
 	entry_ptr = 0;

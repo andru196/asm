@@ -3,39 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   op_01_live.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/11 19:14:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:10:52 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
+#define OP_CODE 1
+
 /*
-*Задачи:
-	?	Считать оп-код по текущему положеню указателя. Записать в carry->op его
-		? значение, если верный; Передвинуть на 1 байт оффсет-указатель, если
-		? неверный.
+**!КОНТРАКТ:
+**	*	nexus	- указывает на валидную базовую структуру.
+**	*	carry	- указывает на текущую каретку.
+**	*	head	- указывает на "голову" древа очереди исполнения.
+**	*	vacant	- указывает в итоге на вакантную ноду древа (если есть).
+**	/////TD:Задачи:
+**	/////?	Считать оп-код по текущему положеню указателя. Записать в
+**	/////	? carry->op его значение, если верный; Передвинуть на 1 байт
+**	/////	? оффсет-указатель, если неверный.
 */
+
 void		op_live(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
-	t_op		*op_cont;
-	uint8_t		*arena;
-	uintptr_t	offset;
-	
-	op_cont = ft_get_op_cont(1);
-	arena = &nexus->arena[sizeof(RTP)];
-	ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, &op_cont);
-	offset = OPC_SIZE + op_cont->ops_length[0];
-	op_cont->operands[0] = -(ft_swap_endian(\
-		ft_get_bytecode(arena, carry->pos + OPC_SIZE), op_cont->ops_length[0]));
-	if (op_cont->operands[0] > 0 && op_cont->operands[0] <= nexus->champs)
-		if (nexus->champ_ord[op_cont->operands[0] - 1]->alive)
-			nexus->champ_ord[op_cont->operands[0] - 1]->last_live_op = \
-																carry->exec_cyc;
-	carry->last_live_op = carry->exec_cyc++;
+	t_op		op_cont;
+	RTP			id;
+	t_champ		*champion;
+
+	(void)head;
+	(void)vacant;
+	ft_clone_op_cont(OP_CODE, &op_cont);
+	ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, 1);
+	id = -(op_cont.operands[0]);
+	if (id > 0 && id <= nexus->champs)
+	{
+		champion = nexus->champ_ord[id - 1];
+		if (champion->alive)
+		{
+			champion->last_live_op = carry->exec_cyc;
+			nexus->survivor = champion;
+		}
+	}
 	carry->op = 0;
-	carry->pos += offset;
+	carry->pos += op_cont.length;
+	carry->last_live_op = carry->exec_cyc++;
 }

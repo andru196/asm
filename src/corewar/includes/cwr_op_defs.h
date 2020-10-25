@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/15 22:58:13 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:22:38 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ const static t_op			stat_opset[17] = {
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 1,
 		.t_dir_size = 4,
-		.length = 5,
 		.ops_types = {T_DIR},
+		.ops_length = { 4 },
+		.length = 5,
 		.mod = 0
 	},
 	{							//*02_ld;
@@ -152,8 +153,7 @@ const static t_op			stat_opset[17] = {
 		.ops_amount = 1,
 		.t_dir_size = 2,
 		.length = 3,
-		.ops_types = {T_DIR},
-		.mod = IDX_MOD
+		.ops_types = {T_DIR}
 	},
 	{							//*16_aff;
 		.cooldown = 2 - CYC_COEFF,
