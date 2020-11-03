@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/10 20:33:57 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/31 15:52:39 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,16 +127,16 @@ inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 												carry_bogey->gen.carry->pos]);
 			op_tab[op_code * (carry_bogey->gen.carry->op != 0)](nexus, \
 									carry_bogey->gen.carry, *tree, new_node);
-			ft_leafnode_pick(carry_bogey, *tree, new_node, &ft_carry_ins_by_id);
+			ft_leafnode_pick(carry_bogey, *tree, new_node, &ft_add_offspring_by_id);
 			carry_bogey = (*tree)->gen.vasa;
 		}
-#ifndef NDEBUG
-tft_leafnode_not_empty(*tree);
-#endif
+// #ifndef NDEBUG
+// tft_leafnode_not_empty(*tree);
+// #endif
 		ft_leafnode_vacate(tree, new_node);
-#ifndef NDEBUG
-tft_newnode_not_empty(*new_node);
-#endif
+// #ifndef NDEBUG
+// tft_newnode_not_empty(*new_node);
+// #endif
 	}
 }
 
