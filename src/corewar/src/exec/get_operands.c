@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 11:43:43 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:20:42 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	!	не подлежит применению в lfork!
 */
 
-static RTP		ft_get_nil_val(uint8_t *arena, t_op *op_cont, \
+static RTP		ft_get_nil_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)arena;
@@ -35,7 +35,7 @@ static RTP		ft_get_nil_val(uint8_t *arena, t_op *op_cont, \
 	return (0);
 }
 
-static RTP		ft_get_reg_num(uint8_t *arena, t_op *op_cont, \
+static RTP		ft_get_reg_num(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
@@ -43,14 +43,14 @@ static RTP		ft_get_reg_num(uint8_t *arena, t_op *op_cont, \
 	return ((RTP)(arena[ft_calc_addr(pos)] - 1));
 }
 
-static RTP		ft_get_reg_val(uint8_t *arena, t_op *op_cont, \
+static RTP		ft_get_reg_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
 	return ((RTP)(carry->reg[arena[ft_calc_addr(pos)] - 1]));
 }
 
-static RTP		ft_get_dir_val(uint8_t *arena, t_op *op_cont, \
+static RTP		ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
@@ -58,7 +58,7 @@ static RTP		ft_get_dir_val(uint8_t *arena, t_op *op_cont, \
 	return (ft_swap_endian(ft_get_bytecode(arena, pos), T_DIR));
 }
 
-static RTP		ft_get_ind_val(uint8_t *arena, t_op *op_cont, \
+static RTP		ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	intptr_t	offset;
@@ -74,7 +74,7 @@ static RTP		ft_get_ind_val(uint8_t *arena, t_op *op_cont, \
 /*
 **!КОНТРАКТ:
 **	*	uint8_t *arena		- указывает на логическое начало арены.
-**	*	t_op *op_cont		- указывает на валидный контейнер инструкции.
+**	*	t_mop *op_cont		- указывает на валидный контейнер инструкции.
 **	*	t_carry *carry		- !NULL.
 **	*	inptr_t amount		- значение, не превышающее op_cont->ops_aomount.
 ***	 Логика функции исходит из того, что всякая инструкция, которая меняет
@@ -84,7 +84,7 @@ static RTP		ft_get_ind_val(uint8_t *arena, t_op *op_cont, \
 **	* функции.
 */
 
-void			ft_get_operands(uint8_t *arena, t_op *op_cont, t_carry *carry, \
+void			ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 												intptr_t amount)
 {
 	static t_get_operand_val_rout	*arr[5] = { &ft_get_nil_val,

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:22:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:20:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ const static uint8_t		stat_code_to_type[5] = {
 **	Size (.length) of each instruction with no coding byte is calculated in 
 **	t_calc_op_length test.
 */
-const static t_op			stat_opset[17] = {
+const static t_mop			stat_opset[17] = {
 	{							//*00_my_read;
 		.cooldown = 1,
 		.ops_amount = 0,

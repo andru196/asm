@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/18 12:42:12 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:21:26 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	*	Возвращает указатель
 */
 
-const t_op		*ft_get_op_cont(uint8_t offset)
+const t_mop		*ft_get_op_cont(uint8_t offset)
 {
 	return (&stat_opset[offset]);
 }
@@ -30,9 +30,9 @@ const t_op		*ft_get_op_cont(uint8_t offset)
 **		* Предполагается, что структура выделяется на стеке.
 */
 
-void			ft_clone_op_cont(uint8_t offset, t_op *ptr)
+void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 {
-	ft_memcpy(ptr, (const void *)&stat_opset[offset], sizeof(t_op));
+	ft_memcpy(ptr, (const void *)&stat_opset[offset], sizeof(t_mop));
 }
 
 /*
@@ -53,7 +53,7 @@ void			ft_clone_op_cont(uint8_t offset, t_op *ptr)
 **		* (&nexus->arena[0 + sizeof(RTP)]);
 **	*	intptr_t ptr	- значение carry->pos, которое всегда указывает на
 **		* оп-код инструкции, подлежащей исполнению.
-**	*	t_op *ops_cont	- указатель на копию валидной t_op структуры,
+**	*	t_mop *ops_cont	- указатель на копию валидной t_mop структуры,
 **		* соответствующей считанному оп-коду.
 **	*	Выполняет проверку корректности поданного кодирующего байта на предмет
 **		* соответствия его допустимым (в соответствии с инструкцией) значениям.
@@ -73,7 +73,7 @@ void			ft_clone_op_cont(uint8_t offset, t_op *ptr)
 */
 
 uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
-										t_op *ops_cont, const t_op *const ref)
+										t_mop *ops_cont, const t_mop *const ref)
 {
 	uint8_t		code_byte;
 	uint8_t		flag;
@@ -113,7 +113,7 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 **		! fork!
 **		! lfork!
 **
-**	void	ft_eval_operands_length(uint8_t *arena, intptr_t pos, t_op *op_cont)
+**	void	ft_eval_operands_length(uint8_t *arena, intptr_t pos, t_mop *op_cont)
 **	{
 **		uint8_t	i;
 **		uint8_t	code_byte;

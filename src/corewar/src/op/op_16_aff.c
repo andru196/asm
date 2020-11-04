@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:21:20 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:21:00 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		op_aff(t_world *nexus, t_carry *carry, \
 	(void)carry;
 	(void)head;
 	(void)vacant;
-	// t_op	op_cont;
+	// t_mop	op_cont;
 	// int		i;
 	// char	c;
 

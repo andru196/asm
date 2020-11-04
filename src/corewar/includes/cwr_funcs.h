@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:14:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:20:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,18 +173,18 @@ void		op_aff(t_world *nexus, t_carry *carry, t_dvasa *head, \
 ******************			OP-support funcs:			************************
 */
 
-const t_op	*ft_get_op_cont(uint8_t offset);
-void		ft_clone_op_cont(uint8_t offset, t_op *ptr);
+const t_mop	*ft_get_op_cont(uint8_t offset);
+void		ft_clone_op_cont(uint8_t offset, t_mop *ptr);
 uint8_t		ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
-										t_op *ops_cont, const t_op *const ref);
+										t_mop *ops_cont, const t_mop *const ref);
 intptr_t	ft_calc_addr(intptr_t offset);
 intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size);
 uint8_t		ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr);
 extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset);
-void		ft_get_operands(uint8_t *arena, t_op *op_cont, t_carry *carry, \
+void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
 void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
-																t_op *op_cont);
+																t_mop *op_cont);
 
 /*
 ******************			swap endian funcs:			************************

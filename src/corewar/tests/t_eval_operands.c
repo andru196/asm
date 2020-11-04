@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 16:56:37 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/18 12:43:03 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:21:27 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ sh ./t_compiler.sh t_eval_operands "./src/op/op_cont.c ./src/op/arena_get.c ./sr
 int			main(void)
 {
 	t_world	nexus;
-	t_op	op_cont;
+	t_mop	op_cont;
 
 	ft_bzero(&nexus, sizeof(nexus));
 	nexus.arena[10 + sizeof(RTP)] = 0xE4;

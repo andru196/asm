@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/15 23:33:49 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:22:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_cycle		t_cycle;
 typedef struct s_error		t_error;
 typedef struct s_vasa		t_vasa;
 typedef struct s_dvasa		t_dvasa;
-typedef struct s_op			t_op;
+typedef struct s_mop			t_mop;
 typedef void				t_err_rout(t_vasa **head, void *object);
 typedef void				t_op_rout(t_world *nexus, t_carry *carry, \
 										t_dvasa *head, t_dvasa **vacant);
@@ -78,7 +78,7 @@ typedef void				t_carry_cont_rout(t_dvasa *leafnode, \
 												t_vasa *carry_cont);
 typedef RTP					t_swap_endian_rout(RTP value);
 typedef RTP					t_get_operand_val_rout(uint8_t *arena, \
-								t_op *op_cont, t_carry *carry, intptr_t pos);
+								t_mop *op_cont, t_carry *carry, intptr_t pos);
 
 # ifndef VASA_H
 #  define VASA_H
@@ -119,7 +119,7 @@ typedef enum
 **	.length;		-	Total length of the op.
 */
 
-struct						s_op
+struct						s_mop
 {
 	size_t					cooldown;
 	intptr_t				mod;
@@ -203,7 +203,7 @@ struct						s_carry
 	int						id;
 	RTP						reg[REG_NUMBER];
 	intptr_t				pos;
-	t_op					*op_cont;
+	t_mop					*op_cont;
 	uint8_t					op;
 	t_bool					carry_flag;
 	size_t					last_live_op;
