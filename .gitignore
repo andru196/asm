@@ -12,3 +12,5 @@ result
 ./src/corewar/t_*
 .leaks/*
 .vscode/*
+./asm
+./corewar
