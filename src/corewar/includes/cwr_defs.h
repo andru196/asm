@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:22:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/07 17:16:24 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef void				t_carry_cont_rout(t_dvasa *leafnode, \
 												t_vasa *carry_cont);
 typedef RTP					t_swap_endian_rout(RTP value);
 typedef RTP					t_get_operand_val_rout(uint8_t *arena, \
+								t_mop *op_cont, t_carry *carry, intptr_t pos);
+typedef void				t_set_operand_val_rout(uint8_t *arena, \
 								t_mop *op_cont, t_carry *carry, intptr_t pos);
 
 # ifndef VASA_H
