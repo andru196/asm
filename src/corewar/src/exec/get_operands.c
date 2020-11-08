@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/07 17:29:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/08 15:35:38 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,53 +24,6 @@
 **	!	не подлежит применению в lfork!
 */
 
-static RTP		ft_get_nil_val(uint8_t *arena, t_mop *op_cont, \
-										t_carry *carry, intptr_t pos)
-{
-	(void)arena;
-	(void)op_cont;
-	(void)carry;
-	(void)pos;
-	ft_printf("\n!!! We entered ft_get_nil_val somehow!!!'\n");
-	return (0);
-}
-
-static RTP		ft_get_reg_num(uint8_t *arena, t_mop *op_cont, \
-										t_carry *carry, intptr_t pos)
-{
-	(void)op_cont;
-	(void)carry;
-	return ((RTP)(arena[ft_calc_addr(pos)] - 1));
-}
-
-static RTP		ft_get_reg_val(uint8_t *arena, t_mop *op_cont, \
-										t_carry *carry, intptr_t pos)
-{
-	(void)op_cont;
-	return ((RTP)(carry->reg[arena[ft_calc_addr(pos)] - 1]));
-}
-
-static RTP		ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
-										t_carry *carry, intptr_t pos)
-{
-	(void)op_cont;
-	(void)carry;
-	return (ft_swap_endian(ft_get_bytecode(arena, pos), T_DIR));
-}
-
-static RTP		ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \
-										t_carry *carry, intptr_t pos)
-{
-	intptr_t	offset;
-
-	(void)carry;
-	offset = (intptr_t)ft_swap_endian(ft_get_bytecode(arena, pos), IND_SIZE);
-	if (op_cont->mod)
-		offset %= op_cont->mod;
-	return (ft_swap_endian(ft_get_bytecode(arena, carry->pos + offset), \
-																	DIR_SIZE));
-}
-
 /*
 **!КОНТРАКТ:
 **	*	uint8_t *arena		- указывает на логическое начало арены.
@@ -84,15 +37,15 @@ static RTP		ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \
 **	* функции.
 */
 
-void			ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
-												intptr_t amount)
+void			ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+																intptr_t amount)
 {
 	static t_get_operand_val_rout	*arr[5] = { &ft_get_nil_val,
 											&ft_get_reg_val, &ft_get_dir_val,
 											&ft_get_nil_val, &ft_get_ind_val };
 	static t_get_operand_val_rout	*ext[5] = { &ft_get_nil_val,
 											&ft_get_reg_num, &ft_get_dir_val,
-											&ft_get_nil_val, &ft_get_ind_val };
+											&ft_get_nil_val, &ft_get_ind_num };
 	uint8_t							i;
 	intptr_t						pos;
 

@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/07 18:21:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/08 15:50:39 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define OP_CODE 2
 
 /*
-TODO:	Test!.
+TODO:	Test!
 */
 void		op_ld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)

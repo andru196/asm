@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:20:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/08 15:34:42 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 
 void		ft_exec_battle(t_world *nexus);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
-
 
 /*
 ******************				SERVice funcs:			************************
@@ -106,7 +105,6 @@ void		ft_init_carries(t_world *nexus);
 t_carry		*ft_dupe_carry(t_carry *parent);
 void		ft_carry_ins_by_id(t_dvasa *leafnode, t_vasa *carry_cont);
 
-
 /*
 ******************			Tree managing funcs:		************************
 */
@@ -122,8 +120,6 @@ void		ft_tree_undertaker(t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
 void		ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 								t_dvasa **new_node, t_carry_cont_rout *manager);
 void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant);
-
-
 
 /*
 ******************			OP-performing funcs:		************************
@@ -176,15 +172,42 @@ void		op_aff(t_world *nexus, t_carry *carry, t_dvasa *head, \
 const t_mop	*ft_get_op_cont(uint8_t offset);
 void		ft_clone_op_cont(uint8_t offset, t_mop *ptr);
 uint8_t		ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
-										t_mop *ops_cont, const t_mop *const ref);
+									t_mop *ops_cont, const t_mop *const ref);
 intptr_t	ft_calc_addr(intptr_t offset);
 intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size);
 uint8_t		ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr);
 extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset);
-void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
-															intptr_t amount);
+void		ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, \
+																uint8_t size);
 void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 																t_mop *op_cont);
+
+/*
+******************			manage operands:			************************
+*/
+
+void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+															intptr_t amount);
+RTP			ft_get_reg_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+RTP			ft_get_ind_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+RTP			ft_get_reg_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+RTP			ft_get_dir_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+RTP			ft_get_ind_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+void		ft_set_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+void		ft_set_reg_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+void		ft_set_dir_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
+void		ft_set_ind_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
+																intptr_t pos);
 
 /*
 ******************			swap endian funcs:			************************
@@ -211,4 +234,3 @@ uint8_t		ft_print_dump(t_vasa **cycle);
 */
 
 #endif
-
