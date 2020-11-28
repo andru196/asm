@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:05:39 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:11:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/15 17:45:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ RTP		ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
 {
 	(void)op_cont;
 	(void)carry;
-	return (ft_swap_endian(ft_get_bytecode(arena, pos), T_DIR));
+	return (ft_swap_endian(ft_get_bytecode(arena, pos), op_cont->t_dir_size));
 }
 
 RTP		ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \

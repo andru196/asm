@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:34:42 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/15 19:36:46 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ RTP			ft_swap_endian_oct(RTP value);
 */
 
 uint8_t		ft_print_dump(t_vasa **cycle);
+void		ft_print_outro(t_champ *survivor);
 
 /*
 ******************			Built-in test funcs:		************************

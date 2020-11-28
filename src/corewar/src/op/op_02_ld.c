@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:50:39 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/15 17:51:05 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		op_ld(t_world *nexus, t_carry *carry, \
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, \
 													op_cont.ops_amount - 1);
 		carry->reg[op_cont.operands[1]] = op_cont.operands[0];
-		carry->carry_flag = (t_bool)(!carry->reg[op_cont.operands[2]]);
+		carry->carry_flag = (t_bool)(!carry->reg[op_cont.operands[1]]);
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;

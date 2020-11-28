@@ -6,7 +6,7 @@
 #    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2020/11/08 15:31:31 by mschimme         ###   ########.fr        #
+#    Updated: 2020/11/15 19:43:26 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ VPATH	:=	./src/corewar/src: \
 			./src/corewar/src/flip_endian: \
 			./src/corewar/src/op: \
 			./src/corewar/src/prep_rout: \
-			./src/corewar/src/print_dump: \
+			./src/corewar/src/print: \
 			./src/corewar/src/serv: \
 			./src/corewar/src/trees:
 
@@ -81,8 +81,9 @@ SOURCE	+=	check_id.c \
 			prep_battle.c \
 			read_champ_file.c \
 			read_params.c
-#**********************			src/print_dump:		***************************#
-SOURCE	+=	print_dump_lobby.c
+#**********************			src/print:			***************************#
+SOURCE	+=	print_dump_lobby.c \
+			print_outro.c
 #**********************			src/serv:			***************************#
 SOURCE	+=	_del_carry.c \
 			_del_error.c \

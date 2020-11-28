@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/31 15:52:39 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/15 19:34:16 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ inline static void		ft_cycle_control(t_world *nexus, \
 			cyc_ptr->cyc_to_die = (cyc_ptr->cyc_to_die - CYCLE_DELTA) * (cyc_ptr->cyc_to_die >= CYCLE_DELTA);
 			cyc_ptr->num_of_checks = 0;
 		}
-		// предусмотреть итератор на следующую проверку.
 	cyc_ptr->next_check += cyc_ptr->cyc_to_die + (cyc_ptr->cyc_to_die == 0);	//? Бесполезная защита
 	cyc_ptr->lives_done = 0;
 	}
@@ -157,6 +156,7 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	t_dvasa	*vacant;
 	uint8_t	dump_fl;
 	t_vasa	*curr_carry;
+
 	curr_carry = NULL;
 	vacant = NULL;
 	dump_fl = nexus->flags;
@@ -177,4 +177,7 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 			if (ft_print_dump(&nexus->cyc.cyc_to_dump))
 				break ;
 	}
+	if (vacant)
+		free(vacant);
+	ft_print_outro(nexus->survivor);
 }

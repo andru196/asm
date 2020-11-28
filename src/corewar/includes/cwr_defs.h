@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/07 17:16:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/28 14:51:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ struct						s_cycle
 **					с предыдущего цикла (только исполнила предыдущую свою
 **					инструкцию), ей необходимо встать на кулдаун по новой.
 **	.last_live_op	-	Number of last cycle the carry were alive.
-**	.exec_cyc		-	Number of the cycly of the op execution.
+**	.exec_cyc		-	Number of the cycle of the op to be executed.
 */
 
 struct						s_carry
