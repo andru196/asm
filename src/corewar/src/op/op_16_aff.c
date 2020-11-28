@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 18:57:06 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/28 19:00:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void		op_aff(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;
-	int		i;
 	char	c;
 
+	(void)head;
+	(void)vacant;
 	ft_clone_op_cont(14, &op_cont);
 	if (!(ft_eval_operands_type(&nexus->arena[sizeof(RTP)], carry->pos, \
 									&op_cont, ft_get_op_cont(OP_CODE))))
