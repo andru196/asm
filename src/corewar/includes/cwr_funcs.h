@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:36:46 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/08 00:09:19 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 */
 
 void		ft_exec_battle(t_world *nexus);
+void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
 
 /*
