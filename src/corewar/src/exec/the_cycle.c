@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/08 01:09:32 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/10 01:51:43 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 	while (tree)
 	{
 		if (nexus->cyc.cycle == nexus->cyc.cyc_to_dump->gen.cyc_sol)
-			if (ft_print_dump(&nexus->cyc.cyc_to_dump))
+			if (ft_print_dump(nexus))
 			{
 				ft_destroy_leaftree(&tree, &vacant);
 				return ;

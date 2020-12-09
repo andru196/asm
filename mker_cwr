@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    mker_cwr                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: andru <andru@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2020/11/15 19:43:26 by mschimme         ###   ########.fr        #
+#    Updated: 2020/12/10 01:34:57 by andru            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	corewar
-CC		=	gcc
+CC		=	clang
 FLAGS	=	-Wall -Wextra -g
 DIR_LIB	=	./src/libft
 
@@ -111,7 +111,7 @@ IFLAGS	+=	$(foreach d, $(INC_DIR), -I$d)
 all: $(NAME)
 
 $(NAME): LIB MAKEDIR $(OBJECTS)
-	@$(CC) $(FLAGS) -L$(DIR_LIB) -lft $(OBJECTS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJECTS) -L $(DIR_LIB) -lft  -o $(NAME)
 
 LIB:
 	@$(MAKE) -C $(DIR_LIB)

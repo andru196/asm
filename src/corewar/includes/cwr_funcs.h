@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/08 00:09:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/10 02:29:10 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ RTP			ft_swap_endian_oct(RTP value);
 ******************			output funcs:				************************
 */
 
-uint8_t		ft_print_dump(t_vasa **cycle);
+uint8_t		ft_print_dump(t_world *nexus);
 void		ft_print_outro(t_champ *survivor);
 
 /*
