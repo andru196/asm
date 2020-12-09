@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 15:44:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/04 11:20:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,108 +29,124 @@
 ?	operands	--- arrayf of vars-sontainers for parsed(loaded) values.
 */
 
-const static uint8_t		stat_code_to_type[4] = {
-	T_REG, T_DIR, T_IND
+const static uint8_t		stat_code_to_type[5] = {
+	0, T_REG, T_DIR, T_IND
 };
 /*
 **	Size (.length) of each instruction with no coding byte is calculated in 
 **	t_calc_op_length test.
 */
-const static t_op			stat_opset[17] = {
+const static t_mop			stat_opset[17] = {
 	{							//*00_my_read;
 		.cooldown = 1,
 		.ops_amount = 0,
 		.t_dir_size = 0,
 		.ops_types = {0, 0, 0, 0},
 		.operands = {0, 0, 0, 0},
-		.length = OPC_SIZE
+		.length = OPC_SIZE,
+		.mod = 0
 	},
 	{							//*01_live;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 1,
 		.t_dir_size = 4,
+		.ops_types = {T_DIR},
+		.ops_length = { 4 },
 		.length = 5,
-		.ops_types = {T_DIR}
+		.mod = 0
 	},
 	{							//*02_ld;
 		.cooldown = 5 - CYC_COEFF,
 		.ops_amount = 2,
 		.t_dir_size = 4,
-		.ops_types = {T_DIR | T_IND, T_REG}
+		.ops_types = {T_DIR | T_IND, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*03_st;
 		.cooldown = 5 - CYC_COEFF,
 		.ops_amount = 2,
 		.t_dir_size = 4,
-		.ops_types = {T_REG, T_REG | T_IND}
+		.ops_types = {T_REG, T_REG | T_IND},
+		.mod = 0
 	},
 	{							//*04_add;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 4,
-		.ops_types = {T_REG, T_REG, T_REG}
+		.ops_types = {T_REG, T_REG, T_REG},
+		.mod = 0
 	},
 	{							//*05_sub;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 4,
-		.ops_types = {T_REG, T_REG, T_REG}
+		.ops_types = {T_REG, T_REG, T_REG},
+		.mod = 0
 	},
 	{							//*06_and;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 4,
-		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG}
+		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*07_or;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 4,
-		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG}
+		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*08_xor;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 4,
-		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG}
+		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*09_zjmp;
 		.cooldown = 20 - CYC_COEFF,
 		.ops_amount = 1,
 		.t_dir_size = 2,
 		.length = 3,
-		.ops_types = {T_DIR}
+		.ops_types = {T_DIR},
+		.mod = IDX_MOD
 	},
 	{							//*10_ldi;
 		.cooldown = 25 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 2,
-		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG}
+		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*11_sti;
 		.cooldown = 25 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 2,
-		.ops_types = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR}
+		.ops_types = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR},
+		.mod = IDX_MOD
 	},
 	{							//*12_fork;
 		.cooldown = 800 - CYC_COEFF,
 		.ops_amount = 1,
 		.t_dir_size = 2,
 		.length = 3,
-		.ops_types = {T_DIR}
+		.ops_types = {T_DIR},
+		.mod = IDX_MOD
 	},
 	{							//*13_lld;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 2,
 		.t_dir_size = 4,
-		.ops_types = {T_DIR | T_IND, T_REG}
+		.ops_types = {T_DIR | T_IND, T_REG},
+		.mod = 0
 	},
 	{							//*14_lldi;
 		.cooldown = 50 - CYC_COEFF,
 		.ops_amount = 3,
 		.t_dir_size = 2,
-		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG}
+		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
+		.mod = IDX_MOD
 	},
 	{							//*15_lfork;
 		.cooldown = 1000 - CYC_COEFF,
@@ -143,7 +159,8 @@ const static t_op			stat_opset[17] = {
 		.cooldown = 2 - CYC_COEFF,
 		.ops_amount = 1,
 		.t_dir_size = 4,
-		.ops_types = {T_REG}
+		.ops_types = {T_REG},
+		.mod = 0
 	}
 };
 

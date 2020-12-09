@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:43:43 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:23:50 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ inline static void		ft_sort_dumps(t_list **head, size_t amount)
 
 /*
 TD:	Проверить в боевом режиме.
+TD:	Перепроверить на тесте, т.к. изменен nexus->arena!
 */
 
 inline static void		ft_place_champs(t_world *nexus)
@@ -57,18 +58,20 @@ inline static void		ft_place_champs(t_world *nexus)
 	uintptr_t			entry_ptr;
 	int					step;
 	int					ch_amount;
+	uint8_t				*arena;
 
+	arena = &nexus->arena[sizeof(RTP)];
 	ch_amount = nexus->champs;
 	step = nexus->champs;
 	entry_ptr = 0;
 	while (--ch_amount)
 	{
-		ft_memcpy((void *)&nexus->arena[entry_ptr], \
+		ft_memcpy((void *)(arena + entry_ptr), \
 					(void *)nexus->champ_ord[ch_amount]->body, \
 					(size_t)nexus->champ_ord[ch_amount]->size);
 		entry_ptr += MEM_SIZE / step;
 	}
-	ft_memcpy((void *)&nexus->arena[entry_ptr], \
+	ft_memcpy((void *)(arena + entry_ptr), \
 				(void *)nexus->champ_ord[ch_amount]->body, \
 				(size_t)nexus->champ_ord[ch_amount]->size);
 }

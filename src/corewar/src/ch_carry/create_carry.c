@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 09:52:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:37:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/28 18:44:55 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_carry			*ft_create_carry(void)
 }
 
 /*
-TD:	ПЕРЕДЕЛАТЬ. Должна вызывать ft_create_carry.
 !Контракт:
 	*	Функция не переносит каретку на предназначенное ей место.
 	*	Функция не обновляет положение каретки!
@@ -38,7 +37,7 @@ t_carry			*ft_dupe_carry(t_carry *parent)
 {
 	t_carry		*offspring;
 
-	if (!(offspring = (t_carry *)ft_memalloc(sizeof(t_carry))))
+	if (!(offspring = (t_carry *)ft_create_carry()))
 		return (NULL);
 	ft_memcpy((void *)offspring, (void *)parent, sizeof(t_carry));
 	offspring->op = 0;

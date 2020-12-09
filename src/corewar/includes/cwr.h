@@ -6,16 +6,15 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:56 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 17:41:30 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/31 20:12:01 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CWR_H
 # define CWR_H
-# include "deblib.h"
 # include <libft.h>
 # include <termios.h>
-# include "op.h"
+# include <op.h>
 # include "op_lims.h"
 # include "cwr_defs.h"
 # include "cwr_funcs.h"

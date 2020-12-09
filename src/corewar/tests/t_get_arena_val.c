@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 17:00:02 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 13:50:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/10 18:18:17 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ int				main(void)
 
 	ft_bzero(&nexus, sizeof(nexus));
 	ft_bzero(&carry, sizeof(carry));
-	nexus.arena[4095] = 0xff;
-	nexus.arena[0] = 0xfe;
+	nexus.arena[sizeof(RTP) + 4095] = 0xff;
+	nexus.arena[sizeof(RTP) + 0] = 0xfe;
 	for (unsigned int i = 0; i < T_CWR_SIZE; i++)
 	{
-		carry.reg[0] |= (typeof(carry.reg[0]))nexus.arena[CALC_ADDR(k)] << (i * 8);
+		carry.reg[0] |= (typeof(carry.reg[0]))nexus.arena[sizeof(RTP) + CALC_ADDR(k)] << (i * 8);
 		k++;
 	}
 	carry.reg[0] = _SW_ENDIAN(carry.reg[0]);
-	carry.reg[1] = bytecode_to_int32(&nexus.arena[0], 4095, 2);
+	carry.reg[1] = bytecode_to_int32(&nexus.arena[sizeof(RTP) + 0], 4095, 2);
 	return (0);
 }

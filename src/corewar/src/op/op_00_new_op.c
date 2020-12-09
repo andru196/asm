@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_op_new_op.c                                     :+:      :+:    :+:   */
+/*   op_00_new_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/12 21:18:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/10/25 13:17:39 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@
 
 */
 
+/*
+**	NOT UNIQUE!
+*/
+
+inline static uint8_t	ft_eval_op_code_valid(uint8_t op_code)
+{
+	return ((op_code >= 0 && op_code < KNOWN_OPS) * op_code);
+}
 
 /*
 !Контракт:
@@ -60,8 +68,10 @@
 void		op_new_op(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
-	carry->op = VALID_OP_CODE(nexus->arena[carry->pos], KNOWN_OPS);
+	(void)head;
+	(void)vacant;
+	carry->op = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + carry->pos]);
 	if (!(carry->op))
-		carry->pos = CALC_ADDR(carry->pos + 1);
+		carry->pos += 1;
 	carry->exec_cyc += ft_get_op_cont(carry->op)->cooldown;
 }

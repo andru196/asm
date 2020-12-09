@@ -3,41 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 14:52:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/10 01:51:43 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-
-#define CURR_CARRY carry_bogey->gen.carry
-#define PROP_OP_CODE op_code * (carry_bogey->gen.carry->op != 0)
 
 /*
 !	На этот лист - не более 4 функций. Место под 5 -в резерве, если в
 	!	ft_process_carry запрещено объявлять и инициализировать static.
 */
 
-#ifndef NDEBUG
-
-static void				tft_leafnode_not_empty(t_dvasa *tree)
-{
-	if (tree && tree->gen.vasa)
-		DEBfunc()
-}
-
-static void				tft_newnode_not_empty(t_dvasa *new_node)
-{
-	if (new_node)
-		if (new_node->content_size || new_node->gen.content || \
-			new_node->left.un_vasa || new_node->right.du_vasa)
-			DEBfunc()
-}
-
-#endif
-
+/*
+**	#ifndef NDEBUG
+**	
+**	static void				tft_leafnode_not_empty(t_dvasa *tree)
+**	{
+**		if (tree && tree->gen.vasa)
+**			DEBfunc()
+**	}
+**	
+**	static void				tft_newnode_not_empty(t_dvasa *new_node)
+**	{
+**		if (new_node)
+**			if (new_node->content_size || new_node->gen.content || \
+**				new_node->left.un_vasa || new_node->right.du_vasa)
+**				DEBfunc()
+**	}
+**	
+**	#endif
+*/
 
 /*
 **	Итерация ->next_check имеет защиту через == 0 для случаев, когда мы
@@ -66,17 +64,26 @@ inline static void		ft_cycle_control(t_world *nexus, \
 			cyc_ptr->cyc_to_die = (cyc_ptr->cyc_to_die - CYCLE_DELTA) * (cyc_ptr->cyc_to_die >= CYCLE_DELTA);
 			cyc_ptr->num_of_checks = 0;
 		}
-		// предусмотреть итератор на следующую проверку.
 	cyc_ptr->next_check += cyc_ptr->cyc_to_die + (cyc_ptr->cyc_to_die == 0);	//? Бесполезная защита
 	cyc_ptr->lives_done = 0;
 	}
 }
 
 /*
+**	Returns either 0, or a value
+*/
+
+inline static uint8_t	ft_eval_op_code_valid(uint8_t op_code)
+{
+	return ((op_code >= 0 && op_code < KNOWN_OPS) * op_code);
+}
+
+/*
 TD:	ПРОВЕРИТЬ.
+	TD: ОБНОВЛЕНА С УЧЕТОМ ИЗМЕНЕНИЙ ЛОГИКИ ВОКРУГ nexus.arena!
 !	СОДЕРЖИТ ТЕСТЫ
 !Контракт:
-	*.	t_dvasa **tree должна хранить адрес указателя на валидный корень-лифноду.
+	*	t_dvasa **tree должна хранить адрес указателя на валидный корень-лифноду.
 	*	Лифнода текущего цикла всегда должна блыть выработана (в результате 
 		* отработки цикла должна остаться пустой).
 *	Выбор исполнителя в op_tab. В самом начале либо сразу после исполнения оче-
@@ -99,56 +106,87 @@ TD:	ПРОВЕРИТЬ.
 inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 															t_dvasa **new_node)
 {
-	static t_op_rout	*op_tab[KNOWN_OPS] = { &op_new_op, &op_live, &op_ld, \
-												&op_st, &op_add, &op_sub, \
-												&op_and, &op_or, &op_xor, \
-												&op_zjmp, &op_ldi, &op_sti, \
-												&op_fork, &op_lld, &op_lldi, \
-												&op_lfork, &op_aff };
+	static t_op_rout	*op_tab[KNOWN_OPS] = { &op_new_op, &op_live, &op_ld,
+											&op_st, &op_add, &op_sub, &op_and,
+											&op_or, &op_xor, &op_zjmp, &op_ldi,
+											&op_sti, &op_fork, &op_lld,
+											&op_lldi, &op_lfork, &op_aff };
 	uint8_t				op_code;
 	t_vasa				*carry_bogey;
 
 	carry_bogey = (*tree)->gen.vasa;
-	if (nexus->cyc.cycle == CURR_CARRY->exec_cyc)
+	if (nexus->cyc.cycle == carry_bogey->gen.carry->exec_cyc)
 	{
 		while (carry_bogey)
 		{
+			carry_bogey->gen.carry->pos = \
+									ft_calc_addr(carry_bogey->gen.carry->pos);
 			(*tree)->gen.vasa = (*tree)->gen.vasa->next;
-			op_code = VALID_OP_CODE(nexus->arena[CURR_CARRY->pos], KNOWN_OPS);
-			op_tab[PROP_OP_CODE](nexus, CURR_CARRY, *tree, new_node);
-			ft_leafnode_pick(carry_bogey, *tree, new_node, &ft_carry_ins_by_id);
+			op_code = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + \
+												carry_bogey->gen.carry->pos]);
+			op_tab[op_code * (carry_bogey->gen.carry->op != 0)](nexus, \
+									carry_bogey->gen.carry, *tree, new_node);
+			ft_leafnode_pick(carry_bogey, *tree, new_node, &ft_add_offspring_by_id);
 			carry_bogey = (*tree)->gen.vasa;
 		}
-#ifndef NDEBUG
-tft_leafnode_not_empty(*tree);
-#endif
+// #ifndef NDEBUG
+// tft_leafnode_not_empty(*tree);
+// #endif
 		ft_leafnode_vacate(tree, new_node);
-#ifndef NDEBUG
-tft_newnode_not_empty(*new_node);
-#endif
+// #ifndef NDEBUG
+// tft_newnode_not_empty(*new_node);
+// #endif
 	}
 }
 
 /*
-TODO:	Дописать ft_print_dump.
-
-		! Сейчас используется старая сортировка t_vasa в t_dvasa.
-		! Потому актуально наличие ->left.
-
-		! Должна возвращать 1, если кончились cyc_to_dump.
-		! Должна итерировать cyc_to_dump.
-		! Должна высвобождать t_vasa.
-*	Потенциальная сега в первом if цикла (если за каким-то, блядь, хуем,
-*	останемся в цикле отработав последний cyc_to_dump)
+**	/////		! Сейчас используется старая сортировка t_vasa в t_dvasa.\
+**	/////		! Потому актуально наличие ->left.\
+**		! Должна возвращать 1, если кончились cyc_to_dump.
+**		! Должна итерировать cyc_to_dump.
+**		! Должна высвобождать t_vasa.
+***	Потенциальная сега в первом if цикла (если за каким-то, блядь, хуем,
+***	останемся в цикле отработав последний cyc_to_dump)
 */
+
+void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
+{
+	t_dvasa	*vacant;
+	t_vasa	*curr_carry;
+
+	curr_carry = NULL;
+	vacant = NULL;
+	while (tree)
+	{
+		if (nexus->cyc.cycle == nexus->cyc.cyc_to_dump->gen.cyc_sol)
+			if (ft_print_dump(nexus))
+			{
+				ft_destroy_leaftree(&tree, &vacant);
+				return ;
+			}
+		nexus->cyc.cycle++;
+		ft_carry_process(nexus, &tree, &vacant);
+		ft_cycle_control(nexus, &tree, &vacant);
+		/*
+		! Проверка на cycle_to_die. Очистка мертвых (кареток, героев).
+		? У нас 3 варианта:
+			1. Не осталось живых кареток -> Объявить победителя.
+			2. Не осталось живых кареток в текущем цикле...
+			3. В текущем цикле остались живые каретки -> ничего не меняется.
+		? Возможно есть смысл сравнивать с nexus->cyc.cyc_to_dump->gen.cyc_sol - 1
+		*/
+	}
+	if (vacant)
+		free(vacant);
+}
+
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa	*vacant;
-	uint8_t	dump_fl;
 	t_vasa	*curr_carry;
+
 	curr_carry = NULL;
 	vacant = NULL;
-	dump_fl = nexus->flags;
 	while (tree)
 	{
 		nexus->cyc.cycle++;
@@ -162,8 +200,8 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 			3. В текущем цикле остались живые каретки -> ничего не меняется.
 		? Возможно есть смысл сравнивать с nexus->cyc.cyc_to_dump->gen.cyc_sol - 1
 		*/
-		if (dump_fl && nexus->cyc.cycle == nexus->cyc.cyc_to_dump->gen.cyc_sol)
-			if (ft_print_dump(&nexus->cyc.cyc_to_dump))
-				break ;
 	}
+	if (vacant)
+		free(vacant);
+	ft_print_outro(nexus->survivor);
 }

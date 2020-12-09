@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   15_op_lfork.c                                      :+:      :+:    :+:   */
+/*   op_15_lfork.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:40:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/11/28 18:51:46 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
+#define OP_CODE 15
+
 /*
-TODO:	Сделать.
 !Контракт:
 	*	Использует ft_dupe_carry для создания копии каретки.
 	*	Должна самостоятельно создавать контейнер t_vasa под новую каретку.
@@ -24,8 +25,22 @@ TODO:	Сделать.
 void		op_lfork(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
-	(void)nexus;
-	(void)carry;
-	(void)head;
-	(void)vacant;
+	t_mop	op_cont;
+	t_vasa	*vasa;
+
+	vasa = NULL;
+	ft_clone_op_cont(OP_CODE, &op_cont);
+	ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, 1);
+	vasa = (t_vasa *)ft_lstnew_r((void *)ft_dupe_carry(carry), sizeof(t_carry));
+	if (!vasa || !(vasa->gen.carry))
+	{
+		if (*vacant)
+			free(*vacant);
+		ft_prox_err_malloc("new carry or its container", __func__);
+	}
+	vasa->gen.carry->pos += op_cont.operands[0];
+	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
+	carry->op = 0;
+	carry->pos += op_cont.length;
+	carry->exec_cyc++;
 }
