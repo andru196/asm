@@ -9,7 +9,6 @@ result
 ./test
 ./corewar
 ./src/corewar/t_*
-./t_*
 ./src/corewar/t_*
 .leaks/*
 .vscode/*
