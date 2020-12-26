@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/10 02:29:10 by andru            ###   ########.fr       */
+/*   Updated: 2020/12/26 14:08:26 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			ft_are_ndigits(const char *start, const char *end);
 
 void		ft_manage_world(t_world *nexus);
 void		ft_wipe_champs(t_champ *ptr);
+uint8_t		ft_ask_user(char *msg);
 
 /*
 **	ft_del_carry	- Пока не нужна, используется ft_del.

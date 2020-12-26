@@ -6,11 +6,12 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:26:09 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/26 14:02:42 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+#include <cwr_man.h>
 
 #define _WRONG_SEPARATOR(x, y) (*(_SEP_TYPE *)(x + y) != 0)
 #define CH_NAME curr->name
@@ -35,7 +36,8 @@ inline static void		ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 		return ;
 	}
 	if (ft_ctrl_detect((void *)curr->name, PROG_NAME_LENGTH))
-		ft_err_invalid_name(error, NULL);
+		if (ft_ask_user(WAR_CTRL_1))
+			ft_err_invalid_name(error, NULL);
 	if (_WRONG_SEPARATOR(curr->name, PROG_NAME_LENGTH))
 		ft_err_invalid_separator(error, "between Name and Comment.");
 }
@@ -68,7 +70,8 @@ inline static void		ft_get_champ_comment(int fd, \
 		return ;
 	}
 	if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
-		ft_err_invalid_comment(champ_error, NULL);
+		if (ft_ask_user(WAR_CTRL_2))
+			ft_err_invalid_comment(champ_error, NULL);
 	if (_WRONG_SEPARATOR(champ->desc, COMMENT_LENGTH))
 		ft_err_invalid_separator(champ_error, "between Comment and Body.");
 }
