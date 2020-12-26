@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 19:14:59 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/12/26 19:30:01 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,6 @@ uint8_t				ft_print_dump(t_world *nexus)
 
 	i = 0;
 	ptr = nexus->cyc.cyc_to_dump;
-	bytes = nexus->arena + sizeof(RTP) + max / 2;
-	while (i < (max / 2))
-	{
-		ft_printf("0x%.4x:\t", i);
-		set_dumpline(str, &bytes, &i, max);
-		ft_putendl(str);
-	}
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
