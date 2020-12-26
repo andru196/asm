@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/11 01:26:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/26 17:31:16 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ uint8_t			ft_print_dump(t_world *nexus)
 	cycle = &nexus->cyc.cyc_to_dump;
 	ptr = *cycle;
 
-	bytes = nexus->arena;
+	bytes = &nexus->arena[sizeof(RTP)];
 	size_t i = 0;
 	size_t max = MEM_SIZE + sizeof(RTP) * 2;
 	while (i < max)

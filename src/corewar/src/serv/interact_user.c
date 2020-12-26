@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:07:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 14:07:49 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/26 17:29:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ uint8_t		ft_ask_user(char *msg)
 {
 	char		buff[5];
 
-	ft_printf_fd(1, "{yellow}WARNING!{eoc} %s\n%s\n", msg, ERR_INPUT);
+	ft_printf_fd(2, "{yellow}WARNING!{eoc} %s\n%s\n", msg, ERR_INPUT);
 	while (read(STDIN_FILENO, (void *)&buff[0], 4))
 	{
 		if (*(int *)&buff[0] == 0x0a1b || !ft_strcasecmp(&buff[0], "no\n"))
