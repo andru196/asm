@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 17:56:58 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2020/12/26 18:32:27 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 	while (cpy < max)
 	{
 		tmp = *bytes_cpy / 16;
-		*str++ = tmp + (tmp > 9 ? 'A' - 10 : '0');
+		*str++ = tmp + (tmp > 9 ? 'a' - 10 : '0');
 		tmp = *bytes_cpy++ % 16;
-		*str++ = tmp + (tmp > 9 ? 'A' - 10 : '0');
+		*str++ = tmp + (tmp > 9 ? 'a' - 10 : '0');
 		*str++ = ' ';
 		if (!(++cpy % 0x40))
 			break ;
@@ -63,14 +63,14 @@ uint8_t				ft_print_dump(t_world *nexus)
 	bytes = nexus->arena + sizeof(RTP) + max / 2;
 	while (i < (max / 2))
 	{
-		ft_printf("%.5x:\t", i);
+		ft_printf("0x%.4x:\t", i);
 		set_dumpline(str, &bytes, &i, max);
 		ft_putendl(str);
 	}
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
-		ft_printf("%.5x:\t", i);
+		ft_printf("0x%.4x:\t", i);
 		set_dumpline(str, &bytes, &i, max);
 		ft_putendl(str);
 	}
