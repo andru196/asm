@@ -13,3 +13,4 @@ result
 .leaks/*
 .vscode/*
 ./asm
+./_42_corewar_checker/
