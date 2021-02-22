@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 14:51:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/27 17:00:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef enum
 
 /*
 **	.ops_amount;	-	Amount of operands.
+**	.cd_byte		-	Presence of coding byte in the instruction.
 **	.t_dir_size;	-	Size of t_dir for the op.
 **	.ops_types[4];	-	Array to store operands' types.
 **	.ops_length[4];	-	Array to store length of the operand.
@@ -126,6 +127,7 @@ struct						s_mop
 	size_t					cooldown;
 	intptr_t				mod;
 	uint8_t					ops_amount;
+	uint8_t					cd_byte;
 	uint8_t					t_dir_size;
 	uint8_t					ops_types[MAX_ARGS_NUMBER];
 	uint8_t					ops_length[MAX_ARGS_NUMBER];
