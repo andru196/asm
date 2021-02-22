@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_11_sti.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 17:22:25 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 19:43:09 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			op_sti(t_world *nexus, t_carry *carry, \
 													op_cont.ops_amount);
 		ft_set_bytecode(&nexus->arena[sizeof(RTP)], \
 		carry->pos + (op_cont.operands[1] + op_cont.operands[2]) % op_cont.mod,
-		ft_swap_endian(op_cont.operands[0], DIR_SIZE), DIR_SIZE);
+		op_cont.operands[0], DIR_SIZE);
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;

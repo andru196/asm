@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_dump_lobby.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 19:30:01 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/02/22 19:08:35 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*
 **	Просто выводит состояние арены в текущий момент.
 **	Принимает указатель на указатель головы t_vasa, которые в своем
-** ->gen.cyc_sol хранят циклы, в которые необхоимо дампнуться.
+**->gen.cyc_sol хранят циклы, в которые необхоимо дампнуться.
 **	Через голову управляет цепочкой дампов.
 **	Отпработав последний дамп-цикл должна подать сигнал на прерывание работы
 **	цикла (возвратить 1).
@@ -50,6 +50,10 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 	*i = cpy;
 }
 
+
+/*
+TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
+*/
 uint8_t				ft_print_dump(t_world *nexus)
 {
 	t_vasa			*ptr;
@@ -63,9 +67,10 @@ uint8_t				ft_print_dump(t_world *nexus)
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
-		ft_printf("0x%.4x:\t", i);
+		ft_printf("0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
-		ft_putendl(str);
+		ft_putstr(str);
+		ft_putendl(" ");														//* Костылинг!
 	}
 	nexus->cyc.cyc_to_dump = nexus->cyc.cyc_to_dump->next;
 	ptr->gen.cyc_sol = 0;
