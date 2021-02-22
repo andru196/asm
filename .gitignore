@@ -7,11 +7,11 @@
 result
 *.log
 ./test
-./corewar
+corewar
 ./src/corewar/t_*
 ./src/corewar/t_*
 .leaks/*
 .vscode/*
-./asm
+asm
 _42_corewar_checker/
 _42-Corewar-Checker/
