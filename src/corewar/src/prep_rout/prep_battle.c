@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 15:29:12 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 21:43:58 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void					ft_prep_battle(t_world *nexus)
 										nexus->cyc.cyc_to_dump->content_size);
 	nexus->champ_ord = ft_build_champarr_sorted(&nexus->champ[0], nexus->champs);
 	nexus->survivor = nexus->champ_ord[nexus->champs - 1];
+	if (nexus->flags & 2)
+		initscr();
 	ft_place_champs(nexus);
 	ft_print_intro(nexus->champ_ord);
 	ft_init_carries(nexus);

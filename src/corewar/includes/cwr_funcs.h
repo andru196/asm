@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 14:08:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 22:25:05 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 void		ft_exec_battle(t_world *nexus);
 void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
+void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree);
 
 /*
 ******************				SERVice funcs:			************************
@@ -231,6 +232,8 @@ RTP			ft_swap_endian_oct(RTP value);
 
 uint8_t		ft_print_dump(t_world *nexus);
 void		ft_print_outro(t_champ *survivor);
+void		ft_print_cursus_arena(t_world *nexus);
+
 
 /*
 ******************			Built-in test funcs:		************************

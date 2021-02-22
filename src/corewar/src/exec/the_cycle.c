@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/27 15:45:20 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 22:19:42 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,32 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 			3. В текущем цикле остались живые каретки -> ничего не меняется.
 		? Возможно есть смысл сравнивать с nexus->cyc.cyc_to_dump->gen.cyc_sol - 1
 		*/
+	}
+	if (vacant)
+		free(vacant);
+	ft_print_outro(nexus->survivor);
+}
+
+void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
+{
+	t_dvasa	*vacant;
+	t_vasa	*curr_carry;
+	int ch;
+	int ex;
+
+	curr_carry = NULL;
+	vacant = NULL;
+	ex = false;
+	while (!ex)
+	{
+		ch = getch();
+		while (tree)
+		{
+			ft_print_cursus_arena(nexus);
+			nexus->cyc.cycle++;
+			ft_carry_process(nexus, &tree, &vacant);
+			ft_cycle_control(nexus, &tree, &vacant);
+		}
 	}
 	if (vacant)
 		free(vacant);

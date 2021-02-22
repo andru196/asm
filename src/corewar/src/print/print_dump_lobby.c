@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_dump_lobby.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/22 19:08:35 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 22:24:05 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,24 @@ uint8_t				ft_print_dump(t_world *nexus)
 	ptr->gen.cyc_sol = 0;
 	free(ptr);
 	return (nexus->cyc.cyc_to_dump == NULL);
+}
+
+void			ft_print_cursus_arena(t_world *nexus)
+{
+	char			str[LINE_SIZE];
+	uint8_t			*bytes;
+	size_t			i, j;
+	const size_t	max = MEM_SIZE;
+
+	i = 0;
+	j = 0;
+	bytes = nexus->arena + sizeof(RTP);
+	while (i < max)
+	{
+		mvprintw(j, 0, "0x%.4x : ", i);
+		set_dumpline(str, &bytes, &i, max);
+		mvprintw(j, 0, str);
+		j++;
+		refresh();
+	}
 }
