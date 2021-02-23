@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_champ_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 14:02:42 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 18:48:33 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ inline static void		ft_get_champ_comment(int fd, \
 		ft_err_invalid_filesize(champ_error, "Champion Comment field");
 		return ;
 	}
-	if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
-		if (ft_ask_user(WAR_CTRL_2))
-			ft_err_invalid_comment(champ_error, NULL);
+	// if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
+	// 	if (ft_ask_user(WAR_CTRL_2))
+	// 		ft_err_invalid_comment(champ_error, NULL);
 	if (_WRONG_SEPARATOR(champ->desc, COMMENT_LENGTH))
 		ft_err_invalid_separator(champ_error, "between Comment and Body.");
 }

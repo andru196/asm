@@ -2,16 +2,27 @@
 *.a
 *.cor
 *.log
+<<<<<<< HEAD
 *.o
 *.out
 *.s
 ./asm
 ./corewar
+=======
+./test
+corewar
+>>>>>>> f8bd048a11d5c3d12bfb508251f9adfa6bafa5be
 ./src/corewar/t_*
 ./src/corewar/t_*
 src/corewar/
 ./test
 .leaks/*
 .vscode/*
+<<<<<<< HEAD
 _42_corewar_checker/
 result
+=======
+asm
+_42_corewar_checker/
+_42-Corewar-Checker/
+>>>>>>> f8bd048a11d5c3d12bfb508251f9adfa6bafa5be

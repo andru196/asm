@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_carry.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 09:52:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 18:44:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/22 20:42:37 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ t_carry			*ft_create_carry(void)
 t_carry			*ft_dupe_carry(t_carry *parent)
 {
 	t_carry		*offspring;
+	int32_t		id;
 
 	if (!(offspring = (t_carry *)ft_create_carry()))
 		return (NULL);
+	id = offspring->id;
 	ft_memcpy((void *)offspring, (void *)parent, sizeof(t_carry));
+	offspring->id = id;
 	offspring->op = 0;
 	return (offspring);
 }
