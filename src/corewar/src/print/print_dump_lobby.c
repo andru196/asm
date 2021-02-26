@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/22 22:24:05 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/02/27 00:07:05 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ uint8_t				ft_print_dump(t_world *nexus)
 	return (nexus->cyc.cyc_to_dump == NULL);
 }
 
-void			ft_print_cursus_arena(t_world *nexus)
+void			ft_print_ncursus_arena(t_world *nexus, WINDOW *win)
 {
 	char			str[LINE_SIZE];
 	uint8_t			*bytes;
@@ -86,14 +86,14 @@ void			ft_print_cursus_arena(t_world *nexus)
 	const size_t	max = MEM_SIZE;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
-		mvprintw(j, 0, "0x%.4x : ", i);
+		//mvwprintw(win, j, 0, "0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
-		mvprintw(j, 0, str);
+		mvwprintw(win, j, 1, str);
 		j++;
-		refresh();
 	}
+	wrefresh(win);
 }

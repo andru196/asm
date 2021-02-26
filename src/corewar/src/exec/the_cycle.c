@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/22 22:19:42 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/02/27 00:20:01 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,28 +206,50 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	ft_print_outro(nexus->survivor);
 }
 
+void	ft_print_info(t_world *nexus, WINDOW *win)
+{
+	waddstr(win, "HELLO");
+	wrefresh(win);
+}
+
+
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa	*vacant;
 	t_vasa	*curr_carry;
+	WINDOW	*arena_window;
+	WINDOW	*info_window;
 	int ch;
-	int ex;
 
 	curr_carry = NULL;
 	vacant = NULL;
-	ex = false;
-	while (!ex)
+	int i = 0;
+	initscr();
+	arena_window = newwin(70, 200, 3, 10);
+	box(arena_window, 0, 0);
+	//wrefresh(arena_window);
+	info_window = newwin(70, 30, 3, 225);
+	box(info_window, 0, 0);
+	wattron(info_window, A_BOLD);
+	mvwprintw(info_window, 1, 1, "HELdglkmdfglkbmdflgkbmdflgkbmdflgkbmdlgfkmLO");
+	//wrefresh(info_window);
+	refresh();
+	ch = getch();
+	if (ch == 32)
 	{
-		ch = getch();
 		while (tree)
-		{
-			ft_print_cursus_arena(nexus);
-			nexus->cyc.cycle++;
-			ft_carry_process(nexus, &tree, &vacant);
-			ft_cycle_control(nexus, &tree, &vacant);
-		}
+			{
+				ft_print_ncursus_arena(nexus, arena_window);
+				nexus->cyc.cycle++;
+				ft_carry_process(nexus, &tree, &vacant);
+				ft_cycle_control(nexus, &tree, &vacant);
+				i++;
+			}
 	}
 	if (vacant)
 		free(vacant);
-	ft_print_outro(nexus->survivor);
+	getch();
+	delwin(arena_window);
+	delwin(info_window);
+	endwin();
 }

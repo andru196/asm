@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:56 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/31 20:12:01 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/02/26 21:59:50 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <op.h>
 # include "op_lims.h"
 # include "cwr_defs.h"
-# include "cwr_funcs.h"
 # include <curses.h>
+# include "cwr_funcs.h"
 # include <sys/ioctl.h>
 
 /*

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/22 22:25:05 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/02/26 21:58:48 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ RTP			ft_swap_endian_oct(RTP value);
 
 uint8_t		ft_print_dump(t_world *nexus);
 void		ft_print_outro(t_champ *survivor);
-void		ft_print_cursus_arena(t_world *nexus);
+void		ft_print_ncursus_arena(t_world *nexus, WINDOW *win);
 
 
 /*
