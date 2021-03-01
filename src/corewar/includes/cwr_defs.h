@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_defs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/27 17:00:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/01 23:54:37 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ typedef struct s_cycle		t_cycle;
 typedef struct s_error		t_error;
 typedef struct s_vasa		t_vasa;
 typedef struct s_dvasa		t_dvasa;
-typedef struct s_mop			t_mop;
+typedef struct s_mop		t_mop;
+typedef struct s_visual		t_visual;
 typedef void				t_err_rout(t_vasa **head, void *object);
 typedef void				t_op_rout(t_world *nexus, t_carry *carry, \
 										t_dvasa *head, t_dvasa **vacant);
@@ -252,6 +253,7 @@ struct						s_champ
 **	.errors			-	A head of regiestered errors chain.
 */
 
+
 # define NEW_ARENA
 
 # ifndef NEW_ARENA
@@ -284,6 +286,7 @@ struct						s_world
 	t_vasa					*carry;
 	t_vasa					*errors;
 	t_cycle					cyc;
+	t_visual				*visual;
 };
 
 # endif

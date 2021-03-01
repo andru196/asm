@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/27 00:20:01 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/02 00:11:53 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,50 +206,46 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	ft_print_outro(nexus->survivor);
 }
 
-void	ft_print_info(t_world *nexus, WINDOW *win)
+// тут типа один цикл! из ft_visualize_cycle
+void		ft_make_cycle(t_world *nexus, t_dvasa *tree, t_dvasa *vacant)
 {
-	waddstr(win, "HELLO");
-	wrefresh(win);
+	if (tree)
+	{
+		ft_print_ncursus_arena(nexus);
+		nexus->cyc.cycle++;
+		ft_carry_process(nexus, &tree, &vacant);
+		ft_cycle_control(nexus, &tree, &vacant);
+	}
 }
 
-
+// тут придумать как-то как останавливать не по-конченному ход игры
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
-	t_dvasa	*vacant;
-	t_vasa	*curr_carry;
-	WINDOW	*arena_window;
-	WINDOW	*info_window;
-	int ch;
+	t_dvasa		*vacant;
+	int			ch;
 
-	curr_carry = NULL;
+	ft_init_field(nexus);
 	vacant = NULL;
 	int i = 0;
-	initscr();
-	arena_window = newwin(70, 200, 3, 10);
-	box(arena_window, 0, 0);
-	//wrefresh(arena_window);
-	info_window = newwin(70, 30, 3, 225);
-	box(info_window, 0, 0);
-	wattron(info_window, A_BOLD);
-	mvwprintw(info_window, 1, 1, "HELdglkmdfglkbmdflgkbmdflgkbmdflgkbmdlgfkmLO");
-	//wrefresh(info_window);
-	refresh();
-	ch = getch();
-	if (ch == 32)
+	while ((ch = getch()) != 27)
 	{
-		while (tree)
-			{
-				ft_print_ncursus_arena(nexus, arena_window);
-				nexus->cyc.cycle++;
-				ft_carry_process(nexus, &tree, &vacant);
-				ft_cycle_control(nexus, &tree, &vacant);
-				i++;
-			}
+		if (ch == 32)
+		{
+			while (tree)
+				{
+					ft_print_ncursus_arena(nexus);
+					nexus->cyc.cycle++;
+					ft_carry_process(nexus, &tree, &vacant);
+					ft_cycle_control(nexus, &tree, &vacant);
+					i++;
+					if (ch == 32)
+						break ;
+				}
+		}
 	}
 	if (vacant)
 		free(vacant);
-	getch();
-	delwin(arena_window);
-	delwin(info_window);
+	delwin(nexus->visual->arena_window);
+	delwin(nexus->visual->info_window);
 	endwin();
 }

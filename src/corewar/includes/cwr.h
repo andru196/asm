@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:56 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/26 21:59:50 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/01 23:52:18 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <termios.h>
 # include <op.h>
 # include "op_lims.h"
+# include "visual.h"
 # include "cwr_defs.h"
-# include <curses.h>
 # include "cwr_funcs.h"
 # include <sys/ioctl.h>
 

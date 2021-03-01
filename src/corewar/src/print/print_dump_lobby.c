@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/27 00:07:05 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/01 23:56:42 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ uint8_t				ft_print_dump(t_world *nexus)
 	return (nexus->cyc.cyc_to_dump == NULL);
 }
 
-void			ft_print_ncursus_arena(t_world *nexus, WINDOW *win)
+void			ft_print_ncursus_arena(t_world *nexus)
 {
 	char			str[LINE_SIZE];
 	uint8_t			*bytes;
@@ -92,8 +92,8 @@ void			ft_print_ncursus_arena(t_world *nexus, WINDOW *win)
 	{
 		//mvwprintw(win, j, 0, "0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
-		mvwprintw(win, j, 1, str);
+		mvwprintw(nexus->visual->arena_window, j, 1, str);
 		j++;
 	}
-	wrefresh(win);
+	wrefresh(nexus->visual->arena_window);
 }
