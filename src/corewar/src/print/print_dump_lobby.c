@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/01 23:56:42 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/03 00:04:51 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void			ft_print_ncursus_arena(t_world *nexus)
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
-		//mvwprintw(win, j, 0, "0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
 		mvwprintw(nexus->visual->arena_window, j, 1, str);
 		j++;

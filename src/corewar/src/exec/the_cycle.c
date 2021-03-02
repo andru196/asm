@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/02 00:11:53 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/02 23:54:58 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,44 +204,39 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	if (vacant)
 		free(vacant);
 	ft_print_outro(nexus->survivor);
+	ft_printf("cycle: %d\n", nexus->cyc.cycle);
+
 }
 
-// тут типа один цикл! из ft_visualize_cycle
-void		ft_make_cycle(t_world *nexus, t_dvasa *tree, t_dvasa *vacant)
+void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
 	if (tree)
 	{
-		ft_print_ncursus_arena(nexus);
 		nexus->cyc.cycle++;
-		ft_carry_process(nexus, &tree, &vacant);
-		ft_cycle_control(nexus, &tree, &vacant);
+		ft_carry_process(nexus, tree, vacant);
+		ft_cycle_control(nexus, tree, vacant);
+		ft_print_ncursus_arena(nexus);
 	}
 }
 
-// тут придумать как-то как останавливать не по-конченному ход игры
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa		*vacant;
 	int			ch;
+	int			active;
 
-	ft_init_field(nexus);
+	nexus->visual = ft_init_field(nexus);
+	ft_print_info(nexus);
 	vacant = NULL;
-	int i = 0;
 	while ((ch = getch()) != 27)
 	{
 		if (ch == 32)
-		{
-			while (tree)
-				{
-					ft_print_ncursus_arena(nexus);
-					nexus->cyc.cycle++;
-					ft_carry_process(nexus, &tree, &vacant);
-					ft_cycle_control(nexus, &tree, &vacant);
-					i++;
-					if (ch == 32)
-						break ;
-				}
-		}
+			nexus->visual->active = !nexus->visual->active;
+		if (!tree)
+			nexus->visual->active = 0;
+		if (nexus->visual->active && tree)
+			ft_make_cycle(nexus, &tree, &vacant);
+		ft_print_info(nexus);
 	}
 	if (vacant)
 		free(vacant);
