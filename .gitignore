@@ -3,7 +3,6 @@
 *.out
 *.a
 *.cor
-*.s
 result
 *.log
 ./test
