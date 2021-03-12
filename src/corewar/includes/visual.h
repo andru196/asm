@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/02 23:42:28 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/12 23:44:06 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ struct						s_visual
 	WINDOW					*arena_window;
     WINDOW					*info_window;
     t_bool					active;
+    int 					attribute_arena[MEM_SIZE];
 };
 
 /*
 ******************			visualize funcs:			************************
 */
 
-t_visual		*ft_init_field(t_world *nexus);
+t_visual		*ft_init_visual(t_world *nexus);
 void			ft_print_info(t_world *nexus);
 
 

@@ -6,11 +6,19 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/03 00:12:30 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/12 23:50:34 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+
+void		ft_init_colors()
+{
+	init_pair(1, COLOR_BLUE, COLOR_BLACK);
+	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+}
 
 void		ft_print_info_playes(t_world *nexus, int *cursor)
 {
@@ -20,7 +28,9 @@ void		ft_print_info_playes(t_world *nexus, int *cursor)
 	i = 0;
 	while (*tmp)
 	{
+		wattron(nexus->visual->info_window, COLOR_PAIR((*tmp)->id));
 		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Player %d: %s", (*tmp)->id, (*tmp)->name);
+		wattroff(nexus->visual->info_window, COLOR_PAIR((*tmp)->id));
 		tmp++;
 	}
 	wrefresh(nexus->visual->info_window);
@@ -48,14 +58,33 @@ void		ft_print_info(t_world *nexus)
 	wattroff(nexus->visual->info_window, A_BOLD);
 }
 
-t_visual		*ft_init_field(t_world *nexus)
+void			init_attribute_arena(t_world *nexus)
+{
+	int i;
+	int *attribute_arena;
+
+	i = 0;
+	while (i < MEM_SIZE / 2) 
+	{
+		nexus->visual->attribute_arena[i] = COLOR_PAIR(2);
+		i++;
+	}
+	while (i < MEM_SIZE)
+	{
+		nexus->visual->attribute_arena[i] = COLOR_PAIR(1);
+		i++;
+	}
+}
+
+t_visual		*ft_init_visual(t_world *nexus)
 {
 	t_visual *result;
 
     initscr();
 	noecho();
 	timeout(1);
-	//start_color();
+	start_color();
+	ft_init_colors();
 	result = (t_visual *)ft_memalloc(sizeof(t_visual));
 	result->arena_window = newwin(FIELD_HEIGTH, ARENA_WIDTH, INDENT, INDENT);
 	result->info_window = newwin(FIELD_HEIGTH, INFO_WIDTH, INDENT, ARENA_WIDTH + INDENT);
