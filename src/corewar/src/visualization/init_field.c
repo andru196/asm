@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/12 23:50:34 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/13 19:23:26 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void		ft_init_colors()
 {
-	init_pair(1, COLOR_BLUE, COLOR_BLACK);
-	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(3, COLOR_RED, COLOR_BLACK);
-	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(DEFAULT_COLOR, COLOR_WHITE, COLOR_BLACK);
+	init_pair(MAGENTA_PAIR, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(BLUE_PAIR, COLOR_BLUE, COLOR_BLACK);
+	init_pair(YELLOW_PAIR, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(GREEN_PAIR, COLOR_GREEN, COLOR_BLACK);
+
 }
 
 void		ft_print_info_playes(t_world *nexus, int *cursor)
@@ -28,9 +30,9 @@ void		ft_print_info_playes(t_world *nexus, int *cursor)
 	i = 0;
 	while (*tmp)
 	{
-		wattron(nexus->visual->info_window, COLOR_PAIR((*tmp)->id));
+		wattron(nexus->visual->info_window, COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1));
 		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Player %d: %s", (*tmp)->id, (*tmp)->name);
-		wattroff(nexus->visual->info_window, COLOR_PAIR((*tmp)->id));
+		wattroff(nexus->visual->info_window, COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1));
 		tmp++;
 	}
 	wrefresh(nexus->visual->info_window);
@@ -58,31 +60,37 @@ void		ft_print_info(t_world *nexus)
 	wattroff(nexus->visual->info_window, A_BOLD);
 }
 
-void			init_attribute_arena(t_world *nexus)
+void			ft_init_attribute_arena(t_world *nexus)
 {
-	int i;
-	int *attribute_arena;
+	RTP		i;
+	RTP		offset;
+	t_champ	**tmp;
 
-	i = 0;
-	while (i < MEM_SIZE / 2) 
+	tmp = nexus->champ_ord;
+	offset = MEM_SIZE / nexus->champs;
+	i = -1;
+	while (++i < MEM_SIZE)
+		nexus->visual->attribute_arena[i] = COLOR_PAIR(DEFAULT_COLOR);
+	while (*tmp)
 	{
-		nexus->visual->attribute_arena[i] = COLOR_PAIR(2);
-		i++;
-	}
-	while (i < MEM_SIZE)
-	{
-		nexus->visual->attribute_arena[i] = COLOR_PAIR(1);
-		i++;
+		i = ((*tmp)->id - 1) * offset;
+		while (i < (RTP)(((*tmp)->id - 1) * offset + (*tmp)->size))
+		{
+			nexus->visual->attribute_arena[i] = COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1);
+			i++;
+		}
+		tmp++;
 	}
 }
 
-t_visual		*ft_init_visual(t_world *nexus)
+t_visual		*ft_init_visual()
 {
 	t_visual *result;
 
     initscr();
 	noecho();
-	timeout(1);
+	curs_set(0); // hide cursor
+	timeout(1); // timeout for input (getch)
 	start_color();
 	ft_init_colors();
 	result = (t_visual *)ft_memalloc(sizeof(t_visual));

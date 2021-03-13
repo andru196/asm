@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/12 23:49:38 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/13 19:13:57 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,11 @@ void			ft_print_ncursus_arena(t_world *nexus)
 			temp[1] = arena[i * 64 + j] % 16;
 			temp[1] = temp[1] + (temp[1] > 9 ? 'a' - 10 : '0');
 			mvwprintw(nexus->visual->arena_window, i + 1, x, "%c%c ", temp[0], temp[1]);
-			wrefresh(nexus->visual->arena_window);
 			j++;
 			x +=3;
 			wattroff(nexus->visual->arena_window, nexus->visual->attribute_arena[i * 64 + j]);
 		}
+		wrefresh(nexus->visual->arena_window);
 		i++;
 	}
 }

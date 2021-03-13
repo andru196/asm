@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/12 23:49:34 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/13 19:04:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,10 +223,9 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa		*vacant;
 	int			ch;
-	int			active;
 
-	nexus->visual = ft_init_visual(nexus);
-	init_attribute_arena(nexus);
+	nexus->visual = ft_init_visual();
+	ft_init_attribute_arena(nexus);
 	ft_print_info(nexus);
 	vacant = NULL;
 	while ((ch = getch()) != 27)
