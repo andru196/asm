@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/13 23:39:56 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/14 17:27:20 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 	carry_bogey = (*tree)->gen.vasa;
 	if (nexus->cyc.cycle == carry_bogey->gen.carry->exec_cyc)
 	{
-		while (carry_bogey)
+		while (carry_bogey) 
 		{
 			carry_bogey->gen.carry->pos = \
 									ft_calc_addr(carry_bogey->gen.carry->pos);
@@ -152,9 +152,7 @@ inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa	*vacant;
-	t_vasa	*curr_carry;
 
-	curr_carry = NULL;
 	vacant = NULL;
 	while (tree)
 	{
@@ -183,9 +181,7 @@ void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa	*vacant;
-	t_vasa	*curr_carry;
 
-	curr_carry = NULL;
 	vacant = NULL;
 	while (tree)
 	{
