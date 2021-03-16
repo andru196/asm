@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_15_lfork.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/26 22:25:27 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/16 20:56:29 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void		op_lfork(t_world *nexus, t_carry *carry, \
 	ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/13 22:16:18 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/16 22:48:32 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,16 @@ void			ft_print_ncursus_arena(t_world *nexus)
 		x = 2;
 		while (j < 64)
 		{
-			wattron(nexus->visual->arena_window, nexus->visual->attribute_arena[i * 64 + j]);
+			wattron(nexus->visual->arena_window, ((nexus->visual->attribute_arena[i * 64 + j] << sizeof(int) * 8) >> sizeof(int) * 8));
 			temp[0] = arena[i * 64 + j] / 16;
 			temp[0] = temp[0] + (temp[0] > 9 ? 'a' - 10 : '0');
 			temp[1] = arena[i * 64 + j] % 16;
 			temp[1] = temp[1] + (temp[1] > 9 ? 'a' - 10 : '0');
-			mvwprintw(nexus->visual->arena_window, i + 1, x, "%c%c ", temp[0], temp[1]);
+			mvwprintw(nexus->visual->arena_window, i + 1, x, "%c%c", temp[0], temp[1]);
+			wattroff(nexus->visual->arena_window, ((nexus->visual->attribute_arena[i * 64 + j] << sizeof(int) * 8) >> sizeof(int) * 8));
+			mvwprintw(nexus->visual->arena_window, i + 3, x + 2, " ");
 			j++;
 			x +=3;
-			wattroff(nexus->visual->arena_window, nexus->visual->attribute_arena[i * 64 + j]);
 		}
 		wrefresh(nexus->visual->arena_window);
 		i++;

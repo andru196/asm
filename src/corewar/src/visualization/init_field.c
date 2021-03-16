@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/13 23:15:57 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/16 22:51:27 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,18 @@ void			ft_init_attribute_arena(t_world *nexus)
 		i = ((*tmp)->id - 1) * offset;
 		while (i < (RTP)(((*tmp)->id - 1) * offset + (*tmp)->size))
 		{
-			nexus->visual->attribute_arena[i] = COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1);
+			if (i == ((*tmp)->id - 1) * offset)
+			{
+				nexus->visual->attribute_arena[i] = COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1);
+				nexus->visual->attribute_arena[i] = set_new_color(nexus->visual->attribute_arena[i], 
+				COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1 + CARRIAGE_NUMBER));
+			}
+			else
+			{
+				nexus->visual->attribute_arena[i] = COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1);
+				nexus->visual->attribute_arena[i] = set_new_color(nexus->visual->attribute_arena[i],
+				COLOR_PAIR(((*tmp)->id % COLOR_PAIR_NUM) + 1));
+			}
 			i++;
 		}
 		tmp++;

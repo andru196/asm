@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/14 17:27:20 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/16 22:38:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 				ft_destroy_leaftree(&tree, &vacant);
 				return ;
 			}
-		nexus->cyc.cycle++;
 		ft_carry_process(nexus, &tree, &vacant);
+		nexus->cyc.cycle++;
 		ft_cycle_control(nexus, &tree, &vacant);
 		/*
 		! Проверка на cycle_to_die. Очистка мертвых (кареток, героев).
@@ -208,10 +208,11 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
 	if (tree)
 	{
-		nexus->cyc.cycle++;
-		ft_carry_process(nexus, tree, vacant);
-		ft_cycle_control(nexus, tree, vacant);
+		
 		ft_print_ncursus_arena(nexus);
+		ft_carry_process(nexus, tree, vacant);
+		nexus->cyc.cycle++;
+		ft_cycle_control(nexus, tree, vacant);
 	}
 }
 
@@ -256,6 +257,7 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	nexus->visual = ft_init_visual();
 	ft_init_attribute_arena(nexus);
 	ft_print_info(nexus);
+	ft_print_ncursus_arena(nexus);
 	vacant = NULL;
 	while ((ch = getch()) != 27)
 	{
