@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/16 22:49:53 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/17 00:23:35 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void			op_sti(t_world *nexus, t_carry *carry, \
 		ft_set_bytecode(&nexus->arena[sizeof(RTP)], \
 		carry->pos + (op_cont.operands[1] + op_cont.operands[2]) % op_cont.mod,
 		op_cont.operands[0], DIR_SIZE);
-		//color_bytecode(carry, nexus, 
-		//carry->pos + (op_cont.operands[1] + op_cont.operands[2]) % op_cont.mod);
+		color_bytecode(carry, nexus, 
+		carry->pos + (op_cont.operands[1] + op_cont.operands[2]) % op_cont.mod);
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;

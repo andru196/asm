@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/16 22:44:07 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/16 23:44:36 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@
 ** Colors 
 */
 
-# define DEFAULT_COLOR			100
+# define DEFAULT_COLOR			4
 # define MAGENTA_PAIR			1
-# define BLUE_PAIR				2
+# define BLUE_PAIR				2 
 # define YELLOW_PAIR			3
 # define GREEN_PAIR				4
 # define CARRIAGE_NUMBER		10
@@ -66,8 +66,9 @@ struct						s_visual
 	WINDOW					*arena_window;
     WINDOW					*info_window;
     t_bool					active;
-    unsigned long int	    attribute_arena[MEM_SIZE];
-	unsigned long int       cycle_speed;
+    int						attribute_arena[MEM_SIZE];
+	int						cycle_speed;
+	int						colors[5];
 };
 
 /*
@@ -80,6 +81,7 @@ void				ft_init_attribute_arena(t_world *nexus);
 void				update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus);
 void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
-
+void				ft_init_colors(int *colors);
+short int			ft_swap_colors(short int color);
 
 #endif

@@ -8,7 +8,6 @@
 ./asm
 ./corewar
 ./test
-corewar
 ./src/corewar/t_*
 ./src/corewar/t_*
 ./test
