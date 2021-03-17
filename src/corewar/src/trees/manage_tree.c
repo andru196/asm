@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:00:25 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/18 02:06:48 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ TD:	Проверить корректность поведения. Возмож
 	* (leafnode->left.un_vasa) т.к. последний используется в текущей версии 
 	* ft_add_offspring_by_ функций.
 */
-inline static uint8_t	ft_carry_control(t_dvasa *leafnode, t_vasa **head, t_cycle *cyc_ptr)
+inline static uint8_t	ft_carry_control(t_world *nexus, t_dvasa *leafnode, t_vasa **head, t_cycle *cyc_ptr)
 {
 	t_vasa				*carry_ptr;
 	t_vasa				*subst;
@@ -57,6 +57,7 @@ inline static uint8_t	ft_carry_control(t_dvasa *leafnode, t_vasa **head, t_cycle
 		if (cyc_ptr->cycle - carry_ptr->gen.carry->last_live_op >= DEATH_CYC)
 		{
 			subst->next = carry_ptr->next;
+			update_one_carry(carry_ptr->gen.carry->pos, nexus); // не работает почему-то(
 			ft_lstdelone((t_list **)&carry_ptr, &ft_del);
 			carry_ptr = subst->next;
 			continue ;
@@ -69,7 +70,7 @@ inline static uint8_t	ft_carry_control(t_dvasa *leafnode, t_vasa **head, t_cycle
 	return (0);
 }
 
-inline static void		ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
+inline static void		ft_leaf_control(t_world *nexus, t_dvasa *first, t_dvasa **vacant, \
 															t_cycle *cyc_ptr)
 {
 	t_dvasa				*second;
@@ -77,7 +78,7 @@ inline static void		ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
 	second = first->right.du_vasa;
 	while (second)
 	{
-		if (ft_carry_control(second, &second->gen.vasa, cyc_ptr))
+		if (ft_carry_control(nexus, second, &second->gen.vasa, cyc_ptr))
 			continue ;
 		if (!(second->gen.vasa))
 		{
@@ -114,7 +115,7 @@ inline static void		ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
 **	Rest of the tree is processed in cycle manner thanks to ft_leaf_control.
 **	Why this method: reduce recursive instances.
 */
-void					ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
+void					ft_tree_undertaker(t_world *nexus, t_dvasa **tree, t_dvasa **vacant, \
 															t_cycle *cyc_ptr)
 {
 	t_dvasa				*leaf_ptr;
@@ -122,7 +123,7 @@ void					ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
 	if (!(*tree))
 		return ;
 	leaf_ptr = *tree;
-	while (ft_carry_control(leaf_ptr, &leaf_ptr->gen.vasa, cyc_ptr))
+	while (ft_carry_control(nexus, leaf_ptr, &leaf_ptr->gen.vasa, cyc_ptr))
 		;
 	if (!(leaf_ptr->gen.vasa))
 		{
@@ -134,8 +135,8 @@ void					ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
 			}
 			else
 				free(leaf_ptr);
-			ft_tree_undertaker(tree, vacant, cyc_ptr);
+			ft_tree_undertaker(nexus, tree, vacant, cyc_ptr);
 			return ;
 		}
-	ft_leaf_control(leaf_ptr, vacant, cyc_ptr);
+	ft_leaf_control(nexus, leaf_ptr, vacant, cyc_ptr);
 }

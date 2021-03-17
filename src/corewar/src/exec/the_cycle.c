@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/16 23:58:39 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 01:17:31 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ inline static void		ft_cycle_control(t_world *nexus, \
 		*	По идее здесь должны обновляться все показатели t_cycle, за исключеним
 			* счетчика.
 		*/
-		ft_tree_undertaker(tree, vacant, cyc_ptr);
+		ft_tree_undertaker(nexus, tree, vacant, cyc_ptr);
 		if (++cyc_ptr->num_of_checks == MAX_CHECKS || cyc_ptr->lives_done >= NBR_LIVE)
 		{
 			cyc_ptr->cyc_to_die = (cyc_ptr->cyc_to_die - CYCLE_DELTA) * (cyc_ptr->cyc_to_die >= CYCLE_DELTA);
@@ -208,7 +208,6 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
 	if (tree)
 	{
-		
 		ft_print_ncursus_arena(nexus);
 		ft_carry_process(nexus, tree, vacant);
 		nexus->cyc.cycle++;
@@ -262,12 +261,13 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	while ((ch = getch()) != 27)
 	{
 		perform_button_action(ch, nexus, &tree, &vacant);
-		usleep((1 / nexus->visual->cycle_speed) * 1000000);
+		usleep(1000000 / nexus->visual->cycle_speed);
 		if (!tree)
 			nexus->visual->active = 0;
 		if (nexus->visual->active && tree)
 			ft_make_cycle(nexus, &tree, &vacant);
-		ft_print_info(nexus);
+		if (ch)
+			ft_print_info(nexus);
 	}
 	if (vacant)
 		free(vacant);

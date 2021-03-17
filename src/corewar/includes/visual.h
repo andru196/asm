@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/16 23:44:36 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 02:27:44 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@
 # define BLUE_PAIR				2 
 # define YELLOW_PAIR			3
 # define GREEN_PAIR				4
-# define CARRIAGE_NUMBER		10
-# define CARRIAGE_MAGENTA_PAIR	(MAGENTA_PAIR + CARRIAGE_NUMBER)
-# define CARRIAGE_BLUE_PAIR		(BLUE_PAIR + CARRIAGE_NUMBER)
-# define CARRIAGE_YELLOW_PAIR	(YELLOW_PAIR + CARRIAGE_NUMBER)
-# define CARRIAGE_GREEN_PAIR	(GREEN_PAIR + CARRIAGE_NUMBER)
 
 
 typedef struct s_visual		t_visual;
@@ -71,6 +66,7 @@ struct						s_visual
 	int						colors[5];
 };
 
+
 /*
 ******************			visualize funcs:			************************
 */
@@ -83,5 +79,6 @@ void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
 void				ft_init_colors(int *colors);
 short int			ft_swap_colors(short int color);
+void                update_one_carry(intptr_t pos, t_world *nexus);
 
 #endif

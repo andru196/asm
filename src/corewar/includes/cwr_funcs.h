@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/02 23:46:07 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 01:17:11 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void		ft_add_offspring_by_id(t_dvasa *leaf, t_vasa *new);
 void		ft_add_leafnode(t_dvasa **aleaf, t_dvasa *new);
 void		ft_del_leafnode(t_dvasa **aleaf);
 void		ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant);
-void		ft_tree_undertaker(t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
+void		ft_tree_undertaker(t_world *nexus, t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
 void		ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 								t_dvasa **new_node, t_carry_cont_rout *manager);
 void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant);
