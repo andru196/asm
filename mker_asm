@@ -6,13 +6,13 @@
 #    By: andru <andru@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2020/12/10 01:35:00 by andru            ###   ########.fr        #
+#    Updated: 2021/03/17 23:45:44 by andru            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	asm
 CC		=	clang
-FLAGS	=	-Wall -Wextra -g
+FLAGS	=	-Wall -Wextra -Werror
 DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
@@ -41,14 +41,14 @@ OBJ_DIR		:=	./obj_$(NAME)
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))
 
 INC_DIR	:=	./src/asm/includes $(DIR_LIB)/includes ./includes
-IFLAGS	+=	$(foreach d, $(INC_DIR), -I$d)
+IFLAGS	+=	$(foreach d, $(INC_DIR), -I $d)
 
 .PHONY: all clean fclean re MAKEDIR LIB
 
 all: $(NAME)
 
 $(NAME): LIB MAKEDIR $(OBJECTS)
-	@$(CC) $(FLAGS) -L$(DIR_LIB) -lft $(OBJECTS) -o $(NAME)
+	@$(CC) $(OBJECTS) -L $(DIR_LIB) -lft  $(FLAGS) -o $(NAME)
 
 LIB:
 	@$(MAKE) -C $(DIR_LIB)
@@ -57,7 +57,7 @@ MAKEDIR:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
-	@$(CC) $(FLAGS) $(IFLAGS) -o $@ -c $<
+	@$(CC) $(IFLAGS) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
