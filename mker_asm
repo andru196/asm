@@ -6,7 +6,7 @@
 #    By: andru <andru@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2021/03/17 23:45:44 by andru            ###   ########.fr        #
+#    Updated: 2021/03/18 00:48:52 by andru            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ all: $(NAME)
 
 $(NAME): LIB MAKEDIR $(OBJECTS)
 	@$(CC) $(OBJECTS) -L $(DIR_LIB) -lft  $(FLAGS) -o $(NAME)
+	@echo ""
+	@echo '$(NAME) ready'
 
 LIB:
 	@$(MAKE) -C $(DIR_LIB)
@@ -57,7 +59,10 @@ MAKEDIR:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
+	@echo -ne '\e[1K\e[0ECompile '
+	@printf '\e[1;32m%-6s\e[m' $@
 	@$(CC) $(IFLAGS) $(FLAGS) -c $< -o $@
+	@echo -ne '\e[1K\e[0ECompile competed '
 
 clean:
 	@rm -rf $(OBJ_DIR)
