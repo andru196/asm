@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/18 03:11:16 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 03:38:57 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,8 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	vacant = NULL;
 	while (tree)
 	{
-		nexus->cyc.cycle++;
 		ft_carry_process(nexus, &tree, &vacant);
+		nexus->cyc.cycle++;
 		ft_cycle_control(nexus, &tree, &vacant);
 		/*
 		! Проверка на cycle_to_die. Очистка мертвых (кареток, героев).
