@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/17 00:19:50 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 03:11:16 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		ft_print_info(t_world *nexus)
 	wattroff(iw, A_BOLD);
 }
 
-void			ft_init_attribute_arena(t_world *nexus)
+void			ft_init_a_arena(t_world *nexus)
 {
 	RTP		i;
 	RTP		offset;
@@ -64,17 +64,17 @@ void			ft_init_attribute_arena(t_world *nexus)
 	offset = MEM_SIZE / nexus->champs;
 	i = -1;
 	while (++i < MEM_SIZE)
-		nexus->visual->attribute_arena[i] = nexus->visual->colors[DEFAULT_COLOR];
+		nexus->visual->a_arena[i].value = nexus->visual->colors[DEFAULT_COLOR];
 	while (*tmp)
 	{
 		i = ((*tmp)->id - 1) * offset;
 		while (i < (RTP)(((*tmp)->id - 1) * offset + (*tmp)->size))
 		{
 			if (i == ((*tmp)->id - 1) * offset)
-				nexus->visual->attribute_arena[i] = \
+				nexus->visual->a_arena[i].value = \
 				ft_swap_colors(nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM]);
 			else
-				nexus->visual->attribute_arena[i] = \
+				nexus->visual->a_arena[i].value = \
 				nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM];
 			++i;
 		}

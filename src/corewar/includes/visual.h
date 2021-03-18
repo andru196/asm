@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/18 02:27:44 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/18 03:21:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,29 @@
 # define GREEN_PAIR				4
 
 
-typedef struct s_visual		t_visual;
+typedef struct s_visual			t_visual;
+typedef struct s_attribute		t_attribute;
 
-struct						s_visual
+/*
+** .value consist of color
+*/
+
+struct							s_attribute
 {
-	WINDOW					*arena_window;
-    WINDOW					*info_window;
-    t_bool					active;
-    int						attribute_arena[MEM_SIZE];
-	int						cycle_speed;
-	int						colors[5];
+	int							value;
+	int							bold_cycle;
+	int							white_cycle;
 };
 
+struct							s_visual
+{
+	WINDOW						*arena_window;
+    WINDOW						*info_window;
+    t_bool						active;
+    t_attribute					a_arena[MEM_SIZE];
+	int							cycle_speed;
+	int							colors[5];
+};
 
 /*
 ******************			visualize funcs:			************************
@@ -73,7 +84,7 @@ struct						s_visual
 
 t_visual			*ft_init_visual();
 void				ft_print_info(t_world *nexus);
-void				ft_init_attribute_arena(t_world *nexus);
+void				ft_init_a_arena(t_world *nexus);
 void				update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus);
 void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
