@@ -6,7 +6,7 @@
 #    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2021/03/01 21:23:36 by ycorrupt         ###   ########.fr        #
+#    Updated: 2021/03/21 21:51:07 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,9 @@ SOURCE	+=	dvasa_add.c \
 			dvasa_pick.c \
 			manage_tree.c
 #**********************		src/visualization:		***************************#
-SOURCE	+=	init_field.c
+SOURCE	+=	init_field.c \
+			carry.c \
+			colors.c
 
 OBJ_DIR		:=	./obj_$(NAME)
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))

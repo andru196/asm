@@ -6,12 +6,13 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/18 03:21:12 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/21 21:07:32 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef VISUAL_H
+# define VISUAL_H
 # include "cwr_defs.h"
 # include <curses.h>
 # include <time.h>
