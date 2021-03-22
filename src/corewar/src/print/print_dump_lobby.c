@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/18 03:11:56 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/22 22:32:59 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,55 +76,4 @@ uint8_t				ft_print_dump(t_world *nexus)
 	ptr->gen.cyc_sol = 0;
 	free(ptr);
 	return (nexus->cyc.cyc_to_dump == NULL);
-}
-
-void			ft_print_ncursus_arena2(t_world *nexus) //delete
-{
-	char			str[LINE_SIZE];
-	uint8_t			*bytes;
-	size_t			i, j;
-	const size_t	max = MEM_SIZE;
-
-	i = 0;
-	j = 1;
-	bytes = nexus->arena + sizeof(RTP);
-	while (i < max)
-	{
-		set_dumpline(str, &bytes, &i, max);
-		mvwprintw(nexus->visual->arena_window, j, 1, str);
-		j++;
-	}
-	wrefresh(nexus->visual->arena_window);
-}
-
-void			ft_print_ncursus_arena(t_world *nexus)
-{
-	size_t			i;
-	size_t			j;
-	size_t			x;
-	char			temp[2];
-	uint8_t			*arena;
-
-	i = 0;
-	arena = nexus->arena + sizeof(RTP);
-	while (i < 64)
-	{
-		j = 0;
-		x = 2;
-		while (j < 64)
-		{
-			wattron(nexus->visual->arena_window, nexus->visual->a_arena[i * 64 + j].value);
-			temp[0] = arena[i * 64 + j] / 16;
-			temp[0] = temp[0] + (temp[0] > 9 ? 'a' - 10 : '0');
-			temp[1] = arena[i * 64 + j] % 16;
-			temp[1] = temp[1] + (temp[1] > 9 ? 'a' - 10 : '0');
-			mvwprintw(nexus->visual->arena_window, i + 1, x, "%c%c", temp[0], temp[1]);
-			wattroff(nexus->visual->arena_window, nexus->visual->a_arena[i * 64 + j].value);
-			mvwprintw(nexus->visual->arena_window, i + 3, x + 2, " ");
-			j++;
-			x +=3;
-		}
-		wrefresh(nexus->visual->arena_window);
-		i++;
-	}
 }

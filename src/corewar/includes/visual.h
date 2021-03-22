@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/21 21:07:32 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/22 22:54:51 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define COLOR_PAIR_NUM			4
 # define MAX_SPEED				1000
 # define MIN_SPEED				1
+# define BOLD_CYCLE				50
 
 /*
 ** Buttons
@@ -66,7 +67,6 @@ struct							s_attribute
 {
 	int							value;
 	int							bold_cycle;
-	int							white_cycle;
 };
 
 struct							s_visual
@@ -91,6 +91,6 @@ void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
 void				ft_init_colors(int *colors);
 short int			ft_swap_colors(short int color);
-void                update_one_carry(intptr_t pos, t_world *nexus);
-
+void				update_one_carry(intptr_t pos, t_world *nexus);
+void				update_attribute_arena(t_world *nexus);
 #endif

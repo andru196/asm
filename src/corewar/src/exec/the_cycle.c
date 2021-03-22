@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/18 03:38:57 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/22 23:05:26 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
 	if (tree)
 	{
+		update_attribute_arena(nexus);
 		ft_print_ncursus_arena(nexus);
 		ft_carry_process(nexus, tree, vacant);
 		nexus->cyc.cycle++;
@@ -261,7 +262,7 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	while ((ch = getch()) != 27)
 	{
 		perform_button_action(ch, nexus, &tree, &vacant);
-		usleep(1000000 / nexus->visual->cycle_speed);
+		//usleep(1000000 / nexus->visual->cycle_speed);
 		if (!tree)
 			nexus->visual->active = 0;
 		if (nexus->visual->active && tree)

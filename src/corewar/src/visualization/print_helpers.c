@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_field.c                                       :+:      :+:    :+:   */
+/*   print_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/21 23:25:17 by ycorrupt         ###   ########.fr       */
+/*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
+/*   Updated: 2021/03/22 23:08:00 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-
-void		ft_print_info_playes(t_world *nexus, int *cursor)
+static void		ft_print_info_playes(t_world *nexus, int *cursor)
 {
 	t_champ **tmp = nexus->champ_ord;
 	int i;
@@ -29,7 +28,7 @@ void		ft_print_info_playes(t_world *nexus, int *cursor)
 	wrefresh(nexus->visual->info_window);
 }
 
-void		ft_print_info(t_world *nexus)
+void		    ft_print_info(t_world *nexus)
 {
 	int i;
 	char *hello_string;
@@ -37,7 +36,7 @@ void		ft_print_info(t_world *nexus)
 
 	i = INDENT;
 	hello_string = "Hello to our cool (maybe) COREWAR!!!";
-	werase(iw);
+	//werase(iw);
 	box(iw, 0, 0); 
 	wattron(iw, A_BOLD);
 	mvwprintw(iw, 2, INDENT, "%s", nexus->visual->active ? "** RUNNING **" : "** PAUSED **");
@@ -54,52 +53,52 @@ void		ft_print_info(t_world *nexus)
 	wattroff(iw, A_BOLD);
 }
 
-void			ft_init_a_arena(t_world *nexus)
+void			ft_print_ncursus_arena(t_world *nexus)
 {
-	RTP		i;
-	RTP		offset;
-	t_champ	**tmp;
+	size_t			i;
+	size_t			j;
+	size_t			x;
+	char			temp[2];
+	uint8_t			*arena;
 
-	tmp = nexus->champ_ord;
-	offset = MEM_SIZE / nexus->champs;
-	i = -1;
-	while (++i < MEM_SIZE)
-		nexus->visual->a_arena[i].value = nexus->visual->colors[DEFAULT_COLOR];
-	while (*tmp)
+	i = 0;
+	arena = nexus->arena + sizeof(RTP);
+	while (i < 64)
 	{
-		i = ((*tmp)->id - 1) * offset;
-		while (i < (RTP)(((*tmp)->id - 1) * offset + (*tmp)->size))
+		j = 0;
+		x = 2;
+		while (j < 64)
 		{
-			if (i == ((*tmp)->id - 1) * offset)
-				nexus->visual->a_arena[i].value = \
-				ft_swap_colors(nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM]);
-			else
-				nexus->visual->a_arena[i].value = \
-				nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM];
-			++i;
+			wattron(nexus->visual->arena_window, nexus->visual->a_arena[i * 64 + j].value);
+			temp[0] = arena[i * 64 + j] / 16;
+			temp[0] = temp[0] + (temp[0] > 9 ? 'a' - 10 : '0');
+			temp[1] = arena[i * 64 + j] % 16;
+			temp[1] = temp[1] + (temp[1] > 9 ? 'a' - 10 : '0');
+			mvwprintw(nexus->visual->arena_window, i + 1, x, "%c%c", temp[0], temp[1]);
+			wattroff(nexus->visual->arena_window, nexus->visual->a_arena[i * 64 + j].value);
+			mvwprintw(nexus->visual->arena_window, i + 3, x + 2, " ");
+			j++;
+			x +=3;
 		}
-		tmp++;
+		wrefresh(nexus->visual->arena_window);
+		i++;
 	}
 }
 
-t_visual		*ft_init_visual()
+void			update_attribute_arena(t_world *nexus)
 {
-	t_visual *result;
+	int i;
+	t_attribute *a_arena;
 
-    initscr();
-	noecho();
-	curs_set(0); // hide cursor
-	timeout(1); // timeout for input (getch)
-	start_color();
-	result = (t_visual *)ft_memalloc(sizeof(t_visual));
-	ft_init_colors(result->colors);
-	result->arena_window = newwin(FIELD_HEIGTH, ARENA_WIDTH, INDENT, INDENT);
-	result->info_window = newwin(FIELD_HEIGTH, INFO_WIDTH, INDENT, ARENA_WIDTH + INDENT);
-	result->active = 0;
-	result->cycle_speed = 50;
-    refresh();
-	box(result->arena_window, 0, 0);
-	wrefresh(result->arena_window);
-	wrefresh(result->info_window);
-	return (result);
+	a_arena = nexus->visual->a_arena;
+	i = MEM_SIZE;
+	while (--i >= 0)
+	{
+		if (a_arena[i].bold_cycle != 0)
+		{
+			--a_arena[i].bold_cycle;
+			if (a_arena[i].bold_cycle == 0)
+				a_arena[i].value = a_arena[i].value ^ A_BOLD;
+		}
+	}
 }

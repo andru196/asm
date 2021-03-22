@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   carry.c                                            :+:      :+:    :+:   */
+/*   manage_carry.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/22 00:49:01 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/22 23:14:12 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	update_one_carry(intptr_t pos, t_world *nexus)
 	nexus->visual->a_arena[pos].value = \
 		(nexus->visual->a_arena[pos].value >> (sizeof(short) * 8)) \
 		<< (sizeof(short) * 8) | \
-		ft_swap_colors((short int)nexus->visual->a_arena[pos].value);	
+		ft_swap_colors((short int)nexus->visual->a_arena[pos].value);
 }
 
 void	update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus)
@@ -39,6 +39,8 @@ void	update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus)
 	*/
 }
 
+// TODO: тут сломан цикл снова, сегу не выдает, просто затирает соседнюю память. как.
+// ./corewar -g corFiles/Car.cor corFiles/ex.cor corFiles/Car.cor
 void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 {
 	intptr_t	tmp;
@@ -50,18 +52,18 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	magic = ((offset + sizeof(RTP)) % MEM_SIZE) * \
 										((offset + sizeof(RTP)) / MEM_SIZE);
 	tmp = offset;
-	while(tmp != offset + 4 - magic && offset + 4 - magic < MEM_SIZE)
+	mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%d!!, !!offset:%d!!, !!RTP:%d!!", (int)magic, (int)offset, (int)(sizeof(RTP)));
+	wrefresh(nexus->visual->info_window);
+	while(tmp <= (intptr_t)(offset + sizeof(RTP) - magic))
 	{
 		nexus->visual->a_arena[tmp].value = \
-							nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)] | A_BOLD;
-		tmp++;
+		nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)] | A_BOLD;
+		nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+		++tmp;
 	}
-	tmp = magic - 4;
-	while (tmp != magic)
-	{
-		if (tmp >= 0)
-			nexus->visual->a_arena[tmp].value = \
-							nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)];
-		tmp++;
-	}
+	tmp = magic;
+	if (magic)
+		while (tmp >= 0)
+			nexus->visual->a_arena[tmp--].value = \
+		nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)] | A_BOLD;
 }
