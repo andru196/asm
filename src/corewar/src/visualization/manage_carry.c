@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/22 23:14:12 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 20:03:27 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	tmp = offset;
 	mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%d!!, !!offset:%d!!, !!RTP:%d!!", (int)magic, (int)offset, (int)(sizeof(RTP)));
 	wrefresh(nexus->visual->info_window);
-	while(tmp <= (intptr_t)(offset + sizeof(RTP) - magic))
+	while(tmp < (intptr_t)(offset + sizeof(RTP) - magic))
 	{
 		nexus->visual->a_arena[tmp].value = \
 		nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)] | A_BOLD;
@@ -63,7 +63,12 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	}
 	tmp = magic;
 	if (magic)
+	{
 		while (tmp >= 0)
+		{
 			nexus->visual->a_arena[tmp--].value = \
 		nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)] | A_BOLD;
+			nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+		}
+	}
 }
