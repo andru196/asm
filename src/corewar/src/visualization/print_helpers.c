@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 22:42:13 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 23:00:31 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void		ft_print_info_playes(t_world *nexus, int *cursor)
 		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Player %d: %s", (*tmp)->id, (*tmp)->name);
 		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Last live: %d", (*tmp)->last_live_op);
 		wattroff(nexus->visual->info_window, nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]);
-		tmp++;
 		wrefresh(nexus->visual->info_window);
+		tmp++;
 	}
 }
 
@@ -37,7 +37,7 @@ void		    ft_print_info(t_world *nexus)
 
 	i = INDENT;
 	hello_string = "Hello to our cool (maybe) COREWAR!!!";
-	werase(iw);
+	//werase(iw);
 	box(iw, 0, 0);
 	wattron(iw, A_BOLD);
 	mvwprintw(iw, 2, INDENT, "%s", nexus->visual->active ? "** RUNNING **" : "** PAUSED **");

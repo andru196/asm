@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 22:25:00 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:53:17 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	magic = ((offset + sizeof(RTP)) % MEM_SIZE) * \
 										((offset + sizeof(RTP)) / MEM_SIZE);
 	tmp = offset;
-	mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%d!!, !!offset:%d!!, !!RTP:%d!!", (int)magic, (int)offset, (int)(sizeof(RTP)));
-	wrefresh(nexus->visual->info_window);
+	//mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%d!!, !!offset:%d!!, !!RTP:%d!!", (int)magic, (int)offset, (int)(sizeof(RTP)));
+	//wrefresh(nexus->visual->info_window);
 	while(tmp < (intptr_t)(offset + sizeof(RTP) - magic))
 	{
 		nexus->visual->a_arena[tmp].value = \
