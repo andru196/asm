@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 20:03:27 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:25:00 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	update_one_carry(intptr_t pos, t_world *nexus)
 {
 	if (!(nexus->flags & 2))
 		return ;
+	pos = ft_calc_addr(pos);
 	nexus->visual->a_arena[pos].value = \
 		(nexus->visual->a_arena[pos].value >> (sizeof(short) * 8)) \
 		<< (sizeof(short) * 8) | \
@@ -31,16 +32,8 @@ void	update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus)
 		return ;
 	update_one_carry(carry->pos, nexus);
 	update_one_carry(carry->pos - length, nexus);
-	/*
-	nexus->visual->a_arena[carry->pos] =
-		((short int)ft_swap_colors(nexus->visual->a_arena[carry->pos]));
-	nexus->visual->a_arena[carry->pos - length] =
-		ft_swap_colors((short int)(nexus->visual->a_arena[carry->pos - length]));
-	*/
 }
 
-// TODO: тут сломан цикл снова, сегу не выдает, просто затирает соседнюю память. как.
-// ./corewar -g corFiles/Car.cor corFiles/ex.cor corFiles/Car.cor
 void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 {
 	intptr_t	tmp;

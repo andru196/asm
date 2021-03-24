@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/18 01:17:11 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 21:56:27 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ t_carry		*ft_create_carry(void);
 void		ft_init_carries(t_world *nexus);
 t_carry		*ft_dupe_carry(t_carry *parent);
 void		ft_carry_ins_by_id(t_dvasa *leafnode, t_vasa *carry_cont);
+intptr_t	ft_calc_addr(intptr_t offset);
 
 /*
 ******************			Tree managing funcs:		************************

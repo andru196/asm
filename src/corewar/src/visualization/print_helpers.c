@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 20:01:05 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:42:13 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static void		ft_print_info_playes(t_world *nexus, int *cursor)
 	{
 		wattron(nexus->visual->info_window, nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]);
 		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Player %d: %s", (*tmp)->id, (*tmp)->name);
+		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Last live: %d", (*tmp)->last_live_op);
 		wattroff(nexus->visual->info_window, nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]);
 		tmp++;
+		wrefresh(nexus->visual->info_window);
 	}
-	wrefresh(nexus->visual->info_window);
 }
 
 void		    ft_print_info(t_world *nexus)
@@ -36,14 +37,14 @@ void		    ft_print_info(t_world *nexus)
 
 	i = INDENT;
 	hello_string = "Hello to our cool (maybe) COREWAR!!!";
-	//werase(iw);
-	box(iw, 0, 0); 
+	werase(iw);
+	box(iw, 0, 0);
 	wattron(iw, A_BOLD);
 	mvwprintw(iw, 2, INDENT, "%s", nexus->visual->active ? "** RUNNING **" : "** PAUSED **");
 	mvwprintw(iw, i += 2, INFO_WIDTH / 2 - ft_strlen(hello_string) / 2, "%s", hello_string);
 	mvwprintw(iw, i += 2, INDENT, "%s %d", "Cycle/second limit: ", nexus->visual->cycle_speed);
 	mvwprintw(iw, i += 2, INDENT, "%s %d", "Cycle: ", nexus->cyc.cycle);
-	mvwprintw(iw, i += 2, INDENT, "%s %d", "Processes: ", nexus->champs);
+	mvwprintw(iw, i += 2, INDENT, "%s %d", "Champs: ", nexus->champs);
 	ft_print_info_playes(nexus, &i);
 	mvwprintw(iw, i += 2, INDENT, "%s %d", "CYCLE_TO_DIE: ", nexus->cyc.cyc_to_die);
 	mvwprintw(iw, i += 2, INDENT, "%s %d", "CYCLE_DELTA: ", nexus->cyc.cycle_delta);

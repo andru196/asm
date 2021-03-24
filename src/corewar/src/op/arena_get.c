@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   arena_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 11:56:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:03:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/24 21:56:29 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-inline intptr_t			ft_calc_addr(intptr_t offset)
+intptr_t				ft_calc_addr(intptr_t offset)
 {
-	return ((offset % MEM_SIZE) + MEM_SIZE * (offset < 0));
+	return ((offset %  MEM_SIZE) + MEM_SIZE * (offset < 0));
 }
 
 inline intptr_t			ft_step_size(uint8_t ops_type, uint8_t t_dir_size)
