@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/26 20:33:13 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 18:44:59 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ inline static void		ft_cycle_control(t_world *nexus, \
 											t_dvasa **tree, t_dvasa **vacant)
 {
 	t_cycle				*cyc_ptr;
+	t_champ				*ch_ptr;
 
 	cyc_ptr = &nexus->cyc;
 	if (cyc_ptr->cycle == cyc_ptr->next_check)
@@ -58,6 +59,7 @@ inline static void		ft_cycle_control(t_world *nexus, \
 		*	По идее здесь должны обновляться все показатели t_cycle, за исключеним
 			* счетчика.
 		*/
+		
 		ft_tree_undertaker(tree, vacant, cyc_ptr);
 		if (++cyc_ptr->num_of_checks == MAX_CHECKS || cyc_ptr->lives_done >= NBR_LIVE)
 		{
