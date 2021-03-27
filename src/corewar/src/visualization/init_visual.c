@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 22:13:24 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:33:33 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			ft_init_a_arena(t_world *nexus)
 				ft_swap_colors(nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM]);
 			else
 				nexus->visual->a_arena[i].value = \
-				nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM];
+				COLOR_PAIR(nexus->visual->colors[(*tmp)->id % COLOR_PAIR_NUM]);
 			++i;
 		}
 		tmp++;
@@ -60,9 +60,8 @@ t_visual		*ft_init_visual()
 	result->info_window = newwin(FIELD_HEIGTH, INFO_WIDTH, INDENT, ARENA_WIDTH + INDENT);
 	result->active = 0;
 	result->cycle_speed = 50;
-    refresh();
 	box(result->arena_window, 0, 0);
+	refresh();
 	wrefresh(result->arena_window);
-	wrefresh(result->info_window);
 	return (result);
 }

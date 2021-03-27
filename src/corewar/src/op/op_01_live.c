@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/24 23:04:36 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:55:52 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void		op_live(t_world *nexus, t_carry *carry, \
 	if (id > 0 && id <= nexus->champs)
 	{
 		champion = nexus->champ_ord[id - 1];
-		mvwprintw(nexus->visual->info_window, 1, 1, "!!%d    %d", champion->id, champion->last_live_op);
-		wrefresh(nexus->visual->info_window);
 		if (champion->alive)
 		{
 			champion->last_live_op = carry->exec_cyc;

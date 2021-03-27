@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 18:54:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 16:41:09 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 	{
 		nexus->champ[i].desc = nexus->champ[i].name + \
 			(uintptr_t)(PROG_NAME_LENGTH + REG_SIZE + 1);
+		nexus->champ[i].alive = 1;
 		i++;
 	}
 	if (i != MAX_PLAYERS)

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 22:14:14 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:12:52 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@
 */
 
 # define DEFAULT_COLOR			4
-# define MAGENTA_PAIR			1
-# define BLUE_PAIR				2 
-# define YELLOW_PAIR			3
-# define GREEN_PAIR				4
 
 
 typedef struct s_visual			t_visual;
@@ -76,7 +72,7 @@ struct							s_visual
     t_bool						active;
     t_attribute					a_arena[MEM_SIZE];
 	int							cycle_speed;
-	int							colors[5];
+	short						colors[5];
 };
 
 /*
@@ -89,8 +85,11 @@ void				ft_init_a_arena(t_world *nexus);
 void				update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus);
 void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
-void				ft_init_colors(int *colors);
+void				ft_init_colors(short *colors);
 short int			ft_swap_colors(short int color);
 void				update_one_carry(intptr_t pos, t_world *nexus);
 void				update_attribute_arena(t_world *nexus);
+void				free_visual(t_visual *visual);
+short int			ft_get_color_num(short int fg, short int bg);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/24 23:00:31 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/27 22:04:20 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@ static void		ft_print_info_playes(t_world *nexus, int *cursor)
 {
 	t_champ **tmp = nexus->champ_ord;
 	int i;
+	WINDOW *iw;
 
+	iw = nexus->visual->info_window;
 	i = 0;
 	while (*tmp)
 	{
-		wattron(nexus->visual->info_window, nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]);
-		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Player %d: %s", (*tmp)->id, (*tmp)->name);
-		mvwprintw(nexus->visual->info_window, *cursor += 2, INDENT, "Last live: %d", (*tmp)->last_live_op);
-		wattroff(nexus->visual->info_window, nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]);
-		wrefresh(nexus->visual->info_window);
+		wattron(iw, COLOR_PAIR(nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]));
+		mvwprintw(iw, *cursor += 2, INDENT, "Player %d: %s", \
+												(*tmp)->id, (*tmp)->name);
+		mvwprintw(iw, *cursor += 2, INDENT, "Last live: %d", \
+												(*tmp)->last_live_op);
+		wattroff(iw, COLOR_PAIR(nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]));
+		wrefresh(iw);
 		tmp++;
 	}
 }
@@ -33,8 +37,9 @@ void		    ft_print_info(t_world *nexus)
 {
 	int i;
 	char *hello_string;
-	WINDOW *iw = nexus->visual->info_window;
+	WINDOW *iw;
 
+	iw = nexus->visual->info_window;
 	i = INDENT;
 	hello_string = "Hello to our cool (maybe) COREWAR!!!";
 	//werase(iw);

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/22 23:05:26 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:54:15 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,8 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	ft_init_a_arena(nexus);
 	ft_print_info(nexus);
 	ft_print_ncursus_arena(nexus);
+	mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%hd!!      %d  %hd", nexus->visual->colors[1], ft_swap_colors((short)nexus->visual->a_arena[1].value), ft_get_color_num(COLOR_WHITE, COLOR_WHITE));
+	wrefresh(nexus->visual->info_window);
 	vacant = NULL;
 	while ((ch = getch()) != 27)
 	{
@@ -272,7 +274,5 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	}
 	if (vacant)
 		free(vacant);
-	delwin(nexus->visual->arena_window);
-	delwin(nexus->visual->info_window);
-	endwin();
+	free_visual(nexus->visual);
 }
