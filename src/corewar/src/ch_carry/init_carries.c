@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 13:57:16 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/26 23:11:07 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:36:00 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ inline static void		ft_init_carry_origin(t_carry *carry, t_champ *parent, \
 	carry->reg[0] = -(parent->id);
 	carry->parent = parent;
 	carry->pos = position;
-	carry->exec_cyc = 0;
+	carry->exec_cyc = 1;
 }
 
 void					ft_init_carries(t_world *nexus)

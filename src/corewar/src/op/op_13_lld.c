@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_13_lld.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 17:21:52 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:25:53 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define OP_CODE 13
 
 /*
-TODO:	Сделать.
+TODO:	В процессе.
 */
 void		op_lld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
