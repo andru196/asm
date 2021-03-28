@@ -19,3 +19,4 @@ asm
 _42_corewar_checker/
 _42-Corewar-Checker/
 .vs/
+logs/*

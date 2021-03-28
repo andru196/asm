@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/16 20:56:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/28 16:43:14 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define OP_CODE 13
 
 /*
-TODO:	Сделать.
+TODO:	В процессе.
 */
 void		op_lld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)

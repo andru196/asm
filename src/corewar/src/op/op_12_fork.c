@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/16 20:56:10 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/28 16:43:07 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void				op_fork(t_world *nexus, t_carry *carry, \
 		ft_prox_err_malloc("new carry or its container", __func__);
 	}
 	vasa->gen.carry->pos += op_cont.operands[0] % op_cont.mod;
-	ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->op = 0;
+	
+	// ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
+	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->pos += op_cont.length;
 	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
