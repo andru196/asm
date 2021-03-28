@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/27 18:44:59 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/28 14:59:09 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ inline static void		ft_cycle_control(t_world *nexus, \
 											t_dvasa **tree, t_dvasa **vacant)
 {
 	t_cycle				*cyc_ptr;
-	t_champ				*ch_ptr;
 
 	cyc_ptr = &nexus->cyc;
 	if (cyc_ptr->cycle == cyc_ptr->next_check)
