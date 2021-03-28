@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/03/28 14:59:09 by mschimme         ###   ########.fr       */
+=======
+/*   Updated: 2021/03/27 19:34:16 by mschimme         ###   ########.fr       */
+>>>>>>> f0030237ff76e78899e9fa63db4f0da070ea4678
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +167,9 @@ void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 				ft_destroy_leaftree(&tree, &vacant);
 				return ;
 			}
+		nexus->cyc.cycle++;
 		ft_carry_process(nexus, &tree, &vacant);
 		ft_cycle_control(nexus, &tree, &vacant);
-		nexus->cyc.cycle++;
 		/*
 		! Проверка на cycle_to_die. Очистка мертвых (кареток, героев).
 		? У нас 3 варианта:

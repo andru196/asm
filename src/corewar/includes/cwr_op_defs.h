@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_op_defs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/14 17:17:53 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:12:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CWR_OP_DEFS_H
 
 # define CWR_OP_DEFS_H
-# define CYC_COEFF 1 
+# define CYC_COEFF 1
 #include <cwr.h>
 
 
