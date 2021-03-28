@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/28 18:00:58 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/28 19:02:25 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,8 +210,8 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 	{
 		update_attribute_arena(nexus);
 		ft_print_ncursus_arena(nexus);
-		ft_carry_process(nexus, tree, vacant);
 		nexus->cyc.cycle++;
+		ft_carry_process(nexus, tree, vacant);
 		ft_cycle_control(nexus, tree, vacant);
 	}
 }
@@ -235,10 +235,6 @@ void		perform_button_action(int ch, t_world *nexus, t_dvasa **tree, t_dvasa **va
 	}
 	else if (ch == ACTIVE_BUTTON)
 		nexus->visual->active = !nexus->visual->active;
-	else if (ch == INCREASE_SPEED_100)
-		nexus->visual->cycle_speed = get_increased_speed(nexus->visual->cycle_speed, 100);
-	else if (ch == DECREASE_SPEED_100)
-		nexus->visual->cycle_speed = get_decreased_speed(nexus->visual->cycle_speed, 100);
 	else if (ch == INCREASE_SPEED_10)
 		nexus->visual->cycle_speed = get_increased_speed(nexus->visual->cycle_speed, 10);
 	else if (ch == DECREASE_SPEED_10)
@@ -249,6 +245,9 @@ void		perform_button_action(int ch, t_world *nexus, t_dvasa **tree, t_dvasa **va
 		nexus->visual->cycle_speed = get_decreased_speed(nexus->visual->cycle_speed, 1);
 }
 
+// mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%hd!!      %d  %hd", nexus->visual->colors[1], ft_swap_colors((short)nexus->visual->a_arena[1].value), ft_get_color_num(COLOR_WHITE, COLOR_WHITE));
+// wrefresh(nexus->visual->info_window);
+
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa		*vacant;
@@ -258,8 +257,6 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	ft_init_a_arena(nexus);
 	ft_print_info(nexus);
 	ft_print_ncursus_arena(nexus);
-	mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%hd!!      %d  %hd", nexus->visual->colors[1], ft_swap_colors((short)nexus->visual->a_arena[1].value), ft_get_color_num(COLOR_WHITE, COLOR_WHITE));
-	wrefresh(nexus->visual->info_window);
 	vacant = NULL;
 	while ((ch = getch()) != 27)
 	{
@@ -271,7 +268,10 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 			ft_make_cycle(nexus, &tree, &vacant);
 		if (ch)
 			ft_print_info(nexus);
+		if (!(tree))
+			ft_print_winner(nexus);
 	}
+	ft_destroy_leaftree(&tree, &vacant);
 	if (vacant)
 		free(vacant);
 	free_visual(nexus->visual);

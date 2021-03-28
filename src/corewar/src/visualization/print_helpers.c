@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/27 22:04:20 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/28 19:07:39 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ static void		ft_print_info_playes(t_world *nexus, int *cursor)
 		wrefresh(iw);
 		tmp++;
 	}
+}
+
+void			ft_print_winner(t_world *nexus)
+{
+	WINDOW *iw;
+
+	iw = nexus->visual->info_window;
+	wattron(iw, COLOR_PAIR(nexus->visual->colors[nexus->survivor->id % COLOR_PAIR_NUM]));
+	mvwprintw(iw, getmaxy(iw) - INDENT, INDENT, "Winner: %s", nexus->survivor->name);
+	wattroff(iw, COLOR_PAIR(nexus->visual->colors[nexus->survivor->id  % COLOR_PAIR_NUM]));
 }
 
 void		    ft_print_info(t_world *nexus)

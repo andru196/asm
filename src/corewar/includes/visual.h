@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/27 21:12:52 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:50:57 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@
 
 # define ACTIVE_BUTTON			' '
 # define SINGLE_CYCLE_BUTTON	's'
-# define INCREASE_SPEED_100		'y'
-# define DECREASE_SPEED_100		'q'
-# define INCREASE_SPEED_10		't'
-# define DECREASE_SPEED_10		'w'
-# define INCREASE_SPEED_1		'r'
-# define DECREASE_SPEED_1		'e'
+# define INCREASE_SPEED_10		'r'
+# define DECREASE_SPEED_10		'q'
+# define INCREASE_SPEED_1		'e'
+# define DECREASE_SPEED_1		'w'
 
 /*
 ** Colors 
@@ -56,7 +54,7 @@ typedef struct s_visual			t_visual;
 typedef struct s_attribute		t_attribute;
 
 /*
-** .value consist of color
+** .value consist of color and additional attributes
 */
 
 struct							s_attribute
@@ -87,7 +85,7 @@ void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
 unsigned long int	set_new_color(unsigned long result, int color);
 void				ft_init_colors(short *colors);
 short int			ft_swap_colors(short int color);
-void				update_one_carry(intptr_t pos, t_world *nexus);
+void				update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry);
 void				update_attribute_arena(t_world *nexus);
 void				free_visual(t_visual *visual);
 short int			ft_get_color_num(short int fg, short int bg);
