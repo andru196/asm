@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 15:29:12 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/30 23:00:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ inline static void		ft_place_champs(t_world *nexus)
 		ft_memcpy((void *)(arena + entry_ptr), \
 					(void *)nexus->champ_ord[ch_amount]->body, \
 					(size_t)nexus->champ_ord[ch_amount]->size);
+		nexus->champ_ord[ch_amount]->alive = true;
 		entry_ptr += step;
 	}
 }
