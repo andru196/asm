@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:21:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:54:05 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,21 @@ void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 **	Tester:		t_eval_operands.c
 */
 
+static inline uint8_t	ft_retreive_op_type(uint8_t *ops_type, const t_mop *const ref)
+{
+	uint8_t				flag;
+	int					i;
+
+	flag = 0;
+	ops_type = (ops_type & ref->ops_types[i])
+	
+}
+
+/*
+!	School corewar behavior unknown in case of inapropriate registry number.
+!	Shall we skip instruction in its present configuration or it shalt be
+!	jumped over accoridng its WIDE configuration.
+*/
 uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 										t_mop *ops_cont, const t_mop *const ref)
 {
@@ -91,6 +106,8 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 	while (++i < ops_cont->ops_amount)
 	{
 		flag |= !(ops_cont->ops_types[i] & ref->ops_types[i]);
+		if (!(ops_cont->ops_types[i] =& ref->ops_types[i]))
+			ops_cont->ops_types[i] = ref->ops_types[i] & 4
 		if (ops_cont->ops_types[i] == T_REG)
 			flag |= !(ft_check_reg_is_valid(arena, ptr + offset));
 		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], \
@@ -98,6 +115,11 @@ uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 		offset += ops_cont->ops_length[i];
 	}
 	ops_cont->length = offset;
+	if (flag)
+	{
+		//TD: Сюда вписать наполнение элементов ->ops_length MAX значениеями \
+		//TD: для текущей инструкции (по ref.) Consider 1 2 4 sizes. that's easy
+	}
 	return (flag);
 }
 
