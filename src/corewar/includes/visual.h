@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/28 18:50:57 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/30 22:15:37 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define MAX_SPEED				1000
 # define MIN_SPEED				1
 # define BOLD_CYCLE				50
+# define HELLO_STRING			"Hello to our cool (maybe) COREWAR!!!"
 
 /*
 ** Buttons
@@ -50,6 +51,7 @@
 # define DEFAULT_COLOR			4
 
 
+typedef WINDOW					t_window;
 typedef struct s_visual			t_visual;
 typedef struct s_attribute		t_attribute;
 
@@ -65,8 +67,8 @@ struct							s_attribute
 
 struct							s_visual
 {
-	WINDOW						*arena_window;
-    WINDOW						*info_window;
+	t_window					*arena_window;
+    t_window					*info_window;
     t_bool						active;
     t_attribute					a_arena[MEM_SIZE];
 	int							cycle_speed;
