@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/28 18:51:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/03/30 23:36:08 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry)
 		return ;
 	pos = ft_calc_addr(pos);
 	current_color = (short)nexus->visual->a_arena[pos].value;
-	new_color = ft_swap_colors(PAIR_NUMBER((short)nexus->visual->a_arena[pos].value));
+	new_color = \
+		ft_swap_colors(PAIR_NUMBER((short)nexus->visual->a_arena[pos].value));
 	if (del_carry == 1 && current_color > new_color)
 		return ;
 	if (del_carry == 0 && current_color < new_color)
@@ -43,6 +44,14 @@ void	update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus)
 	update_one_carry(carry->pos - length, nexus, 1);
 }
 
+void	change_attribute(t_world *nexus, intptr_t tmp, t_carry *carry)
+{
+	nexus->visual->a_arena[tmp].value = \
+			COLOR_PAIR(nexus->visual->colors[(carry->parent->id % \
+											COLOR_PAIR_NUM)]) | A_BOLD;
+	nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+}
+
 void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 {
 	intptr_t	tmp;
@@ -54,11 +63,9 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	magic = ((offset + sizeof(RTP)) % MEM_SIZE) * \
 										((offset + sizeof(RTP)) / MEM_SIZE);
 	tmp = offset;
-	while(tmp < (intptr_t)(offset + sizeof(RTP) - magic))
+	while (tmp < (intptr_t)(offset + sizeof(RTP) - magic))
 	{
-		nexus->visual->a_arena[tmp].value = \
-		COLOR_PAIR(nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)]) | A_BOLD;
-		nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+		change_attribute(nexus, tmp, carry);
 		++tmp;
 	}
 	tmp = magic;
@@ -66,9 +73,8 @@ void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)
 	{
 		while (tmp >= 0)
 		{
-			nexus->visual->a_arena[tmp--].value = \
-		COLOR_PAIR(nexus->visual->colors[(carry->parent->id % COLOR_PAIR_NUM)]) | A_BOLD;
-			nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+			change_attribute(nexus, tmp, carry);
+			tmp--;
 		}
 	}
 }
