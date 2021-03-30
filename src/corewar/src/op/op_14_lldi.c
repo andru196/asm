@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   op_14_lldi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
 /*   Updated: 2021/03/28 18:00:25 by ycorrupt         ###   ########.fr       */
+=======
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
+/*   Updated: 2021/03/28 17:28:37 by mschimme         ###   ########.fr       */
+>>>>>>> 40c21ecb15e43af97ffb63c397afcd2ac842eb68
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +29,7 @@
 #endif
 
 /*
-TD:	TEST!
+!Дефайн хуита, т.к. предназначался для lld! Убрать нахер всю эту лажу!
 */
 void			op_lldi(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
