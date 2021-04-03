@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/03 20:07:44 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:23:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,14 +189,6 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree)
 		nexus->cyc.cycle++;
 		ft_carry_process(nexus, &tree, &vacant);
 		ft_cycle_control(nexus, &tree, &vacant);
-		/*
-		! Проверка на cycle_to_die. Очистка мертвых (кареток, героев).
-		? У нас 3 варианта:
-			1. Не осталось живых кареток -> Объявить победителя.
-			2. Не осталось живых кареток в текущем цикле...
-			3. В текущем цикле остались живые каретки -> ничего не меняется.
-		? Возможно есть смысл сравнивать с nexus->cyc.cyc_to_dump->gen.cyc_sol - 1
-		*/
 	}
 	if (vacant)
 		free(vacant);
