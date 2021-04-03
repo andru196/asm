@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/30 22:21:33 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:09:49 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		op_aff(t_world *nexus, t_carry *carry, \
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, 1);
 		c = (char)op_cont.operands[0];
-		if (ft_isprint(c))
+		if (!(nexus->flags & 1) && ft_isprint(c))
 			write (1, &c, 1);
 	}
 	carry->op = 0;
