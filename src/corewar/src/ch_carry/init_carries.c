@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_carries.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 13:57:16 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/27 19:36:00 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/04 22:24:42 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ inline static uint8_t	ft_check_production(t_vasa *current, t_vasa *previous)
 }
 
 /*
-TODO: Проверить в боевом режиме.
+** Проверена в боевом режиме.
 */
 inline static void		ft_init_carry_origin(t_carry *carry, t_champ *parent, \
 															uintptr_t position)
