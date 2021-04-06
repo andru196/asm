@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 00:09:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/07 00:50:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-#ifdef SCHOOL_MODE || BRAZH_MODE
+//#ifdef SCHOOL_MODE || BRAZH_MODE
 # define CWR_READ_OP_METH carry_bogey->gen.carry->op
-#else
-# define CWR_READ_OP_METH op_code * (carry_bogey->gen.carry->op != 0)
-#endif
+//#else
+//# define CWR_READ_OP_METH op_code * (carry_bogey->gen.carry->op != 0)
+//#endif
 
 /*
 **	#ifndef NDEBUG
@@ -123,7 +123,7 @@ inline static void		ft_carry_process(t_world *nexus, t_dvasa **tree, \
 			(*tree)->gen.vasa = (*tree)->gen.vasa->next;
 			op_code = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + \
 												carry_bogey->gen.carry->pos]);
-			op_tab[op_code * (carry_bogey->gen.carry->op != 0)](nexus, \
+			op_tab[CWR_READ_OP_METH](nexus, \
 									carry_bogey->gen.carry, *tree, new_node);
 			ft_leafnode_pick(carry_bogey, *tree, new_node, \
 													&ft_add_offspring_by_id);
