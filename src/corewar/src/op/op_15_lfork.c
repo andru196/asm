@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/30 19:59:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/07 20:41:57 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 /*
 TODO: Алярм! Убрать после отладки!
 */
-inline static void	ft_newcarry_place(t_vasa *carry_cont, t_dvasa *tree, \
-								t_dvasa **new_node, t_carry_cont_rout *manager)
-{
-	(void)new_node;
+// inline static void	ft_newcarry_place(t_vasa *carry_cont, t_dvasa *tree, \
+// 								t_dvasa **new_node, t_carry_cont_rout *manager)
+// {
+// 	(void)new_node;
 
-if (!tree)
-{
-ft_printf_fd(2, "ALARM! HOW did that happened!?\n %s of %s found no tree!", \
-															__func__, __FILE__);
-exit (1);
-}
-	manager(tree, carry_cont);
-}
+// if (!tree)
+// {
+// ft_printf_fd(2, "ALARM! HOW did that happened!?\n %s of %s found no tree!", \
+// 															__func__, __FILE__);
+// exit (1);
+// }
+// 	manager(tree, carry_cont);
+// }
 
 /*
 !Контракт:

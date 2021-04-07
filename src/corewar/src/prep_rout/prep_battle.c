@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/16 20:28:22 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/07 20:41:46 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ inline static void		ft_place_champs(t_world *nexus)
 		ft_memcpy((void *)(arena + entry_ptr), \
 					(void *)nexus->champ_ord[ch_amount]->body, \
 					(size_t)nexus->champ_ord[ch_amount]->size);
+		nexus->champ_ord[ch_amount]->alive = true;
 		entry_ptr += step;
 	}
 }
