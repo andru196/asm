@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 14:08:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:00:47 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,8 @@ void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 
 void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
+void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+															intptr_t amount);
 RTP			ft_get_reg_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
@@ -200,6 +202,8 @@ RTP			ft_get_dir_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
+RTP			ft_get_ind_val_sch(uint8_t *arena, t_mop *op_cont, \
+												t_carry *carry, intptr_t pos);
 RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 void		ft_set_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
