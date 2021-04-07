@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/28 18:43:29 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/07 22:50:56 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ inline static uint8_t	ft_carry_control(t_world *nexus, t_dvasa *leafnode, t_vasa
 		if (cyc_ptr->cycle - carry_ptr->gen.carry->last_live_op >= DEATH_CYC)
 		{
 			subst->next = carry_ptr->next;
-			update_one_carry(carry_ptr->gen.carry->pos, nexus, 1); // не работает почему-то(
+			//update_one_carry(carry_ptr->gen.carry->pos, nexus, 1); // не работает почему-то(
 			ft_lstdelone((t_list **)&carry_ptr, &ft_del);
 			carry_ptr = subst->next;
 			continue ;

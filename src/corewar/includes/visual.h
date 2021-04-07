@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/30 22:15:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:13:10 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ struct							s_visual
 	t_window					*arena_window;
     t_window					*info_window;
     t_bool						active;
+	t_bool						print_winner;
     t_attribute					a_arena[MEM_SIZE];
 	int							cycle_speed;
 	short						colors[5];
@@ -89,7 +90,9 @@ void				ft_init_colors(short *colors);
 short int			ft_swap_colors(short int color);
 void				update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry);
 void				update_attribute_arena(t_world *nexus);
-void				free_visual(t_visual *visual);
+void				free_visual(t_visual **visual);
 short int			ft_get_color_num(short int fg, short int bg);
+void				ft_print_visual_winner(t_world *nexus);
+
 
 #endif

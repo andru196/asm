@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/30 22:14:40 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/07 21:26:24 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ static void	ft_print_info_playes(t_world *nexus, int *cursor)
 	}
 }
 
-void		ft_print_winner(t_world *nexus)
+void		ft_print_visual_winner(t_world *nexus)
 {
 	t_window *iw;
 
+	if (!(nexus->visual->print_winner))
+		return ;
 	iw = nexus->visual->info_window;
 	wattron(iw, \
 	COLOR_PAIR(nexus->visual->colors[nexus->survivor->id % COLOR_PAIR_NUM]));
@@ -74,6 +76,7 @@ void		ft_print_info(t_world *nex)
 	mvwprintw(iw, i += 2, j, "%s %d", "CYCLE_DELTA: ", nex->cyc.cycle_delta);
 	mvwprintw(iw, i += 2, j, "%s %d", "NBR_LIVE: ", nex->cyc.cyc_to_die);
 	mvwprintw(iw, i += 2, j, "%s %d", "MAX_CHECKS: ", MAX_CHECKS);
+	ft_print_visual_winner(nex);
 	wrefresh(iw);
 	wattroff(iw, A_BOLD);
 }

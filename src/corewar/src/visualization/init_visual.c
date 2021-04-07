@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/30 23:50:20 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:13:03 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,18 @@ t_visual		*ft_init_visual(void)
 	result->info_window = \
 			newwin(FIELD_HEIGTH, INFO_WIDTH, INDENT, ARENA_WIDTH + INDENT);
 	result->active = 0;
+	result->print_winner = 0;
 	result->cycle_speed = 50;
 	box(result->arena_window, 0, 0);
 	refresh();
 	wrefresh(result->arena_window);
 	return (result);
+}
+
+void	free_visual(t_visual **visual)
+{
+	delwin((*visual)->arena_window);
+	delwin((*visual)->info_window);
+	endwin();
+	free(*visual);
 }

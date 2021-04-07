@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 20:41:20 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:12:23 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,10 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 	if (tree)
 	{
 		update_attribute_arena(nexus);
-		ft_print_ncursus_arena(nexus);
+		
 		nexus->cyc.cycle++;
 		ft_carry_process(nexus, tree, vacant);
+		ft_print_ncursus_arena(nexus);
 		ft_cycle_control(nexus, tree, vacant);
 	}
 }
@@ -216,7 +217,7 @@ int		get_decreased_speed(int cycle_speed, int delta)
 
 void		perform_button_action(int ch, t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
-	if (ch == SINGLE_CYCLE_BUTTON && tree)
+	if (ch == SINGLE_CYCLE_BUTTON && *tree)
 	{
 		ft_make_cycle(nexus, tree, vacant);
 		nexus->visual->active = 0;
@@ -251,16 +252,17 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 		perform_button_action(ch, nexus, &tree, &vacant);
 		//usleep(1000000 / nexus->visual->cycle_speed);
 		if (!tree)
+		{
 			nexus->visual->active = 0;
+			nexus->visual->print_winner = 1;
+		}
 		if (nexus->visual->active && tree)
 			ft_make_cycle(nexus, &tree, &vacant);
 		if (ch)
 			ft_print_info(nexus);
-		if (!(tree))
-			ft_print_winner(nexus);
 	}
 	ft_destroy_leaftree(&tree, &vacant);
 	if (vacant)
 		free(vacant);
-	free_visual(nexus->visual);
+	free_visual(&(nexus->visual));
 }
