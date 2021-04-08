@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:36:10 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/07 21:26:24 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:39:21 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	ft_print_info_playes(t_world *nexus, int *cursor)
 												(*tmp)->last_live_op);
 		wattroff(iw, \
 		COLOR_PAIR(nexus->visual->colors[((*tmp)->id % COLOR_PAIR_NUM)]));
-		wrefresh(iw);
 		tmp++;
 	}
 }
@@ -74,7 +73,7 @@ void		ft_print_info(t_world *nex)
 	ft_print_info_playes(nex, &i);
 	mvwprintw(iw, i += 2, j, "%s %d", "CYCLE_TO_DIE: ", nex->cyc.cyc_to_die);
 	mvwprintw(iw, i += 2, j, "%s %d", "CYCLE_DELTA: ", nex->cyc.cycle_delta);
-	mvwprintw(iw, i += 2, j, "%s %d", "NBR_LIVE: ", nex->cyc.cyc_to_die);
+	mvwprintw(iw, i += 2, j, "%s %d", "NBR_LIVE: ", nex->cyc.lives_done);
 	mvwprintw(iw, i += 2, j, "%s %d", "MAX_CHECKS: ", MAX_CHECKS);
 	ft_print_visual_winner(nex);
 	wrefresh(iw);
@@ -86,9 +85,15 @@ void		ft_print_bytes(t_window *aw, uint8_t p, size_t i, size_t x)
 	char	temp[2];
 
 	temp[0] = p / 16;
-	temp[0] = temp[0] + (temp[0] > 9 ? 'a' - 10 : '0');
+	if (temp[0] > 9)
+		temp[0] = temp[0] + 'a' - 10;
+	else
+		temp[0] = temp[0] + '0';
 	temp[1] = p % 16;
-	temp[1] = temp[1] + (temp[1] > 9 ? 'a' - 10 : '0');
+	if (temp[1] > 9)
+		temp[1] = temp[1] + 'a' - 10;
+	else
+		temp[1] = temp[1] + '0';
 	mvwprintw(aw, i + 1, x, "%c%c", temp[0], temp[1]);
 }
 

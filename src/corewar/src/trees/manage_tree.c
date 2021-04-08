@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 22:50:56 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:38:46 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 
 #define DEATH_CYC cyc_ptr->cyc_to_die
 
-static uint8_t	ft_carryhead_control(t_vasa **head)
+static uint8_t	ft_carryhead_control(t_vasa **head, t_world *nexus)
 {
 	t_vasa				*carry_ptr;
 
 	carry_ptr = *head;
 	(*head) = (*head)->next;
+	update_one_carry(carry_ptr->gen.carry->pos, nexus, 1);
 	ft_lstdelone((t_list **)&carry_ptr, &ft_del);
 	return (1);
 }
@@ -49,7 +50,7 @@ inline static uint8_t	ft_carry_control(t_world *nexus, t_dvasa *leafnode, t_vasa
 	if (!(*head) || !((*head)->gen.carry))
 		return (0);
 	if (cyc_ptr->cycle - (*head)->gen.carry->last_live_op >= DEATH_CYC)
-		return (ft_carryhead_control(head));
+		return (ft_carryhead_control(head, nexus));
 	carry_ptr = (*head)->next;
 	subst = (*head);
 	while (carry_ptr)
@@ -57,7 +58,7 @@ inline static uint8_t	ft_carry_control(t_world *nexus, t_dvasa *leafnode, t_vasa
 		if (cyc_ptr->cycle - carry_ptr->gen.carry->last_live_op >= DEATH_CYC)
 		{
 			subst->next = carry_ptr->next;
-			//update_one_carry(carry_ptr->gen.carry->pos, nexus, 1); // не работает почему-то(
+			update_one_carry(carry_ptr->gen.carry->pos, nexus, 1); // не работает почему-то(
 			ft_lstdelone((t_list **)&carry_ptr, &ft_del);
 			carry_ptr = subst->next;
 			continue ;

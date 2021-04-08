@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/08 00:12:23 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:19:45 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,23 +196,28 @@ void		ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 {
 	if (tree)
 	{
-		update_attribute_arena(nexus);
-		
 		nexus->cyc.cycle++;
 		ft_carry_process(nexus, tree, vacant);
-		ft_print_ncursus_arena(nexus);
 		ft_cycle_control(nexus, tree, vacant);
+		update_attribute_arena(nexus);
+		ft_print_ncursus_arena(nexus);
 	}
 }
 
 int		get_increased_speed(int cycle_speed, int delta)
 {
-	return ((cycle_speed + delta >= MAX_SPEED) ? MAX_SPEED : cycle_speed + delta);
+	if (cycle_speed + delta >= MAX_SPEED)
+		return (MAX_SPEED);
+	else
+		return (cycle_speed + delta);
 }
 
 int		get_decreased_speed(int cycle_speed, int delta)
 {
-	return ((cycle_speed - delta <= MIN_SPEED) ? MIN_SPEED : cycle_speed - delta);
+	if (cycle_speed - delta <= MIN_SPEED)
+		return (MIN_SPEED);
+	else
+		return (cycle_speed - delta);
 }
 
 void		perform_button_action(int ch, t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
@@ -234,9 +239,6 @@ void		perform_button_action(int ch, t_world *nexus, t_dvasa **tree, t_dvasa **va
 		nexus->visual->cycle_speed = get_decreased_speed(nexus->visual->cycle_speed, 1);
 }
 
-// mvwprintw(nexus->visual->info_window, 1, 1, "!!magic:%hd!!      %d  %hd", nexus->visual->colors[1], ft_swap_colors((short)nexus->visual->a_arena[1].value), ft_get_color_num(COLOR_WHITE, COLOR_WHITE));
-// wrefresh(nexus->visual->info_window);
-
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa		*vacant;
@@ -250,7 +252,7 @@ void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 	while ((ch = getch()) != 27)
 	{
 		perform_button_action(ch, nexus, &tree, &vacant);
-		//usleep(1000000 / nexus->visual->cycle_speed);
+		usleep(1000000 / nexus->visual->cycle_speed);
 		if (!tree)
 		{
 			nexus->visual->active = 0;

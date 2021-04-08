@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/07 23:18:01 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:08:47 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry)
 	current_color = (short)nexus->visual->a_arena[pos].value;
 	new_color = \
 		ft_swap_colors(PAIR_NUMBER((short)nexus->visual->a_arena[pos].value));
-	mvwprintw(nexus->visual->info_window, 1, 1, "%hd  %hd", current_color, new_color);
-	wrefresh(nexus->visual->info_window);
 	if (del_carry == 1 && current_color > new_color)
 		return ;
 	if (del_carry == 0 && current_color < new_color)
