@@ -6,14 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/08 00:05:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:06:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 #define OP_CODE 13
-#define CWR_SCH_MOD
 
 #ifdef CWR_SCH_MOD
 
