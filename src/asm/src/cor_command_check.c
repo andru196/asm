@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cor_command_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/20 00:30:03 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/08 23:50:18 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int				command_check(t_asmcont *cont, char *word, char **str, int len)
 			return (ARGS_ERROR);
 		g_column += shift;
 	}
-	return (!cpy_arg_word(word, *str) || is_finished(word) ? 1 : ARGS_ERROR);
+	if (!cpy_arg_word(word, *str) || is_finished(word))
+		return (1);
+	return (ARGS_ERROR);
 }
 
 int				digits_count(char *str)

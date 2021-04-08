@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/19 00:35:31 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/08 23:52:14 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 	{
 		rez->col = g_column;
 		tmp_pr = cont->label_list;
-		tmp = tmp_pr ? tmp_pr->next : NULL;
+		tmp = NULL;
+		if (tmp_pr)
+			tmp = tmp_pr->next;
 		while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
 			tmp = tmp->next;
 		if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
-			rez->label = tmp && !ft_strcmp(tmp->name, lbl_name) ? tmp : tmp_pr;
+			rez->label = tv(tmp && !ft_strcmp(tmp->name, lbl_name), tmp, tmp_pr);
 		else
 		{
 			rez->label = new_label_min(lbl_name);

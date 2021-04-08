@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skips.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:57:03 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:34:00 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/08 23:55:09 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		skip_num(char **wrd, long long num)
 		(*wrd)++;
 	pow = 10;
 	if (**wrd == '0' && *(*wrd + 1))
-		pow = *(*wrd + 1) == 'x' || *(*wrd + 1) == 'X' ? 16 : 8;
+		pow = ti(*(*wrd + 1) == 'x' || *(*wrd + 1) == 'X', 16, 8);
 	if (**wrd == '0' && pow == 10 && !num)
 		return (*(++(*wrd)));
 	*wrd += (pow % 8 == 0) + (pow == 16);
@@ -48,7 +48,7 @@ char		skip_num(char **wrd, long long num)
 		else
 			return (-1);
 	}
-	return (num == 0 && (ft_charinstr(" \t+-\v", **wrd) || !**wrd) ? 0 : -1);
+	return (ti(num == 0 && (ft_charinstr(" \t+-\v", **wrd) || !**wrd), 0, -1));
 }
 
 void		skip_space(char **str)
