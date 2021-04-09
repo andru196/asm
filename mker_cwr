@@ -6,13 +6,13 @@
 #    By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2021/04/08 00:07:15 by mschimme         ###   ########.fr        #
+#    Updated: 2021/04/10 01:31:43 by mschimme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	corewar
 CC		=	clang
-FLAGS	=	-Wall -Wextra -g
+FLAGS	=	-Wall -Wextra
 DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
