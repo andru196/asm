@@ -6,14 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 21:24:54 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/09 22:54:41 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 //#ifdef SCHOOL_MODE || BRAZH_MODE
-# define CWR_READ_OP_METH carry_bogey->gen.carry->op
 //#else
 //# define CWR_READ_OP_METH op_code * (carry_bogey->gen.carry->op != 0)
 //#endif
@@ -123,7 +122,7 @@ inline static void		ft_carry_process(t_world *nexus, t_dvasa **tree, \
 			(*tree)->gen.vasa = (*tree)->gen.vasa->next;
 			op_code = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + \
 												carry_bogey->gen.carry->pos]);
-			op_tab[CWR_READ_OP_METH](nexus, \
+			op_tab[carry_bogey->gen.carry->op](nexus, \
 									carry_bogey->gen.carry, *tree, new_node);
 			ft_leafnode_pick(carry_bogey, *tree, new_node, \
 													&ft_add_offspring_by_id);
@@ -162,10 +161,7 @@ void					ft_the_dump_cycle(t_world *nexus, t_dvasa *tree)
 	{
 		if (nexus->cyc.cycle == nexus->cyc.cyc_to_dump->gen.cyc_sol)
 			if (ft_print_dump(nexus))
-			{
-				ft_destroy_leaftree(&tree, &vacant);
-				return ;
-			}
+				return (ft_destroy_leaftree(&tree, &vacant));
 		nexus->cyc.cycle++;
 		ft_carry_process(nexus, &tree, &vacant);
 		ft_cycle_control(nexus, &tree, &vacant);
