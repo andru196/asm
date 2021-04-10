@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 11:56:10 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 16:59:09 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:07:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline intptr_t	ft_calc_addr(intptr_t offset)
 {
-	return ((offset %  MEM_SIZE) + MEM_SIZE * (offset < 0));
+	return ((offset % MEM_SIZE) + MEM_SIZE * (offset < 0));
 }
 
 inline intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size)
