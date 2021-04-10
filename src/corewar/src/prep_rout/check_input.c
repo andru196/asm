@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:23:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/08 00:17:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:07 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ inline static int	ft_get_term_width(void)
 	return (res);
 }
 
-static void			ft_print_intro(void)
+static void	ft_print_intro(void)
 {
 	int		width;
 
@@ -44,7 +44,7 @@ static void			ft_print_intro(void)
 			"%s\n%s%s", ERR_DESC_1, ERR_DESC_2, ERR_DESC_3);
 }
 
-static void			ft_print_errors(t_vasa *ptr)
+static void	ft_print_errors(t_vasa *ptr)
 {
 	t_error	*err;
 
@@ -61,7 +61,7 @@ static void			ft_print_errors(t_vasa *ptr)
 	}
 }
 
-static uint8_t		ft_get_action(void)
+static uint8_t	ft_get_action(void)
 {
 	char		buff[5];
 
@@ -88,7 +88,7 @@ static uint8_t		ft_get_action(void)
 	return (1);
 }
 
-uint8_t				ft_supervise_input(t_world *nexus, int ch_amount)
+uint8_t	ft_supervise_input(t_world *nexus, int ch_amount)
 {
 	uint8_t	flag;
 

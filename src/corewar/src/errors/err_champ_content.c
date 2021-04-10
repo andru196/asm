@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 13:10:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:00:03 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:42:44 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 */
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_cwr_magic(t_vasa **head, void *object)
+void	ft_err_invalid_cwr_magic(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -47,10 +47,10 @@ void		ft_err_invalid_cwr_magic(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_filesize(t_vasa **head, void *object)
+void	ft_err_invalid_filesize(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -75,10 +75,10 @@ void		ft_err_invalid_filesize(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_name(t_vasa **head, void *object)
+void	ft_err_invalid_name(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -103,10 +103,10 @@ void		ft_err_invalid_name(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_champsize(t_vasa **head, void *object)
+void	ft_err_invalid_champsize(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -131,10 +131,10 @@ void		ft_err_invalid_champsize(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_separator(t_vasa **head, void *object)
+void	ft_err_invalid_separator(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;

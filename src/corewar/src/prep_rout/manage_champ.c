@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_champ.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 14:04:13 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/28 16:43:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:10 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 * Проверил.
 */
 
-void		ft_clear_champ(t_champ *this)
+void	ft_clear_champ(t_champ *this)
 {
 	// DEBfunc()
 	if (this->name)
@@ -35,12 +35,12 @@ void		ft_clear_champ(t_champ *this)
 
 
 /*
-!Не проверял
+**	!Не проверял
 **	This function is required to surpass CHAMP_MAX_SIZE limitations.
 **	Thus we could read body exceeding CHAMP_MAX_SIZE without fucking
 **	malloc integrity.
 */
-uint8_t		*ft_champ_body_alloc(size_t ch_size, t_vasa **champ_err)
+uint8_t	*ft_champ_body_alloc(size_t ch_size, t_vasa **champ_err)
 {
 // DEBfunc()
 	void *body;
@@ -59,7 +59,7 @@ uint8_t		*ft_champ_body_alloc(size_t ch_size, t_vasa **champ_err)
 * Проверил.
 ! DEPRECIATED! (УСТОРЕЛО).
 */
-void		ft_init_champ(t_champ *this, int id, t_vasa **champ_error)
+void	ft_init_champ(t_champ *this, int id, t_vasa **champ_error)
 {
 	*champ_error = NULL;
 	this->name = (char *)ft_memalloc((PROG_NAME_LENGTH + 1 + REG_SIZE) * sizeof(char));

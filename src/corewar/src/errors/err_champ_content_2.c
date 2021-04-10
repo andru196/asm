@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_content_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 19:30:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:09:09 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:42:24 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 **	Extra ft_lstdel call added in case of insufficient memory to allocate for
 **	error structure (we destroy Champion errors subchain).
 */
+
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_comment(t_vasa **head, void *object)
+void	ft_err_invalid_comment(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -46,10 +47,10 @@ void		ft_err_invalid_comment(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_invalid_bodysize(t_vasa **head, void *object)
+void	ft_err_invalid_bodysize(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;

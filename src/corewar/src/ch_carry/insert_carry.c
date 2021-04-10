@@ -3,27 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   insert_carry.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 23:21:19 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/27 17:09:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:57:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-
 /*
-*	ПРОВЕРИЛ.
-TD:	Удалить / Оставить. Нигде не используется.
+**ПРОВЕРИЛ.
+**	TD:	Удалить / Оставить. Нигде не используется.
 **	If t_dvasa is vacant (has no offsprings, ->left.gen.vasa == NULL), 
 **	it inhabitates t_dvasa both in core (t_dvasa->gen.vasa) and its offspings
 **	(t_dvasa->left.un_vasa);
 **	If t_dvasa has offsprings, it's prolongs chain, adding new t_vasa to it's
 **	tail.
-// TD:	Убрать все случаи использования.
+**	TD:	Убрать все случаи использования.
 */
-void		ft_add_offspring_by_order(t_dvasa *leaf, t_vasa *new)
+void	ft_add_offspring_by_order(t_dvasa *leaf, t_vasa *new)
 {
 	if (leaf->left.un_vasa)
 		leaf->left.un_vasa->next = new;
@@ -49,17 +48,12 @@ static void	ft_insert_amid_chain(t_vasa *ptr, t_vasa *new)
 }
 
 /*
-*	ПРОВЕРИЛ.
-!КОНТРАКТ:
-	*	t_dvasa *leaf	- должен быть валидным, на входе не проверяется.
-	*	t_vasa *new		- должен быть валидным, на входе не проверяется.
-?Пояснения:
-	?	Первый проверяет, является ли поданная каретка наименьшей по ID.
-	?	Второй проверяет, является ли поданная каретка наибольшей по ID.
-	?	Третий проверяет, можно ли вставить посреди цепочки.
-	?	Последний вставляет в пустой du_vasa.
+**	ПРОВЕРИЛ.
+**	!КОНТРАКТ:
+**	t_dvasa *leaf	- должен быть валидным, на входе не проверяется.
+**	t_vasa *new		- должен быть валидным, на входе не проверяется.
 */
-void		ft_add_offspring_by_id(t_dvasa *leaf, t_vasa *new)
+void	ft_add_offspring_by_id(t_dvasa *leaf, t_vasa *new)
 {
 	t_vasa	*ptr;
 
