@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 16:58:52 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:30:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,5 +199,5 @@ void	ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	if (vacant)
 		free(vacant);
 	ft_print_outro(nexus->survivor);
-	ft_printf("cycle: %d\n", nexus->cyc.cycle);
+	// ft_printf("cycle: %d\n", nexus->cyc.cycle);
 }
