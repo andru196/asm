@@ -6,13 +6,13 @@
 #    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2021/04/10 15:25:20 by sfalia-f         ###   ########.fr        #
+#    Updated: 2021/04/10 16:42:46 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	asm
 CC		=	clang
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -g
 DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
