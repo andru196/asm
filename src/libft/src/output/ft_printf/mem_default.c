@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void						*ft_get_mem(t_fword *container)
+void	*ft_get_mem(t_fword *container)
 {
 	void					*ptr;
 

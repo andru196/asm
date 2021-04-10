@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/10 02:29:10 by andru            ###   ########.fr       */
+/*   Updated: 2021/04/10 14:34:08 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 void		ft_exec_battle(t_world *nexus);
 void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
+void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree);
 
 /*
 ******************				SERVice funcs:			************************
@@ -49,6 +50,7 @@ int			ft_are_ndigits(const char *start, const char *end);
 
 void		ft_manage_world(t_world *nexus);
 void		ft_wipe_champs(t_champ *ptr);
+uint8_t		ft_ask_user(char *msg);
 
 /*
 **	ft_del_carry	- Пока не нужна, используется ft_del.
@@ -105,6 +107,7 @@ t_carry		*ft_create_carry(void);
 void		ft_init_carries(t_world *nexus);
 t_carry		*ft_dupe_carry(t_carry *parent);
 void		ft_carry_ins_by_id(t_dvasa *leafnode, t_vasa *carry_cont);
+intptr_t	ft_calc_addr(intptr_t offset);
 
 /*
 ******************			Tree managing funcs:		************************
@@ -117,7 +120,7 @@ void		ft_add_offspring_by_id(t_dvasa *leaf, t_vasa *new);
 void		ft_add_leafnode(t_dvasa **aleaf, t_dvasa *new);
 void		ft_del_leafnode(t_dvasa **aleaf);
 void		ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant);
-void		ft_tree_undertaker(t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
+void		ft_tree_undertaker(t_world *nexus, t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
 void		ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 								t_dvasa **new_node, t_carry_cont_rout *manager);
 void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant);
@@ -189,6 +192,8 @@ void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 
 void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
+void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+															intptr_t amount);
 RTP			ft_get_reg_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
@@ -199,6 +204,8 @@ RTP			ft_get_dir_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
+RTP			ft_get_ind_val_sch(uint8_t *arena, t_mop *op_cont, \
+												t_carry *carry, intptr_t pos);
 RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 void		ft_set_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
@@ -230,6 +237,8 @@ RTP			ft_swap_endian_oct(RTP value);
 
 uint8_t		ft_print_dump(t_world *nexus);
 void		ft_print_outro(t_champ *survivor);
+void		ft_print_ncursus_arena(t_world *nexus);
+
 
 /*
 ******************			Built-in test funcs:		************************

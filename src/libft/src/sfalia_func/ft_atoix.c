@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		is_dec(char *str)
+static int	is_dec(char *str)
 {
 	if (*str == '+' || *str == '-')
 		str++;
@@ -47,8 +47,8 @@ long long int	ft_atoix(char *str)
 	str = ft_toupper(*str) == 'X' ? str + 1 : str;
 	rez = 0;
 	while ((method == 10 && ft_isdigit(*str)) || (method == 8 && *str >= '0'
-	&& *str <= '7') || (method == 16 && (ft_isdigit(*str) ||
-	(ft_toupper(*str) >= 'A' && ft_toupper(*str) <= 'F'))))
+			&& *str <= '7') || (method == 16 && (ft_isdigit(*str)
+				|| (ft_toupper(*str) >= 'A' && ft_toupper(*str) <= 'F'))))
 	{
 		rez *= method;
 		rez += ft_isdigit(*str) ? *str - '0' : ft_toupper(*str) - 'A' + 10;

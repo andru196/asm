@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:44:58 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 	while (++i < ops_cont->ops_amount)
 	{
 		flag |= !(ops_cont->ops_types[i] & ref->ops_types[i]);
+		// if (!(ops_cont->ops_types[i] =& ref->ops_types[i]))
+		// 	ops_cont->ops_types[i] = ref->ops_types[i] & 4;
 		if (ops_cont->ops_types[i] == T_REG)
 			flag |= !(ft_check_reg_is_valid(arena, ptr + offset));
 		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], \
@@ -98,6 +100,11 @@ uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 		offset += ops_cont->ops_length[i];
 	}
 	ops_cont->length = offset;
+	if (flag)
+	{
+		//TD: Сюда вписать наполнение элементов ->ops_length MAX значениеями \
+		//TD: для текущей инструкции (по ref.) Consider 1 2 4 sizes. that's easy
+	}
 	return (flag);
 }
 

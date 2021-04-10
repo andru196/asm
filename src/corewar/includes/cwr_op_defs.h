@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_op_defs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:27:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:20:12 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:12:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*02_ld;
 		.cooldown = 5 - CYC_COEFF,
 		.ops_amount = 2,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_DIR | T_IND, T_REG},
 		.mod = IDX_MOD
@@ -65,13 +66,15 @@ const static t_mop			stat_opset[17] = {
 	{							//*03_st;
 		.cooldown = 5 - CYC_COEFF,
 		.ops_amount = 2,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG, T_REG | T_IND},
-		.mod = 0
+		.mod = IDX_MOD
 	},
 	{							//*04_add;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG, T_REG, T_REG},
 		.mod = 0
@@ -79,6 +82,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*05_sub;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG, T_REG, T_REG},
 		.mod = 0
@@ -86,6 +90,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*06_and;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.mod = IDX_MOD
@@ -93,6 +98,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*07_or;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.mod = IDX_MOD
@@ -100,6 +106,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*08_xor;
 		.cooldown = 6 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.mod = IDX_MOD
@@ -115,6 +122,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*10_ldi;
 		.cooldown = 25 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 2,
 		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
 		.mod = IDX_MOD
@@ -122,6 +130,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*11_sti;
 		.cooldown = 25 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 2,
 		.ops_types = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR},
 		.mod = IDX_MOD
@@ -137,6 +146,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*13_lld;
 		.cooldown = 10 - CYC_COEFF,
 		.ops_amount = 2,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_DIR | T_IND, T_REG},
 		.mod = 0
@@ -144,6 +154,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*14_lldi;
 		.cooldown = 50 - CYC_COEFF,
 		.ops_amount = 3,
+		.cd_byte = 1,
 		.t_dir_size = 2,
 		.ops_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
 		.mod = IDX_MOD
@@ -158,6 +169,7 @@ const static t_mop			stat_opset[17] = {
 	{							//*16_aff;
 		.cooldown = 2 - CYC_COEFF,
 		.ops_amount = 1,
+		.cd_byte = 1,
 		.t_dir_size = 4,
 		.ops_types = {T_REG},
 		.mod = 0

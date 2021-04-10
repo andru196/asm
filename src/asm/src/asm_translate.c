@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2020/09/25 00:43:44 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:40:56 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	zapisat(char *rez, char *file_name, int flag, size_t size)
 	if (!(flag & fl_stdout))
 	{
 		file_name_cor = ft_strreplacelast(file_name,
-						SOURCE_EXTENSION, ASM_OUT_EXTENSION);
+				SOURCE_EXTENSION, ASM_OUT_EXTENSION);
 		fd = open(file_name_cor, O_WRONLY | O_CREAT, 3 << 7);
 		free(file_name_cor);
 		write(fd, rez, size);
@@ -49,17 +49,18 @@ static int	zapisat(char *rez, char *file_name, int flag, size_t size)
 	return (0);
 }
 
-int			asm_translate(t_asmcont *cont, char *file_name, int flag)
+int	asm_translate(t_asmcont *cont, char *file_name, int flag)
 {
 	char	*rez;
 	size_t	size;
 
-	if ((size = data_size(cont) + PROG_NAME_LENGTH +
-								COMMENT_LENGTH + 4 * 4) > MEM_SIZE)
+	size = data_size(cont) + PROG_NAME_LENGTH + \
+			COMMENT_LENGTH + 4 * 4;
+	if (size > MEM_SIZE)
 		return (PROGRAM_SIZE_LIMIT);
 	if (fuck_connections(cont) < 0)
 		return (CONNECTION_ERROR);
-	if (!(rez = ft_strnew(size)))
+	if (!as((void **)&rez, ft_strnew(size)))
 		return (MALLOC_ERROR);
 	if (0 > transofrm_data(cont, rez, size))
 		return (-1);

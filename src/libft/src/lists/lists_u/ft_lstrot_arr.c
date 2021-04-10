@@ -44,7 +44,7 @@ inline static t_list	*ft_lstrot_swap(t_list **array, t_list *head, \
 	return (array[amount - 1]);
 }
 
-uint8_t					ft_lstrot_arr(t_list **alst)
+uint8_t	ft_lstrot_arr(t_list **alst)
 {
 	t_list				*ptr;
 	size_t				counter;

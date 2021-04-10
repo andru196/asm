@@ -68,7 +68,7 @@ inline static uint8_t	ft_memcrawl_s(uint8_t *ptr, size_t n)
 	return (0);
 }
 
-uint8_t					ft_ctrl_detect(void *src, size_t length)
+uint8_t	ft_ctrl_detect(void *src, size_t length)
 {
 	size_t				k;
 	size_t				*ptr;
@@ -85,5 +85,5 @@ uint8_t					ft_ctrl_detect(void *src, size_t length)
 			return (1);
 		ptr++;
 	}
-	return (ft_memcrawl_s((uint8_t*)ptr, length % sizeof(size_t)));
+	return (ft_memcrawl_s((uint8_t *)ptr, length % sizeof(size_t)));
 }

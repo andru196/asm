@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:44:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:21 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	op_live(t_world *nexus, t_carry *carry, \
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->last_live_op = carry->exec_cyc++;
+	nexus->cyc.lives_done++;
 }

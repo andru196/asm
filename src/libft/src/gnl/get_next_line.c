@@ -24,7 +24,7 @@ typedef const void	t_cv;
 
 #define SZF sizeof
 
-int	g_gnl_read;
+int					g_gnl_read;
 
 /*
 **	Former 5th string of ft_hopper.
@@ -43,11 +43,11 @@ int	g_gnl_read;
 ** Flag == 0 means it's time to destroy fd-lists constraction.
 */
 
-static int			ft_lstmk(int fl, t_list **lst, int val, t_list **fd_lst)
+static int	ft_lstmk(int fl, t_list **lst, int val, t_list **fd_lst)
 {
 	if (fl > 1)
 	{
-		if (!(*lst = ft_lstnew(NULL, 0)))
+		if (!as((void **)lst, ft_lstnew(NULL, 0)))
 		{
 			ft_lstdel(fd_lst, &ft_del);
 			return (-1);
@@ -80,7 +80,7 @@ static int			ft_lstmk(int fl, t_list **lst, int val, t_list **fd_lst)
 ** Picks up propper list, scanning first 4 bytes of lst->content.
 */
 
-static t_list		*ft_fdr(t_list **fd_lst, int fd, t_list *last, \
+static t_list	*ft_fdr(t_list **fd_lst, int fd, t_list *last, \
 								t_list *pr)
 {
 	if (fd == -1)
@@ -122,7 +122,7 @@ static t_list		*ft_fdr(t_list **fd_lst, int fd, t_list *last, \
 ** Otherwise it returns 2. Why not?!
 */
 
-static int			ft_rs(char **line, t_list *rem, t_list **fd_lst)
+static int	ft_rs(char **line, t_list *rem, t_list **fd_lst)
 {
 	void			*bgy[3];
 
@@ -166,7 +166,7 @@ static int			ft_rs(char **line, t_list *rem, t_list **fd_lst)
 **		ft_lstdelone(&ar[1], &ft_del);
 */
 
-static int			ft_hopper(t_list **ar, t_list **fdl, char **lin, size_t fl)
+static int	ft_hopper(t_list **ar, t_list **fdl, char **lin, size_t fl)
 {
 	if (fl == 1)
 	{
@@ -208,7 +208,7 @@ static int			ft_hopper(t_list **ar, t_list **fdl, char **lin, size_t fl)
 ** file descriptors that've not reached the end of file.
 */
 
-int					get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	static t_list	*fdl;
 	t_list			*pl[3];

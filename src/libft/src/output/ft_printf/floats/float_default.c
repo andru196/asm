@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void				add_whole_part(t_fword *container, t_float_calc *f)
+static void	add_whole_part(t_fword *container, t_float_calc *f)
 {
 	char				*temp;
 	int					len_num;
@@ -39,7 +39,7 @@ static void				add_whole_part(t_fword *container, t_float_calc *f)
 	}
 }
 
-static void				add_fraction_part(t_fword *container, t_float_calc *f)
+static void	add_fraction_part(t_fword *container, t_float_calc *f)
 {
 	int					i;
 	char				*temp;
@@ -59,7 +59,7 @@ static void				add_fraction_part(t_fword *container, t_float_calc *f)
 	}
 }
 
-static void				add_m_d_e(t_fword *container,
+static void	add_m_d_e(t_fword *container,
 						t_float_calc *f, long double number)
 {
 	f->whole = (long long)number;
@@ -73,7 +73,7 @@ static void				add_m_d_e(t_fword *container,
 	check_width_length_sign(container, f);
 }
 
-char					*ft_form_double(t_fword *container, \
+char	*ft_form_double(t_fword *container, \
 						long double number, t_float_calc *f)
 {
 	f->num = (long double)number;
@@ -94,7 +94,7 @@ char					*ft_form_double(t_fword *container, \
 	return (f->float_string);
 }
 
-char					*ft_get_float_default(t_fword *container, char parent)
+char	*ft_get_float_default(t_fword *container, char parent)
 {
 	long double			number;
 	t_float_calc		f;

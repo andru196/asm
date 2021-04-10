@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void				ft_initfword(t_fword *ptr, t_format *formstat)
+static void	ft_initfword(t_fword *ptr, t_format *formstat)
 {
 	ft_bzero((void *)ptr, sizeof(t_fword));
 	ptr->filler = ' ';
@@ -21,7 +21,7 @@ static void				ft_initfword(t_fword *ptr, t_format *formstat)
 	ptr->ftp_width = &ft_width_left;
 }
 
-uint8_t					ft_parse_form_word(t_fword *formword, \
+uint8_t	ft_parse_form_word(t_fword *formword, \
 													t_format *formstat)
 {
 	(formstat->sight) += 1;
@@ -48,7 +48,7 @@ uint8_t					ft_parse_form_word(t_fword *formword, \
 	return (formstat->errflag);
 }
 
-uint8_t					ft_check_form_word(t_format *formstat)
+uint8_t	ft_check_form_word(t_format *formstat)
 {
 	t_fword				curfield;
 

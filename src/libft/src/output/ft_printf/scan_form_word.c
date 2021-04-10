@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-static void				ft_initfword_dumb(t_fword *ptr)
+static void	ft_initfword_dumb(t_fword *ptr)
 {
 	ft_bzero((void *)ptr, sizeof(t_fword));
 }
 
-static uint8_t			ft_seach_type(t_fword *formword, \
+static uint8_t	ft_seach_type(t_fword *formword, \
 													t_format *formstat)
 {
 	(formstat->sight) += 1;
@@ -44,7 +44,7 @@ static uint8_t			ft_seach_type(t_fword *formword, \
 	return (formstat->errflag);
 }
 
-uint8_t					ft_scan_form_word(t_format *formstat)
+uint8_t	ft_scan_form_word(t_format *formstat)
 {
 	t_fword				curfield_dumb;
 

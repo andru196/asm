@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int						get_length_double(long double number, t_float_calc *f)
+int	get_length_double(long double number, t_float_calc *f)
 {
 	int					length;
 	int					length2;
@@ -33,7 +33,7 @@ int						get_length_double(long double number, t_float_calc *f)
 	return (length);
 }
 
-void					shift_string_left(char *string)
+void	shift_string_left(char *string)
 {
 	int					i;
 
@@ -42,7 +42,7 @@ void					shift_string_left(char *string)
 		string[i - 1] = string[i];
 }
 
-char					*get_zero_line(int zero_length)
+char	*get_zero_line(int zero_length)
 {
 	char				*zero_line;
 	int					i;
@@ -58,7 +58,7 @@ char					*get_zero_line(int zero_length)
 	return (zero_line);
 }
 
-int						check_rounding(t_fword *container, t_float_calc *f,
+int	check_rounding(t_fword *container, t_float_calc *f,
 						unsigned long long fract, int len_num)
 {
 	unsigned long long	num;
@@ -85,7 +85,7 @@ int						check_rounding(t_fword *container, t_float_calc *f,
 	return (flag);
 }
 
-void					init_fraction_part(t_fword *container, t_float_calc *f)
+void	init_fraction_part(t_fword *container, t_float_calc *f)
 {
 	int					len_num;
 	unsigned long long	fract;

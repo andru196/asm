@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:44:36 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:30 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ void	op_st(t_world *nexus, t_carry *carry, \
 													op_cont.ops_amount - 1);
 		arr[op_cont.ops_types[1]](&nexus->arena[sizeof(RTP)], &op_cont, carry, \
 																	carry->pos);
+		if (op_cont.ops_types[1] == 4)
+			color_bytecode(carry, nexus, (intptr_t)(carry->pos + op_cont.operands[1]));
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }

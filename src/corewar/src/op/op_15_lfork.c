@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 15:33:30 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:01:22 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,12 @@ void	op_lfork(t_world *nexus, t_carry *carry, \
 		ft_prox_err_malloc("new carry or its container", __func__);
 	}
 	vasa->gen.carry->pos += op_cont.operands[0];
-	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->op = 0;
+	// ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
+	if (nexus->flags & 2)
+		++nexus->visual->carries;
+	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }

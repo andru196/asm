@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-uint8_t					ft_flag_minus_dummy(const char *ptr)
+uint8_t	ft_flag_minus_dummy(const char *ptr)
 {
 	if (*ptr == '-')
 		return (1);
 	return (0);
 }
 
-uint8_t					ft_flag_minus(const char *ptr, t_fword *format)
+uint8_t	ft_flag_minus(const char *ptr, t_fword *format)
 {
 	if (*ptr == '-')
 	{

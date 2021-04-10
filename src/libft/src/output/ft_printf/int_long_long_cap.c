@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char					*ft_get_int_long_cap(t_fword *container, char *buff)
+char	*ft_get_int_long_cap(t_fword *container, char *buff)
 {
 	long long int		res;
 

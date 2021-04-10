@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char				*ft_itoafill(char *endofpocket, \
+static char	*ft_itoafill(char *endofpocket, \
 						unsigned long long int n)
 {
 	while (0 != n)
@@ -23,7 +23,7 @@ static char				*ft_itoafill(char *endofpocket, \
 	return (++endofpocket);
 }
 
-static int				ft_numvol(unsigned long long int n)
+static int	ft_numvol(unsigned long long int n)
 {
 	size_t				v;
 
@@ -38,7 +38,7 @@ static int				ft_numvol(unsigned long long int n)
 	return (v);
 }
 
-char					*ft_uintoa(unsigned long long int num, char *buff,\
+char	*ft_uintoa(unsigned long long int num, char *buff, \
 						size_t shift)
 {
 	size_t				volume;

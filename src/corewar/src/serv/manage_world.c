@@ -6,13 +6,14 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:41:54 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:57:32 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:04:19 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 #define _FT_WIPE_CARRIES ft_lstdel
 #define _FT_CLEAR_ERRORS ft_lstdel
+#define _FT_CLEAR_DUMPS ft_lstdel
 
 /*
 **	Временная функция ловить косяк, в случаях, если у нас и nexus пустой, и
@@ -76,6 +77,7 @@ void	ft_manage_world(t_world *nexus)
 		{
 			ft_wipe_champs(&(guillotine->champ[0]));
 			_FT_CLEAR_ERRORS((t_list **)&(guillotine->errors), &ft_del);
+			_FT_CLEAR_DUMPS((t_list **)&(guillotine->cyc.cyc_to_dump), NULL);
 			guillotine->survivor = NULL;
 			if (guillotine->champ_ord)
 				free(guillotine->champ_ord);

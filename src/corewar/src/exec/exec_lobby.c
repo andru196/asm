@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 13:31:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:56:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:57:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void	ft_exec_battle(t_world *nexus)
 	ft_form_tree(&tree, nexus);
 	if (!tree)
 		ft_manage_world(NULL);
-	if (nexus->flags)
+	if (nexus->flags & 1)
 		ft_the_dump_cycle(nexus, tree);
+	else if (nexus->flags & 2)
+		ft_visualize_cycle(nexus, tree);
 	else
 		ft_the_cycle(nexus, tree);
 }

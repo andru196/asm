@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*ft_strtoupper(char *str)
+char	*ft_strtoupper(char *str)
 {
 	char	*bogey;
 

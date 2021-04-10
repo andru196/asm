@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char					*ft_get_uns_short(t_fword *container, char *buff)
+char	*ft_get_uns_short(t_fword *container, char *buff)
 {
 	unsigned short int	res;
 

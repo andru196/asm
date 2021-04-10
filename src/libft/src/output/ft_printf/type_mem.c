@@ -20,7 +20,7 @@
 
 #define ERRVAR "formstat->result"
 
-uint8_t				ft_place_mem(t_format *formstat, t_fword *format)
+uint8_t	ft_place_mem(t_format *formstat, t_fword *format)
 {
 	const void		*ptr;
 	int				res;

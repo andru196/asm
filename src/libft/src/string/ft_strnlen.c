@@ -16,7 +16,7 @@
 ** We use size_t, thus we need libft.h in order to include stdlib.h
 */
 
-size_t		ft_strnlen(const char *str, size_t maxlen)
+size_t	ft_strnlen(const char *str, size_t maxlen)
 {
 	size_t	len;
 

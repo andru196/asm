@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-uint8_t				ft_proc_wildcard_dummy(t_format *formstat, uint8_t iswidth)
+uint8_t	ft_proc_wildcard_dummy(t_format *formstat, uint8_t iswidth)
 {
 	if (!(iswidth))
 		formstat->sight += 1;
@@ -48,7 +48,7 @@ inline static void	ft_called_by_precision(t_format *formstat, \
 	format->precision = variative;
 }
 
-uint8_t				ft_proc_wildcard(t_format *formstat, \
+uint8_t	ft_proc_wildcard(t_format *formstat, \
 							t_fword *format, uint8_t iswidth)
 {
 	int				variative;

@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 14:04:13 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:57:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:10 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ uint8_t	*ft_champ_body_alloc(size_t ch_size, t_vasa **champ_err)
 
 /*
 * Проверил.
+! DEPRECIATED! (УСТОРЕЛО).
 */
 void	ft_init_champ(t_champ *this, int id, t_vasa **champ_error)
 {

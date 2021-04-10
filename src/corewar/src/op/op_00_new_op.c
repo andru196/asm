@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 15:30:47 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:15 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ void	op_new_op(t_world *nexus, t_carry *carry, \
 	(void)vacant;
 	carry->op = ft_eval_op_code_valid(nexus->arena[sizeof(RTP) + carry->pos]);
 	if (!(carry->op))
+	{
 		carry->pos += 1;
+		update_visual_carry(carry, 1, nexus);
+	}
 	carry->exec_cyc += ft_get_op_cont(carry->op)->cooldown;
 }

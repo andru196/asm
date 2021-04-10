@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2020/08/22 16:24:26 by mschimme         ###   ########.fr        #
+#    Updated: 2021/04/10 15:09:45 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ VPATH		:=	./src/errors: \
 			./src/sfalia_func: \
 			./src/string: \
 			./src/cmp: \
-			./src/sort:
+			./src/sort: \
+			./src/norm_shit:
 
 #**********************				ERRORS:			***************************#
 SOURCE	+=	malloc_err.c \
@@ -237,6 +238,11 @@ SOURCE	+=	ft_isspace.c \
 			ft_isnum.c\
 			ft_atoil.c
 
+#**********************				norm_shit_func:		***************************#
+
+SOURCE	+=	ass.c\
+			tera.c
+
 #**********************				BODY:			***************************#
 
 OBJ_DIR		:=	./obj
@@ -251,13 +257,18 @@ all: $(NAME)
 
 $(NAME): MAKEDIR $(OBJECTS)
 	@ar rc $@ $(OBJECTS)
+	@echo ""
+	@echo '$(NAME) ready'
 
 MAKEDIR:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
-	$(CC) $(CFLAGS) -o $@ $< -c $(IFLAGS)
-
+	@printf "\e[1K\e[0ECompile "
+	@printf "\e[1;32m%-6s\e[m" $@
+	@$(CC) $(CFLAGS) -o $@ $< -c $(IFLAGS)
+	@printf "\e[1K\e[0ECompile competed "
+	
 clean:
 	@rm -rf $(OBJ_DIR)
 

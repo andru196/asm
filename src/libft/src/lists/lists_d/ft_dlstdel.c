@@ -19,7 +19,7 @@
 **	WARNING! Sig.Abrot is imminent if chain is looped!
 */
 
-void		ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
+void	ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
 {
 	t_dlist	*sub;
 

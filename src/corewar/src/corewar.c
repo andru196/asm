@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:40:12 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:56:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 			break ;
 		nexus->champ[i].desc = nexus->champ[i].name + \
 			(uintptr_t)(PROG_NAME_LENGTH + REG_SIZE + 1);
+		nexus->champ[i].alive = 1;
 		i++;
 	}
 	if (i != MAX_PLAYERS)

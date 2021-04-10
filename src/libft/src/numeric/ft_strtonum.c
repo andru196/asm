@@ -24,7 +24,7 @@
 #define LI64MAX 922337203685477580LL
 #define LI32MAX 214748364
 
-long long		ft_atol_r(const char *str, uint8_t *status)
+long long	ft_atol_r(const char *str, uint8_t *status)
 {
 	long long	res;
 	int			sign;
@@ -53,7 +53,7 @@ long long		ft_atol_r(const char *str, uint8_t *status)
 	return (res);
 }
 
-long long		ft_atoll(const char *str)
+long long	ft_atoll(const char *str)
 {
 	long long	res;
 	int			sign;
@@ -76,7 +76,7 @@ long long		ft_atoll(const char *str)
 	return (res);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long long	res;
 	int			sign;

@@ -6,11 +6,12 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:45:21 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+#include <cwr_man.h>
 
 #define _WRONG_SEPARATOR(x, y) (*(_SEP_TYPE *)(x + y) != 0)
 #define CH_NAME curr->name
@@ -35,7 +36,8 @@ inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 		return ;
 	}
 	if (ft_ctrl_detect((void *)curr->name, PROG_NAME_LENGTH))
-		ft_err_invalid_name(error, NULL);
+		if (ft_ask_user(WAR_CTRL_1))
+			ft_err_invalid_name(error, NULL);
 	if (_WRONG_SEPARATOR(curr->name, PROG_NAME_LENGTH))
 		ft_err_invalid_separator(error, "between Name and Comment.");
 }
@@ -67,8 +69,9 @@ inline static void	ft_get_champ_comment(int fd, \
 		ft_err_invalid_filesize(champ_error, "Champion Comment field");
 		return ;
 	}
-	if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
-		ft_err_invalid_comment(champ_error, NULL);
+	// if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
+	// 	if (ft_ask_user(WAR_CTRL_2))
+	// 		ft_err_invalid_comment(champ_error, NULL);
 	if (_WRONG_SEPARATOR(champ->desc, COMMENT_LENGTH))
 		ft_err_invalid_separator(champ_error, "between Comment and Body.");
 }
@@ -89,10 +92,7 @@ inline static void	ft_get_champ_body(int fd, \
 	}
 	if ((res = read(fd, (void *)(champ->body),
 						(size_t)champ->size)) != (ssize_t)champ->size)
-	{
-		ft_err_invalid_filesize(champ_error, "Champion body field");
-		return ;
-	}
+		return ft_err_invalid_filesize(champ_error, "Champion body field");
 	if (read(fd, &buff, 1))
 		ft_err_invalid_bodysize(champ_error, NULL);
 }

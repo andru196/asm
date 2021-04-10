@@ -18,7 +18,7 @@
 **	1000 0000 1000 0000 1000 0000 1000 0000
 */
 
-uint8_t				ft_wdetect(const char *str, size_t length)
+uint8_t	ft_wdetect(const char *str, size_t length)
 {
 	size_t			real_length;
 	const size_t	*bogey;

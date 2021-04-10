@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_defs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 14:51:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:09:58 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ typedef struct s_cycle		t_cycle;
 typedef struct s_error		t_error;
 typedef struct s_vasa		t_vasa;
 typedef struct s_dvasa		t_dvasa;
-typedef struct s_mop			t_mop;
+typedef struct s_mop		t_mop;
+typedef struct s_visual		t_visual;
 typedef void				t_err_rout(t_vasa **head, void *object);
 typedef void				t_op_rout(t_world *nexus, t_carry *carry, \
 										t_dvasa *head, t_dvasa **vacant);
@@ -114,6 +115,7 @@ typedef enum
 
 /*
 **	.ops_amount;	-	Amount of operands.
+**	.cd_byte		-	Presence of coding byte in the instruction.
 **	.t_dir_size;	-	Size of t_dir for the op.
 **	.ops_types[4];	-	Array to store operands' types.
 **	.ops_length[4];	-	Array to store length of the operand.
@@ -126,6 +128,7 @@ struct						s_mop
 	size_t					cooldown;
 	intptr_t				mod;
 	uint8_t					ops_amount;
+	uint8_t					cd_byte;
 	uint8_t					t_dir_size;
 	uint8_t					ops_types[MAX_ARGS_NUMBER];
 	uint8_t					ops_length[MAX_ARGS_NUMBER];
@@ -250,6 +253,7 @@ struct						s_champ
 **	.errors			-	A head of regiestered errors chain.
 */
 
+
 # define NEW_ARENA
 
 # ifndef NEW_ARENA
@@ -282,6 +286,7 @@ struct						s_world
 	t_vasa					*carry;
 	t_vasa					*errors;
 	t_cycle					cyc;
+	t_visual				*visual;
 };
 
 # endif

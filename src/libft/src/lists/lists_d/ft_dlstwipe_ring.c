@@ -18,10 +18,10 @@
 **	WARNING! Infinite loop will occur if given chain is looped!
 */
 
-void		ft_dlstwipe_ring(t_dlist **alst, void (*del)(void *, size_t))
+void	ft_dlstwipe_ring(t_dlist **alst, void (*del)(void *, size_t))
 {
 	t_dlist	*sub;
-	t_dlist *ptr;
+	t_dlist	*ptr;
 
 	if (!alst)
 		return ;
