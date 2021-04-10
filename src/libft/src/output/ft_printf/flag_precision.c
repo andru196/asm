@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-uint8_t			ft_flag_precision_dummy(t_format *formstat)
+uint8_t	ft_flag_precision_dummy(t_format *formstat)
 {
 	const char	*ptr;
 	const char	*start;
@@ -31,7 +31,7 @@ uint8_t			ft_flag_precision_dummy(t_format *formstat)
 	return (1);
 }
 
-uint8_t			ft_flag_precision(t_format *formstat, \
+uint8_t	ft_flag_precision(t_format *formstat, \
 													t_fword *format)
 {
 	const char	*ptr;

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline static void		ft_swap(void **a, void **b)
+inline static void	ft_swap(void **a, void **b)
 {
 	void					*pocket;
 
@@ -41,7 +41,7 @@ inline static uint8_t	ft_bubblesorted(void **array, size_t size, \
 	return (res);
 }
 
-void					ft_srt_bubble_genarr(void **array, size_t size, \
+void	ft_srt_bubble_genarr(void **array, size_t size, \
 															t_datacmp_rout *cmp)
 {
 	size_t				bogey;

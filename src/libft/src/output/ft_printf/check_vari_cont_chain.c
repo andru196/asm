@@ -54,7 +54,7 @@ inline static uint8_t	ft_check_consistency(t_varitype *ptr, \
 	return (0);
 }
 
-static inline void		ft_fill_in_dummy_cont(t_varitype *inserted, \
+static inline void	ft_fill_in_dummy_cont(t_varitype *inserted, \
 						t_varitype *next, int num)
 {
 	inserted->next = next;
@@ -83,7 +83,7 @@ static inline uint8_t	ft_check_first_exists(t_format *formstat, \
 	return (0);
 }
 
-void					ft_check_vari_cont_chain(t_format *formstat)
+void	ft_check_vari_cont_chain(t_format *formstat)
 {
 	uint8_t				flag;
 	t_varitype			*ptr;

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void					ft_prepare_va_list(t_format *formstat, int number, \
+void	ft_prepare_va_list(t_format *formstat, int number, \
 						va_list *var)
 {
 	int					k;

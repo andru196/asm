@@ -22,7 +22,7 @@
 ** That's why we propagate ending byte and start moving src from it's end (E)
 */
 
-static void		small_strings_tol(unsigned char *csub_dst, \
+static void	small_strings_tol(unsigned char *csub_dst, \
 									unsigned char *csub_src, size_t *n)
 {
 	while (*n != 0)
@@ -34,7 +34,7 @@ static void		small_strings_tol(unsigned char *csub_dst, \
 	}
 }
 
-static void		small_strings_tor(unsigned char *csub_dst, \
+static void	small_strings_tor(unsigned char *csub_dst, \
 									unsigned char *csub_src, size_t *n)
 {
 	while (*n != 0)
@@ -46,7 +46,7 @@ static void		small_strings_tor(unsigned char *csub_dst, \
 	}
 }
 
-static void		b_word_tol(size_t *dst, size_t *src, size_t n)
+static void	b_word_tol(size_t *dst, size_t *src, size_t n)
 {
 	size_t	bogey;
 
@@ -57,7 +57,7 @@ static void		b_word_tol(size_t *dst, size_t *src, size_t n)
 	small_strings_tol((unsigned char *)dst, (unsigned char *)src, &bogey);
 }
 
-static void		b_word_tor(size_t *dst, size_t *src, size_t n)
+static void	b_word_tor(size_t *dst, size_t *src, size_t n)
 {
 	size_t	bogey;
 
@@ -71,7 +71,7 @@ static void		b_word_tor(size_t *dst, size_t *src, size_t n)
 		*dst-- = *src--;
 }
 
-void			*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (0 == len || dst == src)
 		return (dst);

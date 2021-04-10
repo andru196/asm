@@ -39,7 +39,7 @@ inline static uint8_t	ft_is_garbage(char *intchar, int i)
 **											11110XXX	1110XXXX	110XXXXX.
 */
 
-inline static void		ft_check_symbol(char *intchar, char *buffer)
+inline static void	ft_check_symbol(char *intchar, char *buffer)
 {
 	if ((*intchar & (15 << 4)) == (15 << 4))
 	{
@@ -75,7 +75,7 @@ inline static void		ft_check_symbol(char *intchar, char *buffer)
 **		dims[0] = 1;
 */
 
-uint8_t					ft_place_char(t_format *formstat, t_fword *format)
+uint8_t	ft_place_char(t_format *formstat, t_fword *format)
 {
 	uint32_t			variative;
 	char				buffer[9];

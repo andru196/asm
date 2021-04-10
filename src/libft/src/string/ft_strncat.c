@@ -16,7 +16,7 @@
 ** We use NULL and size_t, thus we need libft.h in order to include stdlib.h
 */
 
-char		*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	size_t	s1len;
 	size_t	s2len;

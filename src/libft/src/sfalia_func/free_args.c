@@ -19,9 +19,9 @@ static void	del_lst(void *content, size_t content_size)
 	content_size = 0;
 }
 
-void		free_args_rez(t_args_rez **args)
+void	free_args_rez(t_args_rez **args)
 {
-	t_arg *tmp;
+	t_arg	*tmp;
 
 	if (!args || !(*args))
 		return ;

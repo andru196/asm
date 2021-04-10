@@ -36,7 +36,7 @@ inline static const void	*ft_memsync_s(t_ucc *str, t_ucc logos, size_t *n)
 	return (NULL);
 }
 
-static void					*ft_memcrawl_s(t_ucc *str, t_ucc logos, size_t n)
+static void	*ft_memcrawl_s(t_ucc *str, t_ucc logos, size_t n)
 {
 	while (n != 0)
 	{
@@ -48,7 +48,7 @@ static void					*ft_memcrawl_s(t_ucc *str, t_ucc logos, size_t n)
 	return (NULL);
 }
 
-void						*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t					mask;
 	size_t					k;

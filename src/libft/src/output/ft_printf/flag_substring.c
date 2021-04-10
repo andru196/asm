@@ -26,7 +26,7 @@ static inline uint8_t	ft_create_varinote(t_fword *format, \
 	return (0);
 }
 
-uint8_t					ft_get_and_check_nbr(const char *start, \
+uint8_t	ft_get_and_check_nbr(const char *start, \
 						const char *end, long long *result, t_format *formstat)
 {
 	if (ft_antoi(start, end, result))
@@ -41,7 +41,7 @@ uint8_t					ft_get_and_check_nbr(const char *start, \
 	return (0);
 }
 
-uint8_t					ft_flag_subst_dummy(t_format *formstat, \
+uint8_t	ft_flag_subst_dummy(t_format *formstat, \
 													t_fword *format)
 {
 	const char			*ptr;
@@ -75,7 +75,7 @@ uint8_t					ft_flag_subst_dummy(t_format *formstat, \
 **	invocation of n$
 */
 
-uint8_t					ft_flag_subst(t_format *formstat, \
+uint8_t	ft_flag_subst(t_format *formstat, \
 													t_fword *format)
 {
 	const char			*ptr;

@@ -17,12 +17,12 @@
 **	cntsz for content_size.
 */
 
-int				ft_lst_cntsz_left_grt_right(void *a, void *b)
+int	ft_lst_cntsz_left_grt_right(void *a, void *b)
 {
 	return ((((t_list *)a)->content_size) > (((t_list *)b)->content_size));
 }
 
-int				ft_lst_cntsz_left_lsr_right(void *a, void *b)
+int	ft_lst_cntsz_left_lsr_right(void *a, void *b)
 {
 	return (((((t_list *)a)->content_size)) < (((t_list *)b)->content_size));
 }

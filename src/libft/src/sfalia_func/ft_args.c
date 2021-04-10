@@ -13,9 +13,9 @@
 #include "libft.h"
 #include "cli_helper.h"
 
-t_arg		*new_arg(char isflag)
+t_arg	*new_arg(char isflag)
 {
-	t_arg *rez;
+	t_arg	*rez;
 
 	rez = (t_arg *)malloc(sizeof(t_arg));
 	if (!rez)
@@ -35,7 +35,7 @@ t_arg		*new_arg(char isflag)
 
 t_args_rez	*new_arguments_cont(void)
 {
-	t_args_rez *rez;
+	t_args_rez	*rez;
 
 	rez = (t_args_rez *)malloc(sizeof(t_args_rez));
 	if (!rez)
@@ -51,7 +51,7 @@ t_args_rez	*new_arguments_cont(void)
 ** Добавить аргумент к ранее сформированному контейнеру
 */
 
-t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
+t_arg	*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 {
 	t_arg	*rez;
 	t_arg	*tmp;
@@ -77,7 +77,7 @@ t_arg		*add_arg(t_args_rez *args, char isflag, char *names, char *desc)
 	return (rez);
 }
 
-t_arg		*find_word(t_args_rez *args, char *word)
+t_arg	*find_word(t_args_rez *args, char *word)
 {
 	t_arg	*tmp;
 	char	*point;
@@ -107,7 +107,7 @@ t_arg		*find_word(t_args_rez *args, char *word)
 ** Провести анализ поданных в программу аргументов
 */
 
-void		args_anal(char **args, int argc, t_args_rez *ret)
+void	args_anal(char **args, int argc, t_args_rez *ret)
 {
 	int		i;
 	t_arg	*arg;
@@ -118,8 +118,8 @@ void		args_anal(char **args, int argc, t_args_rez *ret)
 		if (!(arg = find_word(ret, args[i])))
 		{
 			ft_lstadd(&ret->not_expected, ft_lstnew(args[i],
-											ft_strlen(args[i]) + 1));
-			continue;
+					ft_strlen(args[i]) + 1));
+			continue ;
 		}
 		if (arg->isflag)
 			arg->hasvalue = 1;

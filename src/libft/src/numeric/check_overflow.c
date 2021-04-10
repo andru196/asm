@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-uint8_t					ft_check_add_ovf(int *result, int a, int b)
+uint8_t	ft_check_add_ovf(int *result, int a, int b)
 {
 	if (a > (INT_MAX - b))
 		return (1);
@@ -21,7 +21,7 @@ uint8_t					ft_check_add_ovf(int *result, int a, int b)
 	return (0);
 }
 
-uint8_t					ft_check_sub_ovf(int *result, int a, int b)
+uint8_t	ft_check_sub_ovf(int *result, int a, int b)
 {
 	if (a < 0 && b >= 0)
 	{

@@ -18,7 +18,7 @@
 **	WARNING! Infinite loop will occur if given chain is looped!
 */
 
-void		ft_dlstwipe(t_dlist **alst, void (*del)(void *, size_t))
+void	ft_dlstwipe(t_dlist **alst, void (*del)(void *, size_t))
 {
 	t_dlist	*sub;
 

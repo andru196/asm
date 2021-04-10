@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-void					shift_right_add_space(t_float_calc *f, int length)
+void	shift_right_add_space(t_float_calc *f, int length)
 {
 	while (--length)
 		f->float_string[length] = f->float_string[length - 1];
 	f->float_string[length] = ' ';
 }
 
-void					check_minus_hash_precision_zero(t_fword *container,
+void	check_minus_hash_precision_zero(t_fword *container,
 						t_float_calc *f)
 {
 	char				*temp;
@@ -32,7 +32,7 @@ void					check_minus_hash_precision_zero(t_fword *container,
 	}
 }
 
-void					check_filler_zero_plus(t_fword *container,
+void	check_filler_zero_plus(t_fword *container,
 						t_float_calc *f)
 {
 	char				*temp;
@@ -59,7 +59,7 @@ void					check_filler_zero_plus(t_fword *container,
 	}
 }
 
-char					*init_temp_string(int *length, t_float_calc *f,
+char	*init_temp_string(int *length, t_float_calc *f,
 						t_fword *container, int *i2)
 {
 	char				*temp;

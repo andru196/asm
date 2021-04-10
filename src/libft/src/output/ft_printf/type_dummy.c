@@ -35,7 +35,7 @@ inline static	void	ft_place_varitype(t_format *formstat, \
 	ptr->next = cont;
 }
 
-uint8_t					ft_place_dummy(t_format *formstat, \
+uint8_t	ft_place_dummy(t_format *formstat, \
 													t_fword *format)
 {
 	if (formstat->errflag)

@@ -18,7 +18,7 @@
 
 typedef const void		t_cv;
 
-static int				ft_btbcmp(const void *s1, const void *s2, size_t n)
+static int	ft_btbcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned const char	*sub_s1;
 	unsigned const char	*sub_s2;
@@ -36,7 +36,7 @@ static int				ft_btbcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-int						ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t				bogey;
 	const size_t		*sub_s1;

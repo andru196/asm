@@ -18,7 +18,7 @@
 ** include \0, then we do memcpy and return it with casting into char *.
 */
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*sub_res;
 

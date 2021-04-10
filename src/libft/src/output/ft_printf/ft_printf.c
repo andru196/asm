@@ -24,7 +24,7 @@
 ** Ki state of the function.
 */
 
-void					filling_mainbuf(const char *data, size_t length, \
+void	filling_mainbuf(const char *data, size_t length, \
 										int flag, int fd)
 {
 	static char			buff[4096];
@@ -61,7 +61,7 @@ void					filling_mainbuf(const char *data, size_t length, \
 **		sight - pointer to the next formatting word.
 */
 
-void					ft_init_formstat(t_format *ptr, const char *src, int fd)
+void	ft_init_formstat(t_format *ptr, const char *src, int fd)
 {
 	ft_bzero((void *)ptr, sizeof(t_format));
 	ptr->marker = src;
@@ -86,7 +86,7 @@ void					ft_init_formstat(t_format *ptr, const char *src, int fd)
 ** buffer.
 */
 
-int						ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_format			formstat;
 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char						*ft_get_uns_long_long(t_fword *container, \
+char	*ft_get_uns_long_long(t_fword *container, \
 																	char *buff)
 {
 	unsigned long long int	res;

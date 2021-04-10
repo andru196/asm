@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void		ft_dlstadd(t_dlist **alst, t_dlist *new, uint8_t flag)
+void	ft_dlstadd(t_dlist **alst, t_dlist *new, uint8_t flag)
 {
 	if (!new || !alst)
 		return ;

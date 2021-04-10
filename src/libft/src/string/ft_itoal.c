@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-inline static char		*ft_itoafill(char *endofpocket, long long int n)
+inline static char	*ft_itoafill(char *endofpocket, long long int n)
 {
 	if (!n)
 		*--endofpocket = n + 48;
@@ -41,7 +41,7 @@ inline static char		*ft_itoafill(char *endofpocket, long long int n)
 **	}
 */
 
-inline static int		ft_numvol(long long int n)
+inline static int	ft_numvol(long long int n)
 {
 	size_t				v;
 
@@ -51,7 +51,7 @@ inline static int		ft_numvol(long long int n)
 	return (v);
 }
 
-char					*ft_itoal(long long int num)
+char	*ft_itoal(long long int num)
 {
 	size_t				volume;
 	char				*pocket;

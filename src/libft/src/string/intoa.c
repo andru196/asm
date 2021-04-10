@@ -19,7 +19,7 @@
 **	Minus is being set within this function, however.
 */
 
-static char				*ft_itoafill(char *endofpocket, long long int n)
+static char	*ft_itoafill(char *endofpocket, long long int n)
 {
 	while (0 != n)
 	{
@@ -29,7 +29,7 @@ static char				*ft_itoafill(char *endofpocket, long long int n)
 	return (endofpocket);
 }
 
-static int				ft_numvol(long long int n)
+static int	ft_numvol(long long int n)
 {
 	size_t				v;
 
@@ -44,7 +44,7 @@ static int				ft_numvol(long long int n)
 	return (v);
 }
 
-char					*ft_intoa(long long int num, char *buff, size_t shift)
+char	*ft_intoa(long long int num, char *buff, size_t shift)
 {
 	size_t				volume;
 

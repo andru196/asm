@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void					init_float_calc(t_float_calc *f, long double number)
+void	init_float_calc(t_float_calc *f, long double number)
 {
 	unsigned short int	*ptr;
 
@@ -30,7 +30,7 @@ void					init_float_calc(t_float_calc *f, long double number)
 	f->pow = 0;
 }
 
-unsigned long long		ft_pow_ull(unsigned long long a, unsigned int power, \
+unsigned long long	ft_pow_ull(unsigned long long a, unsigned int power, \
 						t_float_calc *f)
 {
 	unsigned long long	temp;
@@ -48,7 +48,7 @@ unsigned long long		ft_pow_ull(unsigned long long a, unsigned int power, \
 	return (a);
 }
 
-int						check_error_float(t_float_calc *f)
+int	check_error_float(t_float_calc *f)
 {
 	uint64_t			raw_value;
 	double				nbd;
@@ -76,7 +76,7 @@ int						check_error_float(t_float_calc *f)
 	return (err);
 }
 
-char					*return_error_float(t_float_calc *f, t_fword *container)
+char	*return_error_float(t_float_calc *f, t_fword *container)
 {
 	if (f->nan && f->flag == 'f')
 		return (f->float_string = ft_strdup("nan"));
@@ -97,7 +97,7 @@ char					*return_error_float(t_float_calc *f, t_fword *container)
 	return (NULL);
 }
 
-void					add_filler_signe_double(t_fword *container,
+void	add_filler_signe_double(t_fword *container,
 						t_float_calc *f, long double *number)
 {
 	int					i;

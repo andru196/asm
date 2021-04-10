@@ -34,7 +34,7 @@ int	as_c(char *dst, char val)
 	return (val && 1);
 }
 
-int	asu(unsigned *dst, unsigned val)
+int	asu(unsigned int *dst, unsigned int val)
 {
 	*dst = val;
 	return (val && 1);
