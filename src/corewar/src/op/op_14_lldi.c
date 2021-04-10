@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_14_lldi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 15:33:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:56:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #define OP_CODE 14
 
 /*
-TD:	TEST!
+**	TD:	TEST!
 */
-void			op_lldi(t_world *nexus, t_carry *carry, \
+void	op_lldi(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

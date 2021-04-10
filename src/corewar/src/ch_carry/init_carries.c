@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_carries.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 13:57:16 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:31:41 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:56:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ inline static uint8_t	ft_check_production(t_vasa *current, t_vasa *previous)
 }
 
 /*
-TODO: Проверить в боевом режиме.
+** TODO: Проверить в боевом режиме.
 */
-inline static void		ft_init_carry_origin(t_carry *carry, t_champ *parent, \
+
+inline static void	ft_init_carry_origin(t_carry *carry, t_champ *parent, \
 															uintptr_t position)
 {
 	carry->reg[0] = -(parent->id);
@@ -39,7 +40,7 @@ inline static void		ft_init_carry_origin(t_carry *carry, t_champ *parent, \
 	carry->exec_cyc = 1;
 }
 
-void					ft_init_carries(t_world *nexus)
+void	ft_init_carries(t_world *nexus)
 {
 	uintptr_t	entry_ptr;
 	t_vasa		*canary;
@@ -53,7 +54,7 @@ void					ft_init_carries(t_world *nexus)
 		ft_lstadd((t_list **)&(nexus->carry), \
 					ft_lstnew_r(ft_create_carry(), sizeof(t_carry)));
 		if (ft_check_production(nexus->carry, canary))
-				ft_prox_err_malloc("new carry or its container", __func__);
+			ft_prox_err_malloc("new carry or its container", __func__);
 		ft_init_carry_origin(nexus->carry->gen.carry, *ch_ptr, entry_ptr);
 		entry_ptr += MEM_SIZE / (nexus->champs);
 		ch_ptr++;

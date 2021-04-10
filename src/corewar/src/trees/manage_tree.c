@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:00:25 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:36 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static uint8_t	ft_carryhead_control(t_vasa **head)
 }
 
 /*
-TD:	ПРОВЕРИТЬ В БОЕВОМ РЕЖИМЕ РАБОТОСПОСОБНОСТЬ без !(*head) проверки в 
+**	TD:	ПРОВЕРИТЬ В БОЕВОМ РЕЖИМЕ РАБОТОСПОСОБНОСТЬ без !(*head) проверки в 
 	TD: первом if.
 TD:	Проверить корректность поведения. Возможно нужно не '> cyc_ptr->cyc_to_die'
 	TD: а '>= cyc_tr->cyc_to_die'.
@@ -69,7 +69,7 @@ inline static uint8_t	ft_carry_control(t_dvasa *leafnode, t_vasa **head, t_cycle
 	return (0);
 }
 
-inline static void		ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
+inline static void	ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
 															t_cycle *cyc_ptr)
 {
 	t_dvasa				*second;
@@ -114,7 +114,7 @@ inline static void		ft_leaf_control(t_dvasa *first, t_dvasa **vacant, \
 **	Rest of the tree is processed in cycle manner thanks to ft_leaf_control.
 **	Why this method: reduce recursive instances.
 */
-void					ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
+void	ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
 															t_cycle *cyc_ptr)
 {
 	t_dvasa				*leaf_ptr;

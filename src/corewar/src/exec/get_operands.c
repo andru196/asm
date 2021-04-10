@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_operands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:35:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:43:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 **	* функции.
 */
 
-void			ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+void	ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
 																intptr_t amount)
 {
 	static t_get_operand_val_rout	*arr[5] = { &ft_get_nil_val,

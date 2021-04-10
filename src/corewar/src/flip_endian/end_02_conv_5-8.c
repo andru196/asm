@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   end_02_conv_5-8.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 15:37:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 18:38:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:43:53 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <cwr.h>
 
-RTP						ft_swap_endian_pen(RTP value)
+RTP	ft_swap_endian_pen(RTP value)
 {
 	return (
 			(((uint64_t)value & 0x000000ff00000000) >> 32) | \
@@ -23,7 +23,7 @@ RTP						ft_swap_endian_pen(RTP value)
 			((((uint64_t)value & 0x80) >> 7) * (uint64_t)0xFFFFFF0000000000));
 }
 
-RTP						ft_swap_endian_sex(RTP value)
+RTP	ft_swap_endian_sex(RTP value)
 {
 	return (
 			(((uint64_t)value & 0x0000ff0000000000) >> 40) | \
@@ -35,7 +35,7 @@ RTP						ft_swap_endian_sex(RTP value)
 			((((uint64_t)value & 0x80) >> 7) * (uint64_t)0xFFFF000000000000));
 }
 
-RTP						ft_swap_endian_sep(RTP value)
+RTP	ft_swap_endian_sep(RTP value)
 {
 	return (
 			(((uint64_t)value & 0x00ff000000000000) >> 48) | \
@@ -48,7 +48,7 @@ RTP						ft_swap_endian_sep(RTP value)
 			((((uint64_t)value & 0x80) >> 7) * (uint64_t)0xFF00000000000000));
 }
 
-RTP						ft_swap_endian_oct(RTP value)
+RTP	ft_swap_endian_oct(RTP value)
 {
 	return (
 			(((uint64_t)value & 0xff00000000000000) >> 56) | \

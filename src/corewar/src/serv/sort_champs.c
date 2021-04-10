@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_champs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:51:30 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 14:06:53 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ return (res);
 /*
 *	ПРОВЕРИЛ.
 */
-int						ft_champ_ptr_leftid_grt_rightid(void *left, void *right)
+int	ft_champ_ptr_leftid_grt_rightid(void *left, void *right)
 {
 	return (((t_champ *)left)->id > ((t_champ *)right)->id);
 }
 
-t_champ					**ft_build_champarr_sorted(t_champ *champ_arr,\
+t_champ	**ft_build_champarr_sorted(t_champ *champ_arr,\
 																	int champs)
 {
 	t_champ				**chain;

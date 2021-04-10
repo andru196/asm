@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   err_comp_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 11:47:02 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 00:47:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:42:55 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 #include <cwr_man.h>
 
-void		ft_show_compconf(void)
+void	ft_show_compconf(void)
 {
 	ft_printf_fd(2, "\033[1mNAME{eoc}\n\tcorewar %s", \
 			"-- battle arena for corewar game.");

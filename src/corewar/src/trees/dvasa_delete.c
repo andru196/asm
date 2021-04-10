@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dvasa_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 19:57:15 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/28 23:20:23 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:35 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 *	ПРОВЕРИЛ!
 */
-void		ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant)
+void	ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant)
 {
 	
 	if (!aleaf)
@@ -30,7 +30,7 @@ void		ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant)
 }
 
 /*
-TD:	ПРОВЕРИТЬ В БОЕВОМ РЕЖИМЕ РАБОТОСПОСОБНОСТЬ без if (!(*tree)).
+**	TD:	ПРОВЕРИТЬ В БОЕВОМ РЕЖИМЕ РАБОТОСПОСОБНОСТЬ без if (!(*tree)).
 	TD: По идее не должно быть такой ситуации, при которой *tree == NULL.
 *	ПРОВЕРИЛ! В текущей версии.
 !КОНТРАКТ:
@@ -38,7 +38,7 @@ TD:	ПРОВЕРИТЬ В БОЕВОМ РЕЖИМЕ РАБОТОСПОСОБНО
 		* этой функции, лифнода текущего цикла должна быть априори пустой.
 	*	Должна прверять наличие валидного *tree для работы, т.к.
 */
-void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant)
+void	ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant)
 {
 	t_dvasa	*sub;
 
@@ -61,7 +61,7 @@ void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant)
 /*
 *	ПРОВЕРИЛ!
 */
-void		ft_del_leafnode(t_dvasa **aleaf)
+void	ft_del_leafnode(t_dvasa **aleaf)
 {
 	t_dvasa	*ptr;
 // {	//*	Debug block

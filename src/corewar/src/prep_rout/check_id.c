@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 22:13:55 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:43:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Не забывай соблюдать нотацию!
 */
 
-inline static void		ft_control_doubles(t_vasa **errors_head, \
+inline static void	ft_control_doubles(t_vasa **errors_head, \
 											t_champ *champs, const int current)
 {
 	int					k;
@@ -46,7 +46,7 @@ inline static void		ft_control_doubles(t_vasa **errors_head, \
 **	that we can use at current champs[i].id.
 */
 
-inline static void		ft_auto_assign(int ch_amount, t_champ *champs)
+inline static void	ft_auto_assign(int ch_amount, t_champ *champs)
 {
 	int					id;
 	int					i;
@@ -73,7 +73,7 @@ inline static void		ft_auto_assign(int ch_amount, t_champ *champs)
 	}
 }
 
-void					ft_check_id(t_vasa **errors_head, \
+void	ft_check_id(t_vasa **errors_head, \
 												t_champ *champs, int ch_amount)
 {
 	int					i;

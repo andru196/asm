@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   is_digits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:53:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:44:34 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-int			ft_are_ndigits(const char *start, const char *end)
+int	ft_are_ndigits(const char *start, const char *end)
 {
 	int		i;
 	char	c;
@@ -27,7 +27,7 @@ int			ft_are_ndigits(const char *start, const char *end)
 	return (1);
 }
 
-int			ft_are_digits(const char *str)
+int	ft_are_digits(const char *str)
 {
 	char	c;
 

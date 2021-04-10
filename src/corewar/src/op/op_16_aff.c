@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_16_aff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 19:00:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:02 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #define OP_CODE 16
 /*
-TODO:	ПЕРЕДЕЛАТЬ? Как эта хуйня вообще работать должна?..
+**	TODO:	ПЕРЕДЕЛАТЬ? Как эта хуйня вообще работать должна?..
 */
-void		op_aff(t_world *nexus, t_carry *carry, \
+void	op_aff(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

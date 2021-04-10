@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:38:48 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 18:54:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:40:12 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 	int					i;
 
 	i = 0;
-	while ((i != MAX_PLAYERS) && \
-			(nexus->champ[i].name = (char *)ft_memalloc(PROG_NAME_LENGTH + \
-										COMMENT_LENGTH + (REG_SIZE + 1) * 2)))
+	while (i != MAX_PLAYERS)
 	{
+		nexus->champ[i].name = (char *)ft_memalloc(PROG_NAME_LENGTH +\
+										COMMENT_LENGTH + (REG_SIZE + 1) * 2);
+		if (!(nexus->champ[i].name))
+			break ;
 		nexus->champ[i].desc = nexus->champ[i].name + \
 			(uintptr_t)(PROG_NAME_LENGTH + REG_SIZE + 1);
 		i++;
@@ -48,7 +50,7 @@ inline static uint8_t	ft_init_champs_r(t_world *nexus)
 **!	cyc_to_die выставлен в CYCLE_TO_DIE, т.к. нулевой цикл - тоже цикл.
 */
 
-inline static void		ft_init_world(t_world *nexus)
+inline static void	ft_init_world(t_world *nexus)
 {
 	ft_bzero(nexus, sizeof(t_world));
 	ft_manage_world(nexus);
@@ -58,7 +60,7 @@ inline static void		ft_init_world(t_world *nexus)
 
 #ifdef NOMINAL_LAUNCH
 
-int						main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_world				nexus;
 
@@ -81,7 +83,7 @@ int						main(int argc, char **argv)
 
 #ifdef FAULT_LAUNCH
 
-int						main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;

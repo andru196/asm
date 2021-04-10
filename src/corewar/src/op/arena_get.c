@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   arena_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 11:56:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:03:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:43:56 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-inline intptr_t			ft_calc_addr(intptr_t offset)
+inline intptr_t	ft_calc_addr(intptr_t offset)
 {
 	return ((offset % MEM_SIZE) + MEM_SIZE * (offset < 0));
 }
 
-inline intptr_t			ft_step_size(uint8_t ops_type, uint8_t t_dir_size)
+inline intptr_t	ft_step_size(uint8_t ops_type, uint8_t t_dir_size)
 {
 	return ((ops_type == T_REG) + (ops_type == T_DIR) * t_dir_size + \
 												(ops_type == T_IND) * IND_SIZE);
 }
 
-inline uint8_t			ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr)
+inline uint8_t	ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr)
 {
 	uint8_t		value;
 
@@ -39,7 +39,7 @@ inline uint8_t			ft_check_reg_is_valid(uint8_t *arena, uintptr_t ptr)
 **		* расположены '\0'-заполненные машинные слова sizeof(RTP).
 */
 
-inline extern RTP		ft_get_bytecode(uint8_t *arena, intptr_t offset)
+inline extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset)
 {
 	offset = ft_calc_addr(offset);
 	return (*(RTP *)(arena + offset) | \
@@ -53,7 +53,7 @@ inline extern RTP		ft_get_bytecode(uint8_t *arena, intptr_t offset)
 **	*	Смотри контракт ft_get_bytecode.
 */
 
-void		ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, 
+void	ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, 
 																uint8_t size)
 {
 	URTP			base_mask;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dvasa_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 16:44:05 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/13 22:03:05 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 /*
 *	ПРОВЕРИЛ.
 */
-t_dvasa		*ft_create_leafnode_r(void const *content, size_t content_size)
+t_dvasa	*ft_create_leafnode_r(void const *content, size_t content_size)
 {
 	t_dvasa	*new;
 
@@ -27,9 +27,9 @@ t_dvasa		*ft_create_leafnode_r(void const *content, size_t content_size)
 }
 
 /*
-TD:	Удалить / Оставить. Нигде не используется.
+**	TD:	Удалить / Оставить. Нигде не используется.
 */
-t_dvasa		*ft_create_leafnode(void const *content, size_t content_size)
+t_dvasa	*ft_create_leafnode(void const *content, size_t content_size)
 {
 	t_dvasa	*new;
 

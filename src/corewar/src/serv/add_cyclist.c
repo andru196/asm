@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cyclist.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 23:09:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:04:12 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:28 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** their total amount.
 */
 
-void			ft_add_cyclist(t_vasa **head, long long number)
+void	ft_add_cyclist(t_vasa **head, long long number)
 {
 	t_vasa			*status_quo;
 	static size_t	counter;

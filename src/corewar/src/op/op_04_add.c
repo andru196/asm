@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_04_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:20:52 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:44:38 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 **	Tester:		t_op_04_add.c
 */
 
-void		op_add(t_world *nexus, t_carry *carry, \
+void	op_add(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

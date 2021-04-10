@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_cont.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/04 11:21:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:44:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	*	Возвращает указатель
 */
 
-const t_mop		*ft_get_op_cont(uint8_t offset)
+const t_mop	*ft_get_op_cont(uint8_t offset)
 {
 	return (&stat_opset[offset]);
 }
@@ -30,7 +30,7 @@ const t_mop		*ft_get_op_cont(uint8_t offset)
 **		* Предполагается, что структура выделяется на стеке.
 */
 
-void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
+void	ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 {
 	ft_memcpy(ptr, (const void *)&stat_opset[offset], sizeof(t_mop));
 }
@@ -72,7 +72,7 @@ void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 **	Tester:		t_eval_operands.c
 */
 
-uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
+uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 										t_mop *ops_cont, const t_mop *const ref)
 {
 	uint8_t		code_byte;

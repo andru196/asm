@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:23:50 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <cwr_intro.h>
 
 /*
-TD:	Проверить в боевом режиме.
+**	TD:	Проверить в боевом режиме.
 */
 
 inline static t_list	**ft_build_buff_nt(t_list **head, size_t size)
@@ -38,7 +38,7 @@ inline static t_list	**ft_build_buff_nt(t_list **head, size_t size)
 **	ПРОВЕРИЛ.	t_arr_sort.c
 */
 
-inline static void		ft_sort_dumps(t_list **head, size_t amount)
+inline static void	ft_sort_dumps(t_list **head, size_t amount)
 {
 	t_list				**arr_ptr;
 
@@ -49,11 +49,11 @@ inline static void		ft_sort_dumps(t_list **head, size_t amount)
 }
 
 /*
-TD:	Проверить в боевом режиме.
+**	TD:	Проверить в боевом режиме.
 TD:	Перепроверить на тесте, т.к. изменен nexus->arena!
 */
 
-inline static void		ft_place_champs(t_world *nexus)
+inline static void	ft_place_champs(t_world *nexus)
 {
 	uintptr_t			entry_ptr;
 	int					step;
@@ -76,7 +76,7 @@ inline static void		ft_place_champs(t_world *nexus)
 				(size_t)nexus->champ_ord[ch_amount]->size);
 }
 
-inline static void		ft_print_intro(t_champ **champ_arr)
+inline static void	ft_print_intro(t_champ **champ_arr)
 {
 	ft_printf(CWR_INTRO_MSG);
 	while (*champ_arr)
@@ -88,10 +88,10 @@ inline static void		ft_print_intro(t_champ **champ_arr)
 }
 
 /*
-TD:	Проверить в боевом режиме.
+**	TD:	Проверить в боевом режиме.
 */
 
-void					ft_prep_battle(t_world *nexus)
+void	ft_prep_battle(t_world *nexus)
 {
 	if (nexus->cyc.cyc_to_dump)
 		ft_sort_dumps((t_list **)&nexus->cyc.cyc_to_dump, \

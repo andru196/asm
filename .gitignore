@@ -13,4 +13,10 @@ result
 ./src/corewar/t_*
 .leaks/*
 .vscode/*
-./asm
+asm
+.vs
+_42_corewar_checker
+corewar
+logs
+src/corewar/t_*
+src/corewar/tests

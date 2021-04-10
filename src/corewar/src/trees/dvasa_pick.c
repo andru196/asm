@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dvasa_pick.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 22:11:06 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:18:22 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:45:38 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 	*	t_vasa *carry_bogey должна хранить каретку с актуальными значениями, в
 		* т.ч. значениями exec_cyc.
 */
-static void		ft_new_leafnode_insert(t_dvasa **tree, \
+static void	ft_new_leafnode_insert(t_dvasa **tree, \
 											t_dvasa **new_node, t_dvasa *root)
 {
 	t_dvasa		*bogey;
@@ -58,7 +58,7 @@ static void		ft_new_leafnode_insert(t_dvasa **tree, \
 	? исключена из цепочке лифнода, которая осталась без кареток после проверки
 	? на cycle_to_die.
 */
-void			ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
+void	ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 								t_dvasa **new_node, t_carry_cont_rout *manager)
 {
 	size_t		cyc_num;

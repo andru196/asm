@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_01_live.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/07 17:34:59 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:44:08 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 TD:	TEST!
 */
 
-void		op_live(t_world *nexus, t_carry *carry, \
+void	op_live(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop		op_cont;
