@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru <andru@student.42.fr>                +#+  +:+       +#+         #
+#    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2021/03/18 00:46:19 by andru            ###   ########.fr        #
+#    Updated: 2021/04/10 15:09:45 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ VPATH		:=	./src/errors: \
 			./src/sfalia_func: \
 			./src/string: \
 			./src/cmp: \
-			./src/sort:
+			./src/sort: \
+			./src/norm_shit:
 
 #**********************				ERRORS:			***************************#
 SOURCE	+=	malloc_err.c \
@@ -237,6 +238,11 @@ SOURCE	+=	ft_isspace.c \
 			ft_isnum.c\
 			ft_atoil.c
 
+#**********************				norm_shit_func:		***************************#
+
+SOURCE	+=	ass.c\
+			tera.c
+
 #**********************				BODY:			***************************#
 
 OBJ_DIR		:=	./obj
@@ -258,11 +264,11 @@ MAKEDIR:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
-	@echo -ne '\e[1K\e[0ECompile '
-	@printf '\e[1;32m%-6s\e[m' $@
+	@printf "\e[1K\e[0ECompile "
+	@printf "\e[1;32m%-6s\e[m" $@
 	@$(CC) $(CFLAGS) -o $@ $< -c $(IFLAGS)
-	@echo -ne '\e[1K\e[0ECompile competed '
-
+	@printf "\e[1K\e[0ECompile competed "
+	
 clean:
 	@rm -rf $(OBJ_DIR)
 

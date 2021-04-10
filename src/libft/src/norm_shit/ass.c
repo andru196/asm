@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bytes_rev.c                                        :+:      :+:    :+:   */
+/*   ass.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/19 00:14:48 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/10 14:44:40 by sfalia-f         ###   ########.fr       */
+/*   Created: 2021/04/10 15:01:15 by sfalia-f          #+#    #+#             */
+/*   Updated: 2021/04/10 15:05:54 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	rev_bytes_ll(long long n)
+int	as(void **dst, void *val)
 {
-	return (((n & 0xff00000000000000) >> (7 * 8))
-		| ((n & 0x00ff000000000000) >> (5 * 8))
-		| ((n & 0x0000ff0000000000) >> (3 * 8))
-		| ((n & 0x000000ff00000000) >> (1 * 8))
-		| ((n & 0x00000000ff000000) << (1 * 8))
-		| ((n & 0x0000000000ff0000) << (3 * 8))
-		| ((n & 0x000000000000ff00) << (5 * 8))
-		| ((n & 0x00000000000000ff) << (7 * 8)));
+	*dst = val;
+	return (val && 1);
+}
+
+int	asi(int *dst, int val)
+{
+	*dst = val;
+	return (val && 1);
+}
+
+int	asll(long long int *dst, long long int val)
+{
+	*dst = val;
+	return (val && 1);
+}
+
+int	as_c(char *dst, char val)
+{
+	*dst = val;
+	return (val && 1);
+}
+
+int	asu(unsigned *dst, unsigned val)
+{
+	*dst = val;
+	return (val && 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:02:42 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:58:53 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:06:07 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,5 +168,17 @@ void				ft_dlstwipe_ring(t_dlist **alst, void (*del)(void *, \
 																	size_t));
 void				ft_dlstwipe(t_dlist **alst, void (*del)(void *, size_t));
 void				ft_dlstdelone(t_dlist **alst, void (*del)(void*, size_t));
+
+void				*tv(int bool_val, void *val1, void *val2);
+int					ti(int bool_val, int val1, int val2);
+char				tc(int bool_val, char val1, char val2);
+long				tl(int bool_val, long val1, long val2);
+unsigned			tu(int bool_val, unsigned val1, unsigned val2);
+int					asu(unsigned *dst, unsigned val);
+int					as_c(char *dst, char val);
+int					asll(long long int *dst, long long int val);
+int					asi(int *dst, int val);
+int					as(void **dst, void *val);
+
 
 #endif

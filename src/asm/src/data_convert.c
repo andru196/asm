@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:10:25 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/09/25 00:45:02 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:17:31 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 extern t_op	g_otab[OP_TAB_SIZE];
 
-char						type_code(t_command *cmd)
+char	type_code(t_command *cmd)
 {
-	char rez;
+	char	rez;
 
 	rez = 0;
 	if (cmd->arg_size[0] == T_REG)
@@ -40,10 +40,10 @@ char						type_code(t_command *cmd)
 	return (rez);
 }
 
-void						write_n_num(char **dst, long long n,
-											unsigned char bytes)
+void	write_n_num(char **dst, long long n,
+			unsigned char bytes)
 {
-	int i;
+	int	i;
 
 	if (n >= ((long long)1 << bytes * 8))
 		n %= 1 << ((long long)bytes * 8 - 1);
@@ -59,7 +59,7 @@ void						write_n_num(char **dst, long long n,
 }
 
 static unsigned long long	set_number(long long n, unsigned char size,
-									unsigned char t_dir_size)
+								unsigned char t_dir_size)
 {
 	long long	tmp;
 
@@ -78,7 +78,7 @@ static unsigned long long	set_number(long long n, unsigned char size,
 	return (tmp);
 }
 
-int							write_cmnd(char *dst, t_command *cmd)
+int	write_cmnd(char *dst, t_command *cmd)
 {
 	int					i;
 	char				*cpy;
@@ -92,23 +92,23 @@ int							write_cmnd(char *dst, t_command *cmd)
 	while (++i < g_otab[cmd->cmnd_num].args_num)
 	{
 		num = set_number(cmd->arg[i], cmd->arg_size[i],
-							g_otab[cmd->cmnd_num].t_dir_size);
+				g_otab[cmd->cmnd_num].t_dir_size);
 		if (cmd->arg_size[i] == T_REG)
 			write_n_num(&dst, num, SIZE_REG);
 		else if (cmd->arg_size[i] == T_IND)
 			write_n_num(&dst, num, IND_SIZE);
 		else if (cmd->arg_size[i] == T_DIR)
-			write_n_num(&dst, num, DIR_SIZE /
+			write_n_num(&dst, num, DIR_SIZE / \
 							(1 + g_otab[cmd->cmnd_num].t_dir_size));
 	}
 	return (dst - cpy);
 }
 
-int							transofrm_data(t_asmcont *cont, char *rez,
-														unsigned size)
+int	transofrm_data(t_asmcont *cont, char *rez,
+		unsigned int size)
 {
-	size_t			i;
-	size_t			j;
+	size_t	i;
+	size_t	j;
 
 	write_n_num(&rez, COREWAR_EXEC_MAGIC, sizeof(int));
 	rez -= sizeof(int);
@@ -118,7 +118,7 @@ int							transofrm_data(t_asmcont *cont, char *rez,
 	*(int *)(rez + i) = 0;
 	i += sizeof(int);
 	rez += i;
-	write_n_num(&rez, size - PROG_NAME_LENGTH -
+	write_n_num(&rez, size - PROG_NAME_LENGTH - \
 							COMMENT_LENGTH - 16, sizeof(int));
 	rez -= sizeof(int) + i;
 	i += sizeof(unsigned);
