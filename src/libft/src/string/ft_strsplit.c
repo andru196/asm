@@ -42,7 +42,7 @@ static const void	*ft_memcpy_s(void *dst, const void *src, size_t n)
 	}
 }
 
-static char			**ft_delall(char **pocket, size_t l)
+static char	**ft_delall(char **pocket, size_t l)
 {
 	size_t			i;
 
@@ -53,7 +53,7 @@ static char			**ft_delall(char **pocket, size_t l)
 	return (NULL);
 }
 
-static size_t		ft_substrcount(const char *s, int c)
+static size_t	ft_substrcount(const char *s, int c)
 {
 	size_t			amount;
 	const char		*bogey;
@@ -78,7 +78,7 @@ static size_t		ft_substrcount(const char *s, int c)
 	return (amount);
 }
 
-static char			**ft_2dfiller(const char *s, char **pocket, char c, \
+static char	**ft_2dfiller(const char *s, char **pocket, char c, \
 									const char *end)
 {
 	size_t			counter;
@@ -108,7 +108,7 @@ static char			**ft_2dfiller(const char *s, char **pocket, char c, \
 	return (pocket);
 }
 
-char				**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char			**pocket;
 	const char		*end;
@@ -116,7 +116,7 @@ char				**ft_strsplit(char const *s, char c)
 	if (!s)
 		return (NULL);
 	end = s + ft_strlen(s);
-	if (!(pocket = (char **)ft_memalloc((ft_substrcount(s, (int)c) + 1)\
+	if (!(pocket = (char **)ft_memalloc((ft_substrcount(s, (int)c) + 1) \
 													* sizeof(char *))))
 		return (NULL);
 	return (ft_2dfiller(s, pocket, c, end));

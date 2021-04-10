@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char						*ft_get_ptr(t_fword *container, char **buff)
+char	*ft_get_ptr(t_fword *container, char **buff)
 {
 	void					*ptr;
 	unsigned long long int	res;

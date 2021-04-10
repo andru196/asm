@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-void					ft_skip_va_arg_int(va_list *bogey)
+void	ft_skip_va_arg_int(va_list *bogey)
 {
 	va_arg(*bogey, int);
 }
 
-void					ft_skip_va_arg_float(va_list *bogey)
+void	ft_skip_va_arg_float(va_list *bogey)
 {
 	va_arg(*bogey, double);
 }

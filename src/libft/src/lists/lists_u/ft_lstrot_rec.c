@@ -23,7 +23,7 @@
 **	Where t_list **alst - a pointer, ponting to the pointer of the chain head.
 */
 
-t_list		*ft_lstrot_rec(t_list *current, t_list *prev)
+t_list	*ft_lstrot_rec(t_list *current, t_list *prev)
 {
 	t_list	*new_head;
 

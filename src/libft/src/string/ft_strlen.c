@@ -38,7 +38,7 @@ static unsigned const char	*ft_memcrawl(unsigned const char *str)
 	return (str);
 }
 
-size_t						ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t					*monad;
 	unsigned const char		*bogey;
@@ -51,11 +51,9 @@ size_t						ft_strlen(const char *str)
 	{
 		if (((*monad + 0X7EFEFEFEFEFEFEFF) ^ ~*monad) & 0x8101010101010100)
 			if (((((*monad & 0x7F7F7F7F7F7F7F7F) + 0x7F7F7F7F7F7F7F7F) | *monad)
-				| 0x7F7F7F7F7F7F7F7F))
-			{
+					| 0x7F7F7F7F7F7F7F7F))
 				return (ft_memcrawl(((unsigned const char *)(monad))) - \
 													(unsigned const char *)str);
-			}
 		monad++;
 	}
 }

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char					*ft_get_float_l_cap(t_fword *container, char parent)
+char	*ft_get_float_l_cap(t_fword *container, char parent)
 {
 	long double			number;
 	t_float_calc		f;

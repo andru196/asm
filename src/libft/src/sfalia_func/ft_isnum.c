@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			ft_isnumber(char *str)
+int	ft_isnumber(char *str)
 {
 	char	*cpy;
 	int		f;
@@ -31,7 +31,7 @@ int			ft_isnumber(char *str)
 	while (*str)
 	{
 		if (!((*str >= '0' && *str <= '9')
-			|| (f && ft_toupper(*str) >= 'A' && ft_toupper(*str) <= 'F')))
+				|| (f && ft_toupper(*str) >= 'A' && ft_toupper(*str) <= 'F')))
 			return (0);
 		str++;
 	}

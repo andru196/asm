@@ -22,7 +22,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	const char	*eye;
 
 	if (*needle == '\0')
-		return ((char*)haystack);
+		return ((char *)haystack);
 	while (*haystack != '\0')
 	{
 		camel = haystack;
@@ -33,7 +33,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			++camel;
 		}
 		if (*eye == '\0')
-			return ((char*)haystack);
+			return ((char *)haystack);
 		++haystack;
 	}
 	return (NULL);

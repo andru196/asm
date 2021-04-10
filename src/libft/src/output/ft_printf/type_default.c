@@ -18,7 +18,7 @@
 **	This function is ought to iterate va_arg, place
 */
 
-char					*ft_get_variat(t_format *formstat, char *buffer)
+char	*ft_get_variat(t_format *formstat, char *buffer)
 {
 	if (formstat->sight == formstat->end)
 	{
@@ -45,7 +45,7 @@ char					*ft_get_variat(t_format *formstat, char *buffer)
 	return (&buffer[0]);
 }
 
-uint8_t					ft_place_default(t_format *formstat, \
+uint8_t	ft_place_default(t_format *formstat, \
 													t_fword *format)
 {
 	char				*variat;

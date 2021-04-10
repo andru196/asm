@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void					ft_err_mixed_input(void)
+void	ft_err_mixed_input(void)
 {
 	ft_putstr_fd("Warning! Mixed variatives invocation. In same format ", 2);
 	ft_putendl_fd("string standard invocation (or '*') mixed with k$.", 2);

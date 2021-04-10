@@ -17,7 +17,7 @@
 ** in_small_string performes the task if len of main function is < 8.
 */
 
-static void		in_small_string(void *s, unsigned char c, size_t *n)
+static void	in_small_string(void *s, unsigned char c, size_t *n)
 {
 	while (*n != 0)
 	{
@@ -27,7 +27,7 @@ static void		in_small_string(void *s, unsigned char c, size_t *n)
 	}
 }
 
-static void		*ft_memsync(void *s, unsigned char c, size_t *n)
+static void	*ft_memsync(void *s, unsigned char c, size_t *n)
 {
 	while (((size_t)s & (sizeof(size_t) - 1)) != 0)
 	{
@@ -38,7 +38,7 @@ static void		*ft_memsync(void *s, unsigned char c, size_t *n)
 	return (s);
 }
 
-void			*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			*bogey;
 	size_t			num;

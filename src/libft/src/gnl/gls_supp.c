@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_wipegnl(t_list **fdl, t_list *first, t_list *second, t_list *third)
+int	ft_wipegnl(t_list **fdl, t_list *first, t_list *second, t_list *third)
 {
 	*fdl = NULL;
 	(void)first;

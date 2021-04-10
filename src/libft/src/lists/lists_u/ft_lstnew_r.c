@@ -17,7 +17,7 @@
 **	not dupes content data as it is done my standard ft_lstnew.
 */
 
-t_list		*ft_lstnew_r(void const *content, size_t content_size)
+t_list	*ft_lstnew_r(void const *content, size_t content_size)
 {
 	t_list	*result;
 

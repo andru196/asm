@@ -20,7 +20,7 @@
 **	#define WIDTH format->width
 */
 
-static inline void		ft_place_filler(int width, char *fillers, int fd)
+static inline void	ft_place_filler(int width, char *fillers, int fd)
 {
 	while ((width))
 	{
@@ -51,7 +51,7 @@ static inline uint8_t	ft_check_limits(t_format *formstat, \
 	return (0);
 }
 
-void					ft_width_left(t_format *formstat, t_fword *format, \
+void	ft_width_left(t_format *formstat, t_fword *format, \
 									size_t *dims, char *formatted_variative)
 {
 	size_t				sizes[2];

@@ -20,7 +20,7 @@
 **	as a NULL-terminator.
 */
 
-inline static void		ft_lineup(t_list **head, t_list **arr_ptr, \
+inline static void	ft_lineup(t_list **head, t_list **arr_ptr, \
 									size_t length)
 {
 	size_t				bogey;
@@ -34,7 +34,7 @@ inline static void		ft_lineup(t_list **head, t_list **arr_ptr, \
 	}
 }
 
-inline static void		ft_swap(t_list **a, t_list **b)
+inline static void	ft_swap(t_list **a, t_list **b)
 {
 	t_list				*pocket;
 
@@ -63,7 +63,7 @@ inline static uint8_t	ft_bubblesorted(t_list **array, size_t size, \
 	return (res);
 }
 
-void					ft_srt_listarr_bubble(t_list **head, t_list **arr_ptr, \
+void	ft_srt_listarr_bubble(t_list **head, t_list **arr_ptr, \
 											size_t length, t_datacmp_rout *cmp)
 {
 	size_t				bogey;

@@ -17,7 +17,7 @@
 **	#define FPRECISION format->precision
 */
 
-static t_extract_arg_rout		*ft_get_tip(uint8_t num)
+static t_extract_arg_rout	*ft_get_tip(uint8_t num)
 {
 	static t_extract_arg_rout	*array[2];
 
@@ -28,7 +28,7 @@ static t_extract_arg_rout		*ft_get_tip(uint8_t num)
 	return (array[num]);
 }
 
-static void						ft_shift_unicode(char *extr, size_t *reslen)
+static void	ft_shift_unicode(char *extr, size_t *reslen)
 {
 	if (reslen)
 	{
@@ -39,7 +39,7 @@ static void						ft_shift_unicode(char *extr, size_t *reslen)
 	}
 }
 
-uint8_t							ft_place_string(t_format *formstat, \
+uint8_t	ft_place_string(t_format *formstat, \
 													t_fword *format)
 {
 	char						*extraction;

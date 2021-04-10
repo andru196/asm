@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int				ft_value_colour(const char *sight)
+static int	ft_value_colour(const char *sight)
 {
 	if (!(ft_memcmp(sight, "{red}", 5)))
 		return ((int)(sizeof("\x1b[31m") - sizeof("{red}")));
@@ -31,7 +31,7 @@ static int				ft_value_colour(const char *sight)
 	return (0);
 }
 
-static uint8_t			ft_install_colour(char **res, const char **bogey, \
+static uint8_t	ft_install_colour(char **res, const char **bogey, \
 												const char *colour, int offset)
 {
 	size_t				length;
@@ -43,7 +43,7 @@ static uint8_t			ft_install_colour(char **res, const char **bogey, \
 	return (1);
 }
 
-static uint8_t			ft_pick_colour(char **res, const char **bogey)
+static uint8_t	ft_pick_colour(char **res, const char **bogey)
 {
 	uint8_t				flag;
 
@@ -65,7 +65,7 @@ static uint8_t			ft_pick_colour(char **res, const char **bogey)
 	return (flag);
 }
 
-static char				*ft_form_string(char *res, const char *varg, \
+static char	*ft_form_string(char *res, const char *varg, \
 						size_t varglen)
 {
 	const char			*colour;
@@ -89,7 +89,7 @@ static char				*ft_form_string(char *res, const char *varg, \
 	return (res);
 }
 
-char					*ft_get_string_default(t_fword *container)
+char	*ft_get_string_default(t_fword *container)
 {
 	char				*variative;
 	char				*sub;

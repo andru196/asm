@@ -14,8 +14,8 @@
 
 int	ft_strendwith(char *str, char *end)
 {
-	int e_count;
-	int s_count;
+	int	e_count;
+	int	s_count;
 
 	e_count = ft_strlen(end);
 	s_count = ft_strlen(str);

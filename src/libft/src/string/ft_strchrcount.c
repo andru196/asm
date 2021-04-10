@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t			ft_strchrcount(const char *s, int c)
+size_t	ft_strchrcount(const char *s, int c)
 {
 	size_t		amount;
 	const char	*bogey;

@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+static inline int	huint(long num, char *str, char *cpy)
+{
+	return (!num && (str == cpy
+			|| ((str == cpy + 1)
+				&& (*str == 'x' || *str == 'X') && *(str - 1) == '0')));
+}
+
 int	str_num_eq(long num, char *str)
 {
 	char	*cpy;
@@ -22,14 +29,14 @@ int	str_num_eq(long num, char *str)
 	if (!str || (!num && *str != '0'))
 		return (0);
 	if (*str == '0')
-		pow = *(str + 1) == 'x' || *(str + 1) == 'X' ? 16 : 8;
+		pow = ti(*(str + 1) == 'x' || *(str + 1) == 'X', 16, 8);
 	while (*str)
 		str++;
 	while (str != cpy && num)
 	{
 		str--;
-		if ((*(str) > '9' ? ft_toupper(*str) - 'A' + 10 : *str - '0')
-													!= ft_mod(num % pow))
+		if ((*(--str) > '9' ? ft_toupper(*str) - 'A' + 10 : *str - '0')
+			!= ft_mod(num % pow))
 			return (0);
 		num /= pow;
 	}
@@ -37,6 +44,5 @@ int	str_num_eq(long num, char *str)
 		str--;
 	while (!num && str != cpy && (*str == '0' || !*str))
 		str--;
-	return (!num && (str == cpy ||
-	((str == cpy + 1) && (*str == 'x' || *str == 'X') && *(str - 1) == '0')));
+	return (huint(num, str, cpy));
 }

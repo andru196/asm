@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long		ft_atoil(const char *str)
+long long	ft_atoil(const char *str)
 {
 	long long	res;
 	int			sign;

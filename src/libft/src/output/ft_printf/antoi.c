@@ -21,7 +21,7 @@
 **					(1) - if the work is done with overflow down.
 */
 
-uint8_t			ft_antoi(const char *start, const char *end, long long *res)
+uint8_t	ft_antoi(const char *start, const char *end, long long *res)
 {
 	*res = 0;
 	while (start != end)

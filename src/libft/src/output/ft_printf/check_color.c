@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void				ft_place_color(t_format *formstat, const char *color, \
+static void	ft_place_color(t_format *formstat, const char *color, \
 						int size, int offset)
 {
 	ssize_t				overflow;
@@ -29,7 +29,7 @@ static void				ft_place_color(t_format *formstat, const char *color, \
 	filling_mainbuf(color, (size_t)size, 0, formstat->fd);
 }
 
-uint8_t					ft_check_colour(t_format *formstat)
+uint8_t	ft_check_colour(t_format *formstat)
 {
 	if (!(ft_memcmp(formstat->sight, "{red}", 5)))
 		ft_place_color(formstat, "\x1b[31m", 5, 5);
