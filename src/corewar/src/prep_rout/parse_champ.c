@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_champ.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 18:06:44 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:41:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:57:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-//TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
+**	//TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
 */
 
 inline static uint8_t	ft_check_filename(char *argv)
@@ -35,7 +35,7 @@ inline static uint8_t	ft_check_filename(char *argv)
 //TODO:	Проверить отпрыска: ft_check_filename.
 */
 
-uint8_t					ft_parse_champ(char ***argv, int id, t_world *nexus)
+uint8_t	ft_parse_champ(char ***argv, int id, t_world *nexus)
 {
 
 	static t_err_rout*	array[2] = { &ft_err_invalid_parameter, \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_fdump.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:37:07 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/04 21:57:34 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:16 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 **	данные типа t_list и t_vasa - однородные.
 */
 
-inline static void		ft_add_step_container(t_vasa **chain_head)
+inline static void	ft_add_step_container(t_vasa **chain_head)
 {
 	t_vasa			*step;
 
@@ -70,7 +70,7 @@ inline static uint8_t	ft_register_fdump_param(char *argv, long long *value, t_va
 **	перед отработкой тела программы.
 */
 
-uint8_t					ft_parse_fdump(char ***argv, t_world *nexus)
+uint8_t	ft_parse_fdump(char ***argv, t_world *nexus)
 {
 	long long		cycle;
 	static size_t	counter;

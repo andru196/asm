@@ -6,16 +6,14 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 14:37:44 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:59:38 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef VISUAL_H
 # define VISUAL_H
 # include "cwr_defs.h"
 # include <curses.h>
-# include <time.h>
 
 /*
 ** General
@@ -25,10 +23,10 @@
 
 # define FIELD_HEIGTH			66
 # define INFO_WIDTH				60
-# define ARENA_WIDTH			(64 * 3) + 3
+# define ARENA_WIDTH			195
 # define INDENT					3
 # define COLOR_PAIR_NUM			4
-# define MAX_SPEED				1000
+# define MAX_SPEED				500
 # define MIN_SPEED				1
 # define BOLD_CYCLE				50
 # define HELLO_STRING			"Hello to our cool (maybe) COREWAR!!!"
@@ -50,7 +48,6 @@
 
 # define DEFAULT_COLOR			4
 
-
 typedef WINDOW					t_window;
 typedef struct s_visual			t_visual;
 typedef struct s_attribute		t_attribute;
@@ -68,10 +65,10 @@ struct							s_attribute
 struct							s_visual
 {
 	t_window					*arena_window;
-    t_window					*info_window;
-    t_bool						active;
+	t_window					*info_window;
+	t_bool						active;
 	t_bool						print_winner;
-    t_attribute					a_arena[MEM_SIZE];
+	t_attribute					a_arena[MEM_SIZE];
 	int							cycle_speed;
 	short						colors[5];
 	unsigned int				carries;				
@@ -81,20 +78,21 @@ struct							s_visual
 ******************			visualize funcs:			************************
 */
 
-t_visual			*ft_init_visual();
+t_visual			*ft_init_visual(void);
 void				ft_print_info(t_world *nexus);
 void				ft_init_a_arena(t_world *nexus);
-void				update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus);
-void				color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset);
-unsigned long int	set_new_color(unsigned long result, int color);
+void				update_visual_carry(t_carry *carry, intptr_t length, \
+															t_world *nexus);
+void				color_bytecode(t_carry *carry, t_world *nexus, \
+															intptr_t offset);
 void				ft_init_colors(short *colors);
 short int			ft_swap_colors(short int color);
-void				update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry);
+void				update_one_carry(intptr_t pos, t_world *nexus, \
+															t_bool del_carry);
 void				update_attribute_arena(t_world *nexus);
 void				free_visual(t_visual **visual);
-short int			ft_get_color_num(short int fg, short int bg);
-void				ft_print_visual_winner(t_world *nexus);
-void				ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant);
-
+void				ft_make_cycle(t_world *nexus, t_dvasa **tree, \
+															t_dvasa **vacant);
+void				ft_visualize_cycle(t_world *nexus, t_dvasa *tree);
 
 #endif

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   err_f_n.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:01:34 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:08:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:43:03 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_fn_notnbr(t_vasa **head, void *object)
+void	ft_err_fn_notnbr(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -40,10 +40,10 @@ void		ft_err_fn_notnbr(t_vasa **head, void *object)
 }
 
 /*
-TODO: Проверить на валгринде.
+** Проверил на валгринде. Ок..
 */
 
-void		ft_err_fn_inter(t_vasa **head, void *object)
+void	ft_err_fn_inter(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;

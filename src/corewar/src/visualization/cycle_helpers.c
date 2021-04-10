@@ -6,13 +6,13 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 02:41:57 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 15:57:49 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:27:03 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-int	get_increased_speed(int cycle_speed, int delta)
+inline static int	get_increased_speed(int cycle_speed, int delta)
 {
 	if (cycle_speed + delta >= MAX_SPEED)
 		return (MAX_SPEED);
@@ -20,7 +20,7 @@ int	get_increased_speed(int cycle_speed, int delta)
 		return (cycle_speed + delta);
 }
 
-int	get_decreased_speed(int cycle_speed, int delta)
+inline static int	get_decreased_speed(int cycle_speed, int delta)
 {
 	if (cycle_speed - delta <= MIN_SPEED)
 		return (MIN_SPEED);
@@ -31,7 +31,8 @@ int	get_decreased_speed(int cycle_speed, int delta)
 inline static void	perform_button_action(int ch, t_world *nexus, \
 											t_dvasa **tree, t_dvasa **vacant)
 {
-	usleep(1000000 / nexus->visual->cycle_speed);
+	usleep(1000000 / (nexus->visual->cycle_speed * \
+											nexus->visual->cycle_speed) - 1);
 	if (ch == SINGLE_CYCLE_BUTTON && *tree)
 	{
 		ft_make_cycle(nexus, tree, vacant);
@@ -53,7 +54,7 @@ inline static void	perform_button_action(int ch, t_world *nexus, \
 		get_decreased_speed(nexus->visual->cycle_speed, 1);
 }
 
-inline static void	*init_all_visual(t_world *nexus)
+inline static void	init_all_visual(t_world *nexus)
 {
 	nexus->visual = ft_init_visual();
 	ft_init_a_arena(nexus);

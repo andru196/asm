@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 22:40:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/26 13:38:17 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:37:41 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_carry	*ft_init_carry(uint8_t op)
 	return (entry);
 }
 
-int				main(void)
+int	main(void)
 {
 	t_carry		*carry;
 	t_vasa		*check;

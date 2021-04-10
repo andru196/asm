@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_dump_lobby.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:34:19 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:04:06 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # define LINE_SIZE 64 * 3
 
 /*
+**	TD	ДОПИСАТЬ вывод результата (и фсё);
+TD:	Декларация - заглушка. Подобрать список нужных параметров.
+**	!Контракт:
 **	Просто выводит состояние арены в текущий момент.
 **	Принимает указатель на указатель головы t_vasa, которые в своем
 **->gen.cyc_sol хранят циклы, в которые необхоимо дампнуться.
@@ -53,7 +56,7 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 /*
 TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
 */
-uint8_t				ft_print_dump(t_world *nexus)
+uint8_t	ft_print_dump(t_world *nexus)
 {
 	t_vasa			*ptr;
 	char			str[LINE_SIZE];

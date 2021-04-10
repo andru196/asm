@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:34:08 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:21 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 void		ft_exec_battle(t_world *nexus);
 void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
-void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree);
 
 /*
 ******************				SERVice funcs:			************************

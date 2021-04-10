@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_11_sti.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/18 03:45:49 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:59 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #define OP_CODE 11
 
 /*
-TODO:	Сделать.
+**	TODO:	Сделать.
 */
-void			op_sti(t_world *nexus, t_carry *carry, \
+void	op_sti(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop		op_cont;

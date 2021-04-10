@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_02_ld.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/17 21:00:31 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:27 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #define OP_CODE 2
 
 /*
-TODO:	Test!
+**	TODO:	Test!
 */
-void		op_ld(t_world *nexus, t_carry *carry, \
+void	op_ld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

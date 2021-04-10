@@ -6,11 +6,19 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 02:03:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:32 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
+
+static void	change_attribute(t_world *nexus, intptr_t tmp, t_carry *carry)
+{
+	nexus->visual->a_arena[tmp].value = \
+			COLOR_PAIR(nexus->visual->colors[(carry->parent->id % \
+											COLOR_PAIR_NUM)]) | A_BOLD;
+	nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
+}
 
 void	update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry)
 {
@@ -39,14 +47,6 @@ void	update_visual_carry(t_carry *carry, intptr_t length, t_world *nexus)
 		return ;
 	update_one_carry(carry->pos, nexus, 0);
 	update_one_carry(carry->pos - length, nexus, 1);
-}
-
-void	change_attribute(t_world *nexus, intptr_t tmp, t_carry *carry)
-{
-	nexus->visual->a_arena[tmp].value = \
-			COLOR_PAIR(nexus->visual->colors[(carry->parent->id % \
-											COLOR_PAIR_NUM)]) | A_BOLD;
-	nexus->visual->a_arena[tmp].bold_cycle = BOLD_CYCLE;
 }
 
 void	color_bytecode(t_carry *carry, t_world *nexus, intptr_t offset)

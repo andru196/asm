@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_cont.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/30 20:21:44 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	*	Возвращает указатель
 */
 
-const t_mop		*ft_get_op_cont(uint8_t offset)
+const t_mop	*ft_get_op_cont(uint8_t offset)
 {
 	return (&stat_opset[offset]);
 }
@@ -30,7 +30,7 @@ const t_mop		*ft_get_op_cont(uint8_t offset)
 **		* Предполагается, что структура выделяется на стеке.
 */
 
-void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
+void	ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 {
 	ft_memcpy(ptr, (const void *)&stat_opset[offset], sizeof(t_mop));
 }
@@ -72,22 +72,7 @@ void			ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 **	Tester:		t_eval_operands.c
 */
 
-// static inline uint8_t	ft_retreive_op_type(uint8_t *ops_type, const t_mop *const ref)
-// {
-// 	uint8_t				flag;
-// 	int					i;
-
-// 	flag = 0;
-// 	ops_type = (ops_type & ref->ops_types[i]);
-	
-// }
-
-/*
-!	School corewar behavior unknown in case of inapropriate registry number.
-!	Shall we skip instruction in its present configuration or it shalt be
-!	jumped over accoridng its WIDE configuration.
-*/
-uint8_t			ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
+uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 										t_mop *ops_cont, const t_mop *const ref)
 {
 	uint8_t		code_byte;

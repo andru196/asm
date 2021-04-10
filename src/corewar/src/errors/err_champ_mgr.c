@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_champ_mgr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 22:00:00 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/10 17:30:31 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:42:49 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ inline static t_vasa	*ft_create_header(t_vasa **subchain_head,
 	return (*subchain_head);
 }
 
-inline static void		ft_flush_char(t_champ *this)
+inline static void	ft_flush_char(t_champ *this)
 {
 	this->id = 0;
 	this->size = 0;
@@ -91,7 +91,7 @@ inline static void		ft_flush_char(t_champ *this)
 **	//? В процессе проверки.
 */
 
-int						ft_ch_err_manager(char *filename,
+int	ft_ch_err_manager(char *filename,
 					t_vasa **subchain_head, t_vasa **chain_head, t_champ *this)
 {
 	t_vasa			*tail;
