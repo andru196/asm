@@ -24,19 +24,23 @@ typedef struct s_fword		t_fword;
 **	Defines for function pointers, used in printf.
 */
 
-typedef uint8_t			t_parse_anchor_rout(t_format *formstat);
-typedef void			t_skip_va_arg_rout(va_list *bogey);
-typedef	uint8_t			t_get_va_arg_rout(t_format *formstat, \
+typedef uint8_t				t_parse_anchor_rout(t_format *formstat);
+typedef void				t_skip_va_arg_rout(va_list *bogey);
+typedef uint8_t				t_get_va_arg_rout(t_format *formstat, \
 															t_fword *format);
-typedef void			t_add_width_rout(t_format *formstat, t_fword *format, \
+typedef void				t_add_width_rout(t_format *formstat, t_fword *format, \
 									size_t *dims, char *formatted_variative);
-typedef char			*t_extract_arg_rout(t_fword *container);
-typedef char			*t_extract_int_rout(t_fword *container, char *buff);
-typedef char			*t_extract_oct_rout(t_fword *container, char **buff);
-typedef char			*t_extract_hex_rout(t_fword *container, char **buff);
-typedef char			*t_extract_float_rout(t_fword *container, char parent);
-typedef void			*t_extract_vptr_rout(t_fword *container);
-typedef void			t_printer_rout(const char *data, size_t length, \
+typedef char					*t_extract_arg_rout(t_fword *container);
+typedef char					*t_extract_int_rout(t_fword *container, \
+															char *buff);
+typedef char					*t_extract_oct_rout(t_fword *container, \
+															char **buff);
+typedef char					*t_extract_hex_rout(t_fword *container, \
+															char **buff);
+typedef char					*t_extract_float_rout(t_fword *container, \
+															char parent);
+typedef void					*t_extract_vptr_rout(t_fword *container);
+typedef void				t_printer_rout(const char *data, size_t length, \
 															int flag, int fd);
 
 /*
@@ -112,7 +116,7 @@ struct					s_varitype
 	t_varitype			*next;
 };
 
-typedef struct			s_float_calc
+typedef struct s_float_calc
 {
 	char				*float_string;
 	char				*sign;

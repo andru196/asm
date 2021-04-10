@@ -21,7 +21,7 @@ t_dlist	*ft_dlstnew_r(void const *content, size_t content_size)
 {
 	t_dlist	*result;
 
-	if (!(result = (t_dlist *)ft_memalloc(sizeof(t_dlist))))
+	if (!as((void **)&result, ft_memalloc(sizeof(t_dlist))))
 		return ((void *)(size_t)ft_err_malloc("total", __func__) - 1);
 	result->content = (void *)content;
 	if (content)

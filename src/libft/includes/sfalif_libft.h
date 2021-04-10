@@ -22,7 +22,7 @@
 **	# define SIZE(type, n) sizeof(type) * (n)
 */
 
-typedef struct	s_array
+typedef struct s_array
 {
 	void		**ptr;
 	size_t		len;

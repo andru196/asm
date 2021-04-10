@@ -57,7 +57,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	if (!n)
 		return (NULL);
 	c &= 0xFF;
-	if (*(char *)(s = (ft_memsync_s((t_ucc *)s, (t_ucc)c, &n))) == (char)c && n)
+	s = (ft_memsync_s((t_ucc *)s, (t_ucc)c, &n));
+	if (*(char *)s == (char)c && n)
 		return ((void *)s);
 	bogey = (size_t *)s;
 	k = n / sizeof(size_t);

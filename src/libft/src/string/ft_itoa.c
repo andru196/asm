@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 19:55:56 by mschimme          #+#    #+#             */
-/*   Updated: 2019/02/28 22:38:42 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:31:10 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	int		volume;
 
 	volume = ft_numvol(n);
-	if (!(pocket = ft_strnew(volume)))
+	if (!as((void **)&pocket, ft_strnew(volume)))
 		return (NULL);
 	if (n == 0)
 		*pocket = '0';

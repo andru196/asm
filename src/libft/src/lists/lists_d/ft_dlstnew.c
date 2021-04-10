@@ -16,11 +16,11 @@ t_dlist	*ft_dlstnew(void const *content, size_t content_size)
 {
 	t_dlist	*res;
 
-	if (!(res = (t_dlist *)ft_memalloc(sizeof(t_dlist))))
+	if (!as((void **)&res, ft_memalloc(sizeof(t_dlist))))
 		return ((void *)(size_t)ft_err_malloc("res", __func__) - 1);
 	if (content)
 	{
-		if (!(res->CNT = (void *)ft_memalloc(content_size)))
+		if (!as(&res->content, ft_memalloc(content_size)))
 		{
 			free(res);
 			return ((void *)(size_t)ft_err_malloc("res->CNT", __func__) \

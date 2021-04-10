@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2020/09/26 14:54:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:17:04 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ t_arg	*find_word(t_args_rez *args, char *word)
 	int		flag;
 
 	len = ft_strlen(word);
-	tmp = args->args ? args->args : args->flags;
-	flag = args->args ? 0 : 1;
+	tmp = tv(args->args && 1, args->args, args->flags);
+	flag = ti(args->args && 1, 0, 1);
 	while (tmp)
 	{
 		point = NULL;
@@ -113,9 +113,10 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	t_arg	*arg;
 
 	i = 0;
+	arg = NULL;
 	while (++i < argc)
 	{
-		if (!(arg = find_word(ret, args[i])))
+		if (!as((void **)&arg, find_word(ret, args[i])))
 		{
 			ft_lstadd(&ret->not_expected, ft_lstnew(args[i],
 					ft_strlen(args[i]) + 1));

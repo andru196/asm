@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/10 17:48:31 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 19:03:25 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ t_label	*new_label(t_asmcont *cont, char *str)
 	return (rez);
 }
 
+static inline void	add_lbl(char *lbl_name, t_asmcont *cont,
+			t_cmnd_label_link *rez, t_label *tmp_pr)
+{
+	rez->label = new_label_min(lbl_name);
+	if (tmp_pr)
+		tmp_pr->next = rez->label;
+	else
+		cont->label_list = rez->label;
+}
+
 t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 {
 	t_label				*tmp;
@@ -64,20 +74,16 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 		return (rez);
 	rez->col = g_column;
 	tmp_pr = cont->label_list;
-	tmp = tv(tmp_pr && 1, tmp_pr->next, NULL);
-	while (tmp && ft_strcmp(tmp_pr->name, lbl_name) \
-			&& as((void **)&tmp_pr, tmp))
+	tmp = NULL;
+	if (tmp_pr)
+		tmp = tmp_pr->next;
+	while (tmp && ft_strcmp(tmp_pr->name, lbl_name)
+		&& as((void **)&tmp_pr, tmp))
 		tmp = tmp->next;
 	if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
 		rez->label = tv(tmp && !ft_strcmp(tmp->name, lbl_name), tmp, tmp_pr);
 	else
-	{
-		rez->label = new_label_min(lbl_name);
-		if (tmp_pr)
-			tmp_pr->next = rez->label;
-		else
-			cont->label_list = rez->label;
-	}
+		add_lbl(lbl_name, cont, rez, tmp_pr);
 	rez->arg_num = arg_n;
 	rez->command = &cont->command_list[cont->cmd_count - 1];
 	return (rez);

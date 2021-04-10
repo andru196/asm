@@ -59,7 +59,7 @@ uint8_t	ft_lstrot_arr(t_list **alst)
 			counter++;
 			ptr = ptr->next;
 		}
-		if (!(array = (t_list **)ft_memalloc((counter + 1) * sizeof(ptr))))
+		if (!as((void **)&array, ft_memalloc((counter + 1) * sizeof(ptr))))
 			return (2);
 		*alst = ft_lstrot_swap(array, *alst, counter);
 		free(array);

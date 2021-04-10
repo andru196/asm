@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_default_support_4.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 21:21:10 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/30 22:22:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:49:40 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ char	*init_temp_string(int *length, t_float_calc *f,
 	*length = ft_strlen(f->float_string);
 	temp = (char *)malloc(sizeof(char) * container->width + 1);
 	temp[container->width] = '\0';
-	temp[0] = (f->num > 0) ? '+' : '-';
+	temp[0] = tc(f->num > 0, '+', '-');
 	return (temp);
 }

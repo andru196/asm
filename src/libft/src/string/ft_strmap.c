@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 18:53:40 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/02 22:19:31 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:33:06 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 
 	if (!s || !f)
 		return (NULL);
-	if (!(pocket = ft_strnew(ft_strlen(s))))
+	if (!as((void **)&pocket, ft_strnew(ft_strlen(s))))
 		return (NULL);
 	bogey = pocket;
 	while (*s != '\0')

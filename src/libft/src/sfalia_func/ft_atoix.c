@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:33:08 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/20 00:44:57 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/10 20:36:39 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ long long int	ft_atoix(char *str)
 		str++;
 	if (is_dec(str))
 		return (ft_atoil(str));
-	sign = *str == '-' ? -1 : 1;
+	sign = ti(*str == '-', -1, 1);
 	str += (*str == '+' || *str == '-');
-	method = *str == '0' ? 8 : 10;
-	method = method == 8 && ft_toupper(*(str + 1)) == 'X' ? 16 : method;
+	method = ti(*str == '0', 8, 10);
+	method = method == 8 && ti(ft_toupper(*(str + 1)) == 'X', 16, method);
 	while (*str == '0')
 		str++;
-	str = ft_toupper(*str) == 'X' ? str + 1 : str;
+	str = tv(ft_toupper(*str) == 'X', str + 1, str);
 	rez = 0;
 	while ((method == 10 && ft_isdigit(*str)) || (method == 8 && *str >= '0'
 			&& *str <= '7') || (method == 16 && (ft_isdigit(*str)
 				|| (ft_toupper(*str) >= 'A' && ft_toupper(*str) <= 'F'))))
 	{
 		rez *= method;
-		rez += ft_isdigit(*str) ? *str - '0' : ft_toupper(*str) - 'A' + 10;
+		rez += ti(ft_isdigit(*str), *str - '0', ft_toupper(*str) - 'A' + 10);
 		str++;
 	}
 	return (rez * sign);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_ptr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:22:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 00:25:53 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:40:55 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ uint8_t	ft_place_ptr(t_format *formstat, \
 		format->filler = ' ';
 	else
 		format->precision = 1;
-	if (!(buffer = (char *)ft_memalloc(24UL + format->precision + 2)))
+	if (!as((void **)&buffer, ft_memalloc(24UL + format->precision + 2)))
 		return (1);
 	*(short int *)buffer = (short int)30768U;
 	buffs[0] = buffer + 1;

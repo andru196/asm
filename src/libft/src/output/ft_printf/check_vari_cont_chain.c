@@ -71,7 +71,7 @@ static inline uint8_t	ft_check_first_exists(t_format *formstat, \
 	if (formstat->first->vari_num != 1)
 	{
 		*flag = 1;
-		if (!(ptr = (t_varitype *)ft_memalloc(sizeof(t_varitype))))
+		if (!as((void **)&ptr, ft_memalloc(sizeof(t_varitype))))
 		{
 			ft_err_malloc("ptr", __func__);
 			return ((formstat->errflag = 1));

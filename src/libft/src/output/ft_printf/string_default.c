@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_default.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:39:53 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/09/14 01:17:50 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:30:56 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	*ft_form_string(char *res, const char *varg, \
 	bogey = varg;
 	ptr = res;
 	end = varg + varglen;
-	while (colour && (colour = ft_memchr(colour, '{', end - colour)))
+	while (colour && as((void **)&colour, ft_memchr(colour, '{', end - colour)))
 	{
 		ft_memcpy(ptr, bogey, colour - bogey);
 		ptr += colour - bogey;
@@ -97,14 +97,14 @@ char	*ft_get_string_default(t_fword *container)
 	int					extra_len;
 
 	extra_len = 0;
-	if (!(sub = (char *)va_arg(*container->variative, char *)))
+	if (!as((void **)&sub, va_arg(*container->variative, char *)))
 		sub = "(null)";
 	variative = sub;
 	endsub = sub + ft_strlen((const char *)sub);
-	while ((variative = ft_memchr((const void *)variative, '{', \
+	while (as((void **)&variative, ft_memchr((const void *)variative, '{', \
 									endsub - variative)))
 		extra_len += ft_value_colour(variative++);
-	if (!(variative = (char *)ft_memalloc(endsub - sub + extra_len + 1)))
+	if (!as((void **)&variative, ft_memalloc(endsub - sub + extra_len + 1)))
 		return (NULL);
 	return (ft_form_string(variative, sub, endsub - sub));
 }

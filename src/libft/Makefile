@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: sstark <sstark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/06 00:16:21 by mschimme          #+#    #+#              #
-#    Updated: 2021/04/10 15:09:45 by sfalia-f         ###   ########.fr        #
+#    Updated: 2021/04/10 20:39:45 by sstark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -241,7 +241,9 @@ SOURCE	+=	ft_isspace.c \
 #**********************				norm_shit_func:		***************************#
 
 SOURCE	+=	ass.c\
-			tera.c
+			ass2.c\
+			tera.c \
+			tera2.c
 
 #**********************				BODY:			***************************#
 
@@ -265,7 +267,7 @@ MAKEDIR:
 
 $(OBJ_DIR)/%.o:%.c
 	@printf "\e[1K\e[0ECompile "
-	@printf "\e[1;32m%-6s\e[m" $@
+	@printf "\e[1;32m%-6s\e[m" $@ " "
 	@$(CC) $(CFLAGS) -o $@ $< -c $(IFLAGS)
 	@printf "\e[1K\e[0ECompile competed "
 	

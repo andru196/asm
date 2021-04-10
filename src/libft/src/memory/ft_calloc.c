@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (__builtin_umull_overflow(count, size, &total))
 		return ((void *)(size_t)ft_err_varoverflow("total", __func__) - 1);
-	if (!(pocket = malloc(total)))
+	if (!as(&pocket, malloc(total)))
 		return ((void *)(size_t)ft_err_malloc("pocket", __func__) - 1);
 	ft_bzero(pocket, total);
 	return (pocket);
