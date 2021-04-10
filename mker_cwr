@@ -6,7 +6,7 @@
 #    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2021/04/08 00:13:27 by ycorrupt         ###   ########.fr        #
+#    Updated: 2021/04/10 02:51:41 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ SOURCE	+=	init_visual.c \
 			manage_carry.c \
 			manage_colors.c \
 			print_helpers.c \
-			manage_attributes.c
+			manage_attributes.c \
+			run_cycle.c
 
 OBJ_DIR		:=	./obj_$(NAME)
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))

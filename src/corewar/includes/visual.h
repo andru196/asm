@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/08 23:19:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:01:13 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ struct							s_visual
     t_attribute					a_arena[MEM_SIZE];
 	int							cycle_speed;
 	short						colors[5];
+	unsigned int				carries;				
 };
 
 /*

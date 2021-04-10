@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/24 21:56:27 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:57:52 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void		ft_exec_battle(t_world *nexus);
 void		ft_the_dump_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
 void		ft_visualize_cycle(t_world *nexus, t_dvasa *tree);
+void		ft_cycle_control(t_world *nexus, \
+											t_dvasa **tree, t_dvasa **vacant);
+void		ft_carry_process(t_world *nexus, t_dvasa **tree, \
+															t_dvasa **new_node);
 
 /*
 ******************				SERVice funcs:			************************
