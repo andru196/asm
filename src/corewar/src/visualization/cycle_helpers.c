@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 02:41:57 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 16:41:48 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:03:22 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ inline static int	get_decreased_speed(int cycle_speed, int delta)
 inline static void	perform_button_action(int ch, t_world *nexus, \
 											t_dvasa **tree, t_dvasa **vacant)
 {
-	usleep(1000000 / nexus->visual->cycle_speed);
+	usleep(1000000 / (nexus->visual->cycle_speed * \
+											nexus->visual->cycle_speed) - 1);
 	if (ch == SINGLE_CYCLE_BUTTON && *tree)
 	{
 		ft_make_cycle(nexus, tree, vacant);

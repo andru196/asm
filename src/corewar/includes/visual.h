@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 17:07:04 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:59:38 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 # define FIELD_HEIGTH			66
 # define INFO_WIDTH				60
-# define ARENA_WIDTH			192
+# define ARENA_WIDTH			195
 # define INDENT					3
 # define COLOR_PAIR_NUM			4
-# define MAX_SPEED				1000
+# define MAX_SPEED				500
 # define MIN_SPEED				1
 # define BOLD_CYCLE				50
 # define HELLO_STRING			"Hello to our cool (maybe) COREWAR!!!"
