@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_cycle.c                                        :+:      :+:    :+:   */
+/*   cycle_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 02:41:57 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 03:01:26 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:57:49 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-
-void	ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
-{
-	if (tree)
-	{
-		nexus->cyc.cycle++;
-		ft_carry_process(nexus, tree, vacant);
-		ft_cycle_control(nexus, tree, vacant);
-		update_attribute_arena(nexus);
-		ft_print_ncursus_arena(nexus);
-	}
-}
 
 int	get_increased_speed(int cycle_speed, int delta)
 {
@@ -40,9 +28,10 @@ int	get_decreased_speed(int cycle_speed, int delta)
 		return (cycle_speed - delta);
 }
 
-void	perform_button_action(int ch, t_world *nexus, \
+inline static void	perform_button_action(int ch, t_world *nexus, \
 											t_dvasa **tree, t_dvasa **vacant)
 {
+	usleep(1000000 / nexus->visual->cycle_speed);
 	if (ch == SINGLE_CYCLE_BUTTON && *tree)
 	{
 		ft_make_cycle(nexus, tree, vacant);
@@ -64,15 +53,20 @@ void	perform_button_action(int ch, t_world *nexus, \
 		get_decreased_speed(nexus->visual->cycle_speed, 1);
 }
 
+inline static void	*init_all_visual(t_world *nexus)
+{
+	nexus->visual = ft_init_visual();
+	ft_init_a_arena(nexus);
+	ft_print_info(nexus);
+	ft_print_ncursus_arena(nexus);
+}
+
 void	ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 {
 	t_dvasa	*vacant;
 	int		ch;
 
-	nexus->visual = ft_init_visual();
-	ft_init_a_arena(nexus);
-	ft_print_info(nexus);
-	ft_print_ncursus_arena(nexus);
+	init_all_visual(nexus);
 	vacant = NULL;
 	while (1)
 	{
@@ -80,7 +74,6 @@ void	ft_visualize_cycle(t_world *nexus, t_dvasa *tree)
 		if (ch == 27)
 			break ;
 		perform_button_action(ch, nexus, &tree, &vacant);
-		usleep(1000000 / nexus->visual->cycle_speed);
 		if (!tree)
 		{
 			nexus->visual->active = 0;

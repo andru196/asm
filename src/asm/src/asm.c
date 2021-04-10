@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:59:01 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/10 14:44:22 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:48:36 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*what_flag(int *flag, int argc, char **argv)
 	char		*cpy;
 	t_arg		*flgs[3];
 
-	if (!(cont = new_arguments_cont()))
+	if (!as((void **)&cont, new_arguments_cont()))
 		return (NULL);
 	rez = NULL;
 	flgs[0] = add_arg(cont, 1, "-s --stdout --to_console", "");
@@ -77,10 +77,10 @@ int	main(int argc, char **argv)
 	g_error_code = 0;
 	g_column = 0;
 	g_row = 0;
-	if ((path = what_flag(
+	if (as((void **)&path, what_flag(
 				(flag_mode = &g_flag), argc, argv)))
 	{
-		if ((g_error_code = cor_open_file(path, *flag_mode)))
+		if (asi(&g_error_code, cor_open_file(path, *flag_mode)))
 			print_error();
 		else if (!(*flag_mode & fl_stdout))
 		{

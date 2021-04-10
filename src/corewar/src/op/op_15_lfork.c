@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 02:04:06 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:07:47 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void		op_lfork(t_world *nexus, t_carry *carry, \
 	vasa->gen.carry->pos += op_cont.operands[0];
 	carry->op = 0;
 	// ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
-	++nexus->visual->carries;
+	if (nexus->flags & 2)
+		++nexus->visual->carries;
 	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->pos += op_cont.length;
 	update_visual_carry(carry, op_cont.length, nexus);
