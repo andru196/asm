@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_03_st.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:50:55 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/28 16:43:00 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ void		op_st(t_world *nexus, t_carry *carry, \
 													op_cont.ops_amount - 1);
 		arr[op_cont.ops_types[1]](&nexus->arena[sizeof(RTP)], &op_cont, carry, \
 																	carry->pos);
+		if (op_cont.ops_types[1] == 4)
+			color_bytecode(carry, nexus, (intptr_t)(carry->pos + op_cont.operands[1]));
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_09_zjmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 14:49:09 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/24 21:37:52 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ void		op_zjmp(t_world *nexus, t_carry *carry, \
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, 1);
 		carry->pos += (op_cont.operands[0] % op_cont.mod);
+		update_visual_carry(carry, op_cont.operands[0] % op_cont.mod, nexus);
 	}
 	else
+	{
 		carry->pos += op_cont.length;
+		update_visual_carry(carry, op_cont.length, nexus);
+	}
 	carry->op = 0;
 	carry->exec_cyc++;
 }

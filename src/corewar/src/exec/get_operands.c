@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/08 15:35:38 by mschimme         ###   ########.fr       */
+/*   Updated: 2020/12/27 16:58:11 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
 	uint8_t							i;
 	intptr_t						pos;
 
-	pos = carry->pos + OPC_SIZE + OPCB_SIZE;
+	pos = carry->pos + OPC_SIZE + op_cont->cd_byte;
 	i = UINT8_MAX;
 	while (++i < amount)
 	{

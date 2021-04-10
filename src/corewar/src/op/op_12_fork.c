@@ -3,16 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   op_12_fork.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/28 18:51:42 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:03:52 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 #define OP_CODE 12
+
+/*
+TODO: Алярм! Убрать после отладки!
+*/
+// inline static void	ft_newcarry_place(t_vasa *carry_cont, t_dvasa *tree, \
+// 								t_dvasa **new_node, t_carry_cont_rout *manager)
+// {
+// 	(void)new_node;
+
+// if (!tree)
+// {
+// ft_printf_fd(2, "ALARM! HOW did that happened!?\n %s of %s found no tree!", \
+// 															__func__, __FILE__);
+// exit (1);
+// }
+// 	manager(tree, carry_cont);
+// }
 
 /*
 !Контракт:
@@ -22,7 +39,7 @@
 	*	Должна организовать помещение новой каректи в очередь на исполнение,
 		* используя предусмотренную для этого ОБЩУЮ функцию.
 */
-void		op_fork(t_world *nexus, t_carry *carry, \
+void				op_fork(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;
@@ -39,8 +56,11 @@ void		op_fork(t_world *nexus, t_carry *carry, \
 		ft_prox_err_malloc("new carry or its container", __func__);
 	}
 	vasa->gen.carry->pos += op_cont.operands[0] % op_cont.mod;
-	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->op = 0;
+	++nexus->visual->carries;
+	// ft_newcarry_place(vasa, head, vacant, &ft_add_offspring_by_id);
+	ft_leafnode_pick(vasa, head, vacant, &ft_add_offspring_by_id);
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }

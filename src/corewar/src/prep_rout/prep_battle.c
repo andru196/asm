@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_battle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/25 13:23:50 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/07 20:41:46 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,17 @@ inline static void		ft_place_champs(t_world *nexus)
 	uint8_t				*arena;
 
 	arena = &nexus->arena[sizeof(RTP)];
-	ch_amount = nexus->champs;
-	step = nexus->champs;
+	ch_amount = -1;
+	step = MEM_SIZE / nexus->champs;
 	entry_ptr = 0;
-	while (--ch_amount)
+	while (++ch_amount != nexus->champs)
 	{
 		ft_memcpy((void *)(arena + entry_ptr), \
 					(void *)nexus->champ_ord[ch_amount]->body, \
 					(size_t)nexus->champ_ord[ch_amount]->size);
-		entry_ptr += MEM_SIZE / step;
+		nexus->champ_ord[ch_amount]->alive = true;
+		entry_ptr += step;
 	}
-	ft_memcpy((void *)(arena + entry_ptr), \
-				(void *)nexus->champ_ord[ch_amount]->body, \
-				(size_t)nexus->champ_ord[ch_amount]->size);
 }
 
 inline static void		ft_print_intro(t_champ **champ_arr)
@@ -99,6 +97,7 @@ void					ft_prep_battle(t_world *nexus)
 	nexus->champ_ord = ft_build_champarr_sorted(&nexus->champ[0], nexus->champs);
 	nexus->survivor = nexus->champ_ord[nexus->champs - 1];
 	ft_place_champs(nexus);
-	ft_print_intro(nexus->champ_ord);
+	if (!(nexus->flags & 2))
+		ft_print_intro(nexus->champ_ord);
 	ft_init_carries(nexus);
 }

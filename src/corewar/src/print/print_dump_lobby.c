@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_dump_lobby.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 18:32:27 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 13:56:08 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*
 **	Просто выводит состояние арены в текущий момент.
 **	Принимает указатель на указатель головы t_vasa, которые в своем
-** ->gen.cyc_sol хранят циклы, в которые необхоимо дампнуться.
+**->gen.cyc_sol хранят циклы, в которые необхоимо дампнуться.
 **	Через голову управляет цепочкой дампов.
 **	Отпработав последний дамп-цикл должна подать сигнал на прерывание работы
 **	цикла (возвратить 1).
@@ -50,6 +50,12 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 	*i = cpy;
 }
 
+<<<<<<< HEAD
+=======
+/*
+TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
+*/
+>>>>>>> 2860204756168e8c52b434ee8ca4adfe54452d45
 uint8_t				ft_print_dump(t_world *nexus)
 {
 	t_vasa			*ptr;
@@ -60,21 +66,14 @@ uint8_t				ft_print_dump(t_world *nexus)
 
 	i = 0;
 	ptr = nexus->cyc.cyc_to_dump;
-	bytes = nexus->arena + sizeof(RTP) + max / 2;
-	while (i < (max / 2))
-	{
-		ft_printf("0x%.4x:\t", i);
-		set_dumpline(str, &bytes, &i, max);
-		ft_putendl(str);
-	}
 	bytes = nexus->arena + sizeof(RTP);
 	while (i < max)
 	{
-		ft_printf("0x%.4x:\t", i);
+		ft_printf("0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
-		ft_putendl(str);
+		ft_putstr(str);
+		ft_putendl(" ");														//* Костылинг!
 	}
-	ft_putendl("");
 	nexus->cyc.cyc_to_dump = nexus->cyc.cyc_to_dump->next;
 	ptr->gen.cyc_sol = 0;
 	free(ptr);

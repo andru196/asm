@@ -6,7 +6,7 @@
 /*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 22:11:06 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:18:22 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/27 00:27:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,4 @@ void			ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 		ft_new_leafnode_insert(&tree, new_node, root);
 	manager(tree, carry_cont);
 }
+

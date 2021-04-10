@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_02_ld.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 17:51:05 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/03/17 21:00:31 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void		op_ld(t_world *nexus, t_carry *carry, \
 	}
 	carry->op = 0;
 	carry->pos += op_cont.length;
+	update_visual_carry(carry, op_cont.length, nexus);
 	carry->exec_cyc++;
 }
