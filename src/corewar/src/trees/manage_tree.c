@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 02:05:54 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:08:42 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,9 @@ void					ft_tree_undertaker(t_world *nexus, t_dvasa **tree, t_dvasa **vacant, \
 	while (ft_carry_control(nexus, leaf_ptr, &leaf_ptr->gen.vasa, cyc_ptr))
 		;
 	if (!(leaf_ptr->gen.vasa))
+	{
+		*tree = (*tree)->right.du_vasa;
+		if (!(*vacant))
 		{
 			*tree = (*tree)->right.du_vasa;
 			if (!(*vacant))

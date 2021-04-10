@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 02:57:52 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:09:49 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 
 void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
+void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+															intptr_t amount);
 RTP			ft_get_reg_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
@@ -206,6 +208,8 @@ RTP			ft_get_dir_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 RTP			ft_get_ind_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
+RTP			ft_get_ind_val_sch(uint8_t *arena, t_mop *op_cont, \
+												t_carry *carry, intptr_t pos);
 RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
 void		ft_set_nil_val(uint8_t *arena, t_mop *op_cont, t_carry *carry, \

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 20:41:53 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:09:16 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void		op_aff(t_world *nexus, t_carry *carry, \
 									&op_cont, ft_get_op_cont(OP_CODE))))
 	{
 		ft_get_operands(&nexus->arena[sizeof(RTP)], &op_cont, carry, 1);
-		c = (char)op_cont.operands[0];
-		if (!(nexus->flags & 1) && ft_isprint(c))
+		c = op_cont.operands[0] % 256;
+		if (!(nexus->flags & 3) && ft_isprint(c))
 			write (1, &c, 1);
 	}
 	carry->op = 0;

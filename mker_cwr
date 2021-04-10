@@ -6,13 +6,13 @@
 #    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2021/04/10 02:51:41 by ycorrupt         ###   ########.fr        #
+#    Updated: 2021/04/10 14:10:09 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	corewar
 CC		=	clang
-FLAGS	=	-Wall -Wextra -g
+FLAGS	=	-Wall -Wextra
 DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
@@ -47,6 +47,7 @@ SOURCE	+=	err_champ.c \
 SOURCE	+=	exec_lobby.c \
 			get_operands.c \
 			operands_head_get.c \
+			operands_head_get_comp.c \
 			operands_head_set.c \
 			the_cycle.c
 #**********************		src/flip_endian:		***************************#

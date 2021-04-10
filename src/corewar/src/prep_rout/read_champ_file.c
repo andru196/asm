@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2021/02/22 18:48:33 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/09 21:53:21 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,7 @@ inline static void		ft_get_champ_body(int fd, \
 	}
 	if ((res = read(fd, (void *)(champ->body),
 						(size_t)champ->size)) != (ssize_t)champ->size)
-	{
-		ft_err_invalid_filesize(champ_error, "Champion body field");
-		return ;
-	}
+		return ft_err_invalid_filesize(champ_error, "Champion body field");
 	if (read(fd, &buff, 1))
 		ft_err_invalid_bodysize(champ_error, NULL);
 }
