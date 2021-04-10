@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:33:47 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/10/31 19:40:43 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:41:38 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			args_ind_dir(t_asmcont *cont, int com_pos, int arg_num, char *word)
 	long long	rez;
 	char		flag;
 
-	flag = *word == DIRECT_CHAR ? T_DIR : T_IND;
+	flag = tc(*word == DIRECT_CHAR, T_DIR, T_IND);
 	if (!(g_otab[cont->command_list[com_pos].cmnd_num].args_types[arg_num]
 		& flag))
 		return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cor_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:34:29 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/09 00:05:47 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 		rez = special_arg(cont, ft_strcmp(word, NAME_CMD_STRING), str, fd);
 	}
 	else if (!cont->champ_name || !cont->comment)
-		return (cont->champ_name ? NONE_COMMENT_ERROR : NONE_PROG_NAME_ERROR);
+		return (ti(cont->champ_name && 1, NONE_COMMENT_ERROR,
+														NONE_PROG_NAME_ERROR));
 	else if (*(*str - 1) == LABEL_CHAR)
 		if ((rez = label_check(cont, word, len)) > 0)
 			g_column += len;

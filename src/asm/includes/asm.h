@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/20 00:27:06 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/09 00:10:08 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,12 @@ int					g_error_code;
 int					g_column;
 int					g_row;
 
+
+void				*tv(int bool_val, void *val1, void *val2);
+int					ti(int bool_val, int val1, int val2);
+char				tc(int bool_val, char val1, char val2);
+long				tl(int bool_val, long val1, long val2);
+unsigned			tu(int bool_val, unsigned val1, unsigned val2);
 int					check_flags(char **argv, int argc, char *flag);
 int					cor_open_file(char *file_name, int flag);
 void				asm_print_error();
