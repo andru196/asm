@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   special_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:22:34 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/20 00:29:32 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/09 00:08:23 by andru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ static int			multy_line_arg(int fd, char **rez, size_t *size)
 	return (1);
 }
 
+static int return_spec_arg(char *cpy[2], int dst, t_asmcont *c)
+{
+	if (dst)
+		return (ti(ft_strlen(c->comment = cpy[1]) > COMMENT_LENGTH, LCERR, 2));
+	return (ti(ft_strlen(c->champ_name = cpy[1]) > PROG_NAME_LENGTH,
+																	LNERR, 2));
+}
+
 int					special_arg(t_asmcont *c, int dst, char **str, int fd)
 {
 	char	*cpy[2];
@@ -70,13 +78,11 @@ int					special_arg(t_asmcont *c, int dst, char **str, int fd)
 	if (!(cpy[1] = ft_strnew(size[1])))
 		return (MALLOC_ERROR);
 	ft_memcpy(cpy[1], *str + 1, size[1]);
-	g_column = size[1] + (ft_strstr(*str, "\n") ?
-		-(ft_strstrlst(*str, "\n") - *str + 1) : g_column + 2);
+	g_column = size[1] + ti(ft_strstr(*str, "\n") && 1,
+		-(ft_strstrlst(*str, "\n") - *str + 1), g_column + 2);
 	if (ft_strchr(*str, '\n'))
 		ft_strdel(str);
 	else
 		*str += size[1] + 1 + !ft_strstr(*str, "\n");
-	if (dst)
-		return (ft_strlen(c->comment = cpy[1]) > COMMENT_LENGTH ? LCERR : 2);
-	return (ft_strlen(c->champ_name = cpy[1]) > PROG_NAME_LENGTH ? LNERR : 2);
+	return return_spec_arg(cpy, dst, c);
 }
