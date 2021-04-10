@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   special_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:22:34 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/09 00:08:23 by andru            ###   ########.fr       */
+/*   Updated: 2021/04/10 13:21:56 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static char			*ft_strjoinnl(char *s1, char *s2)
+static char	*ft_strjoinnl(char *s1, char *s2)
 {
 	char	*rez;
 	char	*cpy;
@@ -23,7 +23,7 @@ static char			*ft_strjoinnl(char *s1, char *s2)
 	return (rez);
 }
 
-static int			multy_line_arg(int fd, char **rez, size_t *size)
+static int	multy_line_arg(int fd, char **rez, size_t *size)
 {
 	char	*buf;
 	char	*cpy;
@@ -52,15 +52,15 @@ static int			multy_line_arg(int fd, char **rez, size_t *size)
 	return (1);
 }
 
-static int return_spec_arg(char *cpy[2], int dst, t_asmcont *c)
+static int	return_spec_arg(char *cpy[2], int dst, t_asmcont *c)
 {
 	if (dst)
 		return (ti(ft_strlen(c->comment = cpy[1]) > COMMENT_LENGTH, LCERR, 2));
 	return (ti(ft_strlen(c->champ_name = cpy[1]) > PROG_NAME_LENGTH,
-																	LNERR, 2));
+			LNERR, 2));
 }
 
-int					special_arg(t_asmcont *c, int dst, char **str, int fd)
+int	special_arg(t_asmcont *c, int dst, char **str, int fd)
 {
 	char	*cpy[2];
 	size_t	size[2];
@@ -71,7 +71,7 @@ int					special_arg(t_asmcont *c, int dst, char **str, int fd)
 	*str += size[0];
 	g_column += size[0];
 	if (**str != '"' || (!(cpy[0] = ft_strchr(*str + 1, QUOTE_CHAR))
-		&& multy_line_arg(fd, str, &(size[1]))))
+			&& multy_line_arg(fd, str, &(size[1]))))
 		return (NONE_QUOTE_ERROR);
 	else if (**str == '"' && cpy[0])
 		size[1] = cpy[0] - *str - 1;
@@ -79,10 +79,10 @@ int					special_arg(t_asmcont *c, int dst, char **str, int fd)
 		return (MALLOC_ERROR);
 	ft_memcpy(cpy[1], *str + 1, size[1]);
 	g_column = size[1] + ti(ft_strstr(*str, "\n") && 1,
-		-(ft_strstrlst(*str, "\n") - *str + 1), g_column + 2);
+			-(ft_strstrlst(*str, "\n") - *str + 1), g_column + 2);
 	if (ft_strchr(*str, '\n'))
 		ft_strdel(str);
 	else
 		*str += size[1] + 1 + !ft_strstr(*str, "\n");
-	return return_spec_arg(cpy, dst, c);
+	return (return_spec_arg(cpy, dst, c));
 }

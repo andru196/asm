@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   resolve_connections.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 00:06:11 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/19 00:34:08 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/10 13:25:51 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int			fuck_connections(t_asmcont *c)
+int	fuck_connections(t_asmcont *c)
 {
 	t_cmnd_label_link	*tmp;
 	t_cmnd_label_link	*pre;

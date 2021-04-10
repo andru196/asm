@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   asm_cpy_word.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:28:58 by andru196          #+#    #+#             */
-/*   Updated: 2020/08/20 00:30:07 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/10 14:37:25 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op g_otab[OP_TAB_SIZE];
+extern t_op	g_otab[OP_TAB_SIZE];
 
-int			word_iscomand(char *word, int len)
+int	word_iscomand(char *word, int len)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (len)
@@ -26,16 +26,16 @@ int			word_iscomand(char *word, int len)
 	return (0);
 }
 
-int			cpy_word(char *dst, char *src)
+int	cpy_word(char *dst, char *src)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (len < MAX_WORD_LEN && *src != ' ' && *src != '\t'
 		&& *src != COMMENT_CHAR && *src != ALT_COMMENT_CHAR
 		&& *src != SEPARATOR_CHAR && *src && *src != QUOTE_CHAR
 		&& !((*src == DIRECT_CHAR || *src == '+' || *src == '-')
-		&& word_iscomand(dst - len, len)))
+			&& word_iscomand(dst - len, len)))
 	{
 		len++;
 		*dst++ = *src++;
@@ -46,13 +46,13 @@ int			cpy_word(char *dst, char *src)
 	return (len);
 }
 
-int			cpy_arg_word(char *dst, char *src)
+int	cpy_arg_word(char *dst, char *src)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (len < MAX_WORD_LEN && *src != COMMENT_CHAR
-	&& *src != ALT_COMMENT_CHAR && *src != SEPARATOR_CHAR && *src)
+		&& *src != ALT_COMMENT_CHAR && *src != SEPARATOR_CHAR && *src)
 	{
 		len++;
 		*dst++ = *src++;
@@ -63,7 +63,7 @@ int			cpy_arg_word(char *dst, char *src)
 	return (len);
 }
 
-void		prepare_arg(char *word, long long *arg)
+void	prepare_arg(char *word, long long *arg)
 {
 	long long	rez;
 	long long	tmp;

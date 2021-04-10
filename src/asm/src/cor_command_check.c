@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cor_command_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 21:47:10 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/08 23:50:18 by andru            ###   ########.fr       */
+/*   Updated: 2021/04/10 14:49:38 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-extern t_op		g_otab[OP_TAB_SIZE];
+extern t_op	g_otab[OP_TAB_SIZE];
 
-static int		is_finished(char *word)
+static int	is_finished(char *word)
 {
-	const char allowed[] = {' ', '\t'};
+	const char	allowed[] = {' ', '\t'};
 
 	while (*word)
 	{
@@ -29,16 +29,24 @@ static int		is_finished(char *word)
 	return (1);
 }
 
-int				command_check(t_asmcont *cont, char *word, char **str, int len)
+static inline int	find_op(char *word)
+{
+	int	i ;
+
+	i = 0;
+	while (i < OP_TAB_SIZE && g_otab[i].name && ft_strcmp(g_otab[i].name, word))
+		i++;
+	return (i);
+}
+
+int	command_check(t_asmcont *cont, char *word, char **str, int len)
 {
 	int		i;
 	int		new_c;
 	int		j;
 	int		shift;
 
-	i = 0;
-	while (i < OP_TAB_SIZE && g_otab[i].name && ft_strcmp(g_otab[i].name, word))
-		i++;
+	i = find_op(word);
 	if (i == OP_TAB_SIZE || !g_otab[i].name)
 		return (COMMAND_NOT_FOUND);
 	g_column += len;
@@ -59,9 +67,9 @@ int				command_check(t_asmcont *cont, char *word, char **str, int len)
 	return (ARGS_ERROR);
 }
 
-int				digits_count(char *str)
+int	digits_count(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isdigit(*str++))
