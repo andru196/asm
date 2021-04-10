@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    mker_asm                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andru <andru@student.42.fr>                +#+  +:+       +#+         #
+#    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 20:41:38 by ycorrupt          #+#    #+#              #
-#    Updated: 2021/04/09 00:03:44 by andru            ###   ########.fr        #
+#    Updated: 2021/04/10 15:25:20 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SOURCE	+=	argument_check.c \
 			resolve_connections.c \
 			skips.c \
 			special_arg.c \
-			ternar.c
 #**********************				src:			***************************#
 SOURCE	+=	op.c
 
@@ -60,10 +59,10 @@ MAKEDIR:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:%.c
-	@echo -ne '\e[1K\e[0ECompile '
-	@printf '\e[1;32m%-6s\e[m' $@
+	@printf "\e[1K\e[0ECompile "
+	@printf "\e[1;32m%-6s\e[m" $@ " "
 	@$(CC) $(IFLAGS) $(FLAGS) -c $< -o $@
-	@echo -ne '\e[1K\e[0ECompile competed '
+	@printf "\e[1K\e[0ECompile competed "
 
 clean:
 	@rm -rf $(OBJ_DIR)

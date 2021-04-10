@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/10 13:53:42 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:49:22 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 	t_label				*tmp_pr;
 	t_cmnd_label_link	*rez;
 
-	if (!(rez = ft_memalloc(sizeof(t_cmnd_label_link))))
+	if (!as((void **)&rez, ft_memalloc(sizeof(t_cmnd_label_link))))
 		return (rez);
 	rez->col = g_column;
 	tmp_pr = cont->label_list;
 	tmp = tv(tmp_pr && 1, tmp_pr->next, NULL);
-	while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
+	while (tmp && ft_strcmp(tmp_pr->name, lbl_name) \
+			&& as((void **)&tmp_pr, tmp))
 		tmp = tmp->next;
 	if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
 		rez->label = tv(tmp && !ft_strcmp(tmp->name, lbl_name), tmp, tmp_pr);
