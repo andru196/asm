@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:56 by mschimme          #+#    #+#             */
-/*   Updated: 2020/10/31 20:12:01 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:32:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <curses.h>
 # include <sys/ioctl.h>
 
+# ifndef CWR_SCH_MOD
+#  define CWR_SCH_MOD
+# endif
 /*
 **	curses.h - для графического режима.
 **	ioctl.h - для получения актуальных данных по состоянию терминала.

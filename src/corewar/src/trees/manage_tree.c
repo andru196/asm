@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2020/11/15 19:00:25 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/09 22:45:30 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,17 +125,17 @@ void					ft_tree_undertaker(t_dvasa **tree, t_dvasa **vacant, \
 	while (ft_carry_control(leaf_ptr, &leaf_ptr->gen.vasa, cyc_ptr))
 		;
 	if (!(leaf_ptr->gen.vasa))
+	{
+		*tree = (*tree)->right.du_vasa;
+		if (!(*vacant))
 		{
-			*tree = (*tree)->right.du_vasa;
-			if (!(*vacant))
-			{
-				*vacant = leaf_ptr;
-				ft_bzero(*vacant, sizeof(t_dvasa));
-			}
-			else
-				free(leaf_ptr);
-			ft_tree_undertaker(tree, vacant, cyc_ptr);
-			return ;
+			*vacant = leaf_ptr;
+			ft_bzero(*vacant, sizeof(t_dvasa));
 		}
+		else
+			free(leaf_ptr);
+		ft_tree_undertaker(tree, vacant, cyc_ptr);
+		return ;
+	}
 	ft_leaf_control(leaf_ptr, vacant, cyc_ptr);
 }
