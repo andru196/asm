@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 15:28:59 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/08 23:52:14 by andru            ###   ########.fr       */
+/*   Updated: 2021/04/10 13:53:42 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int					new_command(t_asmcont *cont, int command)
+int	new_command(t_asmcont *cont, int command)
 {
 	cont->command_list[cont->cmd_count].cmnd_num = command;
 	cont->command_list[cont->cmd_count].row = g_row;
@@ -20,9 +20,9 @@ int					new_command(t_asmcont *cont, int command)
 	return (cont->cmd_count - 1);
 }
 
-t_label				*new_label_min(char *str)
+t_label	*new_label_min(char *str)
 {
-	t_label *rez;
+	t_label	*rez;
 
 	rez = malloc(sizeof(t_label));
 	if (rez)
@@ -33,9 +33,9 @@ t_label				*new_label_min(char *str)
 	return (rez);
 }
 
-t_label				*new_label(t_asmcont *cont, char *str)
+t_label	*new_label(t_asmcont *cont, char *str)
 {
-	t_label *rez;
+	t_label	*rez;
 	t_label	*tmp;
 
 	rez = new_label_min(str);
@@ -60,27 +60,24 @@ t_cmnd_label_link	*new_connect(t_asmcont *cont, int arg_n, char *lbl_name)
 	t_label				*tmp_pr;
 	t_cmnd_label_link	*rez;
 
-	if ((rez = ft_memalloc(sizeof(t_cmnd_label_link))))
+	if (!(rez = ft_memalloc(sizeof(t_cmnd_label_link))))
+		return (rez);
+	rez->col = g_column;
+	tmp_pr = cont->label_list;
+	tmp = tv(tmp_pr && 1, tmp_pr->next, NULL);
+	while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
+		tmp = tmp->next;
+	if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
+		rez->label = tv(tmp && !ft_strcmp(tmp->name, lbl_name), tmp, tmp_pr);
+	else
 	{
-		rez->col = g_column;
-		tmp_pr = cont->label_list;
-		tmp = NULL;
+		rez->label = new_label_min(lbl_name);
 		if (tmp_pr)
-			tmp = tmp_pr->next;
-		while (tmp && ft_strcmp(tmp_pr->name, lbl_name) && (tmp_pr = tmp))
-			tmp = tmp->next;
-		if (tmp || (tmp_pr && !ft_strcmp(tmp_pr->name, lbl_name)))
-			rez->label = tv(tmp && !ft_strcmp(tmp->name, lbl_name), tmp, tmp_pr);
+			tmp_pr->next = rez->label;
 		else
-		{
-			rez->label = new_label_min(lbl_name);
-			if (tmp_pr)
-				tmp_pr->next = rez->label;
-			else
-				cont->label_list = rez->label;
-		}
-		rez->arg_num = arg_n;
-		rez->command = &cont->command_list[cont->cmd_count - 1];
+			cont->label_list = rez->label;
 	}
+	rez->arg_num = arg_n;
+	rez->command = &cont->command_list[cont->cmd_count - 1];
 	return (rez);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_cor_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andru <andru@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/09 00:05:47 by andru            ###   ########.fr       */
+/*   Updated: 2021/04/10 13:29:02 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
+static int	cor_scan_word(t_asmcont *cont, char **str, int fd)
 {
 	char	word[MAX_WORD_LEN + 1];
 	int		len;
@@ -23,14 +23,14 @@ static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 	*str += len;
 	rez = 0;
 	if ((!cont->champ_name && !ft_strcmp(word, NAME_CMD_STRING))
-	|| (!cont->comment && !ft_strcmp(word, COMMENT_CMD_STRING)))
+		|| (!cont->comment && !ft_strcmp(word, COMMENT_CMD_STRING)))
 	{
 		g_column += len;
 		rez = special_arg(cont, ft_strcmp(word, NAME_CMD_STRING), str, fd);
 	}
 	else if (!cont->champ_name || !cont->comment)
 		return (ti(cont->champ_name && 1, NONE_COMMENT_ERROR,
-														NONE_PROG_NAME_ERROR));
+				NONE_PROG_NAME_ERROR));
 	else if (*(*str - 1) == LABEL_CHAR)
 		if ((rez = label_check(cont, word, len)) > 0)
 			g_column += len;
@@ -41,7 +41,7 @@ static int		cor_scan_word(t_asmcont *cont, char **str, int fd)
 	return (rez);
 }
 
-static int		cor_scan(t_asmcont *cont, char *str, int fd)
+static int	cor_scan(t_asmcont *cont, char *str, int fd)
 {
 	int		rez;
 	char	*move;
@@ -62,7 +62,7 @@ static int		cor_scan(t_asmcont *cont, char *str, int fd)
 	return (rez);
 }
 
-static int		cor_read(int fd, t_asmcont *cont)
+static int	cor_read(int fd, t_asmcont *cont)
 {
 	int		rez;
 	char	*buf;
@@ -90,10 +90,10 @@ static int		cor_read(int fd, t_asmcont *cont)
 	return (rez);
 }
 
-void			free_asm_data(t_asmcont *c)
+void	free_asm_data(t_asmcont *c)
 {
-	void *tmp;
-	void *pre;
+	void	*tmp;
+	void	*pre;
 
 	ft_memdel((void **)&c->champ_name);
 	ft_memdel((void **)&c->comment);
@@ -118,7 +118,7 @@ void			free_asm_data(t_asmcont *c)
 	c->label_list = NULL;
 }
 
-int				cor_open_file(char *file_name, int flag)
+int	cor_open_file(char *file_name, int flag)
 {
 	int			fd;
 	int			code;
