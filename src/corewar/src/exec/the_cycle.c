@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_cycle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 03:00:18 by ycorrupt         ###   ########.fr       */
-=======
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/09 22:54:41 by mschimme         ###   ########.fr       */
->>>>>>> 5439a7a40d37ff0f9899629a2b06d6af7b59fce0
+/*   Updated: 2021/04/10 15:19:27 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,14 +177,12 @@ void					ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	vacant = NULL;
 	while (tree)
 	{
-		ft_carry_process(nexus, &tree, &vacant);
 		nexus->cyc.cycle++;
+		ft_carry_process(nexus, &tree, &vacant);
 		ft_cycle_control(nexus, &tree, &vacant);
 	}
 	if (vacant)
 		free(vacant);
 	ft_print_outro(nexus->survivor);
 	ft_printf("cycle: %d\n", nexus->cyc.cycle);
-
 }
-

@@ -6,13 +6,13 @@
 #    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 17:47:27 by mschimme          #+#    #+#              #
-#    Updated: 2021/04/10 14:10:09 by ycorrupt         ###   ########.fr        #
+#    Updated: 2021/04/10 15:05:28 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	corewar
 CC		=	clang
-FLAGS	=	-Wall -Wextra
+FLAGS	=	-Wall -Wextra -g
 DIR_LIB	=	./src/libft
 
 #**********************				PATHS:			***************************#
@@ -108,7 +108,8 @@ SOURCE	+=	init_visual.c \
 			manage_colors.c \
 			print_helpers.c \
 			manage_attributes.c \
-			run_cycle.c
+			cycle_helpers.c \
+			cycle_visual.c
 
 OBJ_DIR		:=	./obj_$(NAME)
 OBJECTS		:=	$(patsubst %,$(OBJ_DIR)/%,$(SOURCE:.c=.o))
