@@ -6,13 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 02:41:57 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 17:20:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:25:10 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-int	get_increased_speed(int cycle_speed, int delta)
+inline static int	get_increased_speed(int cycle_speed, int delta)
 {
 	if (cycle_speed + delta >= MAX_SPEED)
 		return (MAX_SPEED);
@@ -20,7 +20,7 @@ int	get_increased_speed(int cycle_speed, int delta)
 		return (cycle_speed + delta);
 }
 
-int	get_decreased_speed(int cycle_speed, int delta)
+inline static int	get_decreased_speed(int cycle_speed, int delta)
 {
 	if (cycle_speed - delta <= MIN_SPEED)
 		return (MIN_SPEED);
@@ -52,12 +52,6 @@ inline static void	perform_button_action(int ch, t_world *nexus, \
 		nexus->visual->cycle_speed = \
 		get_decreased_speed(nexus->visual->cycle_speed, 1);
 }
-
-/*
-!@Таня проверь, зачем тебе указатель типа void * здесь:
-inline static void	*init_all_visual(t_world *nexus)
-
-*/
 
 inline static void	init_all_visual(t_world *nexus)
 {
