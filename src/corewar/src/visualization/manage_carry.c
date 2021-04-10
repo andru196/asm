@@ -6,20 +6,17 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:53:09 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/08 22:08:47 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:03:21 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-// sega probably here ./corewar -g corFiles/Car.cor corFiles/ex.cor corFiles/Car.cor
-// sega probably here ./corewar -g 42-Corewar-Checker/champions/helltrain.cor 42-Corewar-Checker/champions/Car.cor
-
 void	update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry)
 {
-	short oft;
-	short current_color;
-	short new_color;
+	short	oft;
+	short	current_color;
+	short	new_color;
 
 	oft = sizeof(short) * 8;
 	if (!(nexus->flags & 2))
@@ -28,9 +25,9 @@ void	update_one_carry(intptr_t pos, t_world *nexus, t_bool del_carry)
 	current_color = (short)nexus->visual->a_arena[pos].value;
 	new_color = \
 		ft_swap_colors(PAIR_NUMBER((short)nexus->visual->a_arena[pos].value));
-	if (del_carry == 1 && current_color > new_color)
+	if (del_carry == 1 && PAIR_NUMBER(current_color) > PAIR_NUMBER(new_color))
 		return ;
-	if (del_carry == 0 && current_color < new_color)
+	if (del_carry == 0 && PAIR_NUMBER(current_color) < PAIR_NUMBER(new_color))
 		return ;
 	nexus->visual->a_arena[pos].value = \
 	(nexus->visual->a_arena[pos].value >> oft) << oft | new_color;

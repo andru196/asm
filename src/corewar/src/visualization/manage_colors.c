@@ -6,27 +6,27 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 23:08:37 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/30 23:44:29 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 01:46:57 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-short int		ft_swap_colors(short int color_num)
+short int	ft_swap_colors(short int color_num)
 {
-	short fg;
-	short bg;
+	short	fg;
+	short	bg;
 
 	pair_content(color_num, &fg, &bg);
 	return (COLOR_PAIR(ft_get_color_num(bg, fg)));
 }
 
-short int		ft_get_color_num(short int fg, short int bg)
+short int	ft_get_color_num(short int fg, short int bg)
 {
-	return (fg << 4 | bg);
+	return (fg << 3 | bg);
 }
 
-void			ft_init_colors(short *colors)
+void	ft_init_colors(short *colors)
 {
 	static short int	c[5] = {COLOR_MAGENTA, COLOR_BLUE, \
 								COLOR_YELLOW, COLOR_GREEN, COLOR_WHITE};

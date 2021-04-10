@@ -6,13 +6,13 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 21:46:49 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/03/30 21:47:09 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/09 20:13:38 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-void		update_attribute_arena(t_world *nexus)
+void	update_attribute_arena(t_world *nexus)
 {
 	int			i;
 	t_attribute	*a_arena;

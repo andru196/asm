@@ -6,13 +6,13 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:10:36 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/08 22:11:55 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:03:14 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-static void		ft_init_zero_arena(t_world *nexus)
+static void	ft_init_zero_arena(t_world *nexus)
 {
 	t_attribute		*a_arena;
 	RTP				i;
@@ -21,12 +21,12 @@ static void		ft_init_zero_arena(t_world *nexus)
 	a_arena = nexus->visual->a_arena;
 	while (++i < MEM_SIZE)
 	{
-		a_arena[i].value = nexus->visual->colors[DEFAULT_COLOR];
+		a_arena[i].value = COLOR_PAIR(nexus->visual->colors[DEFAULT_COLOR]);
 		a_arena[i].bold_cycle = 0;
 	}
 }
 
-void			ft_init_a_arena(t_world *nexus)
+void	ft_init_a_arena(t_world *nexus)
 {
 	RTP				i;
 	RTP				offset;
@@ -52,16 +52,17 @@ void			ft_init_a_arena(t_world *nexus)
 		}
 		tmp++;
 	}
+	nexus->visual->carries = nexus->champs;
 }
 
-t_visual		*ft_init_visual(void)
+t_visual	*ft_init_visual(void)
 {
-	t_visual *result;
+	t_visual	*result;
 
 	initscr();
 	noecho();
-	curs_set(0); // hide cursor
-	timeout(1); // timeout for input (getch)
+	curs_set(0);
+	timeout(1);
 	start_color();
 	result = (t_visual *)ft_memalloc(sizeof(t_visual));
 	ft_init_colors(result->colors);
@@ -71,6 +72,7 @@ t_visual		*ft_init_visual(void)
 	result->active = 0;
 	result->print_winner = 0;
 	result->cycle_speed = 50;
+	result->carries = 0;
 	box(result->arena_window, 0, 0);
 	refresh();
 	wrefresh(result->arena_window);
