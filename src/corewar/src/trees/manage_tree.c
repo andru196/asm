@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 21:45:02 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 15:08:18 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:52:34 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,17 +135,13 @@ void					ft_tree_undertaker(t_world *nexus, t_dvasa **tree, t_dvasa **vacant, \
 		*tree = (*tree)->right.du_vasa;
 		if (!(*vacant))
 		{
-			*tree = (*tree)->right.du_vasa;
-			if (!(*vacant))
-			{
-				*vacant = leaf_ptr;
-				ft_bzero(*vacant, sizeof(t_dvasa));
-			}
-			else
-				free(leaf_ptr);
-			ft_tree_undertaker(nexus, tree, vacant, cyc_ptr);
-			return ;
+			*vacant = leaf_ptr;
+			ft_bzero(*vacant, sizeof(t_dvasa));
 		}
-	ft_leaf_control(nexus, leaf_ptr, vacant, cyc_ptr);
+		else
+			free(leaf_ptr);
+		ft_tree_undertaker(nexus, tree, vacant, cyc_ptr);
+		return ;
 	}
+	ft_leaf_control(nexus, leaf_ptr, vacant, cyc_ptr);
 }
