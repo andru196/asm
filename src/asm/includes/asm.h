@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:14:38 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/10 13:17:33 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:56:09 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@
 # define BUF_COR_SIZE 500
 # define SIZE_REG 1
 
-# define MAX_COMMANDS	CHAMP_MAX_SIZE / 2
+/*
+** CHAMP_MAX_SIZE / 2
+*/
+# define MAX_COMMANDS	350
 # define MAX_WORD_LEN	64
 # define SOURCE_UPEXTENSION ".S"
 
@@ -94,11 +97,6 @@ int									g_column;
 int									g_row;
 int									g_flag;
 
-void				*tv(int bool_val, void *val1, void *val2);
-int					ti(int bool_val, int val1, int val2);
-char				tc(int bool_val, char val1, char val2);
-long				tl(int bool_val, long val1, long val2);
-unsigned			tu(int bool_val, unsigned val1, unsigned val2);
 int					check_flags(char **argv, int argc, char *flag);
 int					cor_open_file(char *file_name, int flag);
 void				asm_print_error(void);

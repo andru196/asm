@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:58:59 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/10 13:29:02 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:32:31 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	cor_scan_word(t_asmcont *cont, char **str, int fd)
 		return (ti(cont->champ_name && 1, NONE_COMMENT_ERROR,
 				NONE_PROG_NAME_ERROR));
 	else if (*(*str - 1) == LABEL_CHAR)
-		if ((rez = label_check(cont, word, len)) > 0)
+		if (asi(&rez, label_check(cont, word, len)) > 0)
 			g_column += len;
 	if (!rez)
 		rez = command_check(cont, word, str, len);
@@ -68,7 +68,7 @@ static int	cor_read(int fd, t_asmcont *cont)
 	char	*buf;
 
 	g_row = 0;
-	while ((rez = get_next_line(fd, &buf)) > 0)
+	while (asi(&rez, get_next_line(fd, &buf)) > 0)
 	{
 		g_row++;
 		g_column = 0;
@@ -130,7 +130,7 @@ int	cor_open_file(char *file_name, int flag)
 	if (ft_strendwith(file_name, SOURCE_EXTENSION)
 		|| ft_strendwith(file_name, SOURCE_UPEXTENSION))
 	{
-		if ((fd = open(file_name, O_RDONLY)) != -1)
+		if (asi(&fd, open(file_name, O_RDONLY)) != -1)
 		{
 			init_container(&cont);
 			code = cor_read(fd, &cont);

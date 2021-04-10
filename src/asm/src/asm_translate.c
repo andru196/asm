@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:38:53 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/10 14:38:20 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:40:56 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ int	asm_translate(t_asmcont *cont, char *file_name, int flag)
 	char	*rez;
 	size_t	size;
 
-	if ((size = data_size(cont) + PROG_NAME_LENGTH + \
-				COMMENT_LENGTH + 4 * 4) > MEM_SIZE)
+	size = data_size(cont) + PROG_NAME_LENGTH + \
+			COMMENT_LENGTH + 4 * 4;
+	if (size > MEM_SIZE)
 		return (PROGRAM_SIZE_LIMIT);
 	if (fuck_connections(cont) < 0)
 		return (CONNECTION_ERROR);
-	if (!(rez = ft_strnew(size)))
+	if (!as((void **)&rez, ft_strnew(size)))
 		return (MALLOC_ERROR);
 	if (0 > transofrm_data(cont, rez, size))
 		return (-1);
