@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 21:49:25 by andru196          #+#    #+#             */
-/*   Updated: 2021/04/10 20:40:02 by sstark           ###   ########.fr       */
+/*   Updated: 2021/04/10 21:17:04 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	args_anal(char **args, int argc, t_args_rez *ret)
 	arg = NULL;
 	while (++i < argc)
 	{
-		if (!as((void **)arg, find_word(ret, args[i])))
+		if (!as((void **)&arg, find_word(ret, args[i])))
 		{
 			ft_lstadd(&ret->not_expected, ft_lstnew(args[i],
 					ft_strlen(args[i]) + 1));
