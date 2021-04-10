@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:18:52 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 02:01:13 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:37:44 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void				update_attribute_arena(t_world *nexus);
 void				free_visual(t_visual **visual);
 short int			ft_get_color_num(short int fg, short int bg);
 void				ft_print_visual_winner(t_world *nexus);
+void				ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant);
 
 
 #endif

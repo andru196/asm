@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 13:56:08 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:34:19 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,9 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 	*i = cpy;
 }
 
-<<<<<<< HEAD
-=======
 /*
 TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
 */
->>>>>>> 2860204756168e8c52b434ee8ca4adfe54452d45
 uint8_t				ft_print_dump(t_world *nexus)
 {
 	t_vasa			*ptr;
