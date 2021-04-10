@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wipe_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:20:41 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/11/22 06:25:05 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:44:51 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ uint8_t	ft_wipe_structs(t_format *formstat, t_fword *format, \
 	t_varitype			*next;
 
 	(void)callername;
-	if (formstat && (ptr = formstat->first))
+	if (formstat && as((void **)&ptr, formstat->first))
 	{
 		formstat->first = NULL;
 		while (ptr)

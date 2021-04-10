@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 18:52:10 by mschimme          #+#    #+#             */
-/*   Updated: 2019/03/02 22:19:27 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:33:16 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	bogey = 0;
-	if (!(pocket = ft_strnew(ft_strlen(s))))
+	if (!as((void **)&pocket, ft_strnew(ft_strlen(s))))
 		return (NULL);
 	while (s[bogey] != '\0')
 	{

@@ -24,31 +24,31 @@
 #define LI64MAX 922337203685477580LL
 #define LI32MAX 214748364
 
-long long	ft_atol_r(const char *str, uint8_t *status)
+long long	ft_atol_r(const char *str, uint8_t *sts)
 {
 	long long	res;
 	int			sign;
 
 	res = 0;
 	if (!str)
-		return ((*status = 1) - 1);
+		return ((*sts = 1) - 1);
 	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
 		str++;
 	sign = (*str == '-') * (-1) + (*str != '-');
 	str += (*str == '-') + (*str == '+');
 	while (*str != '\0' && (*str >= '0' && *str <= '9'))
 	{
-		if (sign == -1 && \
-			(res > LI64MAX || (res == LI64MAX && *str > '8')) && (*status = 1))
+		if (sign == -1 && (res > LI64MAX || \
+			(res == LI64MAX && *str > '8')) && as_c((char *)sts, 1))
 			break ;
-		if (sign == 1 && \
-			(res > LI64MAX || (res == LI64MAX && *str > '7')) && (*status = 2))
+		if (sign == 1 && (res > LI64MAX || \
+			(res == LI64MAX && *str > '7')) && as_c((char *)sts, 2))
 			break ;
 		res = (res * 10) + (*str - '0');
 		str += 1;
 	}
-	if (*status)
-		return ((*status == 1) * INT64_MIN + (*status == 2) * INT64_MAX);
+	if (*sts)
+		return ((*sts == 1) * INT64_MIN + (*sts == 2) * INT64_MAX);
 	res *= sign;
 	return (res);
 }
@@ -60,7 +60,7 @@ long long	ft_atoll(const char *str)
 
 	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
 		str += 1;
-	sign = (*str == '-') ? -1 : 1;
+	sign = ti(*str == '-', -1, 1);
 	str += (*str == '-') + (*str == '+');
 	res = 0;
 	while (*str != '\0' && (*str >= '0' && *str <= '9'))
@@ -83,7 +83,7 @@ int	ft_atoi(const char *str)
 
 	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
 		str += 1;
-	sign = (*str == '-') ? -1 : 1;
+	sign = ti(*str == '-', -1, 1);
 	str += (*str == '-') + (*str == '+');
 	res = 0;
 	while (*str != '\0' && (*str >= '0' && *str <= '9'))

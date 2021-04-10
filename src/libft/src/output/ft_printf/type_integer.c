@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 19:32:22 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 01:17:19 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:39:03 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#define MALL ft_memalloc
 
 /*
 **	Forbidden defines:
@@ -98,7 +96,7 @@ uint8_t	ft_place_integer(t_format *formstat, \
 		format->precision = 1;
 	if (!fillers[0])
 		*(int *)&fillers[0] = 2826240;
-	if (!(res = (char *)MALL(24UL + format->precision + \
+	if (!as((void **)&res, ft_memalloc(24UL + format->precision + \
 								(format->space_plus > 0))))
 		return (1);
 	bogey = ft_get_tip(format->length_t)(format, res);

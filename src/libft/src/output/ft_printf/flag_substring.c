@@ -17,8 +17,7 @@ static inline uint8_t	ft_create_varinote(t_fword *format, \
 {
 	if (!(format->vari_cont))
 	{
-		if (!(format->vari_cont = \
-								(t_varitype *)ft_memalloc(sizeof(t_varitype))))
+		if (!as((void **)format->vari_cont, ft_memalloc(sizeof(t_varitype))))
 			return (1);
 	}
 	format->vari_cont->vari_num = (int)arg_num;

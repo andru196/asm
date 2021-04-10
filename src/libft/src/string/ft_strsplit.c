@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 19:59:39 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 01:42:47 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:40:51 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static size_t	ft_substrcount(const char *s, int c)
 		s += 1;
 	while (*s != '\0')
 	{
-		if (!(s = (ft_memchr(s, c, bogey - s))))
+		if (!as((void **)&s, ft_memchr(s, c, bogey - s)))
 			s = bogey;
 		if (*s == (char)c && *(s - 1) != (char)c)
 			amount++;
@@ -91,15 +91,15 @@ static char	**ft_2dfiller(const char *s, char **pocket, char c, \
 		while (*bogey == c)
 			bogey++;
 		s = bogey;
-		if ((bogey = ft_memchr((const void *)s, (int)c, end - s)) != NULL)
+		if (as((void **)&bogey, ft_memchr(s, (int)c, end - s)) != 0)
 		{
-			if (!(pocket[counter] = ft_strnew(bogey - s)))
+			if (!as((void **)&pocket[counter], ft_strnew(bogey - s)))
 				return (ft_delall(pocket, counter));
 			bogey = ft_memcpy_s((void *)pocket[counter], (t_cv *)s, bogey - s);
 		}
 		else
 		{
-			if (s != end && !(pocket[counter] = ft_strnew(end - s)))
+			if (s != end && !as((void **)&pocket[counter], ft_strnew(end - s)))
 				return (ft_delall(pocket, counter));
 			bogey = ft_memcpy_s((void *)pocket[counter], (t_cv *)s, end - s);
 		}
@@ -116,7 +116,7 @@ char	**ft_strsplit(char const *s, char c)
 	if (!s)
 		return (NULL);
 	end = s + ft_strlen(s);
-	if (!(pocket = (char **)ft_memalloc((ft_substrcount(s, (int)c) + 1) \
+	if (!as((void **)&pocket, ft_memalloc((ft_substrcount(s, (int)c) + 1) \
 													* sizeof(char *))))
 		return (NULL);
 	return (ft_2dfiller(s, pocket, c, end));

@@ -25,7 +25,7 @@ struct					s_arg
 	t_arg				*next;
 };
 
-typedef struct			s_args_rez
+typedef struct s_args_rez
 {
 	char				has_args;
 	t_arg				*flags;
@@ -36,7 +36,7 @@ typedef struct			s_args_rez
 void					args_anal(char **args, int argc, t_args_rez *ret);
 t_arg					*add_arg(t_args_rez *args, char isflag, char *names, \
 																	char *desc);
-t_args_rez				*new_arguments_cont();
+t_args_rez				*new_arguments_cont(void);
 void					free_args_rez(t_args_rez **args);
 
 #endif

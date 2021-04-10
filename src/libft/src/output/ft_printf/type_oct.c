@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_oct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 09:59:01 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 00:32:17 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:40:13 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ uint8_t	ft_place_octal(t_format *formstat, \
 		format->filler = ' ';
 	else
 		format->precision = 1;
-	if (!(buffs[0] = (char *)ft_memalloc(24UL + format->precision + \
+	if (!as((void **)&buffs[0], ft_memalloc(24UL + format->precision + \
 											(format->space_plus > 0))))
 		return (1);
 	buffs[1] = "01234567";

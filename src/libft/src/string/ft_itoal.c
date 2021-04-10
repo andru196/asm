@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 12:43:28 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 08:18:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:31:22 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_itoal(long long int num)
 	char				*pocket;
 
 	volume = ft_numvol(num);
-	if (!(pocket = ft_strnew(volume)))
+	if (!as((void **)&pocket, ft_strnew(volume)))
 		return (NULL);
 	if (num == INT64_MIN)
 	{

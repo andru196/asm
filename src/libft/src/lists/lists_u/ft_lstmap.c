@@ -12,21 +12,6 @@
 
 #include "libft.h"
 
-/*
-** Function f supposed to create new instance chain on its on. Yet it supposed
-** to clear the sh't up after malloc fail on its own.
-** static void	ft_clearjunk(t_list *start)
-** {
-** 	t_list	*sub;
-** 	while (start)
-** 	{
-** 		sub = start->next;
-** 		ft_lstdelone(&start, ft_del);
-** 		start = sub;
-** 	}
-** }
-*/
-
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*new;
@@ -41,7 +26,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	lst = lst->next;
 	while (lst)
 	{
-		if (!(new = f(lst)))
+		if (!as((void **)&new, f(lst)))
 			return (NULL);
 		previous->next = new;
 		previous = previous->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:02:42 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 15:06:07 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:49:25 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,21 @@
 
 extern int			g_gnl_read;
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_dlist
+typedef struct s_lst
+{
+	void			*cnt;
+	size_t			cs;
+	struct s_list	*nxt;
+}					t_lst;
+
+typedef struct s_dlist
 {
 	void			*content;
 	size_t			content_size;
@@ -99,8 +106,8 @@ char				*ft_strdup(const char *s1);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strstr(const char *haystack, const char *needle);
-char				*ft_strnstr(const char *haystack, const char *needle,\
-									size_t len);
+char				*ft_strnstr(const char *haystack, const char *needle, \
+						size_t len);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
@@ -173,12 +180,14 @@ void				*tv(int bool_val, void *val1, void *val2);
 int					ti(int bool_val, int val1, int val2);
 char				tc(int bool_val, char val1, char val2);
 long				tl(int bool_val, long val1, long val2);
-unsigned			tu(int bool_val, unsigned val1, unsigned val2);
-int					asu(unsigned *dst, unsigned val);
+unsigned int		tu(int bool_val, unsigned val1, unsigned val2);
+int					asu(unsigned int *dst, unsigned int val);
 int					as_c(char *dst, char val);
 int					asll(long long int *dst, long long int val);
 int					asi(int *dst, int val);
 int					as(void **dst, void *val);
-
+uint8_t				t8(int bool_val, uint8_t val1, uint8_t val2);
+long double			asd(long double *dst, long double val);
+size_t				ast(size_t *dst, size_t val);
 
 #endif

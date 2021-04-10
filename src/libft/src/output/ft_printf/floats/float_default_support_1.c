@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_default_support_1.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 22:13:49 by kokeefe           #+#    #+#             */
-/*   Updated: 2019/10/30 22:17:37 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:48:35 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	get_length_double(long double number, t_float_calc *f)
 	if (number < 0)
 		number *= (-1);
 	number2 = number;
-	while ((number /= 10) >= 1)
+	while (asd(&number, number / 10) >= 1)
 		length++;
-	while ((number2 /= 10) > 1)
+	while (asd(&number2, number2 / 10) > 1)
 		length2++;
 	if (length2 < length)
 		f->whole_add_one = 1;

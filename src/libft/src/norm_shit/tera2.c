@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchrcount.c                                   :+:      :+:    :+:   */
+/*   tera2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 21:35:17 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 20:31:55 by sstark           ###   ########.fr       */
+/*   Created: 2021/04/10 18:19:42 by sstark            #+#    #+#             */
+/*   Updated: 2021/04/10 19:37:41 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strchrcount(const char *s, int c)
+uint8_t	t8(int bool_val, uint8_t val1, uint8_t val2)
 {
-	size_t		amount;
-	const char	*bogey;
-
-	amount = 0;
-	bogey = s + ft_strlen(s);
-	while (*s != '\0')
-	{
-		if (!as((void **)&s, (ft_memchr(s, c, bogey - s))))
-			s = bogey;
-		if (*s && *s == c)
-			amount++;
-		if (s != bogey)
-			s++;
-	}
-	return (amount);
+	if (bool_val)
+		return (val1);
+	return (val2);
 }

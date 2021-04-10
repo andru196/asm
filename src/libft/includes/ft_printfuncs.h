@@ -50,24 +50,24 @@ unsigned long long	ft_pow_ull(unsigned long long a, unsigned int power, \
 					t_float_calc *f);
 void				init_float_calc(t_float_calc *f, long double number);
 char				*ft_form_double(t_fword *container, long double number,
-															t_float_calc *f);
+						t_float_calc *f);
 char				*get_zero_line(int zero_length);
 void				init_fraction_part(t_fword *container, t_float_calc *f);
 void				ft_printmem(const char *addr, size_t size, int fl, int fd);
 void				check_filler_zero_spase(t_fword *container,
-					t_float_calc *f);
+						t_float_calc *f);
 int					length_prec_whole_check(t_fword *container,
-					t_float_calc *f);
+						t_float_calc *f);
 void				check_space_flag(t_fword *container, t_float_calc *f);
 void				add_plus_hash_num_prec(t_float_calc *f);
 void				check_width_length_sign(t_fword *container,
-					t_float_calc *f);
+						t_float_calc *f);
 char				*init_temp_string(int *length, t_float_calc *f,
-					t_fword *container, int *i2);
+						t_fword *container, int *i2);
 void				check_filler_zero_plus(t_fword *container,
-					t_float_calc *f);
+						t_float_calc *f);
 void				check_minus_hash_precision_zero(t_fword *container,
-					t_float_calc *f);
+						t_float_calc *f);
 void				shift_right_add_space(t_float_calc *f, int length);
 
 /*

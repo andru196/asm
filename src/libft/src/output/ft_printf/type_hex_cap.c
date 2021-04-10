@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_hex_cap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:32:22 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/09/14 00:48:45 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:38:12 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#define MALL ft_memalloc
 
 /*
 **	Forbidden defines:
@@ -89,29 +87,29 @@ inline static void	ft_printout(t_format *formstat, \
 */
 
 uint8_t	ft_place_hexal_cap(t_format *formstat, \
-													t_fword *format)
+													t_fword *fr)
 {
 	char						*buffs[2];
 	char						*bogey;
 	char						*buffer;
 
-	if ((format->flags))
-		format->filler = ' ';
+	if ((fr->flags))
+		fr->filler = ' ';
 	else
-		format->precision = 1;
-	if (!(buffer = (char *)MALL(24UL + format->precision + format->hash * 2)))
+		fr->precision = 1;
+	if (!as((void **)&buffer, ft_memalloc(24UL + fr->precision + fr->hash * 2)))
 		return (1);
 	buffs[0] = buffer + 1;
 	buffs[1] = "0123456789ABCDEF";
-	bogey = ft_get_tip(format->length_t)(format, &buffs[0]);
+	bogey = ft_get_tip(fr->length_t)(fr, &buffs[0]);
 	if (!*(bogey + 1))
-		format->hash = 0;
+		fr->hash = 0;
 	buffs[0] = buffer;
 	ft_memset((void *)(buffs[0] + 2), '0', bogey + 1 - (buffs[0] + 2));
 	bogey = buffs[0] + 2;
-	if (format->hash && *bogey)
+	if (fr->hash && *bogey)
 		*(short int *)buffs[0] = (short int)22576U;
-	ft_printout(formstat, format, buffs[0], bogey);
+	ft_printout(formstat, fr, buffs[0], bogey);
 	free(buffs[0]);
 	if (formstat->errflag)
 		return (1);

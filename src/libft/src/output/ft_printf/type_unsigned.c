@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_unsigned.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:00:13 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/14 00:51:26 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:41:48 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#define MALL ft_memalloc
 
 /*
 **	Forbidden defines:
@@ -64,7 +62,7 @@ uint8_t	ft_place_unsigned(t_format *formstat, \
 		format->filler = ' ';
 	else
 		format->precision = 1;
-	if (!(res = (char *)MALL(24UL + format->precision + \
+	if (!as((void **)&res, ft_memalloc(24UL + format->precision + \
 								(format->space_plus > 0))))
 		return (1);
 	bogey = ft_get_tip(format->length_t)(format, res);

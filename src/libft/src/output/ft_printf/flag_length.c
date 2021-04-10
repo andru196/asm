@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_length.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:07:39 by kokeefe           #+#    #+#             */
-/*   Updated: 2020/09/14 01:14:01 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:27:52 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ inline static void	ft_extra_length_flags(t_format *formstat, \
 															t_fword *format)
 {
 	if (*(formstat->sight) == 'j')
-		format->length_t = format->length_t > 5 ? format->length_t : 5;
+		format->length_t = t8(format->length_t > 5, format->length_t, 5);
 }
 
 uint8_t	ft_flag_length(t_format *formstat, t_fword *format)
@@ -49,24 +49,24 @@ uint8_t	ft_flag_length(t_format *formstat, t_fword *format)
 		if (*(short int *)((formstat->sight)) == FLAG_HH)
 		{
 			(formstat->sight) += 1;
-			format->length_t = format->length_t > 1 ? format->length_t : 1;
+			format->length_t = t8(format->length_t > 1, format->length_t, 1);
 		}
 		else if (*(short int *)((formstat->sight)) == FLAG_LL)
 		{
 			(formstat->sight) += 1;
-			format->length_t = format->length_t > 6 ? format->length_t : 6;
+			format->length_t = t8(format->length_t > 6, format->length_t, 6);
 		}
-		else if	(*(formstat->sight) == 'l')
-			format->length_t = format->length_t > 3 ? format->length_t : 3;
-			else if (*(formstat->sight) == 'h')
-				format->length_t = format->length_t > 2 ? format->length_t : 2;
-			else if (*(formstat->sight) == 'L')
-				format->length_t = format->length_t > 7 ? format->length_t : 7;
-			else if (*(formstat->sight) == 'z')
-				format->length_t = format->length_t > 4 ? format->length_t : 4;
-			else
-				ft_extra_length_flags(formstat, format);
-			return (1);
-		}
-		return (0);
+		else if (*(formstat->sight) == 'l')
+			format->length_t = t8(format->length_t > 3, format->length_t, 3);
+		else if (*(formstat->sight) == 'h')
+			format->length_t = t8(format->length_t > 2, format->length_t, 2);
+		else if (*(formstat->sight) == 'L')
+			format->length_t = t8(format->length_t > 7, format->length_t, 7);
+		else if (*(formstat->sight) == 'z')
+			format->length_t = t8(format->length_t > 4, format->length_t, 4);
+		else
+			ft_extra_length_flags(formstat, format);
+		return (1);
 	}
+	return (0);
+}

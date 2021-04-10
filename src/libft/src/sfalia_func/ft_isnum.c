@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanya <tanya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 21:59:37 by sfalia-f          #+#    #+#             */
-/*   Updated: 2020/08/20 00:44:16 by tanya            ###   ########.fr       */
+/*   Updated: 2021/04/10 19:10:38 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ long long	ft_maxint(unsigned char bytes, int unsig)
 	unsig = !unsig;
 	rez = 0;
 	while (bytes--)
-		rez |= 0xffL << ((bytes * 8) - (unsig ? unsig-- : 0));
+	{
+		if (unsig)
+			rez |= 0xffL << ((bytes * 8) - unsig--);
+		else
+			rez |= 0xffL << ((bytes * 8) - (0));
+	}
 	return (rez);
 }
