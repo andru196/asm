@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   interact_user.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:07:19 by mschimme          #+#    #+#             */
-/*   Updated: 2020/12/26 17:29:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:09:22 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 #include <cwr_man.h>
 
-uint8_t		ft_ask_user(char *msg)
+uint8_t	ft_ask_user(char *msg)
 {
 	char		buff[5];
 

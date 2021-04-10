@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 11:56:10 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 18:07:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:18:27 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ inline extern RTP	ft_get_bytecode(uint8_t *arena, intptr_t offset)
 **	*	Смотри контракт ft_get_bytecode.
 */
 
-void	ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, 
+void	ft_set_bytecode(uint8_t	*arena, intptr_t offset, RTP value, \
 																uint8_t size)
 {
 	URTP			base_mask;
 	URTP			arena_mask;
-	intptr_t	magic;
-	
+	intptr_t		magic;
+
 	offset = ft_calc_addr(offset);
 	magic = ((offset + sizeof(RTP)) % MEM_SIZE) * \
 											((offset + sizeof(RTP)) / MEM_SIZE);

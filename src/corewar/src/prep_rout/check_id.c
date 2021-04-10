@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 22:13:55 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:45:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:34:21 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	ft_check_id(t_vasa **errors_head, \
 			{
 				ft_err_id_behind_fighters(errors_head, champs[i].name);
 				champs[i].id = 0;
-				//* No post-decrement as we have predecr in cycle head.
 				continue ;
 			}
 			ft_control_doubles(errors_head, champs, i);

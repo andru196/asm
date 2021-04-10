@@ -6,13 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:30:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:04:06 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:02:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-# define LINE_SIZE 64 * 3
+#define LINE_SIZE 192
 
 /*
 **	TD	ДОПИСАТЬ вывод результата (и фсё);
@@ -26,8 +26,8 @@ TD:	Декларация - заглушка. Подобрать список н�
 **	цикла (возвратить 1).
 */
 
-static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
-																	size_t max)
+static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes,
+														size_t *i, size_t max)
 {
 	size_t	cpy;
 	uint8_t	*bytes_cpy;
@@ -54,7 +54,7 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes, size_t *i,
 }
 
 /*
-TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
+** TODO: ACHTUNG!! КОСТЫЛЬ В СТИЛЕ ВОВЫ! ИСПРАВИТЬ НАХУЙ!
 */
 uint8_t	ft_print_dump(t_world *nexus)
 {
@@ -72,7 +72,7 @@ uint8_t	ft_print_dump(t_world *nexus)
 		ft_printf("0x%.4x : ", i);
 		set_dumpline(str, &bytes, &i, max);
 		ft_putstr(str);
-		ft_putendl(" ");														//* Костылинг!
+		ft_putendl(" ");
 	}
 	nexus->cyc.cyc_to_dump = nexus->cyc.cyc_to_dump->next;
 	ptr->gen.cyc_sol = 0;

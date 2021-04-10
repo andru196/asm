@@ -6,22 +6,22 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:51:30 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:45:34 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:17:41 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-*	ПРОВЕРИЛ.
+**	ПРОВЕРИЛ.
 */
 inline static t_champ	**ft_build_champ_chain(t_champ *champ_arr, int champs)
 {
 	t_champ				**res;
 	int					i;
 
-	res = NULL;
-	if (!(res = (t_champ **)ft_memalloc((champs + 1) * sizeof(t_champ **))))
+	res = (t_champ **)ft_memalloc((champs + 1) * sizeof(t_champ **));
+	if (!res)
 		return (NULL);
 	i = 0;
 	while (i < champs)
@@ -29,23 +29,23 @@ inline static t_champ	**ft_build_champ_chain(t_champ *champ_arr, int champs)
 		res[i] = &champ_arr[i];
 		i++;
 	}
-return (res);
+	return (res);
 }
 
 /*
-*	ПРОВЕРИЛ.
+**	ПРОВЕРИЛ.
 */
 int	ft_champ_ptr_leftid_grt_rightid(void *left, void *right)
 {
 	return (((t_champ *)left)->id > ((t_champ *)right)->id);
 }
 
-t_champ	**ft_build_champarr_sorted(t_champ *champ_arr,\
-																	int champs)
+t_champ	**ft_build_champarr_sorted(t_champ *champ_arr, int champs)
 {
 	t_champ				**chain;
 
-	if (!(chain = ft_build_champ_chain(champ_arr, champs)))
+	chain = ft_build_champ_chain(champ_arr, champs);
+	if (!chain)
 		ft_manage_world(NULL);
 	ft_srt_bubble_genarr((void **)chain, (size_t)champs, \
 											&ft_champ_ptr_leftid_grt_rightid);

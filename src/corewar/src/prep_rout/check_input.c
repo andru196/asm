@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:23:10 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:45:07 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:34:33 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,21 @@ inline static int	ft_get_term_width(void)
 	return (res);
 }
 
+/*
+** Cant understand what's happening? ENCJOY! Fuck NORM.
+*/
 static void	ft_print_intro(void)
 {
 	int		width;
+	int		len;
 
 	width = ft_get_term_width();
+	len = (int)ft_strlen(WRN_HDR);
 	ft_printf_fd(2, "=>{red}%*s{eoc}\n", \
-			ALIGN_MID(ft_strlen(WRN_HDR)), WRN_HDR);
+				((width - (int)len) / 2 + (int)len), WRN_HDR);
+	len = (int)ft_strlen(WRN_BDY);
 	ft_printf_fd(2, "=>{red}%*s{eoc}\n", \
-			ALIGN_MID(ft_strlen(WRN_BDY)), WRN_BDY);
+			((width - (int)len) / 2 + (int)len), WRN_BDY);
 	ft_show_man();
 	ft_printf_fd(2, \
 			"%s\n%s%s", ERR_DESC_1, ERR_DESC_2, ERR_DESC_3);

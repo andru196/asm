@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:46:40 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:18:43 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:08:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@
 **	* функции.
 */
 
-void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+void	ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
 																intptr_t amount)
 {
-	static t_get_operand_val_rout	*arr[5] = { &ft_get_nil_val,
+	static t_get_operand_val_rout	*arr[5] = {&ft_get_nil_val,
 									&ft_get_reg_val, &ft_get_dir_val,
-									&ft_get_nil_val, &ft_get_ind_val_sch };
-	static t_get_operand_val_rout	*ext[5] = { &ft_get_nil_val,
+									&ft_get_nil_val, &ft_get_ind_val_sch};
+	static t_get_operand_val_rout	*ext[5] = {&ft_get_nil_val,
 									&ft_get_reg_num, &ft_get_dir_val,
-									&ft_get_nil_val, &ft_get_ind_num };
+									&ft_get_nil_val, &ft_get_ind_num};
 	uint8_t							i;
 	intptr_t						pos;
 
@@ -66,15 +66,15 @@ void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
 	}
 }
 
-void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+void	ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry,
 																intptr_t amount)
 {
-	static t_get_operand_val_rout	*arr[5] = { &ft_get_nil_val,
+	static t_get_operand_val_rout	*arr[5] = {&ft_get_nil_val,
 									&ft_get_reg_val, &ft_get_dir_val,
-									&ft_get_nil_val, &ft_get_ind_val };
-	static t_get_operand_val_rout	*ext[5] = { &ft_get_nil_val,
+									&ft_get_nil_val, &ft_get_ind_val};
+	static t_get_operand_val_rout	*ext[5] = {&ft_get_nil_val,
 									&ft_get_reg_num, &ft_get_dir_val,
-									&ft_get_nil_val, &ft_get_ind_num };
+									&ft_get_nil_val, &ft_get_ind_num};
 	uint8_t							i;
 	intptr_t						pos;
 

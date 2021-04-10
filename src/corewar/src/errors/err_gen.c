@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:02:27 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:43:22 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:05:44 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_err_nochamps(t_vasa **head, void *object)
 	t_error	*error;
 
 	(void)object;
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
@@ -48,7 +49,8 @@ void	ft_err_invalid_parameter(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
@@ -71,7 +73,8 @@ void	ft_err_id_doubled(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
@@ -94,7 +97,8 @@ void	ft_err_id_behind_fighters(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);

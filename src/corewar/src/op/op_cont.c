@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:30:47 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:02:04 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:22:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 const t_mop	*ft_get_op_cont(uint8_t offset)
 {
-	return (&stat_opset[offset]);
+	return (&g_stat_opset[offset]);
 }
 
 /*
@@ -32,7 +32,7 @@ const t_mop	*ft_get_op_cont(uint8_t offset)
 
 void	ft_clone_op_cont(uint8_t offset, t_mop *ptr)
 {
-	ft_memcpy(ptr, (const void *)&stat_opset[offset], sizeof(t_mop));
+	ft_memcpy(ptr, (const void *)&g_stat_opset[offset], sizeof(t_mop));
 }
 
 /*
@@ -82,17 +82,15 @@ uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 
 	flag = 0;
 	code_byte = arena[ft_calc_addr(ptr + (intptr_t)OPC_SIZE)];
-	ops_cont->ops_types[0] = stat_code_to_type[((code_byte & 0xC0) >> 6)];
-	ops_cont->ops_types[1] = stat_code_to_type[((code_byte & 0x30) >> 4)];
-	ops_cont->ops_types[2] = stat_code_to_type[((code_byte & 0x0C) >> 2)];
-	ops_cont->ops_types[3] = stat_code_to_type[((code_byte & 0x03))];
+	ops_cont->ops_types[0] = g_stat_code_to_type[((code_byte & 0xC0) >> 6)];
+	ops_cont->ops_types[1] = g_stat_code_to_type[((code_byte & 0x30) >> 4)];
+	ops_cont->ops_types[2] = g_stat_code_to_type[((code_byte & 0x0C) >> 2)];
+	ops_cont->ops_types[3] = g_stat_code_to_type[((code_byte & 0x03))];
 	i = UINT32_MAX;
 	offset = OPC_SIZE + OPCB_SIZE;
 	while (++i < ops_cont->ops_amount)
 	{
 		flag |= !(ops_cont->ops_types[i] & ref->ops_types[i]);
-		// if (!(ops_cont->ops_types[i] =& ref->ops_types[i]))
-		// 	ops_cont->ops_types[i] = ref->ops_types[i] & 4;
 		if (ops_cont->ops_types[i] == T_REG)
 			flag |= !(ft_check_reg_is_valid(arena, ptr + offset));
 		ops_cont->ops_length[i] = ft_step_size(ops_cont->ops_types[i], \
@@ -100,11 +98,6 @@ uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 		offset += ops_cont->ops_length[i];
 	}
 	ops_cont->length = offset;
-	if (flag)
-	{
-		//TD: Сюда вписать наполнение элементов ->ops_length MAX значениеями \
-		//TD: для текущей инструкции (по ref.) Consider 1 2 4 sizes. that's easy
-	}
 	return (flag);
 }
 
@@ -131,7 +124,7 @@ uint8_t	ft_eval_operands_type(uint8_t *arena, intptr_t ptr, \
 **		{
 **			if (!op_cont->ops_types[i])
 **			{
-**				op_cont->ops_types[i] = stat_code_to_type[(code_byte & \
+**				op_cont->ops_types[i] = g_stat_code_to_type[(code_byte & \
 **											(3 << (6 - i * 2)) >> (6 - i * 2))];
 **				op_cont->ops_length[i] = ft_step_size(op_cont->ops_types[i], \
 **														op_cont->t_dir_size);

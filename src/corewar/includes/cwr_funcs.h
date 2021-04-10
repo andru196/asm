@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_funcs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:02:21 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:06:13 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ void		ft_the_cycle(t_world *nexus, t_dvasa *tree);
 */
 
 int			ft_are_digits(const char *str);
-int			ft_are_ndigits(const char *start, const char *end);
+
+/*
+**	UNUSED
+**	int			ft_are_ndigits(const char *start, const char *end);
+*/
 
 void		ft_manage_world(t_world *nexus);
 void		ft_wipe_champs(t_champ *ptr);
@@ -119,7 +123,8 @@ void		ft_add_offspring_by_id(t_dvasa *leaf, t_vasa *new);
 void		ft_add_leafnode(t_dvasa **aleaf, t_dvasa *new);
 void		ft_del_leafnode(t_dvasa **aleaf);
 void		ft_destroy_leaftree(t_dvasa **aleaf, t_dvasa **vacant);
-void		ft_tree_undertaker(t_world *nexus, t_dvasa **aleaf, t_dvasa **vacan, t_cycle *cyc);
+void		ft_tree_undertaker(t_world *nexus, t_dvasa **aleaf, \
+												t_dvasa **vacan, t_cycle *cyc);
 void		ft_leafnode_pick(t_vasa *carry_cont, t_dvasa *tree, \
 								t_dvasa **new_node, t_carry_cont_rout *manager);
 void		ft_leafnode_vacate(t_dvasa **tree, t_dvasa **vacant);
@@ -191,7 +196,7 @@ void		ft_eval_operands_length(uint8_t *arena, intptr_t pos, \
 
 void		ft_get_operands(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
-void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry,
+void		ft_get_operands_sch(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 															intptr_t amount);
 RTP			ft_get_reg_num(uint8_t *arena, t_mop *op_cont, t_carry *carry, \
 																intptr_t pos);
@@ -237,7 +242,6 @@ RTP			ft_swap_endian_oct(RTP value);
 uint8_t		ft_print_dump(t_world *nexus);
 void		ft_print_outro(t_champ *survivor);
 void		ft_print_ncursus_arena(t_world *nexus);
-
 
 /*
 ******************			Built-in test funcs:		************************

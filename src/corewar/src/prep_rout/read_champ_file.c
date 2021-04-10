@@ -6,15 +6,21 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:02:34 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:53:37 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 #include <cwr_man.h>
 
-#define _WRONG_SEPARATOR(x, y) (*(_SEP_TYPE *)(x + y) != 0)
-#define CH_NAME curr->name
+/*
+**	FUCK NORME
+**	#define _WRONG_SEPARATOR(x, y) (*(RTP *)(x + y) != 0)
+**	#define CH_NAME curr->name
+**	Of ft_get_magicname:
+**	if (_WRONG_SEPARATOR(curr->name, PROG_NAME_LENGTH))
+**		ft_err_invalid_separator(error, "between Name and Comment.");
+*/
 
 inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 {
@@ -22,23 +28,18 @@ inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 	RTP				magic;
 
 	magic = 0;
-	if ((res = read(fd, (void *)&magic, REG_SIZE)) != REG_SIZE)
-	{
-		ft_err_invalid_filesize(error, "Magic number field");
-		return ;
-	}
+	res = read(fd, (void *)&magic, REG_SIZE);
+	if (res != REG_SIZE)
+		return (ft_err_invalid_filesize(error, "Magic number field"));
 	if (magic != (int)(ft_swap_endian(COREWAR_EXEC_MAGIC, 4)))
 		ft_err_invalid_cwr_magic(error, NULL);
-	if ((res = read(fd, curr->name, (PROG_NAME_LENGTH + REG_SIZE))) != \
-												PROG_NAME_LENGTH + REG_SIZE)
-	{
-		ft_err_invalid_filesize(error, "Champion name field");
-		return ;
-	}
+	res = read(fd, curr->name, (PROG_NAME_LENGTH + REG_SIZE));
+	if (res != PROG_NAME_LENGTH + REG_SIZE)
+		return (ft_err_invalid_filesize(error, "Champion name field"));
 	if (ft_ctrl_detect((void *)curr->name, PROG_NAME_LENGTH))
 		if (ft_ask_user(WAR_CTRL_1))
 			ft_err_invalid_name(error, NULL);
-	if (_WRONG_SEPARATOR(curr->name, PROG_NAME_LENGTH))
+	if (*(RTP *)(curr->name + PROG_NAME_LENGTH) != 0)
 		ft_err_invalid_separator(error, "between Name and Comment.");
 }
 
@@ -48,7 +49,8 @@ inline static void	ft_get_champ_size(int fd, \
 	ssize_t			res;
 	RTP				size;
 
-	if ((res = read(fd, (void *)&size, REG_SIZE)) != REG_SIZE)
+	res = read(fd, (void *)&size, REG_SIZE);
+	if (res != REG_SIZE)
 	{
 		ft_err_invalid_filesize(champ_error, "File size field.");
 		return ;
@@ -63,16 +65,13 @@ inline static void	ft_get_champ_comment(int fd, \
 {
 	ssize_t			res;
 
-	if ((res = read(fd, champ->desc, COMMENT_LENGTH + REG_SIZE)) != \
-													COMMENT_LENGTH + REG_SIZE)
+	res = read(fd, champ->desc, COMMENT_LENGTH + REG_SIZE);
+	if (res != COMMENT_LENGTH + REG_SIZE)
 	{
 		ft_err_invalid_filesize(champ_error, "Champion Comment field");
 		return ;
 	}
-	// if (ft_ctrl_detect((void *)champ->desc, COMMENT_LENGTH))
-	// 	if (ft_ask_user(WAR_CTRL_2))
-	// 		ft_err_invalid_comment(champ_error, NULL);
-	if (_WRONG_SEPARATOR(champ->desc, COMMENT_LENGTH))
+	if (*(RTP *)(champ->desc + COMMENT_LENGTH) != 0)
 		ft_err_invalid_separator(champ_error, "between Comment and Body.");
 }
 
@@ -83,16 +82,17 @@ inline static void	ft_get_champ_body(int fd, \
 	int				buff;
 
 	buff = 0;
-	if (!(champ->body = (uint8_t *)ft_memalloc((size_t)(champ->size))))
+	champ->body = (uint8_t *)ft_memalloc((size_t)(champ->size));
+	if (!(champ->body))
 	{
 		ft_err_malloc("champ->body", __func__);
 		ft_lstdel((t_list **)champ_error, &ft_del);
 		ft_manage_world(NULL);
 		return ;
 	}
-	if ((res = read(fd, (void *)(champ->body),
-						(size_t)champ->size)) != (ssize_t)champ->size)
-		return ft_err_invalid_filesize(champ_error, "Champion body field");
+	res = read(fd, (void *)(champ->body), (size_t)champ->size);
+	if (res != (ssize_t)champ->size)
+		return (ft_err_invalid_filesize(champ_error, "Champion body field"));
 	if (read(fd, &buff, 1))
 		ft_err_invalid_bodysize(champ_error, NULL);
 }
@@ -112,11 +112,12 @@ int	ft_read_champ_file(char *file, int id, t_champ *champ, \
 	int			fd;
 
 	if (pos == MAX_PLAYERS)
-		return
-		(ft_prox_err_ret(last_error, (void *)file, &ft_err_champ_limit));
-	if ((fd = open(file, O_RDONLY)) == -1)
-		return
-		(ft_prox_err_ret(last_error, (void *)file, &ft_err_invalid_filename));
+		return (ft_prox_err_ret(last_error, (void *)file, \
+														&ft_err_champ_limit));
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (ft_prox_err_ret(last_error, (void *)file, \
+												&ft_err_invalid_filename));
 	ch_errors = NULL;
 	ft_get_magicname(fd, &ch_errors, &champ[pos]);
 	ft_get_champ_size(fd, &ch_errors, &champ[pos]);

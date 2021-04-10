@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cwr_defs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:26:17 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:09:58 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:55:48 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 # define CWR_DEFS_H
 # include "cwr.h"
 # include "op.h"
+/*
+**	WARNING!
+**	REMOVED IMPORTANT LOGICS:
 
+*/
 /*
 **	Forbidden defines:
 **	# define _INT_OVF(x) (int)(x) != x
@@ -54,11 +58,11 @@
 */
 
 # if REG_SIZE < 5
-#  define RTP int32_t
-#  define URTP uint32_t
+#  define RTP int
+#  define URTP unsigned int
 # else
-#  define RTP int64_t
-#  define URTP int64_t
+#  define RTP long long
+#  define URTP unsigned long long
 # endif
 
 # define _SEP_TYPE RTP
@@ -102,7 +106,7 @@ union						u_generic
 };
 # endif
 
-typedef enum
+typedef enum e_bool
 {
 	false,
 	true
@@ -253,7 +257,6 @@ struct						s_champ
 **	.errors			-	A head of regiestered errors chain.
 */
 
-
 # define NEW_ARENA
 
 # ifndef NEW_ARENA
@@ -281,7 +284,7 @@ struct						s_world
 	t_champ					champ[MAX_PLAYERS];
 	t_champ					**champ_ord;
 	int						champs;
-	uint8_t					arena[(MEM_SIZE + sizeof(RTP) * 2)];
+	uint8_t					arena[(MEM_SIZE + 2 * sizeof(RTP))];
 	t_champ					*survivor;
 	t_vasa					*carry;
 	t_vasa					*errors;

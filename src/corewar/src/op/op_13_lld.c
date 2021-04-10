@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:00:56 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:09:04 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #ifdef CWR_SCH_MOD
 
-void		op_lld(t_world *nexus, t_carry *carry, \
+void	op_lld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;
@@ -39,7 +39,7 @@ void		op_lld(t_world *nexus, t_carry *carry, \
 
 #else
 
-void		op_lld(t_world *nexus, t_carry *carry, \
+void	op_lld(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

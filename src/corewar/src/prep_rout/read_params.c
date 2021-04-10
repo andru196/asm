@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:44:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:03:01 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:09:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static uint8_t	ft_parse_visualize(char ***argv, t_world *nexus)
 	return (ft_scan_lines(argv, nexus));
 }
 
-uint8_t			ft_scan_lines(char ***argv, t_world *nexus)
+uint8_t	ft_scan_lines(char ***argv, t_world *nexus)
 {
 	if (**argv)
 	{

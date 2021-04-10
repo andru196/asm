@@ -6,16 +6,15 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 18:06:44 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:57:06 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:38:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-**	//TODO: Предусмотреть проверку состояния **argv (случай "-n" "20" "NULL")
+** Checked.
 */
-
 inline static uint8_t	ft_check_filename(char *argv)
 {
 	if (argv)
@@ -32,14 +31,13 @@ inline static uint8_t	ft_check_filename(char *argv)
 **	Если id > 0, попытка присвоить id пользователем оказалась успешной.
 **	Соответственно, если до этого вызывался -n, то id != 0, а значит, в случае
 **	ошлибки, надо просмотреть этот флаг повторно (тобишь не итерировать *argv).
-//TODO:	Проверить отпрыска: ft_check_filename.
+**	TODO:	Проверить отпрыска: ft_check_filename.
 */
 
 uint8_t	ft_parse_champ(char ***argv, int id, t_world *nexus)
 {
-
-	static t_err_rout*	array[2] = { &ft_err_invalid_parameter, \
-									&ft_err_not_champ };
+	static t_err_rout	*array[2] = {&ft_err_invalid_parameter, \
+											&ft_err_not_champ};
 	int					flag;
 
 	flag = (id != 0);

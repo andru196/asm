@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:01:34 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:43:03 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:04:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_err_fn_notnbr(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);
@@ -48,7 +49,8 @@ void	ft_err_fn_inter(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_manage_world(NULL);

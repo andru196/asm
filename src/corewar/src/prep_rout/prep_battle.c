@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:16:19 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:02:29 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:40:32 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <cwr_intro.h>
 
 /*
-**	TD:	Проверить в боевом режиме.
+**	TD:	Проверил.
 */
 
 inline static t_list	**ft_build_buff_nt(t_list **head, size_t size)
@@ -42,14 +42,15 @@ inline static void	ft_sort_dumps(t_list **head, size_t amount)
 {
 	t_list				**arr_ptr;
 
-	if (!(arr_ptr = ft_build_buff_nt(head, amount)))
+	arr_ptr = ft_build_buff_nt(head, amount);
+	if (!arr_ptr)
 		ft_prox_err_malloc("arr_ptr", "ft_build_buff");
 	ft_srt_listarr_bubble(head, arr_ptr, amount, ft_cyc_left_grt_right);
 	free(arr_ptr);
 }
 
 /*
-**	TD:	Проверить в боевом режиме.
+**	TD:	Проверил.
 TD:	Перепроверить на тесте, т.к. изменен nexus->arena!
 */
 
@@ -86,15 +87,15 @@ inline static void	ft_print_intro(t_champ **champ_arr)
 }
 
 /*
-**	TD:	Проверить в боевом режиме.
+**	TD:	Проверил.
 */
-
 void	ft_prep_battle(t_world *nexus)
 {
 	if (nexus->cyc.cyc_to_dump)
 		ft_sort_dumps((t_list **)&nexus->cyc.cyc_to_dump, \
 										nexus->cyc.cyc_to_dump->content_size);
-	nexus->champ_ord = ft_build_champarr_sorted(&nexus->champ[0], nexus->champs);
+	nexus->champ_ord = ft_build_champarr_sorted(&nexus->champ[0], \
+																nexus->champs);
 	nexus->survivor = nexus->champ_ord[nexus->champs - 1];
 	ft_place_champs(nexus);
 	if (!(nexus->flags & 2))

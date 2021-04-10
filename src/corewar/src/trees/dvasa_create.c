@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 16:44:05 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:57:34 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:19:44 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_dvasa	*ft_create_leafnode_r(void const *content, size_t content_size)
 {
 	t_dvasa	*new;
 
-	if (!(new = (t_dvasa *)ft_memalloc(sizeof(t_dvasa))))
+	new = (t_dvasa *)ft_memalloc(sizeof(t_dvasa));
+	if (!new)
 		return ((void *)(size_t)ft_err_malloc("new", __func__) - 1);
 	new->gen.content = (void *)content;
 	if (content)
@@ -33,15 +34,16 @@ t_dvasa	*ft_create_leafnode(void const *content, size_t content_size)
 {
 	t_dvasa	*new;
 
-	if (!(new = (t_dvasa *)ft_memalloc(sizeof(t_dvasa))))
+	new = (t_dvasa *)ft_memalloc(sizeof(t_dvasa));
+	if (!new)
 		return ((void *)(size_t)ft_err_malloc("new", __func__) - 1);
 	if (content)
 	{
-		if (!(new->gen.content = (void *)ft_memalloc(content_size)))
+		new->gen.content = (void *)ft_memalloc(content_size);
+		if (!new->gen.content)
 		{
 			free(new);
-			return ((void *)(size_t)ft_err_malloc("content", __func__) \
-																		- 1);
+			return ((void *)(size_t)ft_err_malloc("content", __func__) - 1);
 		}
 		new->gen.content = ft_memcpy(new->gen.content, content, content_size);
 		new->content_size = content_size;

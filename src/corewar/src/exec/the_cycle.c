@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:13:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 18:30:08 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:09:57 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ inline static uint8_t	ft_eval_op_code_valid(uint8_t op_code)
 inline static void	ft_carry_process(t_world *nexus, t_dvasa **tree, \
 															t_dvasa **new_node)
 {
-	static t_op_rout	*op_tab[KNOWN_OPS] = { &op_new_op, &op_live, &op_ld,
+	static t_op_rout	*op_tab[KNOWN_OPS] = {&op_new_op, &op_live, &op_ld,
 						&op_st, &op_add, &op_sub, &op_and, &op_or, &op_xor,
 						&op_zjmp, &op_ldi, &op_sti, &op_fork, &op_lld, &op_lldi,
-						&op_lfork, &op_aff };
+						&op_lfork, &op_aff};
 	uint8_t				op_code;
 	t_vasa				*carry_bogey;
 
@@ -199,5 +199,4 @@ void	ft_the_cycle(t_world *nexus, t_dvasa *tree)
 	if (vacant)
 		free(vacant);
 	ft_print_outro(nexus->survivor);
-	// ft_printf("cycle: %d\n", nexus->cyc.cycle);
 }

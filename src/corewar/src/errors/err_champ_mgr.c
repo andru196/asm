@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 22:00:00 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:42:49 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:03:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ inline static t_vasa	*ft_create_footer(t_vasa **subchain_head)
 	t_vasa				*current;
 	t_error				*footer;
 
-	footer = NULL;
-	if (!(footer = (t_error *)ft_memalloc(sizeof(t_error) + 1)))
+	footer = (t_error *)ft_memalloc(sizeof(t_error) + 1);
+	if (!footer)
 	{
 		ft_err_malloc("footer", __func__);
 		ft_lstdel((t_list **)subchain_head, &ft_del);
@@ -44,7 +44,8 @@ inline static t_vasa	*ft_create_header(t_vasa **subchain_head,
 	t_vasa				*current;
 	t_error				*header;
 
-	if (!(header = (t_error *)ft_memalloc(sizeof(t_error))))
+	header = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!header)
 	{
 		ft_err_malloc("header", __func__);
 		ft_lstdel((t_list **)subchain_head, &ft_del);
@@ -53,7 +54,7 @@ inline static t_vasa	*ft_create_header(t_vasa **subchain_head,
 	current = *subchain_head;
 	header->argv_tar = filename;
 	header->errmessage = "\n\t\tErrors detected while parsing Champion!";
-	ft_lstadd((t_list **)subchain_head,
+	ft_lstadd((t_list **)subchain_head, \
 							ft_lstnew_r((void *)header, sizeof(t_error)));
 	if (*subchain_head == current)
 	{

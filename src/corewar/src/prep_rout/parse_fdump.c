@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:37:07 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 17:02:16 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:39:14 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ inline static void	ft_add_step_container(t_vasa **chain_head)
 }
 
 /*
-** //? Проверил. Не все ОК со вложенными функциями.
+** Проверил.
 */
-
-inline static uint8_t	ft_register_fdump_param(char *argv, long long *value, t_vasa **error_head)
+inline static uint8_t	ft_register_fdump_param(char *argv, \
+										long long *value, t_vasa **error_head)
 {
 	uint8_t				flag;
 
@@ -138,7 +138,6 @@ uint8_t	ft_parse_fdump(char ***argv, t_world *nexus)
 **		ft_err_fdump(&nexus->errors, **argv);
 **	}
 */
-
 
 /*
 **	In content_size at this time current length of chain is written.

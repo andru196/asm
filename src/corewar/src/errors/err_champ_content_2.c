@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 19:30:40 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 14:42:24 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:01:48 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_err_invalid_comment(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_lstdel((t_list **)head, &ft_del);
@@ -55,7 +56,8 @@ void	ft_err_invalid_bodysize(t_vasa **head, void *object)
 	t_vasa	*current;
 	t_error	*error;
 
-	if (!(error = (t_error *)ft_memalloc(sizeof(t_error))))
+	error = (t_error *)ft_memalloc(sizeof(t_error));
+	if (!error)
 	{
 		ft_err_malloc("error", __func__);
 		ft_lstdel((t_list **)head, &ft_del);

@@ -6,13 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 23:53:36 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/09 21:48:11 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:08:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-RTP		ft_get_ind_val_sch(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_ind_val_sch(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	intptr_t	offset;

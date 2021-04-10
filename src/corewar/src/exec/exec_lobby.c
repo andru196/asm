@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 13:31:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 16:57:18 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 20:06:58 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 /*
 **	TD:	Проверить в боевом режиме.
-// TD:	ПЕРЕДЕЛАТЬ. Используется ft_add_offspring_by_order
+**	// TD:	ПЕРЕДЕЛАТЬ. Используется ft_add_offspring_by_order
 */
 inline static void	ft_form_tree(t_dvasa **tree, t_world *nexus)
 {
 	t_vasa			*ptr;
 
-	if (!(*tree = ft_create_leafnode_r(NULL, 0)))
+	*tree = ft_create_leafnode_r(NULL, 0);
+	if (!(*tree))
 		return ;
 	while (nexus->carry)
 	{
