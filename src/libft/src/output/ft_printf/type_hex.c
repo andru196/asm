@@ -37,7 +37,7 @@
 
 #define MALL ft_memalloc
 
-static t_extract_hex_rout		*ft_get_tip(uint8_t num)
+static t_extract_hex_rout	*ft_get_tip(uint8_t num)
 {
 	static t_extract_hex_rout	*array[8];
 
@@ -55,7 +55,7 @@ static t_extract_hex_rout		*ft_get_tip(uint8_t num)
 	return (array[num]);
 }
 
-inline static void				ft_printout(t_format *formstat, \
+inline static void	ft_printout(t_format *formstat, \
 									t_fword *format, char *res, char *bogey)
 {
 	size_t						dims[2];
@@ -81,7 +81,7 @@ inline static void				ft_printout(t_format *formstat, \
 	}
 }
 
-uint8_t							ft_place_hexal(t_format *formstat, \
+uint8_t	ft_place_hexal(t_format *formstat, \
 													t_fword *format)
 {
 	char						*buffs[2];

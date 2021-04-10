@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-uint8_t					ft_wipe_structs(t_format *formstat, t_fword *format, \
+uint8_t	ft_wipe_structs(t_format *formstat, t_fword *format, \
 														const char *callername)
 {
 	t_varitype			*ptr;

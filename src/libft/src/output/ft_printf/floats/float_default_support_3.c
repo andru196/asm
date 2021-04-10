@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void					check_width_length_sign(t_fword *container,
+void	check_width_length_sign(t_fword *container,
 						t_float_calc *f)
 {
 	char				*temp;
@@ -42,7 +42,7 @@ void					check_width_length_sign(t_fword *container,
 		add_plus_hash_num_prec(f);
 }
 
-void					add_plus_hash_num_prec(t_float_calc *f)
+void	add_plus_hash_num_prec(t_float_calc *f)
 {
 	char				*temp;
 
@@ -51,7 +51,7 @@ void					add_plus_hash_num_prec(t_float_calc *f)
 	f->float_string = temp;
 }
 
-void					check_space_flag(t_fword *container, t_float_calc *f)
+void	check_space_flag(t_fword *container, t_float_calc *f)
 {
 	char				*temp;
 	int					length;
@@ -62,7 +62,7 @@ void					check_space_flag(t_fword *container, t_float_calc *f)
 		&& length != container->width && length_prec_whole_check(container, f))
 		shift_right_add_space(f, length);
 	else if (container->space_plus == 1 && f->num >= 0
-			&& (length < container->width || container->width < length
+		&& (length < container->width || container->width < length
 			|| length == container->width))
 	{
 		check_filler_zero_spase(container, f);
@@ -72,7 +72,7 @@ void					check_space_flag(t_fword *container, t_float_calc *f)
 	}
 }
 
-int						length_prec_whole_check(t_fword *container,
+int	length_prec_whole_check(t_fword *container,
 						t_float_calc *f)
 {
 	if (container->precision + 1 + (int)ft_strlen(f->num_whole) > f->length)
@@ -81,7 +81,7 @@ int						length_prec_whole_check(t_fword *container,
 		return (0);
 }
 
-void					check_filler_zero_spase(t_fword *container,
+void	check_filler_zero_spase(t_fword *container,
 						t_float_calc *f)
 {
 	char				*temp;

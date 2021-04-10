@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*ft_strtolower(char *str)
+char	*ft_strtolower(char *str)
 {
 	char	*bogey;
 

@@ -16,7 +16,7 @@
 **	Thus array will be sorted ascending.
 */
 
-int				ft_intp_left_grt_right(void *a, void *b)
+int	ft_intp_left_grt_right(void *a, void *b)
 {
 	return (*(int *)a > *(int *)b);
 }
@@ -25,7 +25,7 @@ int				ft_intp_left_grt_right(void *a, void *b)
 **	Thus array will be sorted descending.
 */
 
-int				ft_intp_left_lsr_right(void *a, void *b)
+int	ft_intp_left_lsr_right(void *a, void *b)
 {
 	return (*(int *)a < *(int *)b);
 }

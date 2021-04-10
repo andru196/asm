@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void					ft_err_broken_chain(void)
+void	ft_err_broken_chain(void)
 {
 	ft_putstr_fd("Warning! Variative explicit invocation (aka 'n$') is ", 2);
 	ft_putendl_fd("inconsistent. Expect undefined behavior.", 2);

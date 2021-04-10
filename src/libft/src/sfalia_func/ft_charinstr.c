@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int			ft_charinstr(const char *str, char c)
+int	ft_charinstr(const char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i] != '\0')
@@ -23,9 +23,9 @@ int			ft_charinstr(const char *str, char c)
 	return (0);
 }
 
-int			search_size(short int size[5])
+int	search_size(short int size[5])
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 5)

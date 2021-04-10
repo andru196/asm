@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int						ft_printf_fd(int fd, const char *format, ...)
+int	ft_printf_fd(int fd, const char *format, ...)
 {
 	t_format			formstat;
 

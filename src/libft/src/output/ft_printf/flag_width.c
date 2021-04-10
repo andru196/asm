@@ -24,7 +24,7 @@ inline static uint8_t	ft_get_numsubline_dummy(const char *start, \
 	return (1);
 }
 
-uint8_t					ft_flag_width_dummy(t_format *formstat)
+uint8_t	ft_flag_width_dummy(t_format *formstat)
 {
 	const char			*start;
 
@@ -65,7 +65,7 @@ inline static uint8_t	ft_get_numsubline(const char *start, \
 	return (1);
 }
 
-uint8_t					ft_flag_width(t_format *formstat, t_fword *format)
+uint8_t	ft_flag_width(t_format *formstat, t_fword *format)
 {
 	const char			*start;
 

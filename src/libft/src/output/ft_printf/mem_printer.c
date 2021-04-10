@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void				ft_putsym(const unsigned char *addr, int fd)
+static void	ft_putsym(const unsigned char *addr, int fd)
 {
 	if (*addr >= 32 && *addr <= 126)
 		filling_mainbuf((const char *)addr, 1, 0, fd);
@@ -20,7 +20,7 @@ static void				ft_putsym(const unsigned char *addr, int fd)
 		filling_mainbuf(".", 1, 0, fd);
 }
 
-static void				print_hex(unsigned char c, int fd)
+static void	print_hex(unsigned char c, int fd)
 {
 	char	buff[3];
 	int		i;
@@ -38,7 +38,7 @@ static void				print_hex(unsigned char c, int fd)
 	filling_mainbuf(buff, 2, 0, fd);
 }
 
-static void				ft_filler(size_t i, size_t step, int fd)
+static void	ft_filler(size_t i, size_t step, int fd)
 {
 	while (i < step)
 	{
@@ -49,7 +49,7 @@ static void				ft_filler(size_t i, size_t step, int fd)
 	}
 }
 
-inline static void		ft_print_hexes(size_t *ctr, size_t size, \
+inline static void	ft_print_hexes(size_t *ctr, size_t size, \
 											const unsigned char *addr, int fd)
 {
 	while ((*ctr % 16) && *ctr < size)
@@ -61,7 +61,7 @@ inline static void		ft_print_hexes(size_t *ctr, size_t size, \
 	}
 }
 
-void					ft_printmem(const char *addr, size_t size, int fl, \
+void	ft_printmem(const char *addr, size_t size, int fl, \
 									int fd)
 {
 	size_t				ctr;

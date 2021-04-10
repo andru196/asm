@@ -50,7 +50,7 @@ inline static uint8_t	ft_search_formword(t_format *scanstat)
 ** Creeps (due to) the function stored in
 */
 
-uint8_t					ft_scan_string(t_format *scanstat)
+uint8_t	ft_scan_string(t_format *scanstat)
 {
 	while (!(ft_search_formword(scanstat)))
 	{

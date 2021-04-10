@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void		*ft_memalloc(size_t size)
+void	*ft_memalloc(size_t size)
 {
-	void *pocket;
+	void	*pocket;
 
 	if (!(pocket = (void *)malloc(size)))
 		return (NULL);

@@ -16,10 +16,10 @@
 ** We use size_t, thus we need libft.h in order to include stdlib.h
 */
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t size_s1;
-	size_t size_s2;
+	size_t	size_s1;
+	size_t	size_s2;
 
 	size_s1 = ft_strlen(s1) + 1;
 	size_s2 = ft_strlen(s2) + 1;

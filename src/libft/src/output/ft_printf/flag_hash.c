@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-uint8_t					ft_flag_hash_dummy(const char *ptr)
+uint8_t	ft_flag_hash_dummy(const char *ptr)
 {
 	if (*ptr == '#')
 		return (1);
 	return (0);
 }
 
-uint8_t					ft_flag_hash(const char *ptr, t_fword *format)
+uint8_t	ft_flag_hash(const char *ptr, t_fword *format)
 {
 	if (*ptr == '#')
 	{

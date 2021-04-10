@@ -17,10 +17,10 @@
 ** ft_memcpy.
 */
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t srclen;
-	size_t dstlen;
+	size_t	srclen;
+	size_t	dstlen;
 
 	if (!dst || !src)
 		return (-1);

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline static void		ft_check_tail(unsigned const char *bogey, \
+inline static void	ft_check_tail(unsigned const char *bogey, \
 									unsigned const char *end, size_t *counter)
 {
 	while (bogey < end)
@@ -47,7 +47,7 @@ inline static size_t	ft_count_conts(unsigned const char *str, \
 	return (counter);
 }
 
-size_t					ft_wstrlen(const char *str)
+size_t	ft_wstrlen(const char *str)
 {
 	size_t				byte_size;
 	const char			*bogey;

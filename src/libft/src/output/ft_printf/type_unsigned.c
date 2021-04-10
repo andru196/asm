@@ -35,7 +35,7 @@
 **	be chosen.
 */
 
-static t_extract_int_rout		*ft_get_tip(uint8_t num)
+static t_extract_int_rout	*ft_get_tip(uint8_t num)
 {
 	static t_extract_int_rout	*array[8];
 
@@ -53,7 +53,7 @@ static t_extract_int_rout		*ft_get_tip(uint8_t num)
 	return (array[num]);
 }
 
-uint8_t							ft_place_unsigned(t_format *formstat, \
+uint8_t	ft_place_unsigned(t_format *formstat, \
 													t_fword *format)
 {
 	char		*res;

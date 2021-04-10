@@ -36,7 +36,7 @@ inline static void	*ft_memsync(uint8_t *s, size_t *n)
 	return (s);
 }
 
-void				ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t			bogey;
 	size_t			*mask;

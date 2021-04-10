@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-uint8_t					ft_flag_type_dummy(t_format *formstat, \
+uint8_t	ft_flag_type_dummy(t_format *formstat, \
 													t_fword *formword)
 {
 	formword->ftp_type = &ft_place_dummy;
@@ -57,7 +57,7 @@ inline static uint8_t	ft_check_valid_word(t_format *formstat, \
 **		I DID'T ADD extra flag (%b and %r)
 */
 
-inline static void		ft_pric_int_cap_ft(t_fword *formword, char type)
+inline static void	ft_pric_int_cap_ft(t_fword *formword, char type)
 {
 	if (type == 'D')
 	{
@@ -76,7 +76,7 @@ inline static void		ft_pric_int_cap_ft(t_fword *formword, char type)
 	}
 }
 
-inline static void		ft_pick_int_ft(t_fword *formword, char type)
+inline static void	ft_pick_int_ft(t_fword *formword, char type)
 {
 	if (type == 'c' || type == 'C')
 		formword->ftp_type = &ft_place_char;
@@ -100,7 +100,7 @@ inline static void		ft_pick_int_ft(t_fword *formword, char type)
 		ft_pric_int_cap_ft(formword, type);
 }
 
-uint8_t					ft_flag_type(t_format *formstat, \
+uint8_t	ft_flag_type(t_format *formstat, \
 													t_fword *formword)
 {
 	char				type;

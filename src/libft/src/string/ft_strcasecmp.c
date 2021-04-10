@@ -35,7 +35,7 @@ static void	ft_assholder(char **ptr)
 	}
 }
 
-int			ft_strcasecmp(const char *s1, const char *s2)
+int	ft_strcasecmp(const char *s1, const char *s2)
 {
 	static char			*ptr;
 	unsigned const char	*uns1;

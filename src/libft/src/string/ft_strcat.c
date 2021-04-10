@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*ft_strcat(char *s1, const char *s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char *bogey;
+	char	*bogey;
 
 	bogey = s1;
 	while (*bogey != '\0')

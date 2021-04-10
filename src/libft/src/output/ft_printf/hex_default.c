@@ -18,7 +18,7 @@
 **	left for 0x or 0X HEX prefixes).
 */
 
-char				*ft_get_hex_default(t_fword *container, char **buff)
+char	*ft_get_hex_default(t_fword *container, char **buff)
 {
 	unsigned int	res;
 

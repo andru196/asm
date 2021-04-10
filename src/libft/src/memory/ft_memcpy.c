@@ -23,7 +23,7 @@
 ** Thus we can get extra small_strings call.
 */
 
-static void		small_strings(unsigned char *csub_dst, \
+static void	small_strings(unsigned char *csub_dst, \
 									unsigned const char *csub_src, size_t *n)
 {
 	while (*n != 0)
@@ -35,7 +35,7 @@ static void		small_strings(unsigned char *csub_dst, \
 	}
 }
 
-void			*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		bogey;
 	long		*lsub_dst;

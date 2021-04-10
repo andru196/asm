@@ -32,7 +32,7 @@ static inline uint8_t	ft_set_existing_anchor(t_format *formstat, \
 	return (1);
 }
 
-uint8_t					ft_seach_anchors(t_format *formstat)
+uint8_t	ft_seach_anchors(t_format *formstat)
 {
 	const char			*ptr;
 	const char			*endptr;
@@ -70,7 +70,7 @@ uint8_t					ft_seach_anchors(t_format *formstat)
 ** do not write anything to the buffer.
 */
 
-static uint8_t			ft_approach_anchor(t_format *ptr)
+static uint8_t	ft_approach_anchor(t_format *ptr)
 {
 	ssize_t				piece_len;
 	ssize_t				overflow;
@@ -87,7 +87,7 @@ static uint8_t			ft_approach_anchor(t_format *ptr)
 	return (0);
 }
 
-uint8_t					ft_parse_format(t_format *formstat)
+uint8_t	ft_parse_format(t_format *formstat)
 {
 	while (*(formstat->marker))
 	{

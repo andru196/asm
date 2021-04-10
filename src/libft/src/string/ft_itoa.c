@@ -36,7 +36,7 @@ static int	ft_numvol(int n)
 	return (v);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*pocket;
 	int		volume;
