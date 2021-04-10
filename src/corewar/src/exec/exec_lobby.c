@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec_lobby.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 13:31:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/14 17:28:27 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:57:18 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-TD:	Проверить в боевом режиме.
+**	TD:	Проверить в боевом режиме.
 // TD:	ПЕРЕДЕЛАТЬ. Используется ft_add_offspring_by_order
 */
 inline static void	ft_form_tree(t_dvasa **tree, t_world *nexus)
@@ -30,7 +30,7 @@ inline static void	ft_form_tree(t_dvasa **tree, t_world *nexus)
 	}
 }
 
-void					ft_exec_battle(t_world *nexus)
+void	ft_exec_battle(t_world *nexus)
 {
 	t_dvasa				*tree;
 

@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:05:39 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 23:54:06 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:57:40 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	This function get the index of the regiester undergoing a change.
 */
 
-RTP		ft_get_reg_num(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_reg_num(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
@@ -28,7 +28,7 @@ RTP		ft_get_reg_num(uint8_t *arena, t_mop *op_cont, \
 **	This function get the value of the offset that is written in arena.
 */
 
-RTP		ft_get_ind_num(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_ind_num(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	RTP	offset;
@@ -46,14 +46,14 @@ RTP		ft_get_ind_num(uint8_t *arena, t_mop *op_cont, \
 **	content.
 */
 
-RTP		ft_get_reg_val(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_reg_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
 	return ((RTP)(carry->reg[arena[ft_calc_addr(pos)] - 1]));
 }
 
-RTP		ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)op_cont;
@@ -61,7 +61,7 @@ RTP		ft_get_dir_val(uint8_t *arena, t_mop *op_cont, \
 	return (ft_swap_endian(ft_get_bytecode(arena, pos), op_cont->t_dir_size));
 }
 
-RTP		ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_ind_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	intptr_t	offset;

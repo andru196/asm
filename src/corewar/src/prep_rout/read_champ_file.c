@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 10:55:21 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/09 21:53:21 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:02:34 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define _WRONG_SEPARATOR(x, y) (*(_SEP_TYPE *)(x + y) != 0)
 #define CH_NAME curr->name
 
-inline static void		ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
+inline static void	ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 {
 	ssize_t			res;
 	RTP				magic;
@@ -42,7 +42,7 @@ inline static void		ft_get_magicname(int fd, t_vasa **error, t_champ *curr)
 		ft_err_invalid_separator(error, "between Name and Comment.");
 }
 
-inline static void		ft_get_champ_size(int fd, \
+inline static void	ft_get_champ_size(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -58,7 +58,7 @@ inline static void		ft_get_champ_size(int fd, \
 		ft_err_invalid_champsize(champ_error, NULL);
 }
 
-inline static void		ft_get_champ_comment(int fd, \
+inline static void	ft_get_champ_comment(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -76,7 +76,7 @@ inline static void		ft_get_champ_comment(int fd, \
 		ft_err_invalid_separator(champ_error, "between Comment and Body.");
 }
 
-inline static void		ft_get_champ_body(int fd, \
+inline static void	ft_get_champ_body(int fd, \
 										t_vasa **champ_error, t_champ *champ)
 {
 	ssize_t			res;
@@ -104,7 +104,7 @@ inline static void		ft_get_champ_body(int fd, \
 **	ft_read_champ_file как итератор на выходе из этой функции.
 */
 
-int						ft_read_champ_file(char *file, int id, t_champ *champ, \
+int	ft_read_champ_file(char *file, int id, t_champ *champ, \
 															t_vasa **last_error)
 {
 	static int	pos;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_params.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:44:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/07 20:41:37 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:03:01 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ uint8_t			ft_scan_lines(char ***argv, t_world *nexus)
 	return (0);
 }
 
-void			ft_read_params(char ***argv, t_world *nexus)
+void	ft_read_params(char ***argv, t_world *nexus)
 {
 	uint8_t	parse_stat;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_15_lfork.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 18:22:49 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 15:07:47 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:01:22 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,15 @@
 #define OP_CODE 15
 
 /*
-TODO: Алярм! Убрать после отладки!
+**	!Контракт:
+**	Использует ft_dupe_carry для создания копии каретки.
+**	Должна самостоятельно создавать контейнер t_vasa под новую каретку.
+**	Обновляет положение указателя новой каретки.
+**	Должна организовать помещение новой каректи в очередь на исполнения,
+**	используя предусмотренную для этого ОБЩУЮ функцию.
 */
-// inline static void	ft_newcarry_place(t_vasa *carry_cont, t_dvasa *tree, \
-// 								t_dvasa **new_node, t_carry_cont_rout *manager)
-// {
-// 	(void)new_node;
 
-// if (!tree)
-// {
-// ft_printf_fd(2, "ALARM! HOW did that happened!?\n %s of %s found no tree!", \
-// 															__func__, __FILE__);
-// exit (1);
-// }
-// 	manager(tree, carry_cont);
-// }
-
-/*
-!Контракт:
-	*	Использует ft_dupe_carry для создания копии каретки.
-	*	Должна самостоятельно создавать контейнер t_vasa под новую каретку.
-	*	Обновляет положение указателя новой каретки.
-	*	Должна организовать помещение новой каректи в очередь на исполнения,
-		* используя предусмотренную для этого ОБЩУЮ функцию.
-*/
-void		op_lfork(t_world *nexus, t_carry *carry, \
+void	op_lfork(t_world *nexus, t_carry *carry, \
 							t_dvasa *head, t_dvasa **vacant)
 {
 	t_mop	op_cont;

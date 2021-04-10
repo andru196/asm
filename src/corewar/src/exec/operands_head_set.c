@@ -6,13 +6,13 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 15:10:41 by mschimme          #+#    #+#             */
-/*   Updated: 2021/03/27 22:31:54 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:57:45 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
-RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, \
+RTP	ft_get_nil_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)arena;
@@ -23,7 +23,7 @@ RTP			ft_get_nil_val(uint8_t *arena, t_mop *op_cont, \
 	return (0);
 }
 
-void			ft_set_nil_val(uint8_t *arena, t_mop *op_cont, \
+void	ft_set_nil_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)arena;
@@ -33,7 +33,7 @@ void			ft_set_nil_val(uint8_t *arena, t_mop *op_cont, \
 	ft_printf("\n!!! We entered ft_set_nil_val somehow!!!'\n");
 }
 
-void			ft_set_reg_val(uint8_t *arena, t_mop *op_cont, \
+void	ft_set_reg_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)arena;
@@ -41,7 +41,7 @@ void			ft_set_reg_val(uint8_t *arena, t_mop *op_cont, \
 	carry->reg[op_cont->operands[1]] = op_cont->operands[0];
 }
 
-void			ft_set_dir_val(uint8_t *arena, t_mop *op_cont, \
+void	ft_set_dir_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	(void)arena;
@@ -51,7 +51,7 @@ void			ft_set_dir_val(uint8_t *arena, t_mop *op_cont, \
 	ft_printf("\n!!! We entered ft_set_dir_val somehow!!!'\n");
 }
 
-void			ft_set_ind_val(uint8_t *arena, t_mop *op_cont, \
+void	ft_set_ind_val(uint8_t *arena, t_mop *op_cont, \
 										t_carry *carry, intptr_t pos)
 {
 	intptr_t	offset;

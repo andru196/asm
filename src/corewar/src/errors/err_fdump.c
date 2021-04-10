@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_fdump.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:38:10 by mschimme          #+#    #+#             */
-/*   Updated: 2020/09/25 01:08:10 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 14:43:13 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 *	ПРОВЕРИЛ. Не проверял ошибку маллока.
 */
 
-void		ft_err_fdump_inter(t_vasa **head, void *object)
+void	ft_err_fdump_inter(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
@@ -43,7 +43,7 @@ void		ft_err_fdump_inter(t_vasa **head, void *object)
 /*
 *	ПРОВЕРИЛ. Не проверял ошибку маллока.
 */
-void		ft_err_fdump_notnbr(t_vasa **head, void *object)
+void	ft_err_fdump_notnbr(t_vasa **head, void *object)
 {
 	t_vasa	*current;
 	t_error	*error;
