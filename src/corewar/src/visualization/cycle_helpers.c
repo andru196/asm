@@ -6,13 +6,11 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 02:41:57 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 14:55:06 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:57:49 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-
-
 
 int	get_increased_speed(int cycle_speed, int delta)
 {

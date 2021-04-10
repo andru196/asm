@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:23:00 by ycorrupt          #+#    #+#             */
-/*   Updated: 2021/04/10 14:37:14 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:57:56 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,3 @@ void	ft_make_cycle(t_world *nexus, t_dvasa **tree, t_dvasa **vacant)
 		ft_print_ncursus_arena(nexus);
 	}
 }
-
-
