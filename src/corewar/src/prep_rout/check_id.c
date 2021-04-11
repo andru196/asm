@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 22:13:55 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 20:34:21 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:54:11 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_check_id(t_vasa **errors_head, \
 	{
 		if (champs[i].id)
 		{
-			if (champs[i].id > ch_amount)
+			if ((uint32_t)champs[i].id > (uint32_t)ch_amount)
 			{
 				ft_err_id_behind_fighters(errors_head, champs[i].name);
 				champs[i].id = 0;
