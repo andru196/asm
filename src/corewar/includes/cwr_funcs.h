@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/11 14:25:30 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:07:39 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ uint8_t		ft_supervise_input(t_world *nexus, int ch_amount);
 void		ft_prep_battle(t_world *nexus);
 void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
 void		ft_resolve_modes(t_world *nexus);
-
 
 /*
 ******************			exec(ution) funcs:			************************

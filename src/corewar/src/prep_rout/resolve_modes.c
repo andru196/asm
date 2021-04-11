@@ -6,13 +6,11 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 14:00:43 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/11 14:22:44 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:07:43 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
-
-
 
 void	ft_resolve_modes(t_world *nexus)
 {
