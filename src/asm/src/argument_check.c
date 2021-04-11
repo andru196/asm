@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 23:33:47 by sfalia-f          #+#    #+#             */
-/*   Updated: 2021/04/10 17:47:28 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 13:48:27 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	is_finished_and_type(t_asmcont *cont, int com_pos,
 {
 	return ((word[digits_count(word)] != SEPARATOR_CHAR
 			&& word[digits_count(word)] != '\0')
-		|| !(g_otab[cont->command_list[com_pos].cmnd_num]\
+		|| !(g_otab[cont->command_list[com_pos].cmnd_num] \
 				.args_types[arg_num] & T_REG));
 }
 

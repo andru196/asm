@@ -6,7 +6,7 @@
 /*   By: sstark <sstark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 17:02:42 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 20:49:25 by sstark           ###   ########.fr       */
+/*   Updated: 2021/04/11 13:48:59 by sstark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define MHZERO 0x0101010101010101UL
 # define DHZERO 0x8080808080808080UL
 # define BUFF_SIZE 56
-# define C_S content_size
-# define CNT content
 
 extern int			g_gnl_read;
 
