@@ -41,9 +41,9 @@ static inline void	set_dumpline(char str[LINE_SIZE], uint8_t **bytes,
 	while (cpy < max)
 	{
 		tmp = *bytes_cpy / 16;
-		*str++ = tmp + (tmp > 9 ? 'a' - 10 : '0');
+		*str++ = tmp + ti(tmp > 9, 'a' - 10, '0');
 		tmp = *bytes_cpy++ % 16;
-		*str++ = tmp + (tmp > 9 ? 'a' - 10 : '0');
+		*str++ = tmp + ti(tmp > 9, 'a' - 10, '0');
 		*str++ = ' ';
 		if (!(++cpy % 0x40))
 			break ;
