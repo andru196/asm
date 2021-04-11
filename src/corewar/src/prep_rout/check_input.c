@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:23:10 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 20:34:33 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 14:00:31 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ inline static int	ft_get_term_width(void)
 }
 
 /*
-** Cant understand what's happening? ENCJOY! Fuck NORM.
+** Cant understand what's happening? ENJOY! Fuck NORM.
 */
 static void	ft_print_intro(void)
 {
@@ -99,6 +99,7 @@ uint8_t	ft_supervise_input(t_world *nexus, int ch_amount)
 	uint8_t	flag;
 
 	flag = 0;
+	ft_resolve_modes(nexus);
 	if (!ch_amount)
 	{
 		ft_err_nochamps(&nexus->errors, NULL);
@@ -109,7 +110,6 @@ uint8_t	ft_supervise_input(t_world *nexus, int ch_amount)
 	{
 		ft_print_intro();
 		ft_print_errors(nexus->errors);
-		nexus->flags = (NULL != nexus->cyc.cyc_to_dump);
 		if (!flag)
 			return (ft_get_action());
 	}

@@ -6,14 +6,14 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:38:10 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 20:05:21 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 14:23:43 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cwr.h>
 
 /*
-*	ПРОВЕРИЛ. Не проверял ошибку маллока.
+*	ПРОВЕРИЛ.
 */
 
 void	ft_err_fdump_inter(t_vasa **head, void *object)
@@ -42,7 +42,7 @@ void	ft_err_fdump_inter(t_vasa **head, void *object)
 }
 
 /*
-*	ПРОВЕРИЛ. Не проверял ошибку маллока.
+*	ПРОВЕРИЛ.
 */
 void	ft_err_fdump_notnbr(t_vasa **head, void *object)
 {

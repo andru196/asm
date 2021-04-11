@@ -6,7 +6,7 @@
 /*   By: mschimme <mschimme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:21:22 by mschimme          #+#    #+#             */
-/*   Updated: 2021/04/10 21:06:13 by mschimme         ###   ########.fr       */
+/*   Updated: 2021/04/11 14:25:30 by mschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		ft_clear_champ(t_champ *this);
 uint8_t		ft_supervise_input(t_world *nexus, int ch_amount);
 void		ft_prep_battle(t_world *nexus);
 void		ft_check_id(t_vasa **errors_head, t_champ *champs, int ch_amount);
+void		ft_resolve_modes(t_world *nexus);
+
 
 /*
 ******************			exec(ution) funcs:			************************
@@ -87,6 +89,7 @@ void		ft_err_champ_limit(t_vasa **head, void *object);
 void		ft_err_id_doubled(t_vasa **head, void *object);
 void		ft_err_id_behind_fighters(t_vasa **head, void *object);
 void		ft_show_compconf(void);
+void		ft_err_both_modes(t_vasa **head, void *object);
 
 /*
 ******************		Champion parsing errors funcs:	************************
